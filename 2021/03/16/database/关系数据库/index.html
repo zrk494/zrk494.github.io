@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>关系数据库 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="关系数据库1.关系1.1 相关概念1.1.1 属性 关系表的列 列是同质的，即为同一数据类型  1.1.2 域相同类型数据的集合 1.1.3 关系笛卡尔集的子集（详见集合论与图论） 1.1.4 关系模式关系的形记作 R（U）,U为A1…An组成的属性集合，R是关系名例：Student（学号，姓名，性别，年龄，专业）Grade（学生编号，课程编号，成绩） 1.1.5 关系实例一个关系的任何一个“当前">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关系数据库">
+<meta property="og:url" content="http://example.com/2021/03/16/database/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="关系数据库1.关系1.1 相关概念1.1.1 属性 关系表的列 列是同质的，即为同一数据类型  1.1.2 域相同类型数据的集合 1.1.3 关系笛卡尔集的子集（详见集合论与图论） 1.1.4 关系模式关系的形记作 R（U）,U为A1…An组成的属性集合，R是关系名例：Student（学号，姓名，性别，年龄，专业）Grade（学生编号，课程编号，成绩） 1.1.5 关系实例一个关系的任何一个“当前">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-16T13:02:24.000Z">
+<meta property="article:modified_time" content="2021-04-08T03:17:00.284Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-database/关系数据库" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/16/database/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/" class="article-date">
+  <time class="dt-published" datetime="2021-03-16T13:02:24.000Z" itemprop="datePublished">2021-03-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      关系数据库
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="关系数据库"><a href="#关系数据库" class="headerlink" title="关系数据库"></a>关系数据库</h1><h2 id="1-关系"><a href="#1-关系" class="headerlink" title="1.关系"></a>1.关系</h2><h4 id="1-1-相关概念"><a href="#1-1-相关概念" class="headerlink" title="1.1 相关概念"></a>1.1 相关概念</h4><h5 id="1-1-1-属性"><a href="#1-1-1-属性" class="headerlink" title="1.1.1 属性"></a>1.1.1 属性</h5><ul>
+<li>关系表的列</li>
+<li>列是同质的，即为同一数据类型</li>
+</ul>
+<h5 id="1-1-2-域"><a href="#1-1-2-域" class="headerlink" title="1.1.2 域"></a>1.1.2 域</h5><p>相同类型数据的集合</p>
+<h5 id="1-1-3-关系"><a href="#1-1-3-关系" class="headerlink" title="1.1.3 关系"></a>1.1.3 关系</h5><p>笛卡尔集的子集（<del>详见集合论与图论</del>）</p>
+<h5 id="1-1-4-关系模式"><a href="#1-1-4-关系模式" class="headerlink" title="1.1.4 关系模式"></a>1.1.4 关系模式</h5><p>关系的形<br>记作 R（U）,U为A1…An组成的属性集合，R是关系名<br>例：Student（学号，姓名，性别，年龄，专业）<br>Grade（学生编号，课程编号，成绩）</p>
+<h5 id="1-1-5-关系实例"><a href="#1-1-5-关系实例" class="headerlink" title="1.1.5 关系实例"></a>1.1.5 关系实例</h5><p>一个关系的任何一个“当前值”是该关系的实例</p>
+<h5 id="1-1-6-元组"><a href="#1-1-6-元组" class="headerlink" title="1.1.6 元组"></a>1.1.6 元组</h5><p>笛卡尔积得到的集合中的每一个元素</p>
+<h5 id="1-1-7-码（又称作键，-那个名为篝酱的少女）"><a href="#1-1-7-码（又称作键，-那个名为篝酱的少女）" class="headerlink" title="1.1.7 码（又称作键， 那个名为篝酱的少女）"></a>1.1.7 码（又称作键， <del>那个名为篝酱的少女</del>）</h5><h6 id="超码"><a href="#超码" class="headerlink" title="超码"></a>超码</h6><p>可以==唯一==标识一个元组的一个属性集合</p>
+<h6 id="候选码"><a href="#候选码" class="headerlink" title="候选码"></a>候选码</h6><p>唯一的一个属性集合或者属性集合组，超码是候选码的特殊表现，可存在多个</p>
+<h6 id="主码"><a href="#主码" class="headerlink" title="主码"></a>主码</h6><p>数据库设计者选择的用于区分不同元组的候选码（从候选码之中选出一个）</p>
+<h6 id="外码"><a href="#外码" class="headerlink" title="外码"></a>外码</h6><p>非关系R的候选码，而是关系S的候选码，将两个关系联系在一起</p>
+<h5 id="1-1-8-关系的第一范式"><a href="#1-1-8-关系的第一范式" class="headerlink" title="1.1.8 关系的第一范式"></a>1.1.8 关系的第一范式</h5><p>属性不可再分</p>
+<h4 id="1-2-关系的完整性"><a href="#1-2-关系的完整性" class="headerlink" title="1.2 关系的完整性"></a>1.2 关系的完整性</h4><h5 id="1-2-1-实体完整性约束"><a href="#1-2-1-实体完整性约束" class="headerlink" title="1.2.1 实体完整性约束"></a>1.2.1 实体完整性约束</h5><p>主键属性不空（不存在或者无意义）</p>
+<h5 id="1-2-2-参照完整性约束（连接两个关系）"><a href="#1-2-2-参照完整性约束（连接两个关系）" class="headerlink" title="1.2.2 参照完整性约束（连接两个关系）"></a>1.2.2 参照完整性约束（连接两个关系）</h5><p>外码在R1之中的值为空或者对应其在R2（在R2之中为主码）之中的值</p>
+<h5 id="1-2-3-用户定义的完整性"><a href="#1-2-3-用户定义的完整性" class="headerlink" title="1.2.3 用户定义的完整性"></a>1.2.3 用户定义的完整性</h5><h4 id="1-3-关系运算相关（重点）"><a href="#1-3-关系运算相关（重点）" class="headerlink" title="1.3 关系运算相关（重点）"></a>1.3 关系运算相关（重点）</h4><h5 id="1-3-1-关系代数（操作-关系得到另一个关系，一般来说由内向外进行书写）"><a href="#1-3-1-关系代数（操作-关系得到另一个关系，一般来说由内向外进行书写）" class="headerlink" title="1.3.1 关系代数（操作+关系得到另一个关系，一般来说由内向外进行书写）"></a>1.3.1 关系代数（操作+关系得到另一个关系，一般来说由内向外进行书写）</h5><ul>
+<li>并 同一个表</li>
+<li>差   同一个表</li>
+<li>笛卡尔积 表与表之间</li>
+<li>交 同一个表</li>
+<li>选择 同一个表</li>
+<li>投影 同一个表</li>
+<li>重命名 同一个表</li>
+<li>除法 </li>
+<li>连接</li>
+<li>等值连接</li>
+<li>自然连接</li>
+<li>外连接</li>
+<li>全外连接</li>
+</ul>
+<h5 id="1-3-2-元组演算"><a href="#1-3-2-元组演算" class="headerlink" title="1.3.2 元组演算"></a>1.3.2 元组演算</h5><h5 id="1-3-3-域演算"><a href="#1-3-3-域演算" class="headerlink" title="1.3.3 域演算"></a>1.3.3 域演算</h5><h2 id="2-SQL语言基础"><a href="#2-SQL语言基础" class="headerlink" title="2. SQL语言基础"></a>2. SQL语言基础</h2><h3 id="2-1-基本的9个引导词"><a href="#2-1-基本的9个引导词" class="headerlink" title="2.1 基本的9个引导词"></a>2.1 基本的9个引导词</h3><table>
+<thead>
+<tr>
+<th>数据定义</th>
+<th align="center">create ,drop,alter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查询</td>
+<td align="center">select</td>
+</tr>
+<tr>
+<td>修改</td>
+<td align="center">insert,update,delete</td>
+</tr>
+<tr>
+<td>数据控制</td>
+<td align="center">grant,revote</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-数据定义"><a href="#2-2-数据定义" class="headerlink" title="2.2 数据定义"></a>2.2 数据定义</h3><h4 id="2-2-1-create（创建，包括表，视图，索引）"><a href="#2-2-1-create（创建，包括表，视图，索引）" class="headerlink" title="2.2.1 create（创建，包括表，视图，索引）"></a>2.2.1 create（创建，包括表，视图，索引）</h4><ul>
+<li><p>create table  </p>
+<p>语法格式 ：</p>
+<p>create table &lt;关系名&gt; (&lt;属性名&gt; &lt;属性类型&gt;[NOT NULL], … , &lt;属性名&gt; &lt;属性类型&gt;[NOT NULL], 完整性约束1，完整性约束2,…)</p>
+<p>实例：</p>
+<p>create table Game</p>
+<p>( Name varchar(10) not null,//长度可变的字符串,且非空</p>
+<p>NUM char(10) not null,</p>
+<p>Type  char(5),//定长字符串</p>
+<p>year   integer,</p>
+<p>Primary key (NUM))</p>
+</li>
+<li><p>create index</p>
+<p>语法格式：CREATE [UNIQUE] INDEX 〈索引名〉 ON 〈关系名〉(〈列名 〉[ORDER], …,〈列名〉[ORDER]) [CLUSTER]</p>
+<p>其中 [unique]是固定的，表示索引属性是不能重复出现的,order有两种值 ASC或者DESC</p>
+<p>create unique index NUM on Game(NUM ASC) cluster</p>
+</li>
+</ul>
+<h4 id="2-2-2-drop-删除"><a href="#2-2-2-drop-删除" class="headerlink" title="2.2.2 drop (删除)"></a>2.2.2 drop (删除)</h4><ul>
+<li><p>drop table（删除整个表）</p>
+<p>语法格式：</p>
+<p>drop table  &lt;关系名&gt;</p>
+</li>
+<li><p>drop index</p>
+<p>语法格式：</p>
+<p>drop index&lt;索引名&gt;</p>
+</li>
+</ul>
+<h4 id="2-2-3-alter-（修改）"><a href="#2-2-3-alter-（修改）" class="headerlink" title="2.2.3 alter （修改）"></a>2.2.3 alter （修改）</h4><ul>
+<li><p>alter table（增加或减少一列）</p>
+<p>语法格式：</p>
+<p>alter table &lt;关系名&gt; ADD|DROP&lt;列名&gt;&lt;列类型&gt;</p>
+</li>
+<li></li>
+</ul>
+<h3 id="2-3-查询"><a href="#2-3-查询" class="headerlink" title="2.3 查询"></a>2.3 查询</h3><h4 id="2-3-1-单表查询（只有一个表，一般为查找一个表的一列或者多列）"><a href="#2-3-1-单表查询（只有一个表，一般为查找一个表的一列或者多列）" class="headerlink" title="2.3.1 单表查询（只有一个表，一般为查找一个表的一列或者多列）"></a>2.3.1 单表查询（只有一个表，一般为查找一个表的一列或者多列）</h4><p>​    有一个表 Game(Gname, Gsize, Gtype, Gyear)</p>
+<ul>
+<li><p>查询指定列(例子中的名称和大小)</p>
+<p><strong>Select</strong> Sname, Ssize</p>
+<p><strong>From</strong> Game;</p>
+</li>
+<li><p>查询全部</p>
+<p><strong>Select</strong>  *</p>
+<p><strong>From</strong> Game;</p>
+</li>
+<li><p>查符合条件的元组</p>
+<p>where子句( between and, not between and, in , not in, like, not like, and, or, is null)</p>
+<p>例1 2001到2020年发行的游戏的名称</p>
+<p><strong>Select</strong> Sname</p>
+<p><strong>From</strong> Game</p>
+<p><strong>Where</strong> year between 2001 and 2020;</p>
+<p>Escape短语？？？<del>待补充</del></p>
+<p>例2 以”sum_”开头，且倒数第3个字符wei</p>
+<p><strong>Select</strong> *</p>
+<p><strong>From</strong> Game</p>
+</li>
+<li><p>对结果排序</p>
+<p>例3</p>
+<p><strong>Select</strong> Sname</p>
+<p><strong>From</strong> Game</p>
+<p><strong>Where</strong> year between 2001 and 2020</p>
+<p>order by year DESC;</p>
+</li>
+<li><p>聚集函数（6种）</p>
+<p>例4 统计游戏个数</p>
+<p>Select count(*) From Game;</p>
+</li>
+<li><p>结果分组</p>
+<p>Group by</p>
+<p>Having</p>
+</li>
+</ul>
+<h4 id="2-3-2连接查询（包括多个表）"><a href="#2-3-2连接查询（包括多个表）" class="headerlink" title="2.3.2连接查询（包括多个表）"></a>2.3.2连接查询（包括多个表）</h4><h4 id="2-3-3嵌套查询（一个查询嵌在另一个里面）"><a href="#2-3-3嵌套查询（一个查询嵌在另一个里面）" class="headerlink" title="2.3.3嵌套查询（一个查询嵌在另一个里面）"></a>2.3.3嵌套查询（一个查询嵌在另一个里面）</h4><h4 id="2-3-4集合查询"><a href="#2-3-4集合查询" class="headerlink" title="2.3.4集合查询"></a>2.3.4集合查询</h4><h3 id="2-4-修改数据"><a href="#2-4-修改数据" class="headerlink" title="2.4 修改数据"></a>2.4 修改数据</h3><h2 id="3-数据库安全性，完整性（用SQL实现）"><a href="#3-数据库安全性，完整性（用SQL实现）" class="headerlink" title="3.数据库安全性，完整性（用SQL实现）"></a>3.数据库安全性，完整性（用SQL实现）</h2><h3 id="3-1-基本概念"><a href="#3-1-基本概念" class="headerlink" title="3.1 基本概念"></a>3.1 基本概念</h3><h4 id="3-1-1安全性"><a href="#3-1-1安全性" class="headerlink" title="3.1.1安全性"></a>3.1.1安全性</h4><ul>
+<li>不允许恶意修改或者未经授权的存取和修改</li>
+</ul>
+<h4 id="3-1-2完整性（为保障数据正确性，相容性，添加的约束条件和规则）"><a href="#3-1-2完整性（为保障数据正确性，相容性，添加的约束条件和规则）" class="headerlink" title="3.1.2完整性（为保障数据正确性，相容性，添加的约束条件和规则）"></a>3.1.2完整性（为保障数据正确性，相容性，添加的约束条件和规则）</h4><ul>
+<li>语义完整性（重点）</li>
+<li>并发控制，安全控制，DB回复等</li>
+</ul>
+<h3 id="3-2-控制安全性"><a href="#3-2-控制安全性" class="headerlink" title="3.2 控制安全性"></a>3.2 控制安全性</h3><h4 id="3-2-1授权"><a href="#3-2-1授权" class="headerlink" title="3.2.1授权"></a>3.2.1授权</h4><p>语法格式</p>
+<p>GRANT &lt;权限&gt; [, 权限] …</p>
+<p>ON &lt;对象类型&gt; &lt;对象名&gt; [, &lt;对象类型&gt; &lt;对象名&gt; ] …</p>
+<p>TO &lt;用户&gt; [,用户] … [WITH GRANT OPTION];</p>
+<p>例</p>
+<p>Grant select </p>
+<p>on table game</p>
+<p>to krzkrz;</p>
+<h4 id="3-2-2-权限回收"><a href="#3-2-2-权限回收" class="headerlink" title="3.2.2 权限回收"></a>3.2.2 权限回收</h4><p>REVOKE &lt;权限&gt; [, 权限] … </p>
+<p>ON &lt;对象类型&gt; &lt;对象名&gt; [, &lt;对象类型&gt; &lt;对象名&gt;] </p>
+<p>FROM &lt;用户&gt; [, 用户] … [CASCADE | RESTRICT]</p>
+<h4 id="3-2-3-存取控制机制"><a href="#3-2-3-存取控制机制" class="headerlink" title="3.2.3 存取控制机制"></a>3.2.3 存取控制机制</h4><p>常用方法</p>
+<ul>
+<li>强制存取机制（MAC）发生在DAC之后<ul>
+<li>主体和客体</li>
+<li>敏感度</li>
+<li>只能修改（写）同级或者更高级（此时数据未泄漏）的相关数据</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-2-4-审计"><a href="#3-2-4-审计" class="headerlink" title="3.2.4 审计"></a>3.2.4 审计</h4><p>在SQL语言之中，用audit，noaudit  </p>
+<h4 id="3-2-5-数据加密"><a href="#3-2-5-数据加密" class="headerlink" title="3.2.5 数据加密"></a>3.2.5 数据加密</h4><h3 id="3-3完整性控制"><a href="#3-3完整性控制" class="headerlink" title="3.3完整性控制"></a>3.3完整性控制</h3><h4 id="3-3-1-包括的几个方面"><a href="#3-3-1-包括的几个方面" class="headerlink" title="3.3.1 包括的几个方面"></a>3.3.1 包括的几个方面</h4><h4 id="3-3-2-域完整性"><a href="#3-3-2-域完整性" class="headerlink" title="3.3.2 域完整性"></a>3.3.2 域完整性</h4><p>not null</p>
+<p>unique</p>
+<p>default</p>
+<p>check(逻辑表达式,或者查询子句)</p>
+<h4 id="3-3-3-参照完整性"><a href="#3-3-3-参照完整性" class="headerlink" title="3.3.3 参照完整性"></a>3.3.3 参照完整性</h4><p>某些操作会破坏完整性</p>
+<p>系统采用以下策略 拒绝，级联，设为空值</p>
+<p>例如on update cascade ，on delete no action之类的语句</p>
+<h4 id="3-3-4用户自定义完整性"><a href="#3-3-4用户自定义完整性" class="headerlink" title="3.3.4用户自定义完整性"></a>3.3.4用户自定义完整性</h4><ul>
+<li><p>完整系约束命名子句</p>
+<p>语法结构</p>
+<p>constraint 完整性约束条件名 完整性约束条件(包括 not null, unique, primary  )</p>
+</li>
+</ul>
+<ul>
+<li><p>断言assertion（复杂的完整性约束）</p>
+<p>语法结构</p>
+<p>create assertion 断言名</p>
+<p>drop assertion 断言名</p>
+</li>
+<li><p>触发器 trigger（由用户的操作激活）</p>
+<p>触发事件（insert, delete, update, 或者前三个的组合）</p>
+<p>按间隔划分</p>
+<ol>
+<li><p>行级触发器</p>
+</li>
+<li><p>语句级触发器</p>
+</li>
+</ol>
+<p>rollback（理解为撤销）</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/16/database/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/" data-id="ckn9zlv0u0008icu39osgdjq3" data-title="关系数据库" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/03/19/cplusplus/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          cplusplus
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/03/07/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E6%A6%82%E8%BF%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">操作系统</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E8%A8%80/" rel="tag">语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 15px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 15px;">网络</a> <a href="/tags/%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">语言</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/09/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/">设计数据库</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/">操作系统--进程</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/">计算机网络---应用层</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/cplusplus/">cplusplus</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

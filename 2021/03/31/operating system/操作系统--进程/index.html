@@ -1,18 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
 
-    
 
-    
-    <title>操作系统--进程 | post</title>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="keywords" content="操作系统" />
-    
-    <meta name="description" content="进程1. 基本概念1.1 任务（task）和作业（job）的区别 简单来说，作业就是任务的一个实例（类比类和对象的概念） 1.2 程序和进程的区别 程序是被动的，进程是活动的，当程序被载入内存的时候，这个程序就成了进程 1.3进程的结构形式*** 1.3.1代码块（文本段） 包括程序代码 1.3.2栈 包括函数参数，返回值，局部变量 1.3.3数据段 包含全局变量 1.3.4堆 程序运行过程之中动">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;example.com&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Pisces&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
+<meta name="description" content="进程1. 基本概念1.1 任务（task）和作业（job）的区别 简单来说，作业就是任务的一个实例（类比类和对象的概念） 1.2 程序和进程的区别 程序是被动的，进程是活动的，当程序被载入内存的时候，这个程序就成了进程 1.3进程的结构形式*** 1.3.1代码块（文本段） 包括程序代码 1.3.2栈 包括函数参数，返回值，局部变量 1.3.3数据段 包含全局变量 1.3.4堆 程序运行过程之中动">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统--进程">
 <meta property="og:url" content="http://example.com/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/index.html">
@@ -24,192 +32,184 @@
 <meta property="article:author" content="zrk">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
-    
-
-    
-        <link rel="alternate" href="/" title="post" type="application/atom+xml" />
-    
-
-    
-
-    
-<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-
-    
-<link rel="stylesheet" href="/libs/titillium-web/styles.css">
-
-    
-<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
-    
-<link rel="stylesheet" href="/css/style.css">
+<link rel="canonical" href="http://example.com/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/">
 
 
-    
-<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
 
-    
-    
-        
-<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;http:&#x2F;&#x2F;example.com&#x2F;2021&#x2F;03&#x2F;31&#x2F;operating%20system&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B&#x2F;&quot;,&quot;path&quot;:&quot;2021&#x2F;03&#x2F;31&#x2F;operating system&#x2F;操作系统--进程&#x2F;&quot;,&quot;title&quot;:&quot;操作系统--进程&quot;}</script>
 
-    
-    
-        
-<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-
-    
-    
-    
-    
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>操作系统--进程 | post</title><script src="/js/config.js"></script>
+  
 
 
-<meta name="generator" content="Hexo 5.4.0"></head>
 
-<body>
-    <div id="wrap">
-        <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div class="container-inner">
-                <div id="header-title">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
-                    
-                </div>
-                <div id="header-inner" class="nav-container">
-                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
-                    <div class="nav-container-inner">
-                        <ul id="main-nav">
-                            
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">主页</a>
-                                </li>
-                            
-                                    
-                                
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
-                                </li>
-                            
-                        </ul>
-                        <nav id="sub-nav">
-                            <div id="search-form-wrap">
 
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
     </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(未命名)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
+  </div>
 
-<script src="/js/insight.js"></script>
+  <div class="site-meta">
 
-
-</div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
-        <div class="container">
-            <div class="main-body container-inner">
-                <div class="main-body-inner">
-                    <section id="main">
-                        <div class="main-body-header">
-    <h1 class="header">
-    
-    未分类
-    </h1>
-</div>
-
-                        <div class="main-body-content">
-                            <article id="post-operating system/操作系统--进程" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-    
-        <h1 class="article-title" itemprop="name">
-        操作系统--进程
-        </h1>
-    
-
-            </header>
-        
-        
-            <div class="article-meta">
-                
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/" class="article-date">
-       <time datetime="2021-03-31T12:46:26.000Z" itemprop="datePublished">2021-03-31</time>
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">post</h1>
+      <i class="logo-line"></i>
     </a>
   </div>
 
-
-<div class="article-date">
-  <i class="fa fa-calendar-plus-o"></i>
-  <a href="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/" class="article-date">
-     <time datetime="2021-04-08T10:28:29.323Z" itemprop="dateModified">2021-04-08</time>
-  </a>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
-                
 
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">进程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">1. 基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%BF%9B%E7%A8%8B%E7%9A%84%E8%B0%83%E5%BA%A6"><span class="nav-number">1.2.</span> <span class="nav-text">2. 进程的调度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%BF%9B%E7%A8%8B%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">3. 进程操作过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E8%BF%9B%E7%A8%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%EF%BC%88%E4%BE%BF%E4%BA%8E%E8%BF%9B%E7%A8%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8D%8F%E4%BD%9C%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.4.</span> <span class="nav-text">4. 进程之间的通信（便于进程之间的协作工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8"><span class="nav-number">1.5.</span> <span class="nav-text">5. 远程调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%EF%BC%88thread%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">线程（thread）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">1. 概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E7%94%A8%E6%88%B7%E8%BF%9B%E7%A8%8B"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.2 用户进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E5%86%85%E6%A0%B8%E8%BF%9B%E7%A8%8B"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 内核进程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">2. 多线程模型</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zrk</p>
+  <div class="site-description" itemprop="description">包括专业课学习的相关笔记，以及其他</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
     </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
 
-                
 
-                
+    </header>
 
-            </div>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
-            
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
-            
 
-            <h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>1.1 任务（task）和作业（job）的区别</p>
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zrk">
+      <meta itemprop="description" content="包括专业课学习的相关笔记，以及其他">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="post">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          操作系统--进程
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-31 20:46:26" itemprop="dateCreated datePublished" datetime="2021-03-31T20:46:26+08:00">2021-03-31</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-04-08 18:28:29" itemprop="dateModified" datetime="2021-04-08T18:28:29+08:00">2021-04-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>1.1 任务（task）和作业（job）的区别</p>
 <p>简单来说，作业就是任务的一个实例（类比类和对象的概念）</p>
 <p>1.2 程序和进程的区别</p>
 <p>程序是被动的，进程是活动的，当程序被载入内存的时候，这个程序就成了进程</p>
@@ -261,459 +261,76 @@
 <h2 id="线程（thread）"><a href="#线程（thread）" class="headerlink" title="线程（thread）"></a>线程（thread）</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h3><p>比进程更小的运行单位（一般在同一个进程内），比进程节省空间（复制进程的其中一部分，剩下的一部分是可以共享的）</p>
 <p>每个线程是一个独立调度的对象</p>
 <h4 id="1-2-用户进程"><a href="#1-2-用户进程" class="headerlink" title="1.2 用户进程"></a>1.2 用户进程</h4><h4 id="1-2-内核进程"><a href="#1-2-内核进程" class="headerlink" title="1.2 内核进程"></a>1.2 内核进程</h4><h3 id="2-多线程模型"><a href="#2-多线程模型" class="headerlink" title="2. 多线程模型"></a>2. 多线程模型</h3>
-        </div>
-        <footer class="article-footer">
-            
-
-
-
-    <a data-url="http://example.com/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/" data-id="ckn9zlv11000micu3a8dw826w" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-        </footer>
     </div>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "author": {
-            "@type": "Person",
-            "name": "zrk"
-        },
-        "headline": "操作系统--进程",
-        "image": "http://example.com",
-        "keywords": "操作系统",
-        "genre": "",
-        "datePublished": "2021-03-31",
-        "dateCreated": "2021-03-31",
-        "dateModified": "2021-04-08",
-        "url": "http://example.com/2021/03/31/operating system/操作系统--进程/",
-        "description": "进程1. 基本概念1.1 任务（task）和作业（job）的区别
-简单来说，作业就是任务的一个实例（类比类和对象的概念）
-1.2 程序和进程的区别
-程序是被动的，进程是活动的，当程序被载入内存的时候，这个程序就成了进程
-1.3进程的结构形式***
-1.3.1代码块（文本段）
-包括程序代码
-1.3.2栈
-包括函数参数，返回值，局部变量
-1.3.3数据段
-包含全局变量
-1.3.4堆
-程序运行过程之中动",
-        "wordCount": 95
-    }
-</script>
 
-</article>
-
-    <section id="comments">
     
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"># 操作系统</a>
+          </div>
+
         
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
 
-
-    
-    </section>
-
-
-
-                        </div>
-                    </section>
-                    <aside id="sidebar">
-    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
-    <div class="sidebar-top">
-        <p>关注我 :</p>
-        <ul class="social-links">
-            
-                
-                <li>
-                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-twitter"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-facebook"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-stack-overflow"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
-                        <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-rss"></i>
-                    </a>
-                </li>
-                
-            
-        </ul>
-    </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            设计数据库
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
-    
-    
-        <a href="/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">计算机网络---应用层</p>
-        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-        </a>
-    
-</nav>
-
-    
-    <div class="widgets-container">
-        
-            
-                
-
-            
-                
-    <div class="widget-wrap">
-        <h3 class="widget-title">最新文章</h3>
-        <div class="widget">
-            <ul id="recent-post" class="">
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2021/04/11/programing%20language/Python/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2021/04/11/programing%20language/Python/" class="title">Python</a></p>
-                            <p class="item-date"><time datetime="2021-04-11T12:34:27.000Z" itemprop="datePublished">2021-04-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2021/04/11/discrete%20mathematics/%E5%9B%BE%E8%AE%BA/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2021/04/11/discrete%20mathematics/%E5%9B%BE%E8%AE%BA/" class="title">图论</a></p>
-                            <p class="item-date"><time datetime="2021-04-11T11:02:47.000Z" itemprop="datePublished">2021-04-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2021/04/11/discrete%20mathematics/%E9%9B%86%E5%90%88%E8%AE%BA/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2021/04/11/discrete%20mathematics/%E9%9B%86%E5%90%88%E8%AE%BA/" class="title">集合论</a></p>
-                            <p class="item-date"><time datetime="2021-04-11T11:02:29.000Z" itemprop="datePublished">2021-04-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/" class="thumbnail">
-    
-    
-        <span style="background-image:url(./rdt.png)" alt="计算机网络--传输层" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/" class="title">计算机网络--传输层</a></p>
-                            <p class="item-date"><time datetime="2021-04-11T08:22:00.000Z" itemprop="datePublished">2021-04-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/" class="title">设计数据库</a></p>
-                            <p class="item-date"><time datetime="2021-04-07T23:43:48.000Z" itemprop="datePublished">2021-04-08</time></p>
-                        </div>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-            
-                
-
-            
-                
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">归档</h3>
-        <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">8</span></li></ul>
-        </div>
-    </div>
-
-
-            
-                
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">标签</h3>
-        <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E8%A8%80/" rel="tag">语言</a><span class="tag-list-count">1</span></li></ul>
-        </div>
-    </div>
-
-
-            
-                
-    <div class="widget-wrap widget-float">
-        <h3 class="widget-title">标签云</h3>
-        <div class="widget tagcloud">
-            <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 15px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">网络</a> <a href="/tags/%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">语言</a>
-        </div>
-    </div>
-
-
-            
-                
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">链接</h3>
-        <div class="widget">
-            <ul>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-
-            
-        
-    </div>
-</aside>
-
-                </div>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/" rel="prev" title="计算机网络---应用层">
+                  <i class="fa fa-chevron-left"></i> 计算机网络---应用层
+                </a>
             </div>
-        </div>
-        <footer id="footer">
-    <div class="container">
-        <div class="container-inner">
-            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
-            <div class="credit">
-                <h1 class="logo-wrap">
-                    <a href="/" class="logo"></a>
-                </h1>
-                <p>&copy; 2021 zrk</p>
-                
-                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
-                
+            <div class="post-nav-item">
+                <a href="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="next" title="设计数据库">
+                  设计数据库 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
-            <div class="footer-plugins">
-              
-    
+          </div>
+    </footer>
+  </article>
+</div>
 
 
-            </div>
-        </div>
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zrk</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
     </div>
-</footer>
+  </footer>
 
-    </div>
-    
-    
-    <script>
-    var disqus_shortname = 'hexo-theme-hueman';
-    
-    
-    var disqus_url = 'http://example.com/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/';
-    
-    (function() {
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-    </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
 
 
 
 
 
-    
-        
-<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
 
-        
-<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-share.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-video.min.js"></script>
-
-    
-    
-        
-<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
-
-    
-    
-
-    
-    
-    
+  
 
 
 
-<!-- Custom Scripts -->
-
-<script src="/js/main.js"></script>
 
 
 </body>

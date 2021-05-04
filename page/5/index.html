@@ -23,7 +23,7 @@
 <meta name="description" content="包括专业课学习的相关笔记，以及其他">
 <meta property="og:type" content="website">
 <meta property="og:title" content="post">
-<meta property="og:url" content="http://zrk494.github.io/page/2/index.html">
+<meta property="og:url" content="http://zrk494.github.io/page/5/index.html">
 <meta property="og:site_name" content="post">
 <meta property="og:description" content="包括专业课学习的相关笔记，以及其他">
 <meta property="og:locale" content="zh_CN">
@@ -31,11 +31,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://zrk494.github.io/page/2/">
+<link rel="canonical" href="http://zrk494.github.io/page/5/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:true,&quot;isPost&quot;:false,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:&quot;&quot;,&quot;permalink&quot;:&quot;&quot;,&quot;path&quot;:&quot;page&#x2F;2&#x2F;index.html&quot;,&quot;title&quot;:&quot;&quot;}</script>
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:true,&quot;isPost&quot;:false,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:&quot;&quot;,&quot;permalink&quot;:&quot;&quot;,&quot;path&quot;:&quot;page&#x2F;5&#x2F;index.html&quot;,&quot;title&quot;:&quot;&quot;}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
 <title>post</title><script src="/js/config.js"></script>
@@ -176,7 +176,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/04/11/Python/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/31/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -189,7 +189,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/11/Python/" class="post-title-link" itemprop="url">Python</a>
+          <a href="/2021/03/31/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/" class="post-title-link" itemprop="url">操作系统--进程管理</a>
         </h2>
 
         <div class="post-meta-container">
@@ -200,8 +200,15 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-04-11 20:34:27" itemprop="dateCreated datePublished" datetime="2021-04-11T20:34:27+08:00">2021-04-11</time>
+      <time title="创建时间：2021-03-31 20:46:26" itemprop="dateCreated datePublished" datetime="2021-03-31T20:46:26+08:00">2021-03-31</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-05-02 15:41:59" itemprop="dateModified" datetime="2021-05-02T15:41:59+08:00">2021-05-02</time>
+      </span>
 
   
 </div>
@@ -213,7 +220,85 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>1.1 任务（task）和作业（job）的区别</p>
+<p>简单来说，作业就是任务的一个实例（类比类和对象的概念）</p>
+<p>1.2 程序和进程的区别</p>
+<p>程序是被动的，进程是活动的，当程序被载入内存的时候，这个程序就成了进程</p>
+<p>1.3进程的结构形式***</p>
+<p>1.3.1代码块（文本段）</p>
+<p>包括程序代码</p>
+<p>1.3.2栈</p>
+<p>包括函数参数，返回值，局部变量</p>
+<p>1.3.3数据段</p>
+<p>包含全局变量</p>
+<p>1.3.4堆</p>
+<p>程序运行过程之中动态分配的内存</p>
+<p>1.4 进程控制块（PCB process control block ==TCB task control block）</p>
+<p>进程创建的时候，系统新建PCB来保存进程的当前状态信息，以便于操作系统管理和控制</p>
+<p>包括8个内容: 进程ID，进程状态，进程计数器，CPU计数器，CPU调度信息，内存管理信息，记账信息，I/O状态信息</p>
+<p>1.5 进程状态</p>
+<p>5种状态: new, ready, running, waiting, terminated</p>
+<h3 id="2-进程的调度"><a href="#2-进程的调度" class="headerlink" title="2. 进程的调度"></a>2. 进程的调度</h3><p>2.1 进程调度队列</p>
+<p>CPU往往要在多个可用进程之间快速切换，此时调度程序要选择其中一个进程运行，这些进程就存放在队列之中</p>
+<p>队列包括设备队列（要等待特定I/O的队列）和就绪队列（暂存等待运行的进程）</p>
+<p>2.2 程序调度</p>
+<p>调度程序即调度器</p>
+<p>作用是选择要执行哪一个进程</p>
+<p>2.3 调度程序</p>
+<p>分成3种：长期调度程序，中期调度程序，短期调度程序</p>
+<p>2.4 上下文切换</p>
+<p>CPU在切换到另一进程时，要保存当前进程的状态，并恢复另一进程的状态</p>
+<p>补充：调度的本质上就是让进程调度器选择一个可用的进程到CPU上运行</p>
+<h3 id="3-进程操作过程"><a href="#3-进程操作过程" class="headerlink" title="3. 进程操作过程"></a>3. 进程操作过程</h3><p>3.1 进程创建</p>
+<ul>
+<li>进程是树状结构，所以有子进程和父进程</li>
+<li>PID是进程唯一的标识符（操作系统通过PID来识别进程）</li>
+<li>一个进程可以创建另一个进程（即创建一个子进程）</li>
+<li>进程创建选项</li>
+<li>创建过程   在系统内部创建程序块—-&gt;分配内存—-&gt;载入可执行文件—-&gt;初始化程序</li>
+<li>（以UNIX系统为例）fork()函数</li>
+</ul>
+<p>3.2 进程终止</p>
+<ul>
+<li>进程完成之后用exit()删除自身并终止运行</li>
+<li>可以用wait()</li>
+</ul>
+<h3 id="4-进程之间的通信（便于进程之间的协作工作"><a href="#4-进程之间的通信（便于进程之间的协作工作" class="headerlink" title="4. 进程之间的通信（便于进程之间的协作工作"></a>4. 进程之间的通信（便于进程之间的协作工作</h3><p>4.1 两种通信模式</p>
+<ul>
+<li>消息传递</li>
+<li>共享内存</li>
+</ul>
+<p>4.2 消息传递方式</p>
+<p>4.3 通信线路的逻辑实现方法</p>
+<p>4.4 缓冲区</p>
+<h3 id="5-远程调用"><a href="#5-远程调用" class="headerlink" title="5. 远程调用"></a>5. 远程调用</h3><p>5.1  客户机与服务器之间</p>
+<p>详见计算机网络</p>
+<p>5.2 管道</p>
+<p>一种通信机制相当于仅存在于通信过程中的文件载体</p>
+<p>5.2.1 普通管道</p>
+<p>5.2.2 命名管道</p>
+<h2 id="线程（thread）"><a href="#线程（thread）" class="headerlink" title="线程（thread）"></a>线程（thread）</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h3><p>比进程更小的运行单位（一般在同一个进程内），比进程节省空间（复制进程的其中一部分，剩下的一部分是可以共享的）</p>
+<p>每个线程是一个独立调度的对象</p>
+<h4 id="1-2-用户进程"><a href="#1-2-用户进程" class="headerlink" title="1.2 用户进程"></a>1.2 用户进程</h4><h4 id="1-2-内核进程"><a href="#1-2-内核进程" class="headerlink" title="1.2 内核进程"></a>1.2 内核进程</h4><h3 id="2-多线程模型"><a href="#2-多线程模型" class="headerlink" title="2. 多线程模型"></a>2. 多线程模型</h3><p>2.1 多对一模型</p>
+<p>2.2 一对一模型</p>
+<p>2.3 多对多模型</p>
+<h3 id="3-线程库"><a href="#3-线程库" class="headerlink" title="3. 线程库"></a>3. 线程库</h3><p>3.1 定义</p>
+<p>为程序员提供创建和管理线程的API</p>
+<p>3.2 两种实现方法</p>
+<p>3.2.1 在用户空间中提供这个库</p>
+<p>3.2.2 将库嵌入到内核</p>
+<p>3.3 三种主要线程库</p>
+<p>3.3.1 prosix Pthread</p>
+<p>3.3.2 windows</p>
+<p>3.3.3 java</p>
+<h3 id="4-多线程问题"><a href="#4-多线程问题" class="headerlink" title="4. 多线程问题"></a>4. 多线程问题</h3><p>4.1 系统调用fork ()和exec ()</p>
+<p>在多线程程序中语义有变（相比于进程创建的时候）</p>
+<p>4.2 信号处理</p>
+<p>操作系统中内核与进程之间的通信机制，告诉进程某一事件的发生</p>
+<p>4.3 线程撤销</p>
+<p>4.4 调度程序激活</p>
+<p>4.5 线程地</p>
+<h2 id="CPU调度"><a href="#CPU调度" class="headerlink" title="CPU调度"></a>CPU调度</h2>
       
     </div>
 
@@ -232,7 +317,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

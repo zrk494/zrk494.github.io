@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://zrk494.github.io/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/0E0D6D327CBF969118446364D54C93AE-1620139774277.png">
 <meta property="article:published_time" content="2021-04-07T23:43:48.000Z">
-<meta property="article:modified_time" content="2021-05-04T14:52:32.229Z">
+<meta property="article:modified_time" content="2021-05-05T15:38:58.571Z">
 <meta property="article:author" content="zrk">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
@@ -118,7 +118,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">设计数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">1.1.</span> <span class="nav-text">1.概述+需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 设计的内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 设计的目标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E7%89%B9%E5%BE%81"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 设计的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90-%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8A%B1%E6%9C%80%E5%A4%9A%E7%9A%84%E6%97%B6%E9%97%B4%E6%89%93%E4%B8%8B%E5%A5%BD%E7%9A%84%E5%9F%BA%E7%A1%80%EF%BC%89"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">1.4.1 需求分析+设计（花最多的时间打下好的基础）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-2-%E8%AE%BE%E8%AE%A1%E6%A6%82%E5%BF%B5%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">1.4.2 设计概念结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-3-%E8%AE%BE%E8%AE%A1%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">1.4.3 设计逻辑结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-4-%E4%BC%98%E5%8C%96%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.1.4.4.</span> <span class="nav-text">1.4.4 优化数据模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-5-%E8%AE%BE%E8%AE%A1%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.4.5.</span> <span class="nav-text">1.4.5 设计物理结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-5%E6%80%A7%E8%83%BD%E8%AF%84%E6%B5%8B"><span class="nav-number">1.1.4.6.</span> <span class="nav-text">1.4.5性能评测</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-6-%E7%89%A9%E7%90%86%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.1.4.7.</span> <span class="nav-text">1.4.6 物理实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-7-%E8%BF%90%E8%A1%8C%E5%92%8C%E7%BB%B4%E6%8A%A4"><span class="nav-number">1.1.4.8.</span> <span class="nav-text">1.4.7 运行和维护</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.5 需求分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.1.6.</span> <span class="nav-text">1.6 需求分析步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-7-%E6%95%B0%E6%8D%AE%E9%A1%B9%E5%AD%97%E5%85%B8%EF%BC%88%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%EF%BC%89"><span class="nav-number">1.1.7.</span> <span class="nav-text">1.7 数据项字典（数据字典）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%A6%82%E5%BF%B5%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.2.</span> <span class="nav-text">2. 概念数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E4%BB%BB%E5%8A%A1%E5%8C%85%E6%8B%AC"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 任务包括</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E7%9B%AE%E6%A0%87"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 目标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E5%AE%9E%E4%BD%93%E8%81%94%E7%B3%BB%E6%A8%A1%E5%9E%8B%EF%BC%88ER%E6%A8%A1%E5%9E%8B%EF%BC%89"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 实体联系模型（ER模型）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%80%BB%E8%BE%91%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.3.</span> <span class="nav-text">3.逻辑数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E8%A6%81%E8%A7%A3%E5%86%B3%E5%93%AA%E4%BA%9B%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 要解决哪些存在的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E6%A6%82%E5%BF%B5%E5%88%B0%E5%88%9D%E5%A7%8B%E7%9A%84%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 概念到初始的关系模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E8%A7%84%E8%8C%83%E5%8C%96%EF%BC%88%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BC%98%E5%8C%96%E5%88%9D%E5%A7%8B%E5%BD%A2%E6%88%90%E7%9A%84%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 函数依赖和关系模式规范化（第一次优化初始形成的关系模式）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-1-%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">3.3.1 函数依赖</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-%E5%AE%8C%E6%95%B4%E6%80%A7%E5%92%8C%E5%AE%89%E5%85%A8%E6%80%A7%E7%BA%A6%E6%9D%9F%EF%BC%88%EF%BC%89"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 完整性和安全性约束（）</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">设计数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">1.1.</span> <span class="nav-text">1.概述+需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 设计的内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 设计的目标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E7%89%B9%E5%BE%81"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 设计的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90-%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8A%B1%E6%9C%80%E5%A4%9A%E7%9A%84%E6%97%B6%E9%97%B4%E6%89%93%E4%B8%8B%E5%A5%BD%E7%9A%84%E5%9F%BA%E7%A1%80%EF%BC%89"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">1.4.1 需求分析+设计（花最多的时间打下好的基础）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-2-%E8%AE%BE%E8%AE%A1%E6%A6%82%E5%BF%B5%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">1.4.2 设计概念结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-3-%E8%AE%BE%E8%AE%A1%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">1.4.3 设计逻辑结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-4-%E4%BC%98%E5%8C%96%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.1.4.4.</span> <span class="nav-text">1.4.4 优化数据模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-5-%E8%AE%BE%E8%AE%A1%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.4.5.</span> <span class="nav-text">1.4.5 设计物理结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-5%E6%80%A7%E8%83%BD%E8%AF%84%E6%B5%8B"><span class="nav-number">1.1.4.6.</span> <span class="nav-text">1.4.5性能评测</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-6-%E7%89%A9%E7%90%86%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.1.4.7.</span> <span class="nav-text">1.4.6 物理实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-7-%E8%BF%90%E8%A1%8C%E5%92%8C%E7%BB%B4%E6%8A%A4"><span class="nav-number">1.1.4.8.</span> <span class="nav-text">1.4.7 运行和维护</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.5 需求分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.1.6.</span> <span class="nav-text">1.6 需求分析步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-7-%E6%95%B0%E6%8D%AE%E9%A1%B9%E5%AD%97%E5%85%B8%EF%BC%88%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%EF%BC%89"><span class="nav-number">1.1.7.</span> <span class="nav-text">1.7 数据项字典（数据字典）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%A6%82%E5%BF%B5%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.2.</span> <span class="nav-text">2. 概念数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E4%BB%BB%E5%8A%A1%E5%8C%85%E6%8B%AC"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 任务包括</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E7%9B%AE%E6%A0%87"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 目标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E5%AE%9E%E4%BD%93%E8%81%94%E7%B3%BB%E6%A8%A1%E5%9E%8B%EF%BC%88ER%E6%A8%A1%E5%9E%8B%EF%BC%89"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 实体联系模型（ER模型）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%80%BB%E8%BE%91%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.3.</span> <span class="nav-text">3.逻辑数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E8%A6%81%E8%A7%A3%E5%86%B3%E5%93%AA%E4%BA%9B%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 要解决哪些存在的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E6%A6%82%E5%BF%B5%E5%88%B0%E5%88%9D%E5%A7%8B%E7%9A%84%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 概念到初始的关系模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E8%A7%84%E8%8C%83%E5%8C%96%EF%BC%88%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BC%98%E5%8C%96%E5%88%9D%E5%A7%8B%E5%BD%A2%E6%88%90%E7%9A%84%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 函数依赖和关系模式规范化（第一次优化初始形成的关系模式）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-1-%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">3.3.1 函数依赖</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-2-%E8%A7%84%E8%8C%83%E5%8C%96"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">3.3.2 规范化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-%E5%AE%8C%E6%95%B4%E6%80%A7%E5%92%8C%E5%AE%89%E5%85%A8%E6%80%A7%E7%BA%A6%E6%9D%9F%EF%BC%88%EF%BC%89"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 完整性和安全性约束（）</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -131,7 +131,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -214,7 +214,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-05-04 22:52:32" itemprop="dateModified" datetime="2021-05-04T22:52:32+08:00">2021-05-04</time>
+        <time title="修改时间：2021-05-05 23:38:58" itemprop="dateModified" datetime="2021-05-05T23:38:58+08:00">2021-05-05</time>
       </span>
 
   
@@ -323,7 +323,11 @@
 </ul>
 <h4 id="3-2-概念到初始的关系模式"><a href="#3-2-概念到初始的关系模式" class="headerlink" title="3.2 概念到初始的关系模式"></a>3.2 概念到初始的关系模式</h4><p>3.1.1</p>
 <h4 id="3-3-函数依赖和关系模式规范化（第一次优化初始形成的关系模式）"><a href="#3-3-函数依赖和关系模式规范化（第一次优化初始形成的关系模式）" class="headerlink" title="3.3 函数依赖和关系模式规范化（第一次优化初始形成的关系模式）"></a>3.3 函数依赖和关系模式规范化（第一次优化初始形成的关系模式）</h4><h5 id="3-3-1-函数依赖"><a href="#3-3-1-函数依赖" class="headerlink" title="3.3.1 函数依赖"></a>3.3.1 函数依赖</h5><ul>
-<li><p>定义     R是一个关系模式，U是R的属性集合，X和Y是U的子集。对于</p>
+<li><p>定义     R是一个关系模式，U是R的属性集合，X和Y是U的子集。对于R（U）的任意关系实例r，r中的任意两个元组t1和t2，如果t1[X]=t2 [X]，则t1 [Y]=t2[Y]，则称Y函数依赖于X，即X→Y。（备注）</p>
+</li>
+<li><p>关系的一个实例r     （根据关系模式的定义来理解，可简单理解为在此中关系模式之下形成的一张表） 当且仅当U上的一个关系满足F时，r是R的一个关系实例</p>
+</li>
+<li><p>关系模式简化表示（R&lt;U，F&gt;，U是属性，F是关系依赖的集合）</p>
 </li>
 <li><p>部分函数依赖        在关系模式R(U)之中，如果X→Y， 且对于任意Z$\subset$X,Z→Y都不成立</p>
 </li>
@@ -333,9 +337,60 @@
 <p>（Snow,Cno)→Grade 是一个完全函数依赖</p>
 <p>​    (Sno,Cno)→Sdept是部分函数依赖</p>
 </li>
-<li><p>传递函数依赖</p>
+<li><p>传递函数依赖        若X→Y(Y$\nsubseteq$Y)，Y→Z，Y$\nrightarrow$X,则称Z对X传递依赖</p>
+</li>
+<li><p>码相关的定义（使用函数依赖）</p>
+<ul>
+<li>超码         对于一个关系模式R（U），K$\subseteq$U。若K→U，则K是R的一个超码</li>
+<li>候选码       对于R（U），K$\subseteq$U。若K是R的一个超码，且不存在K的真子集Z，使得Z→U，则K为R的一个候选码（最小的超码）</li>
+<li>主码   在候选码之中选择一个作为主码（来识别关系元组）</li>
+<li>主属性（键属性）         包含在候选码之中的属性</li>
+<li>非主属性（非键属性）    不包含在任何候选码的属性</li>
+<li>全码               候选码包括了关系模式的所有属性</li>
+<li>外码        X是R的属性子集，且X是另一个关系模式的主码</li>
+</ul>
+</li>
+<li><p>逻辑蕴含        </p>
+<ul>
+<li>定义 对于R的任意一个F都成立的关系实例r，函数依赖X→Y都成立，称F逻辑蕴含X→Y</li>
+<li>例R（A，B，C，D）F={A→B,  A→C,B→D}  A→D就被F蕴含</li>
+</ul>
+</li>
+<li><p><strong>函数依赖的公理系统</strong></p>
+<ul>
+<li>通过此公理系统，由给定的函数依赖集合推导出这个集合蕴涵的所有函数依赖<ul>
+<li>用途1  求蕴含的函数依赖</li>
+<li>用途2   求候选键</li>
+</ul>
+</li>
+<li>包括的推理规则<ul>
+<li>自反率   若$Y\subseteq X\subseteq U$，则X→Y为F所蕴含。</li>
+<li>增广率     若X→Y为F所蕴含，且 Z $\subseteq $U，则XZ→YZ为F所蕴含。</li>
+<li>传递率       若X→Y及Y→Z为F所蕴含 ，则X→Z为F所蕴含。</li>
+<li>合并规则        由X→Y，X→Z，有X→YZ。</li>
+<li>伪传递规则       由X→Y，WY→Z，有XW→Z。</li>
+<li>分解规则        由X→Y及Z$\subseteq$Y，有X→Z。</li>
+<li>一个推论  X→$A\tiny1$$A\tiny2$$A\tiny3$…..$A\tiny k$ 成立的充要条件为 X→$A\tiny i$成立（i=1，2，……，k）</li>
+<li>闭包   关系模式R中F所逻辑蕴含的所有函数依赖，记作$F^+$</li>
+<li>设F为属性集U上的一组函数依赖，X$\subseteq$U， $$X \tiny F     \normalsize ^+$$ ={  A|X→A能由F根据Armstrong公理导出}， $$X \tiny F     \normalsize ^+$$称为属 性集X关于函数依赖集F的闭包。</li>
+</ul>
+</li>
+<li>求$$X \tiny F     \normalsize ^+$$的算法</li>
+<li>快速求候选键的方式</li>
+<li>函数依赖集合等价（即他们的闭包等价）</li>
+<li>极小函数依赖（最小覆盖）<ul>
+<li>要满足的条件1     F中任何函数依赖的右部只有一个属性</li>
+<li>要满足的条件2      F中不存在这样的函数依赖X→A，使得F与F-{X→A}等价(F中的函数依赖均不能由F中的其他函数依赖导出)</li>
+<li>要满足的条件3   F中不存在这样的函数依赖X→A， X有真子集Z使得F-{X→A}  ∪{Z→A}与F等价</li>
+<li>补充  最小函数依赖不唯一</li>
+<li>计算最小函数依赖</li>
+</ul>
+</li>
+<li></li>
+</ul>
 </li>
 </ul>
+<h5 id="3-3-2-规范化"><a href="#3-3-2-规范化" class="headerlink" title="3.3.2 规范化"></a>3.3.2 规范化</h5><p>​    </p>
 <h4 id="3-4-完整性和安全性约束（）"><a href="#3-4-完整性和安全性约束（）" class="headerlink" title="3.4 完整性和安全性约束（）"></a>3.4 完整性和安全性约束（）</h4>
     </div>
 

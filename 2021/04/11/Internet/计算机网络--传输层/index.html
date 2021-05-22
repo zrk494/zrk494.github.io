@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://zrk494.github.io/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/image-20210509232349814.png">
 <meta property="og:image" content="http://zrk494.github.io/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/image-20210509232957119.png">
 <meta property="article:published_time" content="2021-04-11T08:22:00.000Z">
-<meta property="article:modified_time" content="2021-05-10T09:09:55.388Z">
+<meta property="article:modified_time" content="2021-05-22T10:38:38.404Z">
 <meta property="article:author" content="zrk">
 <meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
@@ -122,7 +122,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="nav-number">1.</span> <span class="nav-text">传输层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BC%A0%E8%BE%93%E5%B1%82%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.1.</span> <span class="nav-text">1. 传输层服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E9%80%BB%E8%BE%91%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 逻辑通信机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%B1%82%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 与网络层的关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8-%E5%A4%9A%E8%B7%AF%E5%88%86%E8%A7%A3"><span class="nav-number">1.2.</span> <span class="nav-text">2. 多路复用+多路分解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%EF%BC%88%E5%8F%91%E9%80%81%E7%AB%AF%EF%BC%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 多路复用（发送端）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E5%A4%9A%E8%B7%AF%E5%88%86%E8%A7%A3%EF%BC%88%E6%8E%A5%E6%94%B6%E7%AB%AF%EF%BC%89"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 多路分解（接收端）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-UDP%EF%BC%88%E6%97%A0%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">3. UDP（无连接的用户数据报协议）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E7%89%B9%E5%BE%81"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 报文格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-UDP%E6%A0%A1%E9%AA%8C%E5%92%8C%EF%BC%88%E8%8B%A5%E6%9C%89%E9%94%99%E5%88%99%E7%9B%B4%E6%8E%A5%E4%B8%A2%E5%BC%83%E6%8A%A5%E6%96%87%EF%BC%89"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 UDP校验和（若有错则直接丢弃报文）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%EF%BC%88TCP%E5%9F%BA%E7%A1%80%EF%BC%8C%E7%AE%80%E5%86%99%E4%B8%BArdt%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">4. 可靠传输协议（TCP基础，简写为rdt）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-%E4%BC%A0%E8%BE%93%E4%B8%AD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 传输中存在的问题+相关概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-rdt1-0%EF%BC%88%EF%BC%89"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 rdt1.0（）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-rdt2-0%EF%BC%88%EF%BC%89"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 rdt2.0（）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-rdt3-0"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.4 rdt3.0</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-TCP%EF%BC%88%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E7%9A%84%E4%BC%A0%E8%BE%93%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">5. TCP（面向连接的传输控制协议）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-TCP%E7%9B%B8%E5%85%B3%E7%89%B9%E6%80%A7"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1 TCP相关特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-%E5%A6%82%E4%BD%95%E5%BB%BA%E7%AB%8BTCP%E9%93%BE%E6%8E%A5"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2 如何建立TCP链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-TCP%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84%EF%BC%88%E8%A1%A5%E5%85%85%E8%8B%B1%E6%96%87%E7%89%88%E6%9C%AC%E5%9C%A8%E5%AE%9E%E8%B7%B5%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%AE%B9%E6%98%93%E7%90%86%E8%A7%A3%EF%BC%89"><span class="nav-number">1.5.3.</span> <span class="nav-text">5.3 TCP报文结构（补充英文版本在实践过程中容易理解）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%EF%BC%88%E4%BC%B0%E8%AE%A1RTT%E7%AD%89%E5%86%85%E5%AE%B9%EF%BC%89"><span class="nav-number">1.5.4.</span> <span class="nav-text">5.4 性能分析（估计RTT等内容）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-5-%E6%A0%87%E9%A2%98%E5%BE%85%E5%AE%9A"><span class="nav-number">1.5.5.</span> <span class="nav-text">5.5 标题待定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-6-%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="nav-number">1.5.6.</span> <span class="nav-text">5.6 流量控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-7-%E7%AE%A1%E7%90%86%E9%93%BE%E6%8E%A5%EF%BC%88%E5%BB%BA%E7%AB%8B%E5%92%8C%E6%8B%86%E9%99%A4%EF%BC%89"><span class="nav-number">1.5.7.</span> <span class="nav-text">5.7 管理链接（建立和拆除）</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="nav-number">1.</span> <span class="nav-text">传输层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BC%A0%E8%BE%93%E5%B1%82%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.1.</span> <span class="nav-text">1. 传输层服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E9%80%BB%E8%BE%91%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 逻辑通信机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%B1%82%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 与网络层的关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8-%E5%A4%9A%E8%B7%AF%E5%88%86%E8%A7%A3"><span class="nav-number">1.2.</span> <span class="nav-text">2. 多路复用+多路分解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%EF%BC%88%E5%8F%91%E9%80%81%E7%AB%AF%EF%BC%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 多路复用（发送端）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E5%A4%9A%E8%B7%AF%E5%88%86%E8%A7%A3%EF%BC%88%E6%8E%A5%E6%94%B6%E7%AB%AF%EF%BC%89"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 多路分解（接收端）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-UDP%EF%BC%88%E6%97%A0%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">3. UDP（无连接的用户数据报协议）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E7%89%B9%E5%BE%81"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 报文格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-UDP%E6%A0%A1%E9%AA%8C%E5%92%8C%EF%BC%88%E8%8B%A5%E6%9C%89%E9%94%99%E5%88%99%E7%9B%B4%E6%8E%A5%E4%B8%A2%E5%BC%83%E6%8A%A5%E6%96%87%EF%BC%89"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 UDP校验和（若有错则直接丢弃报文）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%EF%BC%88TCP%E5%9F%BA%E7%A1%80%EF%BC%8C%E7%AE%80%E5%86%99%E4%B8%BArdt%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">4. 可靠传输协议（TCP基础，简写为rdt）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-%E4%BC%A0%E8%BE%93%E4%B8%AD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 传输中存在的问题+相关概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-rdt1-0%EF%BC%88%EF%BC%89"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 rdt1.0（）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-rdt2-0%EF%BC%88%E4%BC%9A%E4%BA%A7%E7%94%9F%E4%BD%8D%E9%94%99%E8%AF%AF%E7%9A%84%E4%BF%A1%E9%81%93%EF%BC%8C%E8%A2%AB%E6%88%90%E4%B8%BAARQ%E2%80%94-%E8%87%AA%E5%8A%A8%E9%87%8D%E4%BC%A0%E8%AF%B7%E6%B1%82%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 rdt2.0（会产生位错误的信道，被成为ARQ—-自动重传请求协议）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-rdt2-1%E5%92%8Crdt2-2"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.4 rdt2.1和rdt2.2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5-rdt3-0-%E8%BF%98%E4%BC%9A%E4%BA%A7%E7%94%9F%E4%B8%A2%E5%8C%85%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">1.4.5.</span> <span class="nav-text">4.5 rdt3.0(还会产生丢包的情况)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6-%E6%94%B9%E8%BF%9Brdt3-0"><span class="nav-number">1.4.6.</span> <span class="nav-text">4.6 改进rdt3.0</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-TCP%EF%BC%88%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E7%9A%84%E4%BC%A0%E8%BE%93%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">5. TCP（面向连接的传输控制协议）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-TCP%E7%9B%B8%E5%85%B3%E7%89%B9%E6%80%A7"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1 TCP相关特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-%E5%A6%82%E4%BD%95%E5%BB%BA%E7%AB%8BTCP%E9%93%BE%E6%8E%A5"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2 如何建立TCP链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-TCP%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84%EF%BC%88%E8%A1%A5%E5%85%85%E8%8B%B1%E6%96%87%E7%89%88%E6%9C%AC%E5%9C%A8%E5%AE%9E%E8%B7%B5%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%AE%B9%E6%98%93%E7%90%86%E8%A7%A3%EF%BC%89"><span class="nav-number">1.5.3.</span> <span class="nav-text">5.3 TCP报文结构（补充英文版本在实践过程中容易理解）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%EF%BC%88%E4%BC%B0%E8%AE%A1RTT%E7%AD%89%E5%86%85%E5%AE%B9%EF%BC%89"><span class="nav-number">1.5.4.</span> <span class="nav-text">5.4 性能分析（估计RTT等内容）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-5-%E6%A0%87%E9%A2%98%E5%BE%85%E5%AE%9A"><span class="nav-number">1.5.5.</span> <span class="nav-text">5.5 标题待定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-6-%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="nav-number">1.5.6.</span> <span class="nav-text">5.6 流量控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-7-%E7%AE%A1%E7%90%86%E9%93%BE%E6%8E%A5%EF%BC%88%E5%BB%BA%E7%AB%8B%E5%92%8C%E6%8B%86%E9%99%A4%EF%BC%89"><span class="nav-number">1.5.7.</span> <span class="nav-text">5.7 管理链接（建立和拆除）</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -218,7 +218,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-05-10 17:09:55" itemprop="dateModified" datetime="2021-05-10T17:09:55+08:00">2021-05-10</time>
+        <time title="修改时间：2021-05-22 18:38:38" itemprop="dateModified" datetime="2021-05-22T18:38:38+08:00">2021-05-22</time>
       </span>
 
   
@@ -275,29 +275,80 @@
 <p><img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/rdt.png" alt="rdt"></p>
 <p>备注：</p>
 <ol>
-<li>假设数据单向，方便讨论</li>
+<li>假设数据单向（控制信息仍是双向传播），方便讨论</li>
 <li>fsm 有限状态机(用于描述传输协议的工具)</li>
+<li>一步步完善可靠传输协议</li>
 </ol>
 <h4 id="4-2-rdt1-0（）"><a href="#4-2-rdt1-0（）" class="headerlink" title="4.2 rdt1.0（）"></a>4.2 rdt1.0（）</h4><p>4.2.1 情况</p>
 <ul>
 <li>不丢不错</li>
-<li>信道完全可靠</li>
-<li>发送方和接收方的FSM独立，只有有个状态</li>
+<li>底层信道完全可靠</li>
+<li>发送方和接收方的FSM独立，只有一个状态</li>
 </ul>
 <p>4.2.2 过程</p>
-<h4 id="4-3-rdt2-0（）"><a href="#4-3-rdt2-0（）" class="headerlink" title="4.3 rdt2.0（）"></a>4.3 rdt2.0（）</h4><p>4.3.1 </p>
+<h4 id="4-3-rdt2-0（会产生位错误的信道，被成为ARQ—-自动重传请求协议）"><a href="#4-3-rdt2-0（会产生位错误的信道，被成为ARQ—-自动重传请求协议）" class="headerlink" title="4.3 rdt2.0（会产生位错误的信道，被成为ARQ—-自动重传请求协议）"></a>4.3 rdt2.0（会产生位错误的信道，被成为ARQ—-自动重传请求协议）</h4><p>4.3.1 具体情况描述</p>
 <ul>
-<li>信道不再可靠</li>
-<li>可检错</li>
-<li>如何应对错误</li>
-<li>应答机制</li>
+<li><p>只会存在位错误</p>
+</li>
+<li><p>信道不再可靠</p>
+</li>
+<li><p>可检错（通过校验和）</p>
+</li>
+<li><p>应对错误方式</p>
+<ul>
+<li>存在确认机制（ACK），接收方通过ACK告知发送方分组已经正确收到</li>
+<li>NAK，接收方通过NAK告诉发送方分组有错误，发送方收到NAK会重传分组    </li>
 </ul>
-<p>4.3.2 过程</p>
+</li>
+</ul>
+<p>4.3.2 过程（发送方会等待确认信息）</p>
 <ul>
 <li>无错误的状况</li>
 <li>有错误的状况</li>
 </ul>
-<h4 id="4-4-rdt3-0"><a href="#4-4-rdt3-0" class="headerlink" title="4.4 rdt3.0"></a>4.4 rdt3.0</h4><h3 id="5-TCP（面向连接的传输控制协议）"><a href="#5-TCP（面向连接的传输控制协议）" class="headerlink" title="5. TCP（面向连接的传输控制协议）"></a>5. TCP（面向连接的传输控制协议）</h3><h4 id="5-1-TCP相关特性"><a href="#5-1-TCP相关特性" class="headerlink" title="5.1 TCP相关特性"></a>5.1 TCP相关特性</h4><ul>
+<p>4.3.3 存在的缺陷</p>
+<ul>
+<li>当NAK或者ACK出错或者被破坏时，发送方无法知道接收方是否正确接收上一次发送的数据</li>
+</ul>
+<h4 id="4-4-rdt2-1和rdt2-2"><a href="#4-4-rdt2-1和rdt2-2" class="headerlink" title="4.4 rdt2.1和rdt2.2"></a>4.4 rdt2.1和rdt2.2</h4><ul>
+<li>rdt2.1（rdt2.0改进） <ul>
+<li>每个分组增加了序列号这一属性（此种情况下用0和1即可）</li>
+<li>要检验ACK和NAK是否出错</li>
+</ul>
+</li>
+<li>rdt2.2（进一步改进）<ul>
+<li>只使用ACK，不再有NAK</li>
+<li>实现方式：在ACK之中加入已经被确认的分组的序列号</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-5-rdt3-0-还会产生丢包的情况"><a href="#4-5-rdt3-0-还会产生丢包的情况" class="headerlink" title="4.5 rdt3.0(还会产生丢包的情况)"></a>4.5 rdt3.0(还会产生丢包的情况)</h4><p>4.5.1 具体情况描述</p>
+<ul>
+<li>增加了一个倒计时定时器（在一段时间未收到ACK的时候，重传分组并重置定时器）</li>
+<li></li>
+<li></li>
+</ul>
+<p>4.5.2过程</p>
+<p>4.5.3 性能分析（分析可得存在的问题）</p>
+<p>例：在1Gbps链路中，15ms的端到端传播延迟，1KB的分组</p>
+<p>发送方的利用率 （L/R）/（RTT+L/R）=0.00027</p>
+<p><strong>存在利用率很低的问题（停等操作都存在的问题）</strong></p>
+<h4 id="4-6-改进rdt3-0"><a href="#4-6-改进rdt3-0" class="headerlink" title="4.6 改进rdt3.0"></a>4.6 改进rdt3.0</h4><p>4.6.1 流水线可靠传输协议（解决性能问题，提高资源利用率）</p>
+<ul>
+<li>如何实现流水线：不以停等方式运行，而是允许发送方依次发送多个分组，不需要等待确认消息</li>
+<li>注意事项  <ul>
+<li>要增加序号的范围（不再是0和1）</li>
+<li>发送方和接收方都需要更大的存储空间以<strong>缓存分组</strong></li>
+<li>发送方和接收方有缓存下面的两种方法是用来解决流水线之中的差错恢复</li>
+</ul>
+</li>
+</ul>
+<p>4.6.2 回退N步协议（GBN协议，滑动窗口协议）</p>
+<ul>
+<li>有一个长度为n的窗口</li>
+</ul>
+<p>4.6.3选择重传</p>
+<h3 id="5-TCP（面向连接的传输控制协议）"><a href="#5-TCP（面向连接的传输控制协议）" class="headerlink" title="5. TCP（面向连接的传输控制协议）"></a>5. TCP（面向连接的传输控制协议）</h3><h4 id="5-1-TCP相关特性"><a href="#5-1-TCP相关特性" class="headerlink" title="5.1 TCP相关特性"></a>5.1 TCP相关特性</h4><ul>
 <li>点对点（一个发送方对应一个接收方）</li>
 <li>传输的是可靠且有序的字节流</li>
 <li><strong>流水线机制</strong></li>

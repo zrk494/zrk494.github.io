@@ -207,7 +207,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-05-16 11:41:40" itemprop="dateModified" datetime="2021-05-16T11:41:40+08:00">2021-05-16</time>
+        <time title="修改时间：2021-05-17 17:36:29" itemprop="dateModified" datetime="2021-05-17T17:36:29+08:00">2021-05-17</time>
       </span>
 
   
@@ -291,8 +291,7 @@
 <li>选项字段（很少用）+填充（补齐）</li>
 <li>数据</li>
 </ul>
-<h4 id="4-3-数据段分片（IP分段）"><a href="#4-3-数据段分片（IP分段）" class="headerlink" title="4.3 数据段分片（IP分段）"></a>4.3 数据段分片（IP分段）</h4><p>4.3.1 最大传输单元MTU</p>
-<ul>
+<h4 id="4-3-数据段分片（IP分段）"><a href="#4-3-数据段分片（IP分段）" class="headerlink" title="4.3 数据段分片（IP分段）"></a>4.3 数据段分片（IP分段）</h4><h5 id="4-3-1-最大传输单元MTU"><a href="#4-3-1-最大传输单元MTU" class="headerlink" title="4.3.1 最大传输单元MTU"></a>4.3.1 最大传输单元MTU</h5><ul>
 <li><p>一个链路层贺能承载的最大数据量</p>
 </li>
 <li><p>因为链路层的协议不同，MTU的大小不同</p>
@@ -300,8 +299,7 @@
 <li><p> 一个较大的IP分组向MTU小的链路转发时，可以（<strong>不是一定</strong>）将IP分段，以封装进入<em>链路层帧</em>（定义详见数据链路层笔记）之中（为什么要分片）</p>
 </li>
 </ul>
-<p> 4.3.2 数据分片之后的事项</p>
-<ul>
+<h5 id="4-3-2-数据分片之后的事项"><a href="#4-3-2-数据分片之后的事项" class="headerlink" title="4.3.2 数据分片之后的事项"></a>4.3.2 数据分片之后的事项</h5><ul>
 <li><p>分片到达目的主机之后再进行重组</p>
 </li>
 <li><p>为了让主机知道如何将这些分段重组，IP数据报之中的一些字段包含了标识以及确定顺序的信息</p>
@@ -312,16 +310,102 @@
 <li>和其他一些分组的信息一起才可以唯一标识一个IP分组</li>
 </ul>
 </li>
-<li></li>
+<li><p>标志位 </p>
+</li>
+<li><p>3位，包括DF（Don’t Fragment，表示是否可以分片）和MF字段（表示是否是分片的最后一片）</p>
+</li>
+<li><p>片偏移  </p>
+<ul>
+<li>13位，指一个IP分片封装的IP数据的相对偏移量</li>
+<li>以8字节为单位</li>
 </ul>
 </li>
 </ul>
-<p>IP编址</p>
-<p>主机与物理链路之间的边界——接口</p>
-<p>IP地址长度为32比特</p>
-<p>用点分十进制记法书写</p>
-<p>ABC DE类</p>
-<p>子网</p>
+</li>
+</ul>
+<h5 id="4-3-3-IP分片的过程及相关计算（设原IP分组总长位L，MTU为M）"><a href="#4-3-3-IP分片的过程及相关计算（设原IP分组总长位L，MTU为M）" class="headerlink" title="4.3.3 IP分片的过程及相关计算（设原IP分组总长位L，MTU为M）"></a>4.3.3 IP分片的过程及相关计算（设原IP分组总长位L，MTU为M）</h5><ul>
+<li>IF（L&gt;M）则需要分片</li>
+<li>分片后每个分片会复制原IP的标识</li>
+<li></li>
+</ul>
+<h4 id="4-4-IP编址"><a href="#4-4-IP编址" class="headerlink" title="4.4 IP编址"></a>4.4 IP编址</h4><h5 id="4-4-1概述"><a href="#4-4-1概述" class="headerlink" title="4.4.1概述"></a>4.4.1概述</h5><ul>
+<li>接口<ul>
+<li>主机与物理链路之间的边界</li>
+</ul>
+</li>
+<li>IP地址<ul>
+<li>IP地址长度为32比特</li>
+<li>用点分十进制记法书写</li>
+</ul>
+</li>
+<li>引入IP子网的概念<ul>
+<li>将IP地址分成两部分：网络号（高位）+主机号（低位）<img src="/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/image-20210517155308698.png" alt="image-20210517155308698"></li>
+<li>IP子网内的设备网络号相同</li>
+<li>路由器一般为一个IP子网的边界</li>
+</ul>
+</li>
+</ul>
+<h5 id="4-4-2-IP编址方式，地址划分"><a href="#4-4-2-IP编址方式，地址划分" class="headerlink" title="4.4.2 IP编址方式，地址划分"></a>4.4.2 IP编址方式，地址划分</h5><ul>
+<li><p>有类IP地址</p>
+<ul>
+<li>A类， 前8位为网络号</li>
+<li>B类， 前16位为网络号</li>
+<li>C类， 前32位为网络号</li>
+<li>D类</li>
+<li>E类</li>
+</ul>
+</li>
+<li><p>IP子网划分</p>
+<ul>
+<li><p>有类IP地址划分不平衡，像是ABC类网络太大，会存在浪费现象，用子网划分的方式进一步对大的网络进行划分</p>
+</li>
+<li><p>IP地址分成3部分：网络号+子网号+主机号（将之前的高位主机号的一部分划分成SubID）                                                                                      <img src="/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/image-20210516154203095.png" alt="image-20210516154203095" style="zoom:50%;">  </p>
+</li>
+<li><p>子网掩码</p>
+<ul>
+<li>用于确定是否划分了子网，以及使用多少位去划分子网</li>
+<li>格式同IP，32位，点分十进制，NetID和SubID全0，HostID全1</li>
+</ul>
+</li>
+<li><p>子网地址=IP分组的目的IP地址与子网掩码按位与（子网地址标识一个子网，<strong>就是子网开始的IP地址</strong>，让路由器明白将IP分组转发到哪一个子网）</p>
+</li>
+<li><p>子网地址+子网掩码可以准确确认一个子网的大小，并且可以用这样的形式表示一个子网</p>
+</li>
+</ul>
+</li>
+<li><p>CIDR（新的地址模式，称为无类域间路由）</p>
+<ul>
+<li><p><strong>消除了传统的ABC三类地址的界限</strong>，将NetID和SubID合并为Prefix（前缀），Prefix可以为任意长度</p>
+</li>
+<li><p>与子网划分的模式相结合，便于划分IP地址</p>
+</li>
+<li><p>无类地址的格式a.b.c.d/x，x为前缀长度（位长），可直接表示一个子网</p>
+<ul>
+<li>例    子网   <strong>201.2.3.64，255.255.255.192</strong>   的无类地址  201.2.3.64/26           </li>
+</ul>
+</li>
+<li><p>此种模式的优点 </p>
+<ul>
+<li>提高地址分配效率</li>
+<li>提高路由效率<ul>
+<li>此种方式可以将多个子网聚合成为更大的子网，形成层级化的编址</li>
+<li><strong>路由聚合</strong>，路由表记录更大的子网的无类地址（记录更高层的地址），减少不必要的信息的记录</li>
+<li>连续的几段地址才可以聚合成更大的子网</li>
+<li>补充 最长前缀匹配优先</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="4-4-3-主机如何获取IP地址（DHCP协议）"><a href="#4-4-3-主机如何获取IP地址（DHCP协议）" class="headerlink" title="4.4.3 主机如何获取IP地址（DHCP协议）"></a>4.4.3 主机如何获取IP地址（DHCP协议）</h5><ul>
+<li>”硬编码“，静态配置（<del>后续补充吧，大概</del>）<ul>
+<li>默认网关 </li>
+</ul>
+</li>
+<li>动态配置（动态主机配置协议DHCP）</li>
+</ul>
 <h3 id="5-ICMP协议（ip协议的伴随协议）"><a href="#5-ICMP协议（ip协议的伴随协议）" class="headerlink" title="5. ICMP协议（ip协议的伴随协议）"></a>5. ICMP协议（ip协议的伴随协议）</h3><p>无类别域间路由选择</p>
 
       

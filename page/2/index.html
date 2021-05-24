@@ -207,7 +207,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-05-17 17:36:29" itemprop="dateModified" datetime="2021-05-17T17:36:29+08:00">2021-05-17</time>
+        <time title="修改时间：2021-05-24 00:06:03" itemprop="dateModified" datetime="2021-05-24T00:06:03+08:00">2021-05-24</time>
       </span>
 
   
@@ -400,11 +400,53 @@
 </li>
 </ul>
 <h5 id="4-4-3-主机如何获取IP地址（DHCP协议）"><a href="#4-4-3-主机如何获取IP地址（DHCP协议）" class="headerlink" title="4.4.3 主机如何获取IP地址（DHCP协议）"></a>4.4.3 主机如何获取IP地址（DHCP协议）</h5><ul>
-<li>”硬编码“，静态配置（<del>后续补充吧，大概</del>）<ul>
-<li>默认网关 </li>
+<li><p>”硬编码“，静态配置（<del>后续补充完吧，大概</del>）</p>
+<ul>
+<li>默认网关      某一个路由器与一个子网相连的一个接口的IP，作为这个子网之中所有主机的默认网关</li>
 </ul>
 </li>
-<li>动态配置（动态主机配置协议DHCP）</li>
+<li><p>动态配置（动态主机配置协议DHCP）</p>
+<ul>
+<li><p>动态的从DHCP服务器获取IP地址+子网掩码+默认网关地址+DNS服务器名称及其IP地址</p>
+</li>
+<li><p>地址是可以重用的（一个主机下线之后他的地址可以被分配给其他的主机）</p>
+</li>
+<li><p>配置过程</p>
+<ol>
+<li>找到DHCP服务器（主机通过<strong>广播</strong>DHCP发现报文，此时主机的IP地址为0.0.0.0，此条广播只有DHCP服务器会响应）</li>
+<li>DHCP服务器响应（DHCP服务器通过<strong>广播</strong>发送一个DHCP提供报文，报文包括服务器的IP地址+端口号+拟分配IP地址+IP地址有效时间）</li>
+<li>请求IP地址（主机通过<strong>广播</strong>发送DHCP请求报文）</li>
+<li>DHCP确认（DHCP服务器向主机发送DHCP ACK，表示可以给主机提供IP地址）</li>
+</ol>
+<ul>
+<li>补充，第3步还是通过广播发送的原因是主机告诉其他DHCP服务器已经选择好了用哪个DHCP服务器了，其他DHCP服务器会收回拟分配的IP地址</li>
+</ul>
+</li>
+<li><p>DHCP协议是在应用层实现的（运输层使用UDP协议）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="4-4-4-网络地址转换（NAT）"><a href="#4-4-4-网络地址转换（NAT）" class="headerlink" title="4.4.4 网络地址转换（NAT）"></a>4.4.4 网络地址转换（NAT）</h5><ul>
+<li><p>出现背景       </p>
+<ul>
+<li>本地网络（使用私有地址）无法直接访问公共网络，要通过地址转换接入公共网络</li>
+<li>IPv4地址用尽，通过一个公共IP标识一个本地网络</li>
+</ul>
+</li>
+<li><p>实现方法</p>
+<ol>
+<li><p>替换</p>
+<ul>
+<li> d</li>
+</ul>
+</li>
+<li><p>记录</p>
+</li>
+<li><p>再替换</p>
+</li>
+</ol>
+</li>
 </ul>
 <h3 id="5-ICMP协议（ip协议的伴随协议）"><a href="#5-ICMP协议（ip协议的伴随协议）" class="headerlink" title="5. ICMP协议（ip协议的伴随协议）"></a>5. ICMP协议（ip协议的伴随协议）</h3><p>无类别域间路由选择</p>
 

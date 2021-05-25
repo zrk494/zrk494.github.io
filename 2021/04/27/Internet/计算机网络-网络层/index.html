@@ -30,8 +30,11 @@
 <meta property="og:image" content="http://zrk494.github.io/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/image-20210512210314741.png">
 <meta property="og:image" content="http://zrk494.github.io/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/image-20210517155308698.png">
 <meta property="og:image" content="http://zrk494.github.io/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/image-20210516154203095.png">
+<meta property="og:image" content="http://zrk494.github.io/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/image-20210524155220426.png">
+<meta property="og:image" content="http://zrk494.github.io/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/image-20210524213209515.png">
+<meta property="og:image" content="http://zrk494.github.io/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/image-20210525190802752.png">
 <meta property="article:published_time" content="2021-04-27T07:02:06.000Z">
-<meta property="article:modified_time" content="2021-05-23T16:06:03.606Z">
+<meta property="article:modified_time" content="2021-05-25T14:10:36.010Z">
 <meta property="article:author" content="zrk">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
@@ -120,7 +123,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82%EF%BC%88%E4%B8%A4%E5%A4%A7%E6%96%B9%E9%9D%A2%EF%BC%8C%E6%95%B0%E6%8D%AE%E5%B9%B3%E9%9D%A2%E5%92%8C%E6%8E%A7%E5%88%B6%E5%B9%B3%E9%9D%A2-%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">网络层（两大方面，数据平面和控制平面 ）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">1. 概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E6%95%B0%E6%8D%AE%E5%B9%B3%E9%9D%A2"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 数据平面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E6%8E%A7%E5%88%B6%E5%B9%B3%E9%9D%A2"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 控制平面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%8F%90%E4%BE%9B%E7%9A%84%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.2.</span> <span class="nav-text">2. 提供的服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1%E4%B8%A4%E4%B8%AA%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1两个核心功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E5%85%B6%E4%BB%96%E7%9A%84%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 其他的服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E8%99%9A%E7%94%B5%E8%B7%AF%E7%BD%91%E7%BB%9C%EF%BC%88%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E7%9A%84%E4%BB%A3%E8%A1%A8%EF%BC%89"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 虚电路网络（连接服务的代表）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-%E6%95%B0%E6%8D%AE%E6%8A%A5%EF%BC%88%E6%8A%A5%E6%96%87%EF%BC%89%E7%BD%91%E7%BB%9C%EF%BC%88%E6%97%A0%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E7%9A%84%E4%BB%A3%E8%A1%A8%EF%BC%89"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 数据报（报文）网络（无连接服务的代表）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%B7%AF%E7%94%B1%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.3.</span> <span class="nav-text">3. 路由器工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-ip%E5%8D%8F%E8%AE%AE%EF%BC%88%E5%9B%A0%E7%89%B9%E7%BD%91%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B1%82%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">4. ip协议（因特网的网络层）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-%E6%95%B0%E5%B1%80%E6%8A%A5%E6%A0%BC%E5%BC%8F%EF%BC%88%E4%B8%A4%E9%83%A8%E5%88%86%EF%BC%9A%E9%A6%96%E9%83%A8%EF%BC%88%E5%AF%B9%E5%BA%94%E4%B8%8B%E5%9B%BEoption%E5%8F%8A%E4%B9%8B%E5%89%8D%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%89-%E6%95%B0%E6%8D%AE%EF%BC%89%E2%80%94%E2%80%93%E4%BB%A5IPv4%E4%B8%BA%E4%BE%8B"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 数局报格式（两部分：首部（对应下图option及之前的内容）+数据）—–以IPv4为例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-%E6%95%B0%E6%8D%AE%E6%AE%B5%E5%88%86%E7%89%87%EF%BC%88IP%E5%88%86%E6%AE%B5%EF%BC%89"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 数据段分片（IP分段）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-1-%E6%9C%80%E5%A4%A7%E4%BC%A0%E8%BE%93%E5%8D%95%E5%85%83MTU"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">4.3.1 最大传输单元MTU</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-2-%E6%95%B0%E6%8D%AE%E5%88%86%E7%89%87%E4%B9%8B%E5%90%8E%E7%9A%84%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">4.3.2 数据分片之后的事项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-3-IP%E5%88%86%E7%89%87%E7%9A%84%E8%BF%87%E7%A8%8B%E5%8F%8A%E7%9B%B8%E5%85%B3%E8%AE%A1%E7%AE%97%EF%BC%88%E8%AE%BE%E5%8E%9FIP%E5%88%86%E7%BB%84%E6%80%BB%E9%95%BF%E4%BD%8DL%EF%BC%8CMTU%E4%B8%BAM%EF%BC%89"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">4.3.3 IP分片的过程及相关计算（设原IP分组总长位L，MTU为M）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-IP%E7%BC%96%E5%9D%80"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.4 IP编址</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-4-1%E6%A6%82%E8%BF%B0"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">4.4.1概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-4-2-IP%E7%BC%96%E5%9D%80%E6%96%B9%E5%BC%8F%EF%BC%8C%E5%9C%B0%E5%9D%80%E5%88%92%E5%88%86"><span class="nav-number">1.4.4.2.</span> <span class="nav-text">4.4.2 IP编址方式，地址划分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-4-3-%E4%B8%BB%E6%9C%BA%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96IP%E5%9C%B0%E5%9D%80%EF%BC%88DHCP%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-number">1.4.4.3.</span> <span class="nav-text">4.4.3 主机如何获取IP地址（DHCP协议）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-4-4-%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%EF%BC%88NAT%EF%BC%89"><span class="nav-number">1.4.4.4.</span> <span class="nav-text">4.4.4 网络地址转换（NAT）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ICMP%E5%8D%8F%E8%AE%AE%EF%BC%88ip%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BC%B4%E9%9A%8F%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">5. ICMP协议（ip协议的伴随协议）</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82%EF%BC%88%E4%B8%A4%E5%A4%A7%E6%96%B9%E9%9D%A2%EF%BC%8C%E6%95%B0%E6%8D%AE%E5%B9%B3%E9%9D%A2%E5%92%8C%E6%8E%A7%E5%88%B6%E5%B9%B3%E9%9D%A2-%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">网络层（两大方面，数据平面和控制平面 ）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">1. 概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E6%95%B0%E6%8D%AE%E5%B9%B3%E9%9D%A2"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 数据平面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E6%8E%A7%E5%88%B6%E5%B9%B3%E9%9D%A2"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 控制平面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%8F%90%E4%BE%9B%E7%9A%84%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.2.</span> <span class="nav-text">2. 提供的服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1%E4%B8%A4%E4%B8%AA%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1两个核心功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E5%85%B6%E4%BB%96%E7%9A%84%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 其他的服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E8%99%9A%E7%94%B5%E8%B7%AF%E7%BD%91%E7%BB%9C%EF%BC%88%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E7%9A%84%E4%BB%A3%E8%A1%A8%EF%BC%89"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 虚电路网络（连接服务的代表）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-%E6%95%B0%E6%8D%AE%E6%8A%A5%EF%BC%88%E6%8A%A5%E6%96%87%EF%BC%89%E7%BD%91%E7%BB%9C%EF%BC%88%E6%97%A0%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E7%9A%84%E4%BB%A3%E8%A1%A8%EF%BC%89"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 数据报（报文）网络（无连接服务的代表）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%B7%AF%E7%94%B1%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.3.</span> <span class="nav-text">3. 路由器工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-ip%E5%8D%8F%E8%AE%AE%EF%BC%88%E5%9B%A0%E7%89%B9%E7%BD%91%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B1%82%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">4. ip协议（因特网的网络层）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-%E6%95%B0%E5%B1%80%E6%8A%A5%E6%A0%BC%E5%BC%8F%EF%BC%88%E4%B8%A4%E9%83%A8%E5%88%86%EF%BC%9A%E9%A6%96%E9%83%A8%EF%BC%88%E5%AF%B9%E5%BA%94%E4%B8%8B%E5%9B%BEoption%E5%8F%8A%E4%B9%8B%E5%89%8D%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%89-%E6%95%B0%E6%8D%AE%EF%BC%89%E2%80%94%E2%80%93%E4%BB%A5IPv4%E4%B8%BA%E4%BE%8B"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 数局报格式（两部分：首部（对应下图option及之前的内容）+数据）—–以IPv4为例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-%E6%95%B0%E6%8D%AE%E6%AE%B5%E5%88%86%E7%89%87%EF%BC%88IP%E5%88%86%E6%AE%B5%EF%BC%89"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 数据段分片（IP分段）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-1-%E6%9C%80%E5%A4%A7%E4%BC%A0%E8%BE%93%E5%8D%95%E5%85%83MTU"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">4.3.1 最大传输单元MTU</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-2-%E6%95%B0%E6%8D%AE%E5%88%86%E7%89%87%E4%B9%8B%E5%90%8E%E7%9A%84%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">4.3.2 数据分片之后的事项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-3-IP%E5%88%86%E7%89%87%E7%9A%84%E8%BF%87%E7%A8%8B%E5%8F%8A%E7%9B%B8%E5%85%B3%E8%AE%A1%E7%AE%97%EF%BC%88%E8%AE%BE%E5%8E%9FIP%E5%88%86%E7%BB%84%E6%80%BB%E9%95%BF%E4%BD%8DL%EF%BC%8CMTU%E4%B8%BAM%EF%BC%89"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">4.3.3 IP分片的过程及相关计算（设原IP分组总长位L，MTU为M）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-IP%E7%BC%96%E5%9D%80"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.4 IP编址</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-4-1%E6%A6%82%E8%BF%B0"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">4.4.1概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-4-2-IP%E7%BC%96%E5%9D%80%E6%96%B9%E5%BC%8F%EF%BC%8C%E5%9C%B0%E5%9D%80%E5%88%92%E5%88%86"><span class="nav-number">1.4.4.2.</span> <span class="nav-text">4.4.2 IP编址方式，地址划分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-4-3-%E4%B8%BB%E6%9C%BA%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96IP%E5%9C%B0%E5%9D%80%EF%BC%88DHCP%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-number">1.4.4.3.</span> <span class="nav-text">4.4.3 主机如何获取IP地址（DHCP协议）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-4-4-%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%EF%BC%88NAT%EF%BC%89"><span class="nav-number">1.4.4.4.</span> <span class="nav-text">4.4.4 网络地址转换（NAT）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NAP%E7%A9%BF%E9%80%8F%E9%97%AE%E9%A2%98%EF%BC%88%E8%A7%A3%E5%86%B3NAP%E4%B8%AD%E5%AD%98%E5%9C%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">NAP穿透问题（解决NAP中存在的一些问题）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ICMP%E5%8D%8F%E8%AE%AE%EF%BC%88%E4%BA%92%E8%81%94%E7%BD%91%E6%8E%A7%E5%88%B6%E6%8A%A5%E6%96%87%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">5. ICMP协议（互联网控制报文协议）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-%E7%94%A8%E9%80%94"><span class="nav-number">3.1.1.</span> <span class="nav-text">5.1 用途</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-ICMP%E6%8A%A5%E6%96%87"><span class="nav-number">3.1.2.</span> <span class="nav-text">5.2 ICMP报文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-%E4%B8%80%E4%BA%9B%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5%EF%BC%88%E5%8F%AF%E8%83%BD%E4%B8%8D%E5%8F%91%E9%80%81ICMP%E6%8A%A5%E6%96%87%EF%BC%89"><span class="nav-number">3.1.3.</span> <span class="nav-text">5.3 一些特殊情况（可能不发送ICMP报文）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-%E9%83%A8%E5%88%86ICMP%E6%8A%A5%E6%96%87%E4%B8%8D%E5%86%8D%E4%BD%BF%E7%94%A8"><span class="nav-number">3.1.4.</span> <span class="nav-text">5.4 部分ICMP报文不再使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-IPv6"><span class="nav-number">3.2.</span> <span class="nav-text">6. IPv6</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-%E8%AF%9E%E7%94%9F%E8%83%8C%E6%99%AF"><span class="nav-number">3.2.1.</span> <span class="nav-text">6.1 诞生背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F%E5%8F%98%E5%8C%96"><span class="nav-number">3.2.2.</span> <span class="nav-text">6.2 数据报格式变化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-3-%E4%B8%8EIPv4%E7%9A%84%E4%B8%8D%E5%90%8C"><span class="nav-number">3.2.3.</span> <span class="nav-text">6.3 与IPv4的不同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-4-IPv6%E5%9C%B0%E5%9D%80"><span class="nav-number">3.2.4.</span> <span class="nav-text">6.4 IPv6地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-5-%E4%B8%8EIPv4%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98"><span class="nav-number">3.2.5.</span> <span class="nav-text">6.5 与IPv4的兼容问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95"><span class="nav-number">3.3.</span> <span class="nav-text">7. 路由算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-%E5%B0%86%E7%BD%91%E7%BB%9C%E6%8A%BD%E8%B1%A1"><span class="nav-number">3.3.1.</span> <span class="nav-text">7.1 将网络抽象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-%E9%93%BE%E8%B7%AF%E7%8A%B6%E6%80%81%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95"><span class="nav-number">3.3.2.</span> <span class="nav-text">7.2 链路状态路由算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-3-%E8%B7%9D%E7%A6%BB%E5%90%91%E9%87%8F%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95"><span class="nav-number">3.3.3.</span> <span class="nav-text">7.3 距离向量路由算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-4-%E5%B1%82%E6%AC%A1%E8%B7%AF%E7%94%B1"><span class="nav-number">3.3.4.</span> <span class="nav-text">7.4 层次路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-5-%E8%87%AA%E5%88%B6%E7%B3%BB%E7%BB%9F%E5%86%85%E7%9A%84%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95%EF%BC%88%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-number">3.3.5.</span> <span class="nav-text">7.5 自制系统内的路由算法（路由协议）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-5-1-RIP-%E8%B7%AF%E7%94%B1%E4%BF%A1%E6%81%AF%E5%8D%8F%E8%AE%AE"><span class="nav-number">3.3.5.1.</span> <span class="nav-text">7.5.1 RIP(路由信息协议)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-5-2-OSPF-%E5%BC%80%E6%94%BE%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E5%8D%8F%E8%AE%AE-%E2%80%94-%E6%9B%B4%E8%AF%A6%E7%BB%86%E7%9A%84%E5%8F%82%E8%80%83RFC-2328"><span class="nav-number">3.3.5.2.</span> <span class="nav-text">7.5.2 OSPF(开放最短路径协议)—-更详细的参考RFC 2328</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-5-%E8%87%AA%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%B9%8B%E9%97%B4%E7%9A%84%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95%EF%BC%88%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-number">3.3.6.</span> <span class="nav-text">7.5 自制系统之间的路由算法（路由协议）</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -133,7 +136,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -216,7 +219,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-05-24 00:06:03" itemprop="dateModified" datetime="2021-05-24T00:06:03+08:00">2021-05-24</time>
+        <time title="修改时间：2021-05-25 22:10:36" itemprop="dateModified" datetime="2021-05-25T22:10:36+08:00">2021-05-25</time>
       </span>
 
   
@@ -247,7 +250,7 @@
 </ul>
 <p>2.1.2 路由（routing）</p>
 <ul>
-<li><p>通过<strong>路由算法</strong>计算从H1（起点）到H2（终点）的路径集合</p>
+<li><p>通过<strong>路由算法</strong>计算从H1（起点）到H2（终点）的<strong>路径集合</strong></p>
 </li>
 <li><p>用<strong>路由表</strong>记录路由信息（如何转发分组）</p>
 </li>
@@ -277,7 +280,8 @@
 </ul>
 </li>
 </ul>
-<h4 id="2-3-虚电路网络（连接服务的代表）"><a href="#2-3-虚电路网络（连接服务的代表）" class="headerlink" title="2.3 虚电路网络（连接服务的代表）"></a>2.3 虚电路网络（连接服务的代表）</h4><h4 id="2-4-数据报（报文）网络（无连接服务的代表）"><a href="#2-4-数据报（报文）网络（无连接服务的代表）" class="headerlink" title="2.4 数据报（报文）网络（无连接服务的代表）"></a>2.4 数据报（报文）网络（无连接服务的代表）</h4><h3 id="3-路由器工作原理"><a href="#3-路由器工作原理" class="headerlink" title="3. 路由器工作原理"></a>3. 路由器工作原理</h3><p>结构</p>
+<h4 id="2-3-虚电路网络（连接服务的代表）"><a href="#2-3-虚电路网络（连接服务的代表）" class="headerlink" title="2.3 虚电路网络（连接服务的代表）"></a>2.3 虚电路网络（连接服务的代表）</h4><h4 id="2-4-数据报（报文）网络（无连接服务的代表）"><a href="#2-4-数据报（报文）网络（无连接服务的代表）" class="headerlink" title="2.4 数据报（报文）网络（无连接服务的代表）"></a>2.4 数据报（报文）网络（无连接服务的代表）</h4><h3 id="3-路由器工作原理"><a href="#3-路由器工作原理" class="headerlink" title="3. 路由器工作原理"></a>3. 路由器工作原理</h3><p>路由表</p>
+<p>结构</p>
 <p>输入输出端口（多端口，可进可出）</p>
 <p>交换结构</p>
 <p>路由选择处理器 </p>
@@ -335,7 +339,7 @@
 <h5 id="4-3-3-IP分片的过程及相关计算（设原IP分组总长位L，MTU为M）"><a href="#4-3-3-IP分片的过程及相关计算（设原IP分组总长位L，MTU为M）" class="headerlink" title="4.3.3 IP分片的过程及相关计算（设原IP分组总长位L，MTU为M）"></a>4.3.3 IP分片的过程及相关计算（设原IP分组总长位L，MTU为M）</h5><ul>
 <li>IF（L&gt;M）则需要分片</li>
 <li>分片后每个分片会复制原IP的标识</li>
-<li></li>
+<li>计算长度时注意前20字节的首部</li>
 </ul>
 <h4 id="4-4-IP编址"><a href="#4-4-IP编址" class="headerlink" title="4.4 IP编址"></a>4.4 IP编址</h4><h5 id="4-4-1概述"><a href="#4-4-1概述" class="headerlink" title="4.4.1概述"></a>4.4.1概述</h5><ul>
 <li>接口<ul>
@@ -445,19 +449,311 @@
 </li>
 <li><p>实现方法</p>
 <ol>
-<li><p>替换</p>
-<ul>
-<li> d</li>
+<li>替换（向公共网络发出数据报时）<ul>
+<li> 利用<strong>NAT IP地址和新的端口号</strong>换发出去的IP数据报的<strong>源IP地址和源端口号</strong></li>
 </ul>
 </li>
-<li><p>记录</p>
+<li><h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2></li>
+<li>再替换</li>
+</ol>
 </li>
-<li><p>再替换</p>
+<li><p>NAT转换表</p>
+<ul>
+<li>WAN端地址+LAN端地址</li>
+</ul>
+</li>
+<li><p>NAT的缺陷</p>
+<ul>
+<li>通过端口号寻找主机</li>
+</ul>
+</li>
+<li><h2 id="NAP穿透问题（解决NAP中存在的一些问题）"><a href="#NAP穿透问题（解决NAP中存在的一些问题）" class="headerlink" title="NAP穿透问题（解决NAP中存在的一些问题）"></a>NAP穿透问题（解决NAP中存在的一些问题）</h2></li>
+</ul>
+<h3 id="5-ICMP协议（互联网控制报文协议）"><a href="#5-ICMP协议（互联网控制报文协议）" class="headerlink" title="5. ICMP协议（互联网控制报文协议）"></a>5. ICMP协议（互联网控制报文协议）</h3><h4 id="5-1-用途"><a href="#5-1-用途" class="headerlink" title="5.1 用途"></a>5.1 用途</h4><ul>
+<li>完成差错报告的功能</li>
+<li>网络探寻</li>
+<li>路由器遇到有差错的IP数据报时会将其丢弃，并向源主机发送一个ICMP报文</li>
+</ul>
+<h4 id="5-2-ICMP报文"><a href="#5-2-ICMP报文" class="headerlink" title="5.2 ICMP报文"></a>5.2 ICMP报文</h4><p>5.2.1 差错报告报文</p>
+<p>5.2.2 网络探寻报文</p>
+<p>5.2.3 报文格式（类型+编码表示一种特定意义的报文）</p>
+<ul>
+<li>ICMP报文封装在IP数据报之中传输</li>
+<li>头部+数据部分</li>
+</ul>
+<h4 id="5-3-一些特殊情况（可能不发送ICMP报文）"><a href="#5-3-一些特殊情况（可能不发送ICMP报文）" class="headerlink" title="5.3 一些特殊情况（可能不发送ICMP报文）"></a>5.3 一些特殊情况（可能不发送ICMP报文）</h4><ul>
+<li><p>在分片的IP数据报之中，只对第一个分片发送ICMP差错报告报文，后续的分片不发送</p>
+</li>
+<li><p>多播IP数据报不发送ICMP报文</p>
+</li>
+<li><p>特殊地址的不发送ICMP</p>
+</li>
+</ul>
+<h4 id="5-4-部分ICMP报文不再使用"><a href="#5-4-部分ICMP报文不再使用" class="headerlink" title="5.4 部分ICMP报文不再使用"></a>5.4 部分ICMP报文不再使用</h4><h3 id="6-IPv6"><a href="#6-IPv6" class="headerlink" title="6. IPv6"></a>6. IPv6</h3><h4 id="6-1-诞生背景"><a href="#6-1-诞生背景" class="headerlink" title="6.1 诞生背景"></a>6.1 诞生背景</h4><ul>
+<li>32位IPv4地址已经分配完了</li>
+<li>改进首部（更快的处理和转发数据报）</li>
+</ul>
+<h4 id="6-2-数据报格式变化"><a href="#6-2-数据报格式变化" class="headerlink" title="6.2 数据报格式变化"></a>6.2 数据报格式变化</h4><ul>
+<li><p>基本首部固定为40字节</p>
+</li>
+<li><p>不允许路由器分片（若分片则源主机分，目的主机组装）</p>
+</li>
+<li><p>基本格式如下，路由器只处理基本首部即可</p>
+<img src="/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/image-20210524155220426.png" alt="image-20210524155220426" style="zoom:50%;">
+
+<ul>
+<li>跳步限制对应IPv4中的TTL</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-3-与IPv4的不同"><a href="#6-3-与IPv4的不同" class="headerlink" title="6.3 与IPv4的不同"></a>6.3 与IPv4的不同</h4><ul>
+<li>移除校验和，以减少路由器处理数据报的时间</li>
+<li>选项进化为“下一个首部”字段</li>
+<li>ICMPv6（新版ICMP）<ul>
+<li>增加了报文类型（如：“Packet too big”）</li>
+<li>多播组管理功能</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-4-IPv6地址"><a href="#6-4-IPv6地址" class="headerlink" title="6.4 IPv6地址"></a>6.4 IPv6地址</h4><ul>
+<li><p>冒号分隔的十六进制表示，划分成8组</p>
+</li>
+<li><p>压缩形式        连续多组的0用两个冒号替代（例 FF01:0:0:0:0:0:0:43==FF01::43）</p>
+</li>
+<li><p>IPv4嵌入形式（为了兼容IPv4）最后32位仍以IPv4的形式表示</p>
+</li>
+<li><p>地址前缀（IPv6不再使用掩码）</p>
+</li>
+<li><p>在URL的表示之中IPv6的地址放在[]之中</p>
+</li>
+<li><p>地址类型</p>
+<ul>
+<li>单播地址，一对一通信</li>
+<li>多播地址，一对多（表示目的主机中一系列的网络接口）</li>
+<li>任意播，一对多之中的一个</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-5-与IPv4的兼容问题"><a href="#6-5-与IPv4的兼容问题" class="headerlink" title="6.5 与IPv4的兼容问题"></a>6.5 与IPv4的兼容问题</h4><ul>
+<li>隧道技术：IPv6数据报被封装在IPv4数据报的载荷部分，然后穿过IPv4网络</li>
+</ul>
+<h3 id="7-路由算法"><a href="#7-路由算法" class="headerlink" title="7. 路由算法"></a>7. 路由算法</h3><h4 id="7-1-将网络抽象"><a href="#7-1-将网络抽象" class="headerlink" title="7.1 将网络抽象"></a>7.1 将网络抽象</h4><ul>
+<li>用抽象的带权无向图表示网络</li>
+<li>结点表示路由器，边表示路由器之间的物理链路，权重可以表示很多内容（具体问题具体分析）</li>
+</ul>
+<h4 id="7-2-链路状态路由算法"><a href="#7-2-链路状态路由算法" class="headerlink" title="7.2 链路状态路由算法"></a>7.2 链路状态路由算法</h4><ul>
+<li><p>计算的过程</p>
+<ul>
+<li>LS分组扩散（通告）</li>
+<li>路由器构造完整的拓扑图</li>
+<li>用Dijkstra算法计算路由</li>
+</ul>
+</li>
+<li><p>Dijkstra算法（求最小代价的值）</p>
+<ul>
+<li><p>前提条件：要掌握整个网络的拓补结构和链路权值</p>
+</li>
+<li><p>引入一些符号，方便描述算法</p>
+<ul>
+<li>c(x,y)，x与y两点之间的代价值，若x，y不相邻，则c(x,y)=$\infty$</li>
+<li>D(v)，从起点到v点的路径代价值</li>
+<li>p(v)，一条路径之中v点的前序结点</li>
+<li>N’，最短路径上结点的集合</li>
+</ul>
+</li>
+<li><p>算法描述：</p>
+<ol>
+<li>初始化步骤，N’={u}，u为起点，找到u所有的相邻节点v，D(v)=c(v,y)，不相邻，则D(v)=$\infty$</li>
+<li>循环体<ul>
+<li>找出一个不在N’之中的结点w，使得D(w)最小，并将w加入N’</li>
+<li>更新w的相邻结点的D(v)的值（更新方法：比较原来的D(v)与已知到达w的最小权值+w到v的权值，取较小的值）</li>
+</ul>
 </li>
 </ol>
 </li>
+<li><p>例子<img src="/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/image-20210524213209515.png" alt="image-20210524213209515"></p>
+</li>
+<li><p>补充</p>
+<ul>
+<li>此过程之中会得到一个最小生成树，会存在u的转发表（包括两部分，目的结点和到目的结点之间的链路）</li>
+<li>震荡现象（<del>以后补充吧</del>）</li>
 </ul>
-<h3 id="5-ICMP协议（ip协议的伴随协议）"><a href="#5-ICMP协议（ip协议的伴随协议）" class="headerlink" title="5. ICMP协议（ip协议的伴随协议）"></a>5. ICMP协议（ip协议的伴随协议）</h3><p>无类别域间路由选择</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-3-距离向量路由算法"><a href="#7-3-距离向量路由算法" class="headerlink" title="7.3 距离向量路由算法"></a>7.3 距离向量路由算法</h4><ul>
+<li>引入符号和计算方法（理想状态）<ul>
+<li>$d_x(y)$:表示x到y的最小权值</li>
+<li>$d_x(y)=min$${c(x,v)+d_v(y)}$      v包括了所有与x相邻的结点   </li>
+</ul>
+</li>
+<li>实际情况<ul>
+<li>开始时要估计某些结点之间的最小权值（即相邻结点的记录下来），后续通过一次次计算不断趋近于最小值，这个值记作DV</li>
+<li>每个结点存储的内容包括<ul>
+<li>与其相邻的结点之间链路的权值</li>
+<li> 最小权值的估计值</li>
+</ul>
+</li>
+<li>每个结点都要定期将自己计算出的最小权值的估计值传送给他自己的相邻结点</li>
+<li>x结点收到他相邻结点发过来的最小权值的估计值时，会根据上面的公式更新自己的</li>
+</ul>
+</li>
+<li>一些注意事项：<ul>
+<li>每个结点只有当自己的DV值变化时才会通知相邻结点</li>
+<li>当一块网络中的某链路权值发生变化，用次算法跟新网络内结点的路由表</li>
+</ul>
+</li>
+<li>存在的问题—-无穷计数问题（当某一链路的权值变大了很多）<ul>
+<li>解决手段  <ul>
+<li>毒性逆转</li>
+<li>定义最大度量</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-4-层次路由"><a href="#7-4-层次路由" class="headerlink" title="7.4 层次路由"></a>7.4 层次路由</h4><p>7.4.1 出现的背景</p>
+<ul>
+<li>将大规模的网络抽象成一个图不太妥当，存在很多问题</li>
+</ul>
+<p>7.4.2 什么是层次路由</p>
+<ul>
+<li>层次路由会对大规模的网络再一次进行抽象<ul>
+<li>将一个区域之内的网络抽象为一个点，称为自治系统AS（有一个唯一标识）</li>
+<li>一个AS内部的使用路由器运行同一种路由算法（自治系统内部路由协议）</li>
+<li>AS之间通过<strong>网关路由器</strong>与其他的AS交换信息</li>
+</ul>
+</li>
+</ul>
+<p>7.4.3 网关路由</p>
+<ul>
+<li><p>网关路由器的转发表包括AS内部的路由算法和AS之间的路由算法</p>
+</li>
+<li><p>网关路由的任务</p>
+<ul>
+<li>知道哪些同级的区域是可以到达的</li>
+<li>把可到达的信息告诉内部</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-5-自制系统内的路由算法（路由协议）"><a href="#7-5-自制系统内的路由算法（路由协议）" class="headerlink" title="7.5 自制系统内的路由算法（路由协议）"></a>7.5 自制系统内的路由算法（路由协议）</h4><h5 id="7-5-1-RIP-路由信息协议"><a href="#7-5-1-RIP-路由信息协议" class="headerlink" title="7.5.1 RIP(路由信息协议)"></a>7.5.1 RIP(路由信息协议)</h5><ul>
+<li>使用距离向量路由算法，有一些特殊的地方如下<ul>
+<li>路由表包括下一条的信息</li>
+<li>引入距离度量的描述：跳步数，一条链路==一个跳步，最大跳步数限制为15</li>
+<li>每隔30s邻居交换一次DV</li>
+</ul>
+</li>
+<li>链路失效与恢复<ul>
+<li>180s未收到通告，则表明邻居链路失效</li>
+<li>恢复就是重新计算路由，并立即发送新的通告（扩散的过程之中可能会产生无穷计数问题）</li>
+</ul>
+</li>
+<li>其他的一些特性<ul>
+<li>RIP路由表在应用层进行管理</li>
+<li>通告的报文通过UDP数据报传输</li>
+</ul>
+</li>
+</ul>
+<h5 id="7-5-2-OSPF-开放最短路径协议-—-更详细的参考RFC-2328"><a href="#7-5-2-OSPF-开放最短路径协议-—-更详细的参考RFC-2328" class="headerlink" title="7.5.2 OSPF(开放最短路径协议)—-更详细的参考RFC 2328"></a>7.5.2 OSPF(开放最短路径协议)—-更详细的参考RFC 2328</h5><ul>
+<li><p>采用链路状态路由算法</p>
+</li>
+<li><p>OSPF通告在整个AS范围内泛洪，OSPF报文之间封装到IP数据报之中</p>
+</li>
+<li><p>一些RIP不具备的优点</p>
+<ul>
+<li><p>OSPF报文具有认证机制，预防恶意入侵，更安全</p>
+</li>
+<li><p>允许同时使用多条相同的代价值得路径，方便分流（RIP只能选一条）</p>
+</li>
+<li><p>集成单播和多播路由</p>
+</li>
+<li><p>支持对大规模的AS作进一步分层</p>
+<img src="/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/image-20210525190802752.png" alt="image-20210525190802752" style="zoom: 50%;">
+
+<ul>
+<li>包括主干区+局部区</li>
+<li>链路状态和拓扑图仅是一个区域之内的</li>
+<li>一个区域的<strong>区边界路由器</strong>汇总内部的信息告诉另一个区域的区边界路由器</li>
+<li>主干路由器—可以运行OSFP算法</li>
+<li>AS边界路由器—-连接其他的系统</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-5-自制系统之间的路由算法（路由协议）"><a href="#7-5-自制系统之间的路由算法（路由协议）" class="headerlink" title="7.5 自制系统之间的路由算法（路由协议）"></a>7.5 自制系统之间的路由算法（路由协议）</h4><ul>
+<li><p>BGP协议（边界网关协议）</p>
+<ul>
+<li><p>基本特征</p>
+<ul>
+<li>将Internet连接成一个整体</li>
+<li>可以帮助AS获得邻居的子网可达性信息，也可以向所有AS内部的路由器传播子网可达性信息</li>
+</ul>
+</li>
+<li><p>BGP一些基础功能</p>
+<ul>
+<li><p>BGP会话—-两个BGP路由器交换报文</p>
+<ul>
+<li>包括外部会话（eBGP）和内部会话（iBGP）</li>
+<li>可以通告去往不同子网的路径（交换的是整条路径的信息）</li>
+<li>他们之间的报文交换基于半永久的TCP连接（可以存在较长的时间）</li>
+</ul>
+</li>
+<li><p>BGP报文（4类）</p>
+<ul>
+<li>open：建立连接+认证</li>
+<li>update：通告有路径发生改变了（增或者减）</li>
+<li>keepalive：长时间未update时，告诉邻居连接依然是正常的+对open请求的确认</li>
+<li>notifcation：报告差错+关闭连接</li>
+</ul>
+</li>
+<li><p>BGP的通告中会将网络前缀聚合（聚合相关见前面的笔记）</p>
+</li>
+<li><p>BGP分发路径信息</p>
+<ol>
+<li><p>先向邻居发起eBGP会话，将前缀可达信息传给邻居的一个网关路由器</p>
+</li>
+<li><p>网关路由器发起iBGP会话，将信息传给这个网络之中的所有路由器，这其中的网关路由器<strong>可以</strong>继续再建立新的BGP会话以进一步传递信息</p>
+<p>补充：当路由器获得新的前缀可达性信息时，会更新自己的路由表（增加了新前缀的入口）</p>
+</li>
+</ol>
+</li>
+<li><p>前缀信息包括的BGP属性</p>
+<ul>
+<li><p>AS-path——AS路径，前缀通告已经经过的AS序列</p>
+</li>
+<li><p>NEXT-hop——-下一跳，指一个路由器接口（之后在AS-PATH中加入它指向的下一个AS），它指向下一个AS</p>
+<p>补充：</p>
+<ul>
+<li><p>BGP路由=前缀+属性</p>
+</li>
+<li><p>为什么要下一跳这个属性———在一些情况下，路由的AS-path相同，通过NEXT-hop区分这些路由</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>BGP的路由选择（从多条到目的地AS的路由之中选择一条）</p>
+<ul>
+<li><p>这是一种基于策略（网管设置的）的路由（这也是选择时的首要准则）</p>
+</li>
+<li><p>选择时遵守的准则</p>
+<ul>
+<li>本地偏好值（值高的优先）</li>
+<li>最短AS-PATH—–指的是经过的AS最少，而不是经过的路由器最少</li>
+<li>最近的下一跳（NEXT-HOP）路由器（热土豆路由）</li>
+<li>附加准则</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>总结（）</p>
 
     </div>
 

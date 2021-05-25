@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -176,7 +176,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/16/database/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -189,7 +189,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/16/database/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-title-link" itemprop="url">关系数据库</a>
+          <a href="/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/" class="post-title-link" itemprop="url">计算机网络---应用层</a>
         </h2>
 
         <div class="post-meta-container">
@@ -200,14 +200,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-16 21:02:24" itemprop="dateCreated datePublished" datetime="2021-03-16T21:02:24+08:00">2021-03-16</time>
+      <time title="创建时间：2021-03-29 20:56:34" itemprop="dateCreated datePublished" datetime="2021-03-29T20:56:34+08:00">2021-03-29</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-30 19:38:01" itemprop="dateModified" datetime="2021-04-30T19:38:01+08:00">2021-04-30</time>
+        <time title="修改时间：2021-05-09 19:36:41" itemprop="dateModified" datetime="2021-05-09T19:36:41+08:00">2021-05-09</time>
       </span>
 
   
@@ -220,247 +220,274 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="关系数据库"><a href="#关系数据库" class="headerlink" title="关系数据库"></a>关系数据库</h2><h3 id="1-关系"><a href="#1-关系" class="headerlink" title="1.关系"></a>1.关系</h3><h4 id="1-1-相关概念"><a href="#1-1-相关概念" class="headerlink" title="1.1 相关概念"></a>1.1 相关概念</h4><h5 id="1-1-1-属性"><a href="#1-1-1-属性" class="headerlink" title="1.1.1 属性"></a>1.1.1 属性</h5><ul>
-<li>关系表的列</li>
-<li>列是同质的，即为同一数据类型</li>
-</ul>
-<h5 id="1-1-2-域"><a href="#1-1-2-域" class="headerlink" title="1.1.2 域"></a>1.1.2 域</h5><p>相同类型数据的集合</p>
-<h5 id="1-1-3-关系"><a href="#1-1-3-关系" class="headerlink" title="1.1.3 关系"></a>1.1.3 关系</h5><p>笛卡尔集的子集（<del>详见集合论与图论</del>）</p>
-<h5 id="1-1-4-关系模式"><a href="#1-1-4-关系模式" class="headerlink" title="1.1.4 关系模式"></a>1.1.4 关系模式</h5><p>关系的形<br>记作 R（U）,U为A1…An组成的属性集合，R是关系名<br>例：Student（学号，姓名，性别，年龄，专业）<br>Grade（学生编号，课程编号，成绩）</p>
-<h5 id="1-1-5-关系实例"><a href="#1-1-5-关系实例" class="headerlink" title="1.1.5 关系实例"></a>1.1.5 关系实例</h5><p>一个关系的任何一个“当前值”是该关系的实例</p>
-<h5 id="1-1-6-元组"><a href="#1-1-6-元组" class="headerlink" title="1.1.6 元组"></a>1.1.6 元组</h5><p>笛卡尔积得到的集合中的每一个元素</p>
-<h5 id="1-1-7-码（又称作键，-那个名为篝酱的少女）"><a href="#1-1-7-码（又称作键，-那个名为篝酱的少女）" class="headerlink" title="1.1.7 码（又称作键， 那个名为篝酱的少女）"></a>1.1.7 码（又称作键， <del>那个名为篝酱的少女</del>）</h5><h6 id="超码"><a href="#超码" class="headerlink" title="超码"></a>超码</h6><p>可以==唯一==标识一个元组的一个属性集合</p>
-<h6 id="候选码"><a href="#候选码" class="headerlink" title="候选码"></a>候选码</h6><p>唯一的一个属性集合或者属性集合组，超码是候选码的特殊表现，可存在多个</p>
-<h6 id="主码"><a href="#主码" class="headerlink" title="主码"></a>主码</h6><p>数据库设计者选择的用于区分不同元组的候选码（从候选码之中选出一个）</p>
-<h6 id="外码"><a href="#外码" class="headerlink" title="外码"></a>外码</h6><p>非关系R的候选码，而是关系S的候选码，将两个关系联系在一起</p>
-<h5 id="1-1-8-关系的第一范式"><a href="#1-1-8-关系的第一范式" class="headerlink" title="1.1.8 关系的第一范式"></a>1.1.8 关系的第一范式</h5><p>属性不可再分</p>
-<h4 id="1-2-关系的完整性"><a href="#1-2-关系的完整性" class="headerlink" title="1.2 关系的完整性"></a>1.2 关系的完整性</h4><h5 id="1-2-1-实体完整性约束"><a href="#1-2-1-实体完整性约束" class="headerlink" title="1.2.1 实体完整性约束"></a>1.2.1 实体完整性约束</h5><p>主键属性不空（不存在或者无意义）</p>
-<h5 id="1-2-2-参照完整性约束（连接两个关系）"><a href="#1-2-2-参照完整性约束（连接两个关系）" class="headerlink" title="1.2.2 参照完整性约束（连接两个关系）"></a>1.2.2 参照完整性约束（连接两个关系）</h5><p>外码在R1之中的值为空或者对应其在R2（在R2之中为主码）之中的值</p>
-<h5 id="1-2-3-用户定义的完整性"><a href="#1-2-3-用户定义的完整性" class="headerlink" title="1.2.3 用户定义的完整性"></a>1.2.3 用户定义的完整性</h5><h4 id="1-3-关系运算相关（重点）"><a href="#1-3-关系运算相关（重点）" class="headerlink" title="1.3 关系运算相关（重点）"></a>1.3 关系运算相关（重点）</h4><h5 id="1-3-1-关系代数（操作-关系得到另一个关系，一般来说由内向外进行书写）"><a href="#1-3-1-关系代数（操作-关系得到另一个关系，一般来说由内向外进行书写）" class="headerlink" title="1.3.1 关系代数（操作+关系得到另一个关系，一般来说由内向外进行书写）"></a>1.3.1 关系代数（操作+关系得到另一个关系，一般来说由内向外进行书写）</h5><ul>
-<li>并                    同一个表                    $\bigcap$</li>
-<li>差                    同一个表                     –</li>
-<li>笛卡尔积        表与表之间                 $\times$</li>
-<li>交                   同一个表                     $\bigcup$</li>
-<li>选择               同一个表                    $\sigma$                 (简单理解为select)</li>
-<li>投影               同一个表                     $\prod$               </li>
-<li>重命名           同一个表                     $\rho$</li>
-<li>除法             </li>
-<li>连接</li>
-<li>等值连接</li>
-<li>自然连接</li>
-<li>外连接</li>
-<li>全外连接</li>
-</ul>
-<h5 id="1-3-2-元组演算"><a href="#1-3-2-元组演算" class="headerlink" title="1.3.2 元组演算"></a>1.3.2 元组演算</h5><h5 id="1-3-3-域演算"><a href="#1-3-3-域演算" class="headerlink" title="1.3.3 域演算"></a>1.3.3 域演算</h5><h3 id="2-SQL语言基础"><a href="#2-SQL语言基础" class="headerlink" title="2. SQL语言基础"></a>2. SQL语言基础</h3><p>结构化查询语言，关系数据库的标准语言 </p>
-<p>操作的对象是集合，之后得到的结果也是集合</p>
-<h4 id="2-1-基本的9个引导词"><a href="#2-1-基本的9个引导词" class="headerlink" title="2.1 基本的9个引导词"></a>2.1 基本的9个引导词</h4><ul>
-<li><input disabled type="checkbox"> <table>
-<thead>
-<tr>
-<th>数据定义</th>
-<th align="center">create ,drop,alter</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>查询</td>
-<td align="center">select</td>
-</tr>
-<tr>
-<td>修改</td>
-<td align="center">insert,update,delete</td>
-</tr>
-<tr>
-<td>数据控制</td>
-<td align="center">grant,revote</td>
-</tr>
-</tbody></table>
-</li>
-</ul>
-<p>示例数据库(带下划线的为主键)</p>
-<p>Student(<u>Sno</u>,Sname,Ssex,Sage,Sdept)</p>
-<p>Course(<u>Cno</u>,Cname,Cpno,Ccredit)</p>
-<p>SC(<u>Sno</u>,Cno,Grade)</p>
-<h4 id="2-2-数据定义"><a href="#2-2-数据定义" class="headerlink" title="2.2 数据定义"></a>2.2 数据定义</h4><h5 id="2-2-1-create（创建，包括表，视图—一种虚拟的表，索引）"><a href="#2-2-1-create（创建，包括表，视图—一种虚拟的表，索引）" class="headerlink" title="2.2.1 create（创建，包括表，视图—一种虚拟的表，索引）"></a>2.2.1 create（创建，包括表，视图—一种虚拟的表，索引）</h5><ul>
-<li><p>create table  </p>
-<p>语法格式 ：</p>
-<p>create table &lt;关系名&gt; (&lt;属性名&gt; &lt;属性类型&gt;[NOT NULL], … , &lt;属性名&gt; &lt;属性类型&gt;[NOT NULL], 完整性约束1，完整性约束2,…)</p>
-<p>实例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Game</span><br><span class="line">( Name <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="keyword">null</span>,<span class="operator">/</span><span class="operator">/</span>长度可变的字符串,且非空</span><br><span class="line">NUM <span class="type">char</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">Type  <span class="type">char</span>(<span class="number">5</span>),<span class="operator">/</span><span class="operator">/</span>定长字符串</span><br><span class="line"><span class="keyword">year</span>   <span class="type">integer</span>,</span><br><span class="line"><span class="keyword">Primary</span> key (NUM))</span><br><span class="line"><span class="comment">/* 例二 */</span></span><br><span class="line">creat <span class="keyword">table</span> Course</span><br><span class="line">(</span><br><span class="line">	Cno <span class="type">char</span>(<span class="number">4</span>) <span class="keyword">primary</span> key,</span><br><span class="line">    Cname <span class="type">char</span>(<span class="number">40</span>),</span><br><span class="line">    Cpno <span class="type">char</span>(<span class="number">4</span>),</span><br><span class="line">    Ccredit <span class="type">smallint</span>,</span><br><span class="line">	<span class="keyword">foreign</span> key (Cpno) <span class="keyword">references</span> Course(Cno)<span class="comment">/*定义外键，一个非主键，参照另一个表的主键*/</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
-<li><p>create index(为加快查询而定义的)</p>
-<p>语法格式：CREATE [UNIQUE] INDEX 〈索引名〉 ON 〈关系名〉(〈列名 〉[ORDER], …,〈列名〉[ORDER]) [CLUSTER]</p>
-<p>其中 [unique]，表示索引属性是不能重复出现的，还可以是[cluster]</p>
-<p>order有两种值 ASC(升序)或者DESC(降序)</p>
-<p>create unique index NUM on Game(NUM ASC) cluster</p>
-</li>
-</ul>
-<h5 id="2-2-2-drop-删除"><a href="#2-2-2-drop-删除" class="headerlink" title="2.2.2 drop (删除)"></a>2.2.2 drop (删除)</h5><ul>
-<li><p>drop table（删除整个表）</p>
-<p>语法格式：</p>
-<p>drop table  &lt;关系名&gt;</p>
-</li>
-<li><p>drop index</p>
-<p>语法格式：</p>
-<p>drop index&lt;索引名&gt;</p>
-</li>
-<li><p>drop </p>
-</li>
-</ul>
-<h5 id="2-2-3-alter-（修改）"><a href="#2-2-3-alter-（修改）" class="headerlink" title="2.2.3 alter （修改）"></a>2.2.3 alter （修改）</h5><ul>
-<li><p>alter table（增加或减少一列）</p>
-<p>语法格式：</p>
-<p>alter table &lt;关系名&gt; ADD(增加)|DROP(删除)&lt;列名&gt;&lt;列类型&gt;</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*例1*/</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Student <span class="keyword">add</span> S_entrance <span class="type">DATE</span>;<span class="comment">/*新增加一列，列名为S_entrance,数据类型为DATE*/</span></span><br><span class="line"><span class="comment">/*例2*/</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Course <span class="keyword">add</span> <span class="keyword">UNIQUE</span>(Cname);<span class="comment">/*添加完整性约束*/</span></span><br></pre></td></tr></table></figure></li>
-<li><p>alter index &lt;旧索引名&gt;rename to &lt;新索引名&gt;</p>
-</li>
-</ul>
-<h4 id="2-3-查询"><a href="#2-3-查询" class="headerlink" title="2.3 查询"></a>2.3 查询</h4><h5 id="2-3-1-单表查询（只有一个表，一般为查找一个表的一列或者多列）"><a href="#2-3-1-单表查询（只有一个表，一般为查找一个表的一列或者多列）" class="headerlink" title="2.3.1 单表查询（只有一个表，一般为查找一个表的一列或者多列）"></a>2.3.1 单表查询（只有一个表，一般为查找一个表的一列或者多列）</h5><p>​    有一个表 Game(Gname, Gsize, Gtype, Gyear)</p>
+          <h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><h3 id="1-应用层协议原理"><a href="#1-应用层协议原理" class="headerlink" title="1. 应用层协议原理"></a>1. 应用层协议原理</h3><h4 id="1-1-体系结构（了解）"><a href="#1-1-体系结构（了解）" class="headerlink" title="1.1 体系结构（了解）"></a>1.1 体系结构（了解）</h4><p>C/S (客户机/服务器)</p>
+<p>服务器对外提供服务（不间断，一般有大量的服务器），客户机使用服务器提供的服务，不会和其他客户机直接的通信</p>
+<p>P2P (点对点)</p>
+<p>端系统或者节点之间直接通信</p>
+<p>C/S+P2P（混合）</p>
+<h4 id="1-2-网络应用进程通信（进程的定义参照操作系统）"><a href="#1-2-网络应用进程通信（进程的定义参照操作系统）" class="headerlink" title="1.2 网络应用进程通信（进程的定义参照操作系统）"></a>1.2 网络应用进程通信（进程的定义参照操作系统）</h4><p>1.2.1 过程（一般为不同主机之间）</p>
+<p>通过网络交换报文进行通信，包括发送进程（向网络中发送报文）和接受进程（回送报文进行响应）</p>
+<p>1.2.2 套接字（socket，又名编程接口，api）</p>
+<p>应用层和运输层之间（进程与计算机网络之间）的接口，在创建一个因特网应用之后，通过套接字选择一个运输层协议（UDP或TCP），还可以设置一些相关参数。</p>
+<p>1.2.3 进程寻址*(如何去寻找另一台主机上的进程)</p>
+<p>流程：找主机（IP地址标识是哪一个主机）—&gt;找进程（用端口号–port number–标识）</p>
+<p>1.2.4 用户和网络应用之间的接口</p>
+<h4 id="1-3-应用层协议（RFC文档中有各种协议的详细说明）"><a href="#1-3-应用层协议（RFC文档中有各种协议的详细说明）" class="headerlink" title="1.3 应用层协议（RFC文档中有各种协议的详细说明）"></a>1.3 应用层协议（RFC文档中有各种协议的详细说明）</h4><p>1.3.1 内容</p>
 <ul>
-<li><p>查询指定列(例子中的名称和大小)</p>
-<p><strong>Select</strong> Sname, Ssize</p>
-<p><strong>From</strong> Game;</p>
-</li>
-<li><p>查询全部</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Select  *</span><br><span class="line">From Game;</span><br></pre></td></tr></table></figure></li>
-<li><p>distinct 去除重复的</p>
-</li>
-<li><p>查符合条件的元组</p>
-<p>where子句用于附加查询的条件，作用于基表或者视图( between and, not between and, in , not in, like, not like, and, or, is null)</p>
-<p>例1 2001到2020年发行的游戏的名称</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> Sname</span><br><span class="line"><span class="keyword">From</span> Game</span><br><span class="line"><span class="keyword">Where</span> <span class="keyword">year</span> <span class="keyword">between</span> <span class="number">2001</span> <span class="keyword">and</span> <span class="number">2020</span>;</span><br></pre></td></tr></table></figure>
-
-<p>Escape短语</p>
-<p>在字符匹配，由于转义，如%，_之类的符号</p>
-<p>例2 以”sum_”开头的游戏名</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">From</span> Game</span><br><span class="line"><span class="keyword">Where</span> Gname <span class="keyword">like</span> ‘sum\_<span class="string">&#x27;escape&#x27;</span>\’;`</span><br></pre></td></tr></table></figure></li>
-<li><p>对结果排序(ASC是升序DESC是降序)</p>
-<p>例3</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> Sname</span><br><span class="line"><span class="keyword">From</span> Game</span><br><span class="line"><span class="keyword">Where</span> <span class="keyword">year</span> <span class="keyword">between</span> <span class="number">2001</span> <span class="keyword">and</span> <span class="number">2020</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">year</span> <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure></li>
-<li><p>聚集函数（6种，SUM,AVG,MAX,MIN,COUNT,COUNT(*)）</p>
-<p>例4 统计游戏个数</p>
-<p><code>Select count(*) From Game;</code></p>
-</li>
-<li><p>结果分组</p>
-<p>Group by 按某一会重复出现的列属性分组</p>
-<p>Having 为分组添加筛选条件，只有满足条件的分组才会出现</p>
-<p><strong>备注：Having和where的区别，简单来说就是先后顺序的区别，where在分组前筛选，having再分组之后筛选</strong></p>
-</li>
+<li>交换的报文（消息）类型（请求还是响应）</li>
+<li>报文（消息）类型的语法（格式）</li>
+<li>字段的语义</li>
+<li>进程什么时侯发送报文</li>
+<li>进程怎么发送报文</li>
+<li>进程对报文进行响应的规划</li>
 </ul>
-<h5 id="2-3-2连接查询（包括多个表）"><a href="#2-3-2连接查询（包括多个表）" class="headerlink" title="2.3.2连接查询（包括多个表）"></a>2.3.2连接查询（包括多个表）</h5><ul>
-<li><p>$\theta$连接</p>
+<p>1.3.2 应用层使用的服务（服务需求）</p>
 <ul>
-<li><p>使用select-from-where的表示方法</p>
-<p>在from之后</p>
-<p>from student, SC</p>
-<p>where student.no=SC.no</p>
-</li>
-<li><p>使用R join S on &lt; 连接条件 &gt;  的方法</p>
-<p>在from之后 from student join SC on student.no = SC.no</p>
-</li>
+<li>可靠数据传输（某些应用可以允许丢失一部分数据，某些必须100%可靠）</li>
+<li>吞吐量（带宽）</li>
+<li>定时（时延）</li>
+<li>安全性</li>
 </ul>
-</li>
-<li><p>自然连接</p>
-<p>使用natural join 关键字</p>
-<p>在from之后  from student natural join SC</p>
-</li>
-<li><p>自联结</p>
-<p>在from之后</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> course.first, course.second</span><br><span class="line"><span class="keyword">where</span> first.Cpno <span class="operator">=</span> second.Cno</span><br></pre></td></tr></table></figure></li>
-<li><p>外连接</p>
-</li>
-<li><p>内连接</p>
-</li>
-<li><p>多表连接</p>
-</li>
-</ul>
-<h5 id="2-3-3嵌套查询（一个查询嵌在另一个里面）"><a href="#2-3-3嵌套查询（一个查询嵌在另一个里面）" class="headerlink" title="2.3.3嵌套查询（一个查询嵌在另一个里面）"></a>2.3.3嵌套查询（一个查询嵌在另一个里面）</h5><ul>
-<li>in和not in的子查询</li>
-<li>相关子程序和不相关子查询</li>
-<li>exist和not exist的子查询***</li>
-<li>带any或all的子查序</li>
-<li>比较运算符的子查询</li>
-</ul>
-<h5 id="2-3-4集合查询"><a href="#2-3-4集合查询" class="headerlink" title="2.3.4集合查询"></a>2.3.4集合查询</h5><ul>
-<li>并，交，差</li>
-</ul>
-<h4 id="2-4-修改数据"><a href="#2-4-修改数据" class="headerlink" title="2.4 修改数据"></a>2.4 修改数据</h4><ul>
-<li><p>插入单个元组（insert，注意要避免破坏完整性约束）</p>
-<p>语法格式</p>
-<p>Insert </p>
-<p>into &lt;表名&gt;</p>
-<p>values（‘常量1’，‘常量2’…..）</p>
-<p>例</p>
-<p>INSERT </p>
-<p>INTO Student </p>
-<p>VALUES (‘ 200215130’ ， ‘陈冬’ ， ‘男’ ，18 ， ‘CS’)；</p>
-</li>
-<li><p>插入子查询结果，原来的value处改为一个子查询</p>
-</li>
-<li><p>update关键字</p>
-<p>语法格式</p>
-<p>UPDATE &lt;表名&gt; </p>
-<p>SET &lt;列名&gt;=&lt;表达式&gt;[，&lt;列名&gt;=&lt;表达式&gt;]… </p>
-<p>[WHERE &lt;条件&gt;]；</p>
-</li>
-</ul>
-<h3 id="3-数据库安全性，完整性（用SQL实现）"><a href="#3-数据库安全性，完整性（用SQL实现）" class="headerlink" title="3.数据库安全性，完整性（用SQL实现）"></a>3.数据库安全性，完整性（用SQL实现）</h3><h4 id="3-1-基本概念"><a href="#3-1-基本概念" class="headerlink" title="3.1 基本概念"></a>3.1 基本概念</h4><h5 id="3-1-1安全性"><a href="#3-1-1安全性" class="headerlink" title="3.1.1安全性"></a>3.1.1安全性</h5><ul>
-<li>不允许恶意修改或者未经授权的存取和修改</li>
-</ul>
-<h5 id="3-1-2完整性（为保障数据正确性，相容性，添加的约束条件和规则）"><a href="#3-1-2完整性（为保障数据正确性，相容性，添加的约束条件和规则）" class="headerlink" title="3.1.2完整性（为保障数据正确性，相容性，添加的约束条件和规则）"></a>3.1.2完整性（为保障数据正确性，相容性，添加的约束条件和规则）</h5><ul>
-<li>语义完整性（重点）</li>
-<li>并发控制，安全控制，DB回复等</li>
-</ul>
-<h4 id="3-2-控制安全性"><a href="#3-2-控制安全性" class="headerlink" title="3.2 控制安全性"></a>3.2 控制安全性</h4><h5 id="3-2-1授权"><a href="#3-2-1授权" class="headerlink" title="3.2.1授权"></a>3.2.1授权</h5><p>语法格式</p>
-<p>GRANT &lt;权限&gt; [, 权限] …</p>
-<p>ON &lt;对象类型&gt; &lt;对象名&gt; [, &lt;对象类型&gt; &lt;对象名&gt; ] …</p>
-<p>TO &lt;用户&gt; [,用户] … [WITH GRANT OPTION];</p>
-<p>例</p>
-<p>Grant select </p>
-<p>on table game</p>
-<p>to krzkrz;</p>
-<h5 id="3-2-2-权限回收"><a href="#3-2-2-权限回收" class="headerlink" title="3.2.2 权限回收"></a>3.2.2 权限回收</h5><p>REVOKE &lt;权限&gt; [, 权限] … </p>
-<p>ON &lt;对象类型&gt; &lt;对象名&gt; [, &lt;对象类型&gt; &lt;对象名&gt;] </p>
-<p>FROM &lt;用户&gt; [, 用户] … [CASCADE | RESTRICT]</p>
-<h5 id="3-2-3-存取控制机制"><a href="#3-2-3-存取控制机制" class="headerlink" title="3.2.3 存取控制机制"></a>3.2.3 存取控制机制</h5><p>常用方法</p>
+<p>1.3.3 Internet的传输服务（TCP，UDP，详见传输层）</p>
+<h3 id="2-HTTP（超文本传输协议，定义了报文格式和交换报文的方式）"><a href="#2-HTTP（超文本传输协议，定义了报文格式和交换报文的方式）" class="headerlink" title="2. HTTP（超文本传输协议，定义了报文格式和交换报文的方式）"></a>2. HTTP（超文本传输协议，定义了报文格式和交换报文的方式）</h3><h4 id="2-1-相关概念解释"><a href="#2-1-相关概念解释" class="headerlink" title="2.1 相关概念解释"></a>2.1 相关概念解释</h4><p>2.1.1 web页 </p>
+<p>若干对象组成的一个界面</p>
+<p>2.1.2 对象</p>
+<p>像是HTML，JPEG，Java程序之类的文件，地址用URL来表示</p>
+<p>2.1.3 URL</p>
+<p>统一资源定位符，组成包括两部分，主机名+路径名</p>
+<p>2.1.4 浏览器</p>
+<p>web应用的用户代理（客户机端）</p>
+<p>2.1.5 web服务器</p>
+<p>存储微博对象的地方（服务器端）</p>
+<p>2.1.6 HTTP的工作</p>
+<p>定义了Web客户向web服务器请求web页面的方式，以及服务器向客户传送web页面的方式</p>
+<p>补充 </p>
 <ul>
-<li>强制存取机制（MAC）发生在DAC之后<ul>
-<li>主体和客体</li>
-<li>敏感度</li>
-<li>只能修改（写）同级或者更高级（此时数据未泄漏）的相关数据</li>
+<li>HTTP使用C/S架构<ul>
+<li>客户（browser），请求接收展示web对象</li>
+<li>服务器（web server），响应请求，发送对象</li>
 </ul>
 </li>
 </ul>
-<h5 id="3-2-4-审计"><a href="#3-2-4-审计" class="headerlink" title="3.2.4 审计"></a>3.2.4 审计</h5><p>在SQL语言之中，用audit，noaudit  </p>
-<h5 id="3-2-5-数据加密"><a href="#3-2-5-数据加密" class="headerlink" title="3.2.5 数据加密"></a>3.2.5 数据加密</h5><h4 id="3-3完整性控制"><a href="#3-3完整性控制" class="headerlink" title="3.3完整性控制"></a>3.3完整性控制</h4><h5 id="3-3-1-包括的几个方面"><a href="#3-3-1-包括的几个方面" class="headerlink" title="3.3.1 包括的几个方面"></a>3.3.1 包括的几个方面</h5><h5 id="3-3-2-域完整性"><a href="#3-3-2-域完整性" class="headerlink" title="3.3.2 域完整性"></a>3.3.2 域完整性</h5><p>not null</p>
-<p>unique</p>
-<p>default</p>
-<p>check(逻辑表达式,或者查询子句)</p>
-<h5 id="3-3-3-参照完整性"><a href="#3-3-3-参照完整性" class="headerlink" title="3.3.3 参照完整性"></a>3.3.3 参照完整性</h5><p>某些操作会破坏完整性</p>
-<p>系统采用以下策略 拒绝，级联，设为空值</p>
-<p>例如on update cascade ，on delete no action之类的语句</p>
-<h5 id="3-3-4用户自定义完整性"><a href="#3-3-4用户自定义完整性" class="headerlink" title="3.3.4用户自定义完整性"></a>3.3.4用户自定义完整性</h5><ul>
-<li><p>完整系约束命名子句</p>
-<p>语法结构</p>
-<p>constraint 完整性约束条件名 完整性约束条件(包括 not null, unique, primary  )</p>
-</li>
-</ul>
+<h4 id="2-2-HTTP的工作过程"><a href="#2-2-HTTP的工作过程" class="headerlink" title="2.2 HTTP的工作过程"></a>2.2 HTTP的工作过程</h4><p>服务器在80端口等待请求—-&gt;建立TCP连接（创建套接字）—-&gt;交换报文—-&gt;关闭连接</p>
+<p>补充说明：</p>
 <ul>
-<li><p>断言assertion（复杂的完整性约束）</p>
-<p>语法结构</p>
-<p>create assertion 断言名</p>
-<p>drop assertion 断言名</p>
-</li>
-<li><p>触发器 trigger（由用户的操作激活）</p>
-<p>触发事件（insert, delete, update, 或者前三个的组合）</p>
-<p>按间隔划分</p>
+<li>使用TCP作为运输协议</li>
+<li>服务器向客户发送被请求的文件，但不存储任何关于该客户的状态信息（无状态协议）</li>
+</ul>
+<h4 id="2-3-HTTP连接方式"><a href="#2-3-HTTP连接方式" class="headerlink" title="2.3 HTTP连接方式"></a>2.3 HTTP连接方式</h4><p>2.3.1 非持续性连接（一个TCP连接只传送一个web对象）</p>
+<p><strong>过程</strong>（在浏览器输入URL之后，按时间顺序进行）</p>
 <ol>
-<li><p>行级触发器</p>
-</li>
-<li><p>语句级触发器</p>
-</li>
+<li>客户端向HTTP服务器进程（80端口）发起TCP连接请求                                                     ——-&gt;</li>
+<li>服务器在80端口等待TCP连接请求，接受连接之后向客户端发出通知                                &lt;——-</li>
+<li>客户机下将HTTP请求消息（请求报文）（包括URL，表名客户端需要的对象）通过TCP的套接字发出       —–&gt;</li>
+<li>服务器收到请求消息（请求报文）之后将其解析，将客户端请求的对象封装进响应消息，通过套接字发回给客户端                                                                                                                                            &lt;=====   </li>
+<li>服务器关闭TCP连接</li>
+<li>客户端收到消息之后解析，并且将收到的对象显示出来（只能显示一个对象，如果还需要其他对象就继续重复上面的步骤）</li>
 </ol>
-<p>rollback（理解为撤销）</p>
+<p><strong>性能分析</strong></p>
+<ul>
+<li><p>响应时间</p>
+<p>获得一个对象的时间2RTT+文件发送时间</p>
 </li>
 </ul>
+<p>2.3.2 持续性连接（一个TCP连接传送多个web对象）</p>
+<p>过程   1-4同非持续性连接，5不断开TCP连接,后续仍然通过这个连接发送HTTP消息</p>
+<ul>
+<li>无流水机制（客户段收到前一个响应后，再发请求）</li>
+<li>带流水机制（客户端可以不接收响应就尽快发出下一个请求）</li>
+</ul>
+<h4 id="2-4-报文格式"><a href="#2-4-报文格式" class="headerlink" title="2.4 报文格式"></a>2.4 报文格式</h4><p>2.4.1 HTTP请求报文（ASCII书写）</p>
+<p>请求行（方法字段+URL字段+HTTP版本）+首部行（<strong>可扩展</strong>）+消息体（Entity Body）</p>
+<p>补充：</p>
+<ul>
+<li><p>首部包括多个内容，如host，user-agent，connection等，可以根据单词推测意义，格式为</p>
+<p>header field name: value（是可扩展的） </p>
+</li>
+<li><p>方法字段</p>
+<ul>
+<li>post方法</li>
+<li>head方法</li>
+<li>get方法</li>
+<li>put方法</li>
+<li>delete方法</li>
+</ul>
+</li>
+</ul>
+<p>2.4.2 HTTP响应报文</p>
+<p>状态行（版本+状态码+短语）+首部行（<strong>可扩展</strong>）+实体体</p>
+<p>补充： </p>
+<ul>
+<li>首部行中Last-Modified和Date的区别</li>
+<li>实体体中包含客户端请求的对象本体</li>
+<li><strong>状态码</strong>，与<strong>短语</strong>相对应，指示出了请求的结果<ul>
+<li>200 OK</li>
+<li>301 Moved Permanently</li>
+<li>400 Bad Request</li>
+<li>404 Not Found</li>
+<li>505 HTTP Version Not Support</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-5-cookie技术"><a href="#2-5-cookie技术" class="headerlink" title="2.5 cookie技术"></a>2.5 cookie技术</h4><p>2.5.1 定义</p>
+<p>客户端保存用户信息（用户的访问记录）的一种机制，它允许站点对用户进行追踪，为了辨别用户身份，架设在HTTP之上</p>
+<p>2.5.2 四个组件</p>
+<ul>
+<li>HTTP响应报文的cookie头部行</li>
+<li>HTTP请求报文的cookie头部行</li>
+<li>保存在客户端主机上的cookie文件，有浏览器管理</li>
+<li>web服务器的后台数据库</li>
+</ul>
+<p>2.5.3工作过程</p>
+<p>客户端第一次访问向服务器发送连接请求，服务器创建一个唯一的id（会存入web服务器后台数据库），并将id封装在响应报文中传给客户端，客户端会将id存入本地的cookie文件，此后该服务器就可以通过id辨识该用户。</p>
+<p>补充：session相关（<del>日后再慢慢补充吧</del>）</p>
+<h4 id="2-6-web缓存技术"><a href="#2-6-web缓存技术" class="headerlink" title="2.6 web缓存技术"></a>2.6 web缓存技术</h4><p>2.6.1 功能（性能优化）</p>
+<p>在不访问服务器的前提下满足客户端的HTTP请求</p>
+<p>可以缩短用户请求的响应时间，减少流量</p>
+<p>2.6.2 web缓存器（代理服务器）</p>
+<p>存在于客户和服务器之间</p>
+<p>浏览器向代理服务器发送<strong>所有</strong>HTTP请求（若没有请求的对象，则由代理服务器向服务器请求该对象并返回给客户端，同时保存该对象）</p>
+<p>一般由组织（ISP网络服务提供商）建立</p>
+<p>2.6.3 性能分析（实例展示）</p>
+<p>2.6.4 问题分析</p>
+<ul>
+<li>缓存与服务器是否一致<ul>
+<li>条件性get方法</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-电子邮件"><a href="#3-电子邮件" class="headerlink" title="3. 电子邮件"></a>3. 电子邮件</h3><h4 id="3-1-邮件系统的组成部分"><a href="#3-1-邮件系统的组成部分" class="headerlink" title="3.1 邮件系统的组成部分"></a>3.1 邮件系统的组成部分</h4><p>3.1.1 邮件客户端</p>
+<p>3.1.2 邮件服务器</p>
+<p>3.1.3 简单邮件传输协议（SMTP）</p>
+<h4 id="3-2-SMTP协议"><a href="#3-2-SMTP协议" class="headerlink" title="3.2 SMTP协议"></a>3.2 SMTP协议</h4><h4 id="3-3-报文协议"><a href="#3-3-报文协议" class="headerlink" title="3.3 报文协议"></a>3.3 报文协议</h4><h4 id="3-4-邮件访问协议"><a href="#3-4-邮件访问协议" class="headerlink" title="3.4 邮件访问协议"></a>3.4 邮件访问协议</h4><p>3.4.1 </p>
+<p>3.4.2 POP3</p>
+<p>3.4.3 IMAP</p>
+<p>3.4.4 基于web的电子邮件</p>
+<h3 id="4-DNS（Domain-Name-System采用UDP传输协议）"><a href="#4-DNS（Domain-Name-System采用UDP传输协议）" class="headerlink" title="4. DNS（Domain Name System采用UDP传输协议）"></a>4. DNS（Domain Name System采用UDP传输协议）</h3><h4 id="4-1-DNS提供的服务-解决Internet上主机或路由器的识别问题"><a href="#4-1-DNS提供的服务-解决Internet上主机或路由器的识别问题" class="headerlink" title="4.1 DNS提供的服务(解决Internet上主机或路由器的识别问题)"></a>4.1 DNS提供的服务(解决Internet上主机或路由器的识别问题)</h4><p>4.1.1 标识主机的两种方式</p>
+<ul>
+<li>主机名   如<a target="_blank" rel="noopener" href="http://www.google.com之类的便于人记忆的名称/">www.google.com之类的便于人记忆的名称</a></li>
+<li>IP地址    一串数字，便于路由器处理，如192.165.153.11（<del>自己瞎写的</del>，详细介绍看网络层相关）</li>
+</ul>
+<p>4.1.2 DNS（域名系统）的地址转换服务</p>
+<ul>
+<li><p>功能是实现主机名到IP地址转换的系统（翻译）</p>
+</li>
+<li><p>是一个DNS服务器实现分布式数据库(它允许主机查询分布式数据库的应用层协议)</p>
+</li>
+<li><p>通常被其他应用层协议使用</p>
+</li>
+</ul>
+<p><strong>具体过程</strong>：</p>
+<p>用户主机运行着NDS应用的客户端—–&gt;浏览器解析URL之中的主机名，并发送给客户端——-&gt;客户端向DNS服务器发送请求（包括主机名）———&gt;客户端收到含主机IP地址的回答报文———-&gt;浏览器向该IP地址的HTTP服务器发起TCP连接</p>
+<p>4.1.3 主机名转换为IP地址之外的其他服务</p>
+<ul>
+<li><p>主机别名    </p>
+</li>
+<li><p>邮件服务器名</p>
+</li>
+<li><p>负载分配（负载均衡）</p>
+</li>
+</ul>
+<h4 id="4-2-工作原理相关"><a href="#4-2-工作原理相关" class="headerlink" title="4.2 工作原理相关"></a>4.2 工作原理相关</h4><p>4.2.1 不使用集中式设计（不好）</p>
+<p>存在的问题</p>
+<ul>
+<li>单点失败（一旦应该服务器坏了，互联网就崩了）</li>
+<li>流量问题</li>
+<li>距离问题</li>
+<li>维护性问题</li>
+</ul>
+<p>4.2.2 分布式，层次数据库</p>
+<ul>
+<li><p>三种类型的DNS服务器（总体结构是树）                   </p>
+<ul>
+<li>根DNS服务器（最上层）     全球共13个</li>
+<li>顶级域DNS服务器（第二层）      负责com, org, net, edu等顶级域名和国家级顶级域名（cn，uk等）</li>
+<li>权威DNS服务器（最底层）      组织内部的域名解析服务器</li>
+</ul>
+</li>
+<li><p>客户要查询IP时的过程（例，<a target="_blank" rel="noopener" href="http://www.amazon.com)/">www.amazon.com）</a></p>
+<ul>
+<li><p>查询根服务器，找com域名（客户端第一次查询</p>
+</li>
+<li><p>到第二层的com域名解析服务器，找amazon.com（客户端第二次查询</p>
+</li>
+<li><p>到第三层amazon.com域名解析器，获取IP地址（客户端第三次查询</p>
+</li>
+<li><p>上层包括了下层的地址，用来告诉客户端下一次查询去那里</p>
+</li>
+</ul>
+</li>
+<li><p>本地DNS服务器</p>
+<ul>
+<li>在一个组织内起<strong>代理</strong>作用，相关补充如下<ul>
+<li>会接收组织内所有用户发来的查询请求，做代理帮助用户查IP</li>
+<li>存在缓存，要缓存域名到IP之间的映射（解析之后立刻完成），一般缓存顶级域服务器的映射</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>加上本地DNS之后的访问过程</p>
+<ul>
+<li><p>迭代查询</p>
+<ol>
+<li><p>先向本地DNS服务器发请求</p>
+</li>
+<li><p>本地DNS作为代理</p>
+</li>
+<li></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/image-20210506215416439.png" alt="image-20210506215416439"></p>
+<ul>
+<li>递归查询</li>
+</ul>
+<h4 id="4-3-DNS记录和报文"><a href="#4-3-DNS记录和报文" class="headerlink" title="4.3 DNS记录和报文"></a>4.3 DNS记录和报文</h4><p>4.3.1 资源记录（四元组）</p>
+<p>主机名称到IP的映射，存储DNS服务器中，包括的字段：ttl，value，name，type</p>
+<ul>
+<li>Type=A的情况<ul>
+<li>Name为主机的域名，value为IP地址</li>
+</ul>
+</li>
+<li>Type=NS的情况<ul>
+<li>Name为一个域，value为该权威域名解析服务器的主机域名</li>
+</ul>
+</li>
+<li>Type=CNAME的情况<ul>
+<li>name为某一真实域名的别名</li>
+<li>value是真实的域名</li>
+</ul>
+</li>
+<li>Type=MX的情况<ul>
+<li>value是name对应的邮件服务器</li>
+</ul>
+</li>
+</ul>
+<p>4.3.2 DNS报文</p>
+<ul>
+<li>语义 <ul>
+<li>首部区域</li>
+<li>问题区域</li>
+<li>回答区域</li>
+<li>权威区域</li>
+<li>附加区域</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-P2P（了解即可）"><a href="#5-P2P（了解即可）" class="headerlink" title="5. P2P（了解即可）"></a>5. P2P（了解即可）</h3><h3 id="6-套接字编程（在用户的机器上开发）"><a href="#6-套接字编程（在用户的机器上开发）" class="headerlink" title="6. 套接字编程（在用户的机器上开发）"></a>6. 套接字编程（在用户的机器上开发）</h3><p>6.1 演示套接字编程的程序的过程</p>
+<p>客户发送一串字符到服务器—–&gt;服务器接收到数据之后将字符转换为大写——&gt;服务器将修改后的数据发送给客户—–&gt;客户接受到后在显示器上显示该行数据</p>
+<p>6.2 UDP实现</p>
+<p>6.2.1抽象</p>
+<p>不需要建立连接，封装信息后生成分组再发送</p>
+<p>6.2.2 应用程序</p>
+<p>产生输入流，建立套接字——&gt;输入—–&gt;封装——-&gt;发送</p>
+<p>6.3 TCP实现</p>
+<p>6.3.1 抽象的过程</p>
+<p>先建立连接（1. 创建本地套接字，指定服务器进程的地址—–IP+端口 2. 服务器接到请求之后，建立自己的套接字，之后建立TCP连接），再传输数据（通过TCP连接建立的管道，进行可靠的数据传输）</p>
+<p>6.3.2 在应用程序中</p>
+<p>产生输入输出流，建立两边的套接字—–&gt;输入—–&gt;发送——&gt;接收—–&gt;显示</p>
 
       
     </div>
@@ -480,7 +507,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

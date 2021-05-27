@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
 
-<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;zrk494.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;zrk494.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Pisces&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
 <meta name="description" content="进程1. 基本概念1.1 任务（task）和作业（job）的区别 简单来说，作业就是任务的一个实例（类比类和对象的概念） 1.2 程序和进程的区别 程序是被动的，进程是活动的，当程序被载入内存的时候，这个程序就成了进程 1.3进程的结构形式（组成部分） 1.3.1代码块（文本段） 包括程序代码 1.3.2栈 包括函数参数，返回值，局部变量 1.3.3数据段 包含全局变量 1.3.4堆 程序运行过程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统--进程管理">
@@ -27,11 +27,15 @@
 <meta property="og:site_name" content="post">
 <meta property="og:description" content="进程1. 基本概念1.1 任务（task）和作业（job）的区别 简单来说，作业就是任务的一个实例（类比类和对象的概念） 1.2 程序和进程的区别 程序是被动的，进程是活动的，当程序被载入内存的时候，这个程序就成了进程 1.3进程的结构形式（组成部分） 1.3.1代码块（文本段） 包括程序代码 1.3.2栈 包括函数参数，返回值，局部变量 1.3.3数据段 包含全局变量 1.3.4堆 程序运行过程">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zrk494.github.io/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/image-20210527212717964.png">
+<meta property="og:image" content="http://zrk494.github.io/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/image-20210527223418825.png">
+<meta property="og:image" content="http://zrk494.github.io/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/image-20210527212746572.png">
 <meta property="article:published_time" content="2021-03-31T12:46:26.000Z">
-<meta property="article:modified_time" content="2021-05-04T08:29:46.931Z">
+<meta property="article:modified_time" content="2021-05-27T15:22:38.862Z">
 <meta property="article:author" content="zrk">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zrk494.github.io/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/image-20210527212717964.png">
 
 
 <link rel="canonical" href="http://zrk494.github.io/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/">
@@ -73,6 +77,7 @@
       <h1 class="site-title">post</h1>
       <i class="logo-line"></i>
     </a>
+      <img class="custom-logo-image" src="/images/custom-logo.jpg" alt="post">
   </div>
 
   <div class="site-nav-right">
@@ -116,7 +121,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">进程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">1. 基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%BF%9B%E7%A8%8B%E7%9A%84%E8%B0%83%E5%BA%A6"><span class="nav-number">1.2.</span> <span class="nav-text">2. 进程的调度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E9%98%9F%E5%88%97%EF%BC%88%E9%87%8C%E9%9D%A2%E5%AD%98%E5%82%A8%E7%9A%84%E6%98%AFPCB%E5%9D%97%EF%BC%8C%E7%BB%84%E7%BB%87%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%BD%A2%E5%BC%8F%EF%BC%89"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">2.1.1 进程调度队列（里面存储的是PCB块，组织进程的形式）</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-1-1-%E8%AE%BE%E5%A4%87%E9%98%9F%E5%88%97"><span class="nav-number">1.2.1.1.1.</span> <span class="nav-text">2.1.1.1 设备队列</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-1-2-%E5%B0%B1%E7%BB%AA%E9%98%9F%E5%88%97"><span class="nav-number">1.2.1.1.2.</span> <span class="nav-text">2.1.1.2 就绪队列</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-1-3%E4%BD%9C%E4%B8%9A%E9%98%9F%E5%88%97"><span class="nav-number">1.2.1.1.3.</span> <span class="nav-text">2.1.1.3作业队列</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-1-4%E9%98%9F%E5%88%97%E5%9B%BE"><span class="nav-number">1.2.1.1.4.</span> <span class="nav-text">2.1.1.4队列图</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2-%E8%B0%83%E5%BA%A6%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">2.1.2 调度程序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-3-%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">2.1.3 上下文切换</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-CPU%E8%B0%83%E5%BA%A6"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 CPU调度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-1-%E8%B0%83%E5%BA%A6%E5%87%86%E5%88%99"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">2.2.1 调度准则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">2. 调度算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 多线程调度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 多处理器调度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-%E5%AE%9E%E6%97%B6%E8%B0%83%E5%BA%A6"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 实时调度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%BF%9B%E7%A8%8B%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">3. 进程操作过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E8%BF%9B%E7%A8%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%EF%BC%88%E4%BE%BF%E4%BA%8E%E8%BF%9B%E7%A8%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8D%8F%E4%BD%9C%E5%B7%A5%E4%BD%9C%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">4. 进程之间的通信（便于进程之间的协作工作）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8"><span class="nav-number">1.5.</span> <span class="nav-text">5. 远程调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%EF%BC%88thread%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">线程（thread）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">1. 概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E7%94%A8%E6%88%B7%E8%BF%9B%E7%A8%8B"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.2 用户进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E5%86%85%E6%A0%B8%E8%BF%9B%E7%A8%8B"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 内核进程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">2. 多线程模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%BA%BF%E7%A8%8B%E5%BA%93"><span class="nav-number">2.3.</span> <span class="nav-text">3. 线程库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98"><span class="nav-number">2.4.</span> <span class="nav-text">4. 多线程问题</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">进程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">1. 基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%BF%9B%E7%A8%8B%E7%9A%84%E8%B0%83%E5%BA%A6%E6%A6%82%E8%BF%B0%EF%BC%88%E4%BB%8B%E7%BB%8D%E6%A6%82%E5%BF%B5%E4%B8%BA%E4%B8%BB%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">2. 进程的调度概述（介绍概念为主）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E9%98%9F%E5%88%97%EF%BC%88%E9%87%8C%E9%9D%A2%E5%AD%98%E5%82%A8%E7%9A%84%E6%98%AFPCB%E5%9D%97%EF%BC%8C%E7%BB%84%E7%BB%87%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%BD%A2%E5%BC%8F%EF%BC%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 进程调度队列（里面存储的是PCB块，组织进程的形式）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1-%E8%AE%BE%E5%A4%87%E9%98%9F%E5%88%97"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">2.1.1 设备队列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2-%E5%B0%B1%E7%BB%AA%E9%98%9F%E5%88%97"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">2.1.2 就绪队列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-3%E4%BD%9C%E4%B8%9A%E9%98%9F%E5%88%97"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">2.1.3作业队列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-4%E9%98%9F%E5%88%97%E5%9B%BE"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">2.1.4队列图</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E8%B0%83%E5%BA%A6%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 调度程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 上下文切换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%BF%9B%E7%A8%8B%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">3. 进程操作过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 进程创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E8%BF%9B%E7%A8%8B%E7%BB%88%E6%AD%A2"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 进程终止</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E8%BF%9B%E7%A8%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%EF%BC%88%E4%BE%BF%E4%BA%8E%E8%BF%9B%E7%A8%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8D%8F%E4%BD%9C%E5%B7%A5%E4%BD%9C%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">4. 进程之间的通信（便于进程之间的协作工作）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-%E4%B8%A4%E7%A7%8D%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 两种通信模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%AE%A1%E9%81%93"><span class="nav-number">1.5.</span> <span class="nav-text">5. 管道</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-%E6%99%AE%E9%80%9A%E7%AE%A1%E9%81%93"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2 普通管道</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-%E5%91%BD%E5%90%8D%E7%AE%A1%E9%81%93"><span class="nav-number">1.5.3.</span> <span class="nav-text">5.3 命名管道</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -129,7 +134,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -212,7 +217,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-05-04 16:29:46" itemprop="dateModified" datetime="2021-05-04T16:29:46+08:00">2021-05-04</time>
+        <time title="修改时间：2021-05-27 23:22:38" itemprop="dateModified" datetime="2021-05-27T23:22:38+08:00">2021-05-27</time>
       </span>
 
   
@@ -254,43 +259,40 @@
 <p>进程状态图</p>
 <p>1.6 并发</p>
 <p>一个CPU上交替的执行多个程序（进程）</p>
-<h3 id="2-进程的调度"><a href="#2-进程的调度" class="headerlink" title="2. 进程的调度"></a>2. 进程的调度</h3><h4 id="2-1-基本概念"><a href="#2-1-基本概念" class="headerlink" title="2.1 基本概念"></a>2.1 基本概念</h4><h5 id="2-1-1-进程调度队列（里面存储的是PCB块，组织进程的形式）"><a href="#2-1-1-进程调度队列（里面存储的是PCB块，组织进程的形式）" class="headerlink" title="2.1.1 进程调度队列（里面存储的是PCB块，组织进程的形式）"></a>2.1.1 进程调度队列（里面存储的是PCB块，组织进程的形式）</h5><ul>
+<h3 id="2-进程的调度概述（介绍概念为主）"><a href="#2-进程的调度概述（介绍概念为主）" class="headerlink" title="2. 进程的调度概述（介绍概念为主）"></a>2. 进程的调度概述（介绍概念为主）</h3><h4 id="2-1-进程调度队列（里面存储的是PCB块，组织进程的形式）"><a href="#2-1-进程调度队列（里面存储的是PCB块，组织进程的形式）" class="headerlink" title="2.1 进程调度队列（里面存储的是PCB块，组织进程的形式）"></a>2.1 进程调度队列（里面存储的是PCB块，组织进程的形式）</h4><ul>
 <li><p>CPU往往要在多个可用进程之间快速切换，此时调度程序要选择其中一个进程运行，这些进程就存放在队列之中</p>
 </li>
 <li><p>队列有如下几种，队列一般为链表的形式</p>
 </li>
 </ul>
-<h6 id="2-1-1-1-设备队列"><a href="#2-1-1-1-设备队列" class="headerlink" title="2.1.1.1 设备队列"></a>2.1.1.1 设备队列</h6><ul>
+<h5 id="2-1-1-设备队列"><a href="#2-1-1-设备队列" class="headerlink" title="2.1.1 设备队列"></a>2.1.1 设备队列</h5><ul>
 <li>包括在等待某个事件的进程</li>
 <li>结构与就绪队列类似</li>
 </ul>
-<h6 id="2-1-1-2-就绪队列"><a href="#2-1-1-2-就绪队列" class="headerlink" title="2.1.1.2 就绪队列"></a>2.1.1.2 就绪队列</h6><ul>
+<h5 id="2-1-2-就绪队列"><a href="#2-1-2-就绪队列" class="headerlink" title="2.1.2 就绪队列"></a>2.1.2 就绪队列</h5><ul>
 <li><p>包括等待运行的进程</p>
 </li>
 <li><p>结构 头节点包括两个指针，一个指向第一个PCB，另一个指向尾部PCB</p>
 </li>
 </ul>
-<h6 id="2-1-1-3作业队列"><a href="#2-1-1-3作业队列" class="headerlink" title="2.1.1.3作业队列"></a>2.1.1.3作业队列</h6><p>包括了系统内的所有进程</p>
-<h6 id="2-1-1-4队列图"><a href="#2-1-1-4队列图" class="headerlink" title="2.1.1.4队列图"></a>2.1.1.4队列图</h6><p>用于展示进程调度的过程</p>
-<h5 id="2-1-2-调度程序"><a href="#2-1-2-调度程序" class="headerlink" title="2.1.2 调度程序"></a>2.1.2 调度程序</h5><p>调度程序即调度器</p>
-<p>作用是选择要执行哪一个进程</p>
-<p>分成3种：长期调度程序，中期调度程序，短期调度程序</p>
-<h5 id="2-1-3-上下文切换"><a href="#2-1-3-上下文切换" class="headerlink" title="2.1.3 上下文切换"></a>2.1.3 上下文切换</h5><p>CPU在切换到另一进程时，要保存当前进程的状态，并恢复另一进程的状态</p>
-<p>补充：调度的本质上就是让进程调度器选择一个可用的进程到CPU上运行</p>
-<h4 id="2-2-CPU调度"><a href="#2-2-CPU调度" class="headerlink" title="2.2 CPU调度"></a>2.2 CPU调度</h4><h5 id="2-2-1-调度准则"><a href="#2-2-1-调度准则" class="headerlink" title="2.2.1 调度准则"></a>2.2.1 调度准则</h5><p>CPU使用率 </p>
-<p>吞吐量</p>
-<p>周转时间</p>
-<p>等待时间</p>
-<p>响应时间</p>
-<h5 id="2-调度算法"><a href="#2-调度算法" class="headerlink" title="2. 调度算法"></a>2. 调度算法</h5><p>2.1 先到先服务</p>
-<p>按进程的运行顺序调度即可，不会发生抢占</p>
-<p>2.2 最短作业优先调度</p>
-<p>2.3 优先级调度</p>
-<p>2.4 轮转发调度</p>
-<p>2.5 多级队列调度</p>
-<p>2.6 多级反馈队列调度</p>
-<h4 id="2-3-多线程调度"><a href="#2-3-多线程调度" class="headerlink" title="2.3 多线程调度"></a>2.3 多线程调度</h4><h4 id="2-4-多处理器调度"><a href="#2-4-多处理器调度" class="headerlink" title="2.4 多处理器调度"></a>2.4 多处理器调度</h4><h4 id="2-5-实时调度"><a href="#2-5-实时调度" class="headerlink" title="2.5 实时调度"></a>2.5 实时调度</h4><h3 id="3-进程操作过程"><a href="#3-进程操作过程" class="headerlink" title="3. 进程操作过程"></a>3. 进程操作过程</h3><p>3.1 进程创建</p>
-<ul>
+<h5 id="2-1-3作业队列"><a href="#2-1-3作业队列" class="headerlink" title="2.1.3作业队列"></a>2.1.3作业队列</h5><p>包括了系统内的所有进程</p>
+<h5 id="2-1-4队列图"><a href="#2-1-4队列图" class="headerlink" title="2.1.4队列图"></a>2.1.4队列图</h5><p>用于展示进程调度的过程</p>
+<h4 id="2-2-调度程序"><a href="#2-2-调度程序" class="headerlink" title="2.2 调度程序"></a>2.2 调度程序</h4><ul>
+<li><p>调度程序即调度器</p>
+</li>
+<li><p>作用是选择要执行哪一个进程</p>
+</li>
+<li><p>分成3种：长期调度程序，中期调度程序，短期调度程序</p>
+</li>
+</ul>
+<h4 id="2-3-上下文切换"><a href="#2-3-上下文切换" class="headerlink" title="2.3 上下文切换"></a>2.3 上下文切换</h4><ul>
+<li><p>CPU在切换到另一进程时，要保存当前进程的状态，并恢复另一进程的状态</p>
+</li>
+<li><p>补充：调度的本质上就是让进程调度器选择一个可用的进程到CPU上运行</p>
+</li>
+</ul>
+<p><strong>更详细的进程调度解释（CPU调度）见另一篇：——-</strong></p>
+<h3 id="3-进程操作过程"><a href="#3-进程操作过程" class="headerlink" title="3. 进程操作过程"></a>3. 进程操作过程</h3><h4 id="3-1-进程创建"><a href="#3-1-进程创建" class="headerlink" title="3.1 进程创建"></a>3.1 进程创建</h4><ul>
 <li>进程是树状结构，所以有子进程和父进程</li>
 <li>PID是进程唯一的标识符（操作系统通过PID来识别进程）</li>
 <li>一个进程可以创建另一个进程（即创建一个子进程）</li>
@@ -298,46 +300,76 @@
 <li>创建过程   在系统内部创建程序块—-&gt;分配内存—-&gt;载入可执行文件—-&gt;初始化程序</li>
 <li>（以UNIX系统为例）fork()函数</li>
 </ul>
-<p>3.2 进程终止</p>
-<ul>
+<h4 id="3-2-进程终止"><a href="#3-2-进程终止" class="headerlink" title="3.2 进程终止"></a>3.2 进程终止</h4><ul>
 <li>进程完成之后用exit()删除自身并终止运行</li>
 <li>可以用wait()</li>
 </ul>
-<h3 id="4-进程之间的通信（便于进程之间的协作工作）"><a href="#4-进程之间的通信（便于进程之间的协作工作）" class="headerlink" title="4. 进程之间的通信（便于进程之间的协作工作）"></a>4. 进程之间的通信（便于进程之间的协作工作）</h3><p>4.1 两种通信模式</p>
+<h3 id="4-进程之间的通信（便于进程之间的协作工作）"><a href="#4-进程之间的通信（便于进程之间的协作工作）" class="headerlink" title="4. 进程之间的通信（便于进程之间的协作工作）"></a>4. 进程之间的通信（便于进程之间的协作工作）</h3><h4 id="4-1-两种通信模式"><a href="#4-1-两种通信模式" class="headerlink" title="4.1 两种通信模式"></a>4.1 两种通信模式</h4><ul>
+<li><p>消息传递</p>
 <ul>
-<li>消息传递</li>
-<li>共享内存</li>
+<li><img src="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/image-20210527212717964.png" alt="image-20210527212717964" style="zoom:43%;"></li>
+<li><p>通过进程之间交换信息实现</p>
+</li>
+<li><p>一般用来传递较少的数据</p>
+</li>
+<li><p>需要内核干涉（操作系统提供通信的机制）</p>
+</li>
+<li><p>存在两种操作，send(message)和receive(message)，通信的时候需要先建立好通讯线路</p>
+<ul>
+<li><p>通讯线路的逻辑实现方法(物理链路的实现在这里是无关紧要的)</p>
+<ol>
+<li><p>直接或间接通信</p>
+<ul>
+<li><p>直接通信必须明确指定接受者和发送者是谁，可以一对一（对称寻址方式），一对多（非对称寻址方式）</p>
+</li>
+<li><p>间接通信是通过端口或者邮箱，来完成发送和接收消息的过程，例如下图（P为进程）</p>
+<img src="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/image-20210527223418825.png" alt="image-20210527223418825" style="zoom:50%;"></li>
 </ul>
-<p>4.2 消息传递方式</p>
-<p>4.3 通信线路的逻辑实现方法</p>
-<p>4.4 缓冲区</p>
-<h3 id="5-远程调用"><a href="#5-远程调用" class="headerlink" title="5. 远程调用"></a>5. 远程调用</h3><p>5.1  客户机与服务器之间</p>
-<p>详见计算机网络</p>
-<p>5.2 管道</p>
-<p>一种通信机制相当于仅存在于通信过程中的文件载体</p>
-<p>5.2.1 普通管道</p>
-<p>5.2.2 命名管道</p>
-<h2 id="线程（thread）"><a href="#线程（thread）" class="headerlink" title="线程（thread）"></a>线程（thread）</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h3><p>比进程更小的运行单位（一般在同一个进程内），比进程节省空间（复制进程的其中一部分，剩下的一部分是可以共享的）</p>
-<p>每个线程是一个独立调度的对象</p>
-<h4 id="1-2-用户进程"><a href="#1-2-用户进程" class="headerlink" title="1.2 用户进程"></a>1.2 用户进程</h4><h4 id="1-2-内核进程"><a href="#1-2-内核进程" class="headerlink" title="1.2 内核进程"></a>1.2 内核进程</h4><h3 id="2-多线程模型"><a href="#2-多线程模型" class="headerlink" title="2. 多线程模型"></a>2. 多线程模型</h3><p>2.1 多对一模型</p>
-<p>2.2 一对一模型</p>
-<p>2.3 多对多模型</p>
-<h3 id="3-线程库"><a href="#3-线程库" class="headerlink" title="3. 线程库"></a>3. 线程库</h3><p>3.1 定义</p>
-<p>为程序员提供创建和管理线程的API</p>
-<p>3.2 两种实现方法</p>
-<p>3.2.1 在用户空间中提供这个库</p>
-<p>3.2.2 将库嵌入到内核</p>
-<p>3.3 三种主要线程库</p>
-<p>3.3.1 prosix Pthread</p>
-<p>3.3.2 windows</p>
-<p>3.3.3 java</p>
-<h3 id="4-多线程问题"><a href="#4-多线程问题" class="headerlink" title="4. 多线程问题"></a>4. 多线程问题</h3><p>4.1 系统调用fork ()和exec ()</p>
-<p>在多线程程序中语义有变（相比于进程创建的时候）</p>
-<p>4.2 信号处理</p>
-<p>操作系统中内核与进程之间的通信机制，告诉进程某一事件的发生</p>
-<p>4.3 线程撤销</p>
-<p>4.4 调度程序激活</p>
-<p>4.5 线程地</p>
+</li>
+<li><p>同步或异步通信（阻塞和非阻塞)</p>
+<ul>
+<li>同步发送：发送进程是阻塞态，直到消息被对方接收时解除此种状态</li>
+<li>同步接收：接收者阻塞，直到收到发送来的消息</li>
+<li>异步发送：发送进程发送消息并继续操作</li>
+<li>异步接收：接收者收到一个有效消息或空消息</li>
+</ul>
+</li>
+<li><p>自动或显式缓冲（通信缓冲）</p>
+<ul>
+<li>将通信进程交换的消息都存在临时的队列中（在这里名为缓冲）</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>共享内存</p>
+<ul>
+<li><img src="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/image-20210527212746572.png" alt="image-20210527212746572" style="zoom:43%;"></li>
+<li>两个进程之间有一块共享的内存区域，进程通过向此区域读写数据来交换信息</li>
+<li>不需要内核干涉，通信的速度很快</li>
+<li><strong>注意事项</strong><ul>
+<li>进行这样的通信方式，必须保障不能有多个进程同时向共享区域<strong>写数据</strong>，故需要同步机制</li>
+<li>具体的机制是什么样的模式见 操作系统</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-管道"><a href="#5-管道" class="headerlink" title="5. 管道"></a>5. 管道</h3><h4 id="5-1-概述"><a href="#5-1-概述" class="headerlink" title="5.1 概述"></a>5.1 概述</h4><ul>
+<li>一种通信机制，管道通信方式存在一个文件作为中间介质，此类文件称作管道文件</li>
+<li>通信的过程中，存在一个写进程（向管道中写数据）和一个读进程（向管道之中读数据）</li>
+</ul>
+<h4 id="5-2-普通管道"><a href="#5-2-普通管道" class="headerlink" title="5.2 普通管道"></a>5.2 普通管道</h4><ul>
+<li>半双工，只允许单向操作</li>
+<li>双方互相通信的时候，要建立两个管道</li>
+<li></li>
+</ul>
+<h4 id="5-3-命名管道"><a href="#5-3-命名管道" class="headerlink" title="5.3 命名管道"></a>5.3 命名管道</h4><ul>
+<li></li>
+</ul>
 
     </div>
 
@@ -388,15 +420,13 @@
   </span>
   <span class="author" itemprop="copyrightHolder">zrk</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
-  </div>
 
     </div>
   </footer>
 
   
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
 

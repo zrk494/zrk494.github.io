@@ -28,7 +28,7 @@
 <meta property="og:description" content="数据链路层1. 概述1.1 相关概念解释 节点    指主机和路由器等设备   链路    连接相邻节点的信道  有线链路 无线链路 局域网   链路层帧（帧）     指链路层之中的数据分组，用于封装网络层的数据报  两种类型的网络链路  点对点链路    一对一 广播链路    链路被多个设备共享   概括                数据链路层的工作就是通过一条链路，从一个节点向另一个与其">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-11T14:09:34.000Z">
-<meta property="article:modified_time" content="2021-05-25T15:53:20.780Z">
+<meta property="article:modified_time" content="2021-05-26T15:04:25.148Z">
 <meta property="article:author" content="zrk">
 <meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
@@ -116,7 +116,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-number">1.</span> <span class="nav-text">数据链路层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">1. 概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E8%A7%A3%E9%87%8A"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 相关概念解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E6%8F%90%E4%BE%9B%E7%9A%84%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 提供的服务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%B7%AE%E9%94%99%E6%A3%80%E6%B5%8B%E5%92%8C%E7%BA%A0%E6%AD%A3"><span class="nav-number">1.2.</span> <span class="nav-text">2. 差错检测和纠正</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%A4%9A%E8%B7%AF%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE%EF%BC%88MAC%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">3. 多路访问协议（MAC）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E4%B8%89%E7%A7%8DMAC%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 三种MAC协议</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-number">1.</span> <span class="nav-text">数据链路层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">1. 概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E8%A7%A3%E9%87%8A"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 相关概念解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E6%8F%90%E4%BE%9B%E7%9A%84%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 提供的服务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%B7%AE%E9%94%99%E6%A3%80%E6%B5%8B%E5%92%8C%E7%BA%A0%E6%AD%A3"><span class="nav-number">1.2.</span> <span class="nav-text">2. 差错检测和纠正</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%A4%9A%E8%B7%AF%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE%EF%BC%88MAC%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">3. 多路访问协议（MAC）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E4%B8%89%E7%A7%8DMAC%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 三种MAC协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-ARP%E5%8D%8F%E8%AE%AE%EF%BC%88%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">4. ARP协议（地址解析协议）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1MAC%E5%9C%B0%E5%9D%80%EF%BC%88%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%EF%BC%8CLAN%E5%9C%B0%E5%9D%80%EF%BC%8C%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%9C%B0%E5%9D%80%EF%BC%89"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1MAC地址（物理地址，LAN地址，以太网地址）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-ARP"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 ARP</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -212,7 +212,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-05-25 23:53:20" itemprop="dateModified" datetime="2021-05-25T23:53:20+08:00">2021-05-25</time>
+        <time title="修改时间：2021-05-26 23:04:25" itemprop="dateModified" datetime="2021-05-26T23:04:25+08:00">2021-05-26</time>
       </span>
 
   
@@ -337,6 +337,36 @@
 <ul>
 <li>结点轮流使用信道</li>
 </ul>
+</li>
+<li></li>
+</ul>
+<h3 id="4-ARP协议（地址解析协议）"><a href="#4-ARP协议（地址解析协议）" class="headerlink" title="4. ARP协议（地址解析协议）"></a>4. ARP协议（地址解析协议）</h3><h4 id="4-1MAC地址（物理地址，LAN地址，以太网地址）"><a href="#4-1MAC地址（物理地址，LAN地址，以太网地址）" class="headerlink" title="4.1MAC地址（物理地址，LAN地址，以太网地址）"></a>4.1MAC地址（物理地址，LAN地址，以太网地址）</h4><ul>
+<li>作用：标识链路层帧是从哪一个接口发出的，以及标识要到达哪个物理相连的其他接口</li>
+<li>地址格式：48位（一般固化在网卡之中），16进制数表示</li>
+<li>MAC是唯一的，是一种平面的地址（不像IP地址那样分层）</li>
+</ul>
+<h4 id="4-2-ARP"><a href="#4-2-ARP" class="headerlink" title="4.2 ARP"></a>4.2 ARP</h4><ul>
+<li><p>解决如何由已知目的接口的IP推出该接口的MAC地址的问题—–通过ARP表解决这个问题（存储着IP到MAC地址的映射关系，还会设置一个TTL）</p>
+</li>
+<li><p>TTL结束时会删除这条映射关系</p>
+</li>
+<li><p>同一个局域网内，A给B发数据时，如果B的MAC地址不在ARP表之中，将进行如下操作：</p>
+<ul>
+<li>A广播ARP分组，包含了B的IP地址，此分组的目的MAC地址为FF:FF:FF:FF:FF:FF</li>
+<li>这个局域网之内的所有结点都会接收这个ARP查询</li>
+<li>只有当分组中的IP地址与结点IP地址匹配的结点即B会向A发出应答自己的MAC地址（这一次应答是B到Ａ的单播）</li>
+<li>Ａ收到响应后记录后会将Ｂ的MAC地址与IP的映射记录在ARP表之中，并且设置一个超时时间</li>
+</ul>
+</li>
+<li><p>不同局域网，A在的子网与B所在的子网通过路由器R连接，A向B发数据时，如果B的MAC地址不在ARP表之中，将进行如下操作：</p>
+<ul>
+<li>封装A的链路数据帧，目的MAC地址为A的默认网关的MAC地址，即将这个帧发给默认网关的接口（MAC的地址是通过ARP协议获得，过程参考上面的情况）</li>
+<li>路由器R提取出IP数据报，交给上层协议处理（此过程之中可能会使用到NAT协议，改变源IP的值）</li>
+<li>路由器R将IP数据报封装封装到新的数据链路帧之中，目的MAC地址为B的MAC地址，源MAC地址为路由器进入B子网的接口的MAC地址</li>
+<li>数据帧到达B后经过解析将B的MAC，IP再发给A</li>
+</ul>
+</li>
+<li><p>ARP是个即插即用的协议（一般情况下ARP表为空，使用的时候才建立，并且是结点自主创建的）</p>
 </li>
 </ul>
 

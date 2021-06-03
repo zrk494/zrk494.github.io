@@ -129,7 +129,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -175,7 +175,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/07/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E6%A6%82%E8%BF%B0/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/16/database/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -188,7 +188,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/07/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E6%A6%82%E8%BF%B0/" class="post-title-link" itemprop="url">操作系统</a>
+          <a href="/2021/03/16/database/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-title-link" itemprop="url">关系数据库</a>
         </h2>
 
         <div class="post-meta-container">
@@ -199,14 +199,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-07 16:02:01" itemprop="dateCreated datePublished" datetime="2021-03-07T16:02:01+08:00">2021-03-07</time>
+      <time title="创建时间：2021-03-16 21:02:24" itemprop="dateCreated datePublished" datetime="2021-03-16T21:02:24+08:00">2021-03-16</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-05-04 22:47:15" itemprop="dateModified" datetime="2021-05-04T22:47:15+08:00">2021-05-04</time>
+        <time title="修改时间：2021-05-27 12:04:34" itemprop="dateModified" datetime="2021-05-27T12:04:34+08:00">2021-05-27</time>
       </span>
 
   
@@ -219,32 +219,248 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="操作系统—导论"><a href="#操作系统—导论" class="headerlink" title="操作系统—导论"></a>操作系统—导论</h2><h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><h6 id="1-用户视角"><a href="#1-用户视角" class="headerlink" title="1. 用户视角"></a>1. 用户视角</h6><p>使用方便，不在乎资源利用</p>
-<h6 id="2-系统视角"><a href="#2-系统视角" class="headerlink" title="2. 系统视角"></a>2. 系统视角</h6><p>资源分配（cpu时间，内存空间，文件存储空间，i/O设备等）</p>
-<h3 id="定义（三方面）"><a href="#定义（三方面）" class="headerlink" title="定义（三方面）"></a>定义（三方面）</h3><ol>
-<li>资源管理平台</li>
-<li>运行程序的平台</li>
-<li>为用户提供服务的平台</li>
-</ol>
-<h3 id="计算机系统的结构"><a href="#计算机系统的结构" class="headerlink" title="计算机系统的结构"></a>计算机系统的结构</h3><h4 id="1-启动"><a href="#1-启动" class="headerlink" title="1. 启动"></a>1. 启动</h4><h6 id="1-BIOS-basic-input-output-system"><a href="#1-BIOS-basic-input-output-system" class="headerlink" title="1. BIOS(basic input output system)"></a>1. BIOS(basic input output system)</h6><h6 id="2-bootstrap-program-引导程序"><a href="#2-bootstrap-program-引导程序" class="headerlink" title="2. bootstrap program(引导程序)"></a>2. bootstrap program(引导程序)</h6><ul>
-<li>在通电后运行</li>
-<li>不是操作系统的一部分</li>
-<li>作用包括—1.初始化设备 2.定位到操作系统，并将其载入内存 3.运行系统的首个进程init（），并等待事件发生<h4 id="2-中断"><a href="#2-中断" class="headerlink" title="2. 中断"></a>2. 中断</h4></li>
+          <h2 id="关系数据库"><a href="#关系数据库" class="headerlink" title="关系数据库"></a>关系数据库</h2><h3 id="1-关系"><a href="#1-关系" class="headerlink" title="1.关系"></a>1.关系</h3><h4 id="1-1-相关概念"><a href="#1-1-相关概念" class="headerlink" title="1.1 相关概念"></a>1.1 相关概念</h4><h5 id="1-1-1-属性"><a href="#1-1-1-属性" class="headerlink" title="1.1.1 属性"></a>1.1.1 属性</h5><ul>
+<li>关系表的列</li>
+<li>列是同质的，即为同一数据类型</li>
 </ul>
-<h6 id="1-中断用于下达指令通知事件的发生（比如鼠标点击打开一个应用就是一个中断"><a href="#1-中断用于下达指令通知事件的发生（比如鼠标点击打开一个应用就是一个中断" class="headerlink" title="1. 中断用于下达指令通知事件的发生（比如鼠标点击打开一个应用就是一个中断)"></a>1. 中断用于下达指令通知事件的发生（比如鼠标点击打开一个应用就是一个中断)</h6><h6 id="2-硬中断和软中断"><a href="#2-硬中断和软中断" class="headerlink" title="2. 硬中断和软中断"></a>2. 硬中断和软中断</h6><h6 id="3-过程"><a href="#3-过程" class="headerlink" title="3. 过程"></a>3. 过程</h6><h6 id="4-中断向量（保存着中断程序的地址）"><a href="#4-中断向量（保存着中断程序的地址）" class="headerlink" title="4. 中断向量（保存着中断程序的地址）"></a>4. 中断向量（保存着中断程序的地址）</h6><h4 id="3-I-O"><a href="#3-I-O" class="headerlink" title="3. I/O"></a>3. I/O</h4><h5 id="3-1结构"><a href="#3-1结构" class="headerlink" title="3.1结构"></a>3.1结构</h5><h5 id="3-2DMA（direct-memory-access）"><a href="#3-2DMA（direct-memory-access）" class="headerlink" title="3.2DMA（direct memory access）"></a>3.2DMA（direct memory access）</h5><h5 id="3-3-I-O操作方法"><a href="#3-3-I-O操作方法" class="headerlink" title="3.3 I/O操作方法"></a>3.3 I/O操作方法</h5><h4 id="4-计算机系统的体系结构"><a href="#4-计算机系统的体系结构" class="headerlink" title="4. 计算机系统的体系结构"></a>4. 计算机系统的体系结构</h4><h5 id="4-1单处理器系统"><a href="#4-1单处理器系统" class="headerlink" title="4.1单处理器系统"></a>4.1单处理器系统</h5><h5 id="4-2多处理器系统"><a href="#4-2多处理器系统" class="headerlink" title="4.2多处理器系统"></a>4.2多处理器系统</h5><h5 id="4-3集群系统"><a href="#4-3集群系统" class="headerlink" title="4.3集群系统"></a>4.3集群系统</h5><h3 id="操作系统的结构"><a href="#操作系统的结构" class="headerlink" title="操作系统的结构"></a>操作系统的结构</h3><h4 id="1-结构"><a href="#1-结构" class="headerlink" title="1. 结构"></a>1. 结构</h4><h5 id="1-1-批处理系统"><a href="#1-1-批处理系统" class="headerlink" title="1.1 批处理系统"></a>1.1 批处理系统</h5><p>CPU按顺序执行程序，请求调用I/O之后，会等待I/O工作完成</p>
-<h5 id="1-2-多道程序系统（因为I-O的运行时间长，所以以此方式提高CPU利用率）"><a href="#1-2-多道程序系统（因为I-O的运行时间长，所以以此方式提高CPU利用率）" class="headerlink" title="1.2 多道程序系统（因为I/O的运行时间长，所以以此方式提高CPU利用率）"></a>1.2 多道程序系统（因为I/O的运行时间长，所以以此方式提高CPU利用率）</h5><p>有多个程序同时在内存中，CPU等待I/O时，会去执行其他的程序</p>
-<h5 id="1-3-分时系统"><a href="#1-3-分时系统" class="headerlink" title="1.3 分时系统"></a>1.3 分时系统</h5><h3 id="2-操作"><a href="#2-操作" class="headerlink" title="2. 操作"></a>2. 操作</h3><h3 id="3-管理内容"><a href="#3-管理内容" class="headerlink" title="3. 管理内容"></a>3. 管理内容</h3><h3 id="4-操作系统提供的服务"><a href="#4-操作系统提供的服务" class="headerlink" title="4.操作系统提供的服务"></a>4.操作系统提供的服务</h3><h3 id="5-系统调用"><a href="#5-系统调用" class="headerlink" title="5. 系统调用"></a>5. 系统调用</h3><p>5.1定义相关</p>
-<p>操作系统服务的编程接口（用户和计算机硬件之间），用c或者c++或者汇编语言编写。</p>
-<p>5.2 为什么需要系统调用</p>
-<p>在用户程序之中，凡是与系统资源相关的操作，都要通过系统调用的方式向操作系统发出请求，由操作系统代完成，以 保障系统稳定安全</p>
-<p>5.3按功能分类</p>
-<p>设备控制，文件控制，进程控制，进程通信，内存管理</p>
-<p>5.4API，系统接口</p>
-<p>程序通常通过API访问，不直接使用系统调用</p>
-<p>5.5过程</p>
-<p>存在用户态到核心态的转变过程，具体如下图</p>
-<p><img src="/2021/03/07/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E6%A6%82%E8%BF%B0/system_call_.png" alt="system_call_"></p>
-<h3 id="6-系统程序"><a href="#6-系统程序" class="headerlink" title="6. 系统程序"></a>6. 系统程序</h3><h3 id="7-虚拟机"><a href="#7-虚拟机" class="headerlink" title="7. 虚拟机"></a>7. 虚拟机</h3>
+<h5 id="1-1-2-域"><a href="#1-1-2-域" class="headerlink" title="1.1.2 域"></a>1.1.2 域</h5><p>相同类型数据的集合</p>
+<h5 id="1-1-3-关系"><a href="#1-1-3-关系" class="headerlink" title="1.1.3 关系"></a>1.1.3 关系</h5><p>笛卡尔集的子集（<del>详见集合论与图论</del>）</p>
+<h5 id="1-1-4-关系模式"><a href="#1-1-4-关系模式" class="headerlink" title="1.1.4 关系模式"></a>1.1.4 关系模式</h5><p>关系的形<br>记作 R（U）,U为A1…An组成的属性集合，R是关系名<br>例：Student（学号，姓名，性别，年龄，专业）<br>Grade（学生编号，课程编号，成绩）</p>
+<h5 id="1-1-5-关系实例"><a href="#1-1-5-关系实例" class="headerlink" title="1.1.5 关系实例"></a>1.1.5 关系实例</h5><p>一个关系的任何一个“当前值”是该关系的实例</p>
+<h5 id="1-1-6-元组"><a href="#1-1-6-元组" class="headerlink" title="1.1.6 元组"></a>1.1.6 元组</h5><p>笛卡尔积得到的集合中的每一个元素</p>
+<h5 id="1-1-7-码（又称作键，-那个名为篝酱的少女）"><a href="#1-1-7-码（又称作键，-那个名为篝酱的少女）" class="headerlink" title="1.1.7 码（又称作键， 那个名为篝酱的少女）"></a>1.1.7 码（又称作键， <del>那个名为篝酱的少女</del>）</h5><h6 id="超码"><a href="#超码" class="headerlink" title="超码"></a>超码</h6><p>可以==唯一==标识一个元组的一个属性集合</p>
+<h6 id="候选码"><a href="#候选码" class="headerlink" title="候选码"></a>候选码</h6><p>唯一的一个属性集合或者属性集合组，超码是候选码的特殊表现，可存在多个</p>
+<h6 id="主码"><a href="#主码" class="headerlink" title="主码"></a>主码</h6><p>数据库设计者选择的用于区分不同元组的候选码（从候选码之中选出一个）</p>
+<h6 id="外码"><a href="#外码" class="headerlink" title="外码"></a>外码</h6><p>非关系R的候选码，而是关系S的候选码，将两个关系联系在一起</p>
+<h5 id="1-1-8-关系的第一范式"><a href="#1-1-8-关系的第一范式" class="headerlink" title="1.1.8 关系的第一范式"></a>1.1.8 关系的第一范式</h5><p>属性不可再分</p>
+<h4 id="1-2-关系的完整性"><a href="#1-2-关系的完整性" class="headerlink" title="1.2 关系的完整性"></a>1.2 关系的完整性</h4><h5 id="1-2-1-实体完整性约束"><a href="#1-2-1-实体完整性约束" class="headerlink" title="1.2.1 实体完整性约束"></a>1.2.1 实体完整性约束</h5><p>主键属性不空（不存在或者无意义）</p>
+<h5 id="1-2-2-参照完整性约束（连接两个关系）"><a href="#1-2-2-参照完整性约束（连接两个关系）" class="headerlink" title="1.2.2 参照完整性约束（连接两个关系）"></a>1.2.2 参照完整性约束（连接两个关系）</h5><p>外码在R1之中的值为空或者对应其在R2（在R2之中为主码）之中的值</p>
+<h5 id="1-2-3-用户定义的完整性"><a href="#1-2-3-用户定义的完整性" class="headerlink" title="1.2.3 用户定义的完整性"></a>1.2.3 用户定义的完整性</h5><h4 id="1-3-关系运算相关（重点）"><a href="#1-3-关系运算相关（重点）" class="headerlink" title="1.3 关系运算相关（重点）"></a>1.3 关系运算相关（重点）</h4><h5 id="1-3-1-关系代数（操作-关系得到另一个关系，一般来说由内向外进行书写）"><a href="#1-3-1-关系代数（操作-关系得到另一个关系，一般来说由内向外进行书写）" class="headerlink" title="1.3.1 关系代数（操作+关系得到另一个关系，一般来说由内向外进行书写）"></a>1.3.1 关系代数（操作+关系得到另一个关系，一般来说由内向外进行书写）</h5><ul>
+<li>并                    同一个表                    $\bigcap$</li>
+<li>差                    同一个表                     –</li>
+<li>笛卡尔积        表与表之间                 $\times$</li>
+<li>交                   同一个表                     $\bigcup$</li>
+<li>选择               同一个表                    $\sigma$                 (简单理解为select)</li>
+<li>投影               同一个表                     $\prod$               </li>
+<li>重命名           同一个表                     $\rho$</li>
+<li>除法             </li>
+<li>连接</li>
+<li>等值连接</li>
+<li>自然连接</li>
+<li>外连接</li>
+<li>全外连接</li>
+</ul>
+<h5 id="1-3-2-元组演算"><a href="#1-3-2-元组演算" class="headerlink" title="1.3.2 元组演算"></a>1.3.2 元组演算</h5><h5 id="1-3-3-域演算"><a href="#1-3-3-域演算" class="headerlink" title="1.3.3 域演算"></a>1.3.3 域演算</h5><h3 id="2-SQL语言基础"><a href="#2-SQL语言基础" class="headerlink" title="2. SQL语言基础"></a>2. SQL语言基础</h3><p>结构化查询语言，关系数据库的标准语言 </p>
+<p>操作的对象是集合，之后得到的结果也是集合</p>
+<h4 id="2-1-基本的9个引导词"><a href="#2-1-基本的9个引导词" class="headerlink" title="2.1 基本的9个引导词"></a>2.1 基本的9个引导词</h4><ul>
+<li><input disabled type="checkbox"> <table>
+<thead>
+<tr>
+<th>数据定义</th>
+<th align="center">create ,drop,alter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查询</td>
+<td align="center">select</td>
+</tr>
+<tr>
+<td>修改</td>
+<td align="center">insert,update,delete</td>
+</tr>
+<tr>
+<td>数据控制</td>
+<td align="center">grant,revote</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<p>示例数据库(带下划线的为主键)</p>
+<p>Student(<u>Sno</u>,Sname,Ssex,Sage,Sdept)</p>
+<p>Course(<u>Cno</u>,Cname,Cpno,Ccredit)</p>
+<p>SC(<u>Sno</u>,Cno,Grade)</p>
+<h4 id="2-2-数据定义"><a href="#2-2-数据定义" class="headerlink" title="2.2 数据定义"></a>2.2 数据定义</h4><h5 id="2-2-1-create（创建，包括表，视图—一种虚拟的表，索引）"><a href="#2-2-1-create（创建，包括表，视图—一种虚拟的表，索引）" class="headerlink" title="2.2.1 create（创建，包括表，视图—一种虚拟的表，索引）"></a>2.2.1 create（创建，包括表，视图—一种虚拟的表，索引）</h5><ul>
+<li><p>create table  </p>
+<p>语法格式 ：</p>
+<p>create table &lt;关系名&gt; (&lt;属性名&gt; &lt;属性类型&gt;[NOT NULL], … , &lt;属性名&gt; &lt;属性类型&gt;[NOT NULL], 完整性约束1，完整性约束2,…)</p>
+<p>实例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Game</span><br><span class="line">( Name <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="keyword">null</span>,<span class="operator">/</span><span class="operator">/</span>长度可变的字符串,且非空</span><br><span class="line">NUM <span class="type">char</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">Type  <span class="type">char</span>(<span class="number">5</span>),<span class="operator">/</span><span class="operator">/</span>定长字符串</span><br><span class="line"><span class="keyword">year</span>   <span class="type">integer</span>,</span><br><span class="line"><span class="keyword">Primary</span> key (NUM))</span><br><span class="line"><span class="comment">/* 例二 */</span></span><br><span class="line">creat <span class="keyword">table</span> Course</span><br><span class="line">(</span><br><span class="line">	Cno <span class="type">char</span>(<span class="number">4</span>) <span class="keyword">primary</span> key,</span><br><span class="line">    Cname <span class="type">char</span>(<span class="number">40</span>),</span><br><span class="line">    Cpno <span class="type">char</span>(<span class="number">4</span>),</span><br><span class="line">    Ccredit <span class="type">smallint</span>,</span><br><span class="line">	<span class="keyword">foreign</span> key (Cpno) <span class="keyword">references</span> Course(Cno)<span class="comment">/*定义外键，一个非主键，参照另一个表的主键*/</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
+<li><p>create index(为加快查询而定义的)</p>
+<p>语法格式：CREATE [UNIQUE] INDEX 〈索引名〉 ON 〈关系名〉(〈列名 〉[ORDER], …,〈列名〉[ORDER]) [CLUSTER]</p>
+<p>其中 [unique]，表示索引属性是不能重复出现的，还可以是[cluster]</p>
+<p>order有两种值 ASC(升序)或者DESC(降序)</p>
+<p>create unique index NUM on Game(NUM ASC) cluster</p>
+</li>
+</ul>
+<h5 id="2-2-2-drop-删除"><a href="#2-2-2-drop-删除" class="headerlink" title="2.2.2 drop (删除)"></a>2.2.2 drop (删除)</h5><ul>
+<li><p>drop table（删除整个表）</p>
+<p>语法格式：</p>
+<p>drop table  &lt;关系名&gt;</p>
+</li>
+<li><p>drop index</p>
+<p>语法格式：</p>
+<p>drop index&lt;索引名&gt;</p>
+</li>
+<li><p>drop </p>
+</li>
+</ul>
+<h5 id="2-2-3-alter-（修改）"><a href="#2-2-3-alter-（修改）" class="headerlink" title="2.2.3 alter （修改）"></a>2.2.3 alter （修改）</h5><ul>
+<li><p>alter table（增加或减少一列）</p>
+<p>语法格式：</p>
+<p>alter table &lt;关系名&gt; ADD(增加)|DROP(删除)&lt;列名&gt;&lt;列类型&gt;</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*例1*/</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Student <span class="keyword">add</span> S_entrance <span class="type">DATE</span>;<span class="comment">/*新增加一列，列名为S_entrance,数据类型为DATE*/</span></span><br><span class="line"><span class="comment">/*例2*/</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Course <span class="keyword">add</span> <span class="keyword">UNIQUE</span>(Cname);<span class="comment">/*添加完整性约束*/</span></span><br></pre></td></tr></table></figure></li>
+<li><p>alter index &lt;旧索引名&gt;rename to &lt;新索引名&gt;</p>
+</li>
+</ul>
+<h4 id="2-3-查询"><a href="#2-3-查询" class="headerlink" title="2.3 查询"></a>2.3 查询</h4><h5 id="2-3-1-单表查询（只有一个表，一般为查找一个表的一列或者多列）"><a href="#2-3-1-单表查询（只有一个表，一般为查找一个表的一列或者多列）" class="headerlink" title="2.3.1 单表查询（只有一个表，一般为查找一个表的一列或者多列）"></a>2.3.1 单表查询（只有一个表，一般为查找一个表的一列或者多列）</h5><p>​    有一个表 Game(Gname, Gsize, Gtype, Gyear)</p>
+<ul>
+<li><p>查询指定列(例子中的名称和大小)</p>
+<p><strong>Select</strong> Sname, Ssize</p>
+<p><strong>From</strong> Game;</p>
+</li>
+<li><p>查询全部</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Select  *</span><br><span class="line">From Game;</span><br></pre></td></tr></table></figure></li>
+<li><p>distinct 去除重复的</p>
+</li>
+<li><p>查符合条件的元组</p>
+<p>where子句用于附加查询的条件，作用于基表或者视图( between and, not between and, in , not in, like, not like, and, or, is null)</p>
+<p>例1 2001到2020年发行的游戏的名称</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> Sname</span><br><span class="line"><span class="keyword">From</span> Game</span><br><span class="line"><span class="keyword">Where</span> <span class="keyword">year</span> <span class="keyword">between</span> <span class="number">2001</span> <span class="keyword">and</span> <span class="number">2020</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Escape短语</p>
+<p>在字符匹配，由于转义，如%，_之类的符号</p>
+<p>例2 以”sum_”开头的游戏名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">From</span> Game</span><br><span class="line"><span class="keyword">Where</span> Gname <span class="keyword">like</span> ‘sum\_<span class="string">&#x27;escape&#x27;</span>\’;`</span><br></pre></td></tr></table></figure></li>
+<li><p>对结果排序(ASC是升序DESC是降序)</p>
+<p>例3</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> Sname</span><br><span class="line"><span class="keyword">From</span> Game</span><br><span class="line"><span class="keyword">Where</span> <span class="keyword">year</span> <span class="keyword">between</span> <span class="number">2001</span> <span class="keyword">and</span> <span class="number">2020</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">year</span> <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>聚集函数（6种，SUM,AVG,MAX,MIN,COUNT,COUNT(*)）</p>
+<p>例4 统计游戏个数</p>
+<p><code>Select count(*) From Game;</code></p>
+</li>
+<li><p>结果分组</p>
+<p>Group by 按某一会重复出现的列属性分组</p>
+<p>Having 为分组添加筛选条件，只有满足条件的分组才会出现</p>
+<p><strong>备注：Having和where的区别，简单来说就是先后顺序的区别，where在分组前筛选，having再分组之后筛选</strong></p>
+</li>
+</ul>
+<h5 id="2-3-2连接查询（包括多个表）"><a href="#2-3-2连接查询（包括多个表）" class="headerlink" title="2.3.2连接查询（包括多个表）"></a>2.3.2连接查询（包括多个表）</h5><ul>
+<li><p>$\theta$连接</p>
+<ul>
+<li><p>使用select-from-where的表示方法</p>
+<p>在from之后</p>
+<p>from student, SC</p>
+<p>where student.no=SC.no</p>
+</li>
+<li><p>使用R join S on &lt; 连接条件 &gt;  的方法</p>
+<p>在from之后 from student join SC on student.no = SC.no</p>
+</li>
+</ul>
+</li>
+<li><p>自然连接</p>
+<p>使用natural join 关键字</p>
+<p>在from之后  from student natural join SC</p>
+</li>
+<li><p>自联结</p>
+<p>在from之后</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> course.first, course.second</span><br><span class="line"><span class="keyword">where</span> first.Cpno <span class="operator">=</span> second.Cno</span><br></pre></td></tr></table></figure></li>
+<li><p>外连接</p>
+</li>
+<li><p>内连接</p>
+</li>
+<li><p>多表连接</p>
+</li>
+</ul>
+<h5 id="2-3-3嵌套查询（一个查询嵌在另一个里面）"><a href="#2-3-3嵌套查询（一个查询嵌在另一个里面）" class="headerlink" title="2.3.3嵌套查询（一个查询嵌在另一个里面）"></a>2.3.3嵌套查询（一个查询嵌在另一个里面）</h5><ul>
+<li>in和not in的子查询</li>
+<li>相关子程序和不相关子查询</li>
+<li>exist和not exist的子查询***</li>
+<li>带any或all的子查序</li>
+<li>比较运算符的子查询</li>
+</ul>
+<h5 id="2-3-4集合查询"><a href="#2-3-4集合查询" class="headerlink" title="2.3.4集合查询"></a>2.3.4集合查询</h5><ul>
+<li>并，交，差</li>
+</ul>
+<h4 id="2-4-修改数据"><a href="#2-4-修改数据" class="headerlink" title="2.4 修改数据"></a>2.4 修改数据</h4><ul>
+<li><p>插入单个元组（insert，注意要避免破坏完整性约束）</p>
+<p>语法格式</p>
+<p>Insert </p>
+<p>into &lt;表名&gt;</p>
+<p>values（‘常量1’，‘常量2’…..）</p>
+<p>例</p>
+<p>INSERT </p>
+<p>INTO Student </p>
+<p>VALUES (‘ 200215130’ ， ‘陈冬’ ， ‘男’ ，18 ， ‘CS’)；</p>
+</li>
+<li><p>插入子查询结果，原来的value处改为一个子查询</p>
+</li>
+<li><p>update关键字</p>
+<p>语法格式</p>
+<p>UPDATE &lt;表名&gt; </p>
+<p>SET &lt;列名&gt;=&lt;表达式&gt;[，&lt;列名&gt;=&lt;表达式&gt;]… </p>
+<p>[WHERE &lt;条件&gt;]；</p>
+</li>
+</ul>
+<h3 id="3-数据库安全性，完整性（用SQL实现）"><a href="#3-数据库安全性，完整性（用SQL实现）" class="headerlink" title="3.数据库安全性，完整性（用SQL实现）"></a>3.数据库安全性，完整性（用SQL实现）</h3><h4 id="3-1-基本概念"><a href="#3-1-基本概念" class="headerlink" title="3.1 基本概念"></a>3.1 基本概念</h4><h5 id="3-1-1安全性"><a href="#3-1-1安全性" class="headerlink" title="3.1.1安全性"></a>3.1.1安全性</h5><ul>
+<li>不允许恶意修改或者未经授权的存取和修改</li>
+</ul>
+<h5 id="3-1-2完整性（为保障数据正确性，相容性，添加的约束条件和规则）"><a href="#3-1-2完整性（为保障数据正确性，相容性，添加的约束条件和规则）" class="headerlink" title="3.1.2完整性（为保障数据正确性，相容性，添加的约束条件和规则）"></a>3.1.2完整性（为保障数据正确性，相容性，添加的约束条件和规则）</h5><ul>
+<li>语义完整性（重点）</li>
+<li>并发控制，安全控制，DB回复等</li>
+</ul>
+<h4 id="3-2-控制安全性"><a href="#3-2-控制安全性" class="headerlink" title="3.2 控制安全性"></a>3.2 控制安全性</h4><h5 id="3-2-1授权"><a href="#3-2-1授权" class="headerlink" title="3.2.1授权"></a>3.2.1授权</h5><p>语法格式</p>
+<p>GRANT &lt;权限&gt; [, 权限] …</p>
+<p>ON &lt;对象类型&gt; &lt;对象名&gt; [, &lt;对象类型&gt; &lt;对象名&gt; ] …</p>
+<p>TO &lt;用户&gt; [,用户] … [WITH GRANT OPTION];</p>
+<p>例</p>
+<p>Grant select </p>
+<p>on table game</p>
+<p>to krzkrz;</p>
+<h5 id="3-2-2-权限回收"><a href="#3-2-2-权限回收" class="headerlink" title="3.2.2 权限回收"></a>3.2.2 权限回收</h5><p>REVOKE &lt;权限&gt; [, 权限] … </p>
+<p>ON &lt;对象类型&gt; &lt;对象名&gt; [, &lt;对象类型&gt; &lt;对象名&gt;] </p>
+<p>FROM &lt;用户&gt; [, 用户] … [CASCADE | RESTRICT]</p>
+<h5 id="3-2-3-存取控制机制"><a href="#3-2-3-存取控制机制" class="headerlink" title="3.2.3 存取控制机制"></a>3.2.3 存取控制机制</h5><p>常用方法</p>
+<ul>
+<li>强制存取机制（MAC）发生在DAC之后<ul>
+<li>主体和客体</li>
+<li>敏感度</li>
+<li>只能修改（写）同级或者更高级（此时数据未泄漏）的相关数据</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-2-4-审计"><a href="#3-2-4-审计" class="headerlink" title="3.2.4 审计"></a>3.2.4 审计</h5><p>在SQL语言之中，用audit，noaudit  </p>
+<h5 id="3-2-5-数据加密"><a href="#3-2-5-数据加密" class="headerlink" title="3.2.5 数据加密"></a>3.2.5 数据加密</h5><h4 id="3-3完整性控制"><a href="#3-3完整性控制" class="headerlink" title="3.3完整性控制"></a>3.3完整性控制</h4><h5 id="3-3-1-包括的几个方面"><a href="#3-3-1-包括的几个方面" class="headerlink" title="3.3.1 包括的几个方面"></a>3.3.1 包括的几个方面</h5><h5 id="3-3-2-域完整性"><a href="#3-3-2-域完整性" class="headerlink" title="3.3.2 域完整性"></a>3.3.2 域完整性</h5><p>not null</p>
+<p>unique</p>
+<p>default</p>
+<p>check(逻辑表达式,或者查询子句)</p>
+<h5 id="3-3-3-参照完整性"><a href="#3-3-3-参照完整性" class="headerlink" title="3.3.3 参照完整性"></a>3.3.3 参照完整性</h5><p>某些操作会破坏完整性</p>
+<p>系统采用以下策略 拒绝，级联，设为空值</p>
+<p>例如on update cascade ，on delete no action之类的语句</p>
+<h5 id="3-3-4用户自定义完整性"><a href="#3-3-4用户自定义完整性" class="headerlink" title="3.3.4用户自定义完整性"></a>3.3.4用户自定义完整性</h5><ul>
+<li><p>完整系约束命名子句</p>
+<p>语法结构</p>
+<p>constraint 完整性约束条件名 完整性约束条件(包括 not null, unique, primary  )</p>
+</li>
+</ul>
+<ul>
+<li><p>断言assertion（复杂的完整性约束）</p>
+<p>语法结构</p>
+<p>create assertion 断言名</p>
+<p>drop assertion 断言名</p>
+</li>
+<li><p>触发器 trigger（由用户的操作激活）</p>
+<p>触发事件（insert, delete, update, 或者前三个的组合）</p>
+<p>按间隔划分</p>
+<ol>
+<li><p>行级触发器</p>
+</li>
+<li><p>语句级触发器</p>
+</li>
+</ol>
+<p>rollback（理解为撤销）</p>
+</li>
+</ul>
+
       
     </div>
 
@@ -263,7 +479,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/archives/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/18/">18</a><a class="extend next" rel="next" href="/archives/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/archives/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/19/">19</a><a class="extend next" rel="next" href="/archives/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

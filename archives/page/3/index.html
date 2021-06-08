@@ -176,7 +176,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/05/31/programing%20language/%E6%B1%87%E7%BC%96/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/06/07/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E6%AD%BB%E9%94%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -189,7 +189,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/05/31/programing%20language/%E6%B1%87%E7%BC%96/" class="post-title-link" itemprop="url">汇编</a>
+          <a href="/2021/06/07/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E6%AD%BB%E9%94%81/" class="post-title-link" itemprop="url">操作系统---死锁</a>
         </h2>
 
         <div class="post-meta-container">
@@ -201,7 +201,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-05-31 11:08:42 / 修改时间：14:20:23" itemprop="dateCreated datePublished" datetime="2021-05-31T11:08:42+08:00">2021-05-31</time>
+      <time title="创建时间：2021-06-07 14:16:29 / 修改时间：21:56:24" itemprop="dateCreated datePublished" datetime="2021-06-07T14:16:29+08:00">2021-06-07</time>
     </span>
 
   
@@ -214,48 +214,121 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="汇编语言（以8086为例）的常用指令"><a href="#汇编语言（以8086为例）的常用指令" class="headerlink" title="汇编语言（以8086为例）的常用指令"></a>汇编语言（以8086为例）的常用指令</h3><h4 id="1-8086概述"><a href="#1-8086概述" class="headerlink" title="1. 8086概述"></a>1. 8086概述</h4><p>8个通用寄存器（X表示可以存储一个字，可以分成高位和低位，H指高8位，L指低8位）</p>
+          <h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><h3 id="1-死锁的产生"><a href="#1-死锁的产生" class="headerlink" title="1. 死锁的产生"></a>1. 死锁的产生</h3><ul>
+<li><p>概念补充</p>
 <ul>
-<li>AX（AH和AL）</li>
-<li>BX（BH和BL）</li>
-<li>CX（CH和CL）</li>
-<li>DX（DH和DL）</li>
-<li>SP（堆栈指针）</li>
-<li>BP</li>
-<li>SI</li>
-<li>DI</li>
-</ul>
-<p>2个控制寄存器</p>
-<ul>
-<li>IP</li>
-<li><h2 id="F（标志寄存器）"><a href="#F（标志寄存器）" class="headerlink" title="F（标志寄存器）"></a>F（标志寄存器）</h2></li>
-</ul>
-<p>4个段寄存器</p>
-<ul>
-<li>CS</li>
-<li>DS</li>
-<li>SS</li>
-<li>ES</li>
-</ul>
-<p>寻址方式</p>
-<h4 id="2-基本指令"><a href="#2-基本指令" class="headerlink" title="2. 基本指令"></a>2. 基本指令</h4><h5 id="2-1-传数据的指令"><a href="#2-1-传数据的指令" class="headerlink" title="2.1 传数据的指令"></a>2.1 传数据的指令</h5><ul>
-<li>MOV a,b           (指把b传给a)<ul>
-<li>可以传立即数（MOV CL,4）</li>
-<li>传数的时候类型要匹配（字和字，字节和字节等）</li>
-<li>立即数不能传到段寄存器之中（<strong>CS和立即数不能作为目的操作数</strong>）</li>
-<li>两个段寄存器（或者是两个存储器）之间不能传数</li>
+<li>一个资源有多个资源实例</li>
+<li>进程使用资源的方法：申请———&gt;使用———–&gt;释放</li>
 </ul>
 </li>
-<li>XCHG a,b        (交换a，b的值)</li>
-<li>堆栈的操作（8086中的堆栈高地址在栈底部，低地址在栈顶部）<ul>
-<li>POP和PUSH<ul>
-<li>这些操作都是字操作，入栈sp-2出栈sp+2</li>
+<li><p>简单来说当一个进程占用一个资源，并请求其他被占用的资源时就会发生死锁现象，这两个进程都无法继续运行（保持等待状态），如下图所示<img src="/2021/06/07/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E6%AD%BB%E9%94%81/image-20210607142839809.png" alt="image-20210607142839809"></p>
+</li>
+<li><p>死锁的4个必要条件</p>
+<ul>
+<li><p>一个资源只能由一个进程占用（互斥）</p>
+</li>
+<li><p>每个进程都占用资源，且会向其他被其他进程占用的资源发送请求</p>
+</li>
+<li><p>资源不会被抢占</p>
+</li>
+<li><p>循环等待，P0请求的资源被P1占用，P1请求的资源被P2占用…..Pn请求的资源被P0占用</p>
+<img src="/2021/06/07/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E6%AD%BB%E9%94%81/image-20210607205630764.png" alt="image-20210607205630764" style="zoom:33%;"></li>
+</ul>
+</li>
+<li><p>为了方便研究死锁问题，引入资源分配图</p>
+<ul>
+<li>边集合，包括两种类型的边，申请边（P—–&gt;R）和分配边（R——&gt;P）</li>
+<li>顶点集合，包括多部分，资源结点的集合（R），资源实例结点的集合和进程结点的集合（P）</li>
+</ul>
+</li>
+<li><p>资源分配图实例</p>
+<img src="/2021/06/07/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E6%AD%BB%E9%94%81/image-20210607145009687.png" alt="image-20210607145009687" style="zoom:50%;"></li>
+<li><p>一个简单判断是否存在死锁的方式</p>
+<ul>
+<li>观察分配图是否有环，没有环就没有死锁，有环可能有死锁（此时通过分析具体情况找出是否有死锁）</li>
 </ul>
 </li>
 </ul>
+<h3 id="2-死锁处理的方法"><a href="#2-死锁处理的方法" class="headerlink" title="2. 死锁处理的方法"></a>2. 死锁处理的方法</h3><h4 id="2-1-预防"><a href="#2-1-预防" class="headerlink" title="2.1 预防"></a>2.1 预防</h4><ul>
+<li><p>确保一个必要条件不成立就行</p>
+</li>
+<li><p>解决互斥的问题</p>
+<ul>
+<li>至少设置一个非共享的资源</li>
+</ul>
+</li>
+<li><p>解决占有并等待的问题</p>
+<ul>
+<li>方式1：进程执行之前申请获得所有的资源</li>
+<li>方式2：限制进程只有在不占用资源时，才可以请求资源</li>
+</ul>
+</li>
+<li><p>解决非抢占的问题</p>
+<ul>
+<li>使用这样的协议：如果一个进程占用资源并去请求另一个不能分配的资源，则它自己占用的资源可以被其他进程抢占</li>
+</ul>
+</li>
+<li><p>解决循环等待问题</p>
+<ul>
+<li>引入ID标识每一个资源，每个资源按ID递增顺序请求资源</li>
+</ul>
 </li>
 </ul>
-<h5 id="2-2"><a href="#2-2" class="headerlink" title="2.2"></a>2.2</h5><h5 id="2-3"><a href="#2-3" class="headerlink" title="2.3"></a>2.3</h5><h5 id="2-4"><a href="#2-4" class="headerlink" title="2.4"></a>2.4</h5>
+<h4 id="2-2-死锁避免"><a href="#2-2-死锁避免" class="headerlink" title="2.2 死锁避免"></a>2.2 死锁避免</h4><ul>
+<li><p>通过动态的算法控制进程如何去申请资源（根据资源的附加信息块决定是否请求该资源），从而规避死锁现象</p>
+</li>
+<li><p>资源分配图算法（每个资源都是单实例）</p>
+<ul>
+<li>引入一种新的类型的边：需求边，表示进程p会在未来的某个时刻申请资源r，未来完成申请之后，需求边变申请边</li>
+<li>算法规则：只有当需求边变成申请边时不会在分配图中形成环的情况下才可以申请该资源</li>
+</ul>
+</li>
+<li><p>银行家算法（每个资源都有多个实例）</p>
+<ul>
+<li><p>定义数据结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">    </span><br></pre></td></tr></table></figure></li>
+<li><p>两个重要的组成部分</p>
+<ul>
+<li>安全性算法</li>
+<li>资源请求算法</li>
+</ul>
+</li>
+<li><p>伪代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h4 id="2-3-检测死锁的方法"><a href="#2-3-检测死锁的方法" class="headerlink" title="2.3 检测死锁的方法"></a>2.3 检测死锁的方法</h4><ul>
+<li><p>资源是单实例的</p>
+<ul>
+<li><p>等待图（资源分配图的变种）算法</p>
+<ul>
+<li>结点简化为进程，$Pi\longrightarrow Pj$表示Pi申请Pj占用的资源</li>
+</ul>
+<img src="/2021/06/07/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E6%AD%BB%E9%94%81/image-20210607214638494.png" alt="image-20210607214638494" style="zoom:33%;"></li>
+<li><p>图中有环，则存在死锁</p>
+</li>
+<li><p>算法要对等待图进行维护，即周期性调用搜索算法</p>
+</li>
+</ul>
+</li>
+<li><p>资源拥有多实例</p>
+</li>
+</ul>
+<h4 id="2-4-恢复方法"><a href="#2-4-恢复方法" class="headerlink" title="2.4 恢复方法"></a>2.4 恢复方法</h4><ul>
+<li>终止进程<ul>
+<li>最简单粗暴的：终止所有进程</li>
+<li>依次终止进程，直到消除死锁</li>
+</ul>
+</li>
+<li>抢占资源<ul>
+<li>选择牺牲对象，去抢占哪些进程及其占用的资源（避免多次重复选择同一个进程的资源）</li>
+<li>回滚</li>
+</ul>
+</li>
+</ul>
+
       
     </div>
 
@@ -274,7 +347,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/21/">21</a><a class="extend next" rel="next" href="/archives/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/23/">23</a><a class="extend next" rel="next" href="/archives/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

@@ -176,7 +176,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -189,7 +189,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/" class="post-title-link" itemprop="url">操作系统--进程</a>
+          <a href="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/" class="post-title-link" itemprop="url">计算机网络--传输层</a>
         </h2>
 
         <div class="post-meta-container">
@@ -200,14 +200,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-31 20:46:26" itemprop="dateCreated datePublished" datetime="2021-03-31T20:46:26+08:00">2021-03-31</time>
+      <time title="创建时间：2021-04-11 16:22:00" itemprop="dateCreated datePublished" datetime="2021-04-11T16:22:00+08:00">2021-04-11</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-06-03 21:23:34" itemprop="dateModified" datetime="2021-06-03T21:23:34+08:00">2021-06-03</time>
+        <time title="修改时间：2021-05-23 22:10:47" itemprop="dateModified" datetime="2021-05-23T22:10:47+08:00">2021-05-23</time>
       </span>
 
   
@@ -220,172 +220,253 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="进程概述"><a href="#进程概述" class="headerlink" title="进程概述"></a>进程概述</h2><h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>1.1 任务（task）和作业（job）的区别</p>
-<p>简单来说，作业就是任务的一个实例（类比类和对象的概念）</p>
-<p>1.2 程序和进程的区别</p>
-<p>程序是被动的，进程是活动的，<strong>当程序被载入内存的时候，这个程序就成了进程</strong></p>
-<p><strong>1.3进程的结构形式（组成部分）</strong></p>
-<p>1.3.1代码块（文本段）</p>
-<p>包括程序代码</p>
-<p>1.3.2栈</p>
-<p>包括函数参数，返回值，局部变量</p>
-<p>1.3.3数据段</p>
-<p>包含全局变量</p>
-<p>1.3.4堆</p>
-<p>程序运行过程之中动态分配的内存</p>
-<p>1.4 进程控制块（PCB process control block ==TCB task control block）</p>
-<ul>
-<li><p>进程创建的时候，系统新建PCB来保存进程的当前状态信息</p>
+          <h2 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h2><h3 id="1-传输层服务"><a href="#1-传输层服务" class="headerlink" title="1. 传输层服务"></a>1. 传输层服务</h3><h4 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h4><p>传输层协议为运行在不同主机之上的进程提供了一种逻辑通信机制（端到端）</p>
+<h4 id="1-2-逻辑通信机制"><a href="#1-2-逻辑通信机制" class="headerlink" title="1.2 逻辑通信机制"></a>1.2 逻辑通信机制</h4><p>可理解为不同主机直接相连通信，在通信中无需考虑承载报文的物理设施细节</p>
+<h4 id="1-3-与网络层的关系"><a href="#1-3-与网络层的关系" class="headerlink" title="1.3 与网络层的关系"></a>1.3 与网络层的关系</h4><p>网络层提供<strong>不同主机</strong>间的逻辑通信</p>
+<p>传输层提供<strong>不同主机的不同应用进程</strong>间的逻辑通信</p>
+<p>传输层依赖于网络层提供的服务</p>
+<h3 id="2-多路复用-多路分解"><a href="#2-多路复用-多路分解" class="headerlink" title="2. 多路复用+多路分解"></a>2. 多路复用+多路分解</h3><p><img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/image-20210509214831903.png" alt="image-20210509214831903"></p>
+<h4 id="2-1-多路复用（发送端）"><a href="#2-1-多路复用（发送端）" class="headerlink" title="2.1 多路复用（发送端）"></a>2.1 多路复用（发送端）</h4><p>2.1.1 是什么</p>
+<p>从多个Socket接收数据，为每 块数据封装上头部信息，生成 报文段，交给网络层</p>
+<h4 id="2-2-多路分解（接收端）"><a href="#2-2-多路分解（接收端）" class="headerlink" title="2.2 多路分解（接收端）"></a>2.2 多路分解（接收端）</h4><p>2.2.1 是什么</p>
+<p>传输层依据头部信息将收到的报文段交给正确的套接字（进入应用层）， 即不同的进程</p>
+<p>2.2.2 如何工作</p>
+<p>主机收到IP数据报（包括源IP，目的IP，源端口，目的端口）—–&gt;主机收到数据段后，传输层提取IP和端口号，再将数据段导向套接字</p>
+<p>2.2.3 无连接的复用和分解(UDP</p>
+<p>二元组标识套接字：（IP，端口号）</p>
+<p>2.2.4 面向连接的分用和分解(TCP</p>
+<p>四元组标识套接字：（源IP，源端口，目的IP，目的端口）</p>
+<h3 id="3-UDP（无连接的用户数据报协议）"><a href="#3-UDP（无连接的用户数据报协议）" class="headerlink" title="3. UDP（无连接的用户数据报协议）"></a>3. UDP（无连接的用户数据报协议）</h3><h4 id="3-1-特征"><a href="#3-1-特征" class="headerlink" title="3.1 特征"></a>3.1 特征</h4><ul>
+<li>不需要建立连接，收到报文之后也不需要确认（延时很小</li>
+<li>基于IP协议，增加了复用/分用，以及简单的错误校验这些内容，实现简单</li>
+<li>UDP使用最大努力交付，不保证交付数据可靠性，UDP段可能丢失或者非按序到达</li>
+<li> 无拥塞控制，更好地控制发送时间和速率</li>
+<li>面向报文</li>
+<li>首部开销小（8字节）</li>
+<li>通过应用层的可靠性机制可能实现UDP上的可靠数据传输</li>
+</ul>
+<h4 id="3-2-报文格式"><a href="#3-2-报文格式" class="headerlink" title="3.2 报文格式"></a>3.2 报文格式</h4><p>首部字段（源端口+目的端口+UDP长度+UDP检验和）+数据字段</p>
+<p><img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/image-20210509232638326.png" alt="image-20210509232638326"></p>
+<h4 id="3-3-UDP校验和（若有错则直接丢弃报文）"><a href="#3-3-UDP校验和（若有错则直接丢弃报文）" class="headerlink" title="3.3 UDP校验和（若有错则直接丢弃报文）"></a>3.3 UDP校验和（若有错则直接丢弃报文）</h4><p>发送方：将该段的内容视为16位整数，计算所有整数的和，得到的和按位取反，就是校验和，放在校验和字段之中</p>
+<p>接收方：计算收到的字段的校验和，与校验和字段对比</p>
+<h3 id="4-可靠传输协议（TCP基础，简写为rdt）"><a href="#4-可靠传输协议（TCP基础，简写为rdt）" class="headerlink" title="4. 可靠传输协议（TCP基础，简写为rdt）"></a>4. 可靠传输协议（TCP基础，简写为rdt）</h3><h4 id="4-1-传输中存在的问题-相关概念"><a href="#4-1-传输中存在的问题-相关概念" class="headerlink" title="4.1 传输中存在的问题+相关概念"></a>4.1 传输中存在的问题+相关概念</h4><ul>
+<li><p>信道不可靠，传输中可能丢，可能错，还可能混乱</p>
 </li>
-<li><p><strong>对于操作系统，PCB就表示了一个进程（通过PCB知道进程是哪一个）</strong></p>
+<li><p>rdt_send() 由上层应用调用，将数据发送给下层</p>
 </li>
-<li><p>在CPU执行不同的程序时，会不停的切换，这时候一个程序已经执行部分的信息就存在PCB之中</p>
+<li><p>deliver_send() 向上层应用交付数据</p>
 </li>
-<li><p>包括8个内容: 进程ID（唯一的），进程状态，进程计数器，CPU寄存器，CPU调度信息，内存管理信息，记账信息，I/O状态信息</p>
+<li><p>udt_send()通过不可靠信道将数据传送给接收方</p>
+</li>
+<li><p>rdt_rcv()数据包到达接收方信道时被调用</p>
 </li>
 </ul>
-<p>1.5 进程状态</p>
-<p>5种状态: new, ready, running, waiting, terminated</p>
-<p>进程状态图</p>
-<p>1.6 并发</p>
-<p>一个CPU上交替的执行多个程序（进程）</p>
-<h3 id="2-进程的调度概述（介绍概念为主）"><a href="#2-进程的调度概述（介绍概念为主）" class="headerlink" title="2. 进程的调度概述（介绍概念为主）"></a>2. 进程的调度概述（介绍概念为主）</h3><h4 id="2-1-进程调度队列（里面存储的是PCB块，组织进程的形式）"><a href="#2-1-进程调度队列（里面存储的是PCB块，组织进程的形式）" class="headerlink" title="2.1 进程调度队列（里面存储的是PCB块，组织进程的形式）"></a>2.1 进程调度队列（里面存储的是PCB块，组织进程的形式）</h4><ul>
-<li><p>CPU往往要在多个可用进程之间快速切换，此时调度程序要选择其中一个进程运行，这些进程就存放在队列之中</p>
-</li>
-<li><p>队列有如下几种，队列一般为链表的形式</p>
-</li>
-</ul>
-<h5 id="2-1-1-设备队列"><a href="#2-1-1-设备队列" class="headerlink" title="2.1.1 设备队列"></a>2.1.1 设备队列</h5><ul>
-<li>包括在等待某个事件的进程</li>
-<li>结构与就绪队列类似</li>
-</ul>
-<h5 id="2-1-2-就绪队列"><a href="#2-1-2-就绪队列" class="headerlink" title="2.1.2 就绪队列"></a>2.1.2 就绪队列</h5><ul>
-<li><p>包括等待运行的进程</p>
-</li>
-<li><p>结构 头节点包括两个指针，一个指向第一个PCB，另一个指向尾部PCB</p>
-</li>
-</ul>
-<h5 id="2-1-3-作业队列"><a href="#2-1-3-作业队列" class="headerlink" title="2.1.3 作业队列"></a>2.1.3 作业队列</h5><p>包括了系统内的所有进程</p>
-<h5 id="2-1-4-队列图"><a href="#2-1-4-队列图" class="headerlink" title="2.1.4 队列图"></a>2.1.4 队列图</h5><p>用于展示进程调度的过程</p>
-<h4 id="2-2-调度程序"><a href="#2-2-调度程序" class="headerlink" title="2.2 调度程序"></a>2.2 调度程序</h4><ul>
-<li>调度程序即调度器</li>
-<li>作用是选择要执行哪一个进程</li>
-<li>分成3种：<ul>
-<li>长期调度程序，从存储设备的缓冲池中选择进程，并装入就绪队列</li>
-<li>中期调度程序，将进程从内存之中移出，装入就绪队列</li>
-<li>短期调度程序，从准备好的进程中选择一个，并装入就绪队列</li>
-</ul>
-</li>
-</ul>
-<h4 id="2-3-上下文切换"><a href="#2-3-上下文切换" class="headerlink" title="2.3 上下文切换"></a>2.3 上下文切换</h4><ul>
-<li><p>CPU在切换到另一进程时，要保存当前进程的状态，并恢复另一进程的状态</p>
-</li>
-<li><p>补充：调度的本质上就是让进程调度器选择一个可用的进程到CPU上运行</p>
-</li>
-</ul>
-<p><strong>更详细的进程调度解释（CPU调度）见另一篇：——-</strong></p>
-<h3 id="3-进程操作过程"><a href="#3-进程操作过程" class="headerlink" title="3. 进程操作过程"></a>3. 进程操作过程</h3><h4 id="3-1-进程创建"><a href="#3-1-进程创建" class="headerlink" title="3.1 进程创建"></a>3.1 进程创建</h4><ul>
-<li>进程是树状结构，所以有子进程和父进程</li>
-<li>PID是进程唯一的标识符（操作系统通过PID来识别进程）</li>
-<li>一个进程可以创建另一个进程（即创建一个子进程）</li>
-<li>进程创建时的可选项<ul>
-<li>资源共享选项：父进程和子进程如何共享资源</li>
-<li>执行选项：父进程和子进程何时结束</li>
-<li>地址空间选项：<ul>
-<li>子进程复制父进程</li>
-<li>子进程覆盖父进程</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>创建过程   在系统内部创建程序块—-&gt;分配内存—-&gt;载入可执行文件—-&gt;初始化程序</li>
-<li>（以UNIX系统为例）fork()函数<ul>
-<li>创建新的进程</li>
-</ul>
-</li>
-<li>exec指一组函数，包括了6个函数<ul>
-<li>作用是根据文件名找到可执行文件，在调用进程的内部执行这个可执行文件</li>
-</ul>
-</li>
-</ul>
-<h4 id="3-2-进程终止"><a href="#3-2-进程终止" class="headerlink" title="3.2 进程终止"></a>3.2 进程终止</h4><ul>
-<li>第一种模式，系统调用exit<ul>
-<li>进程完成之后用exit()删除自身并终止运行</li>
-<li>子进程在结束前可以用wait()向父进程传数据，之后它占用的资源被操作系统回收（要使用exit）</li>
-</ul>
-</li>
-<li> 第二种模式，父进程终止子进程</li>
-<li>wait函数扩展<ul>
-<li>进程调用wait函数就会立刻将自己阻塞</li>
-</ul>
-</li>
-</ul>
-<h3 id="4-进程之间的通信（便于进程之间的协作工作）"><a href="#4-进程之间的通信（便于进程之间的协作工作）" class="headerlink" title="4. 进程之间的通信（便于进程之间的协作工作）"></a>4. 进程之间的通信（便于进程之间的协作工作）</h3><h4 id="4-1-两种通信模式"><a href="#4-1-两种通信模式" class="headerlink" title="4.1 两种通信模式"></a>4.1 两种通信模式</h4><ul>
-<li><p>消息传递</p>
-<ul>
-<li><img src="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/image-20210527212717964.png" alt="image-20210527212717964" style="zoom:43%;"></li>
-<li><p>通过进程之间交换信息实现</p>
-</li>
-<li><p>一般用来传递较少的数据</p>
-</li>
-<li><p>需要内核干涉（操作系统提供通信的机制）</p>
-</li>
-<li><p>存在两种操作，send(message)和receive(message)，通信的时候需要先建立好通讯线路</p>
-<ul>
-<li><p>通讯线路的逻辑实现方法(物理链路的实现在这里是无关紧要的)</p>
+<p><img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/rdt.png" alt="rdt"></p>
+<p>备注：</p>
 <ol>
-<li><p>直接或间接通信</p>
+<li>假设数据单向（控制信息仍是双向传播），方便讨论</li>
+<li>fsm 有限状态机(用于描述传输协议的工具)</li>
+<li>一步步完善可靠传输协议</li>
+</ol>
+<h4 id="4-2-rdt1-0（）"><a href="#4-2-rdt1-0（）" class="headerlink" title="4.2 rdt1.0（）"></a>4.2 rdt1.0（）</h4><p>4.2.1 情况</p>
 <ul>
-<li><p>直接通信必须明确指定接受者和发送者是谁，可以一对一（对称寻址方式），一对多（非对称寻址方式）</p>
+<li>不丢不错</li>
+<li>底层信道完全可靠</li>
+<li>发送方和接收方的FSM独立，只有一个状态</li>
+</ul>
+<p>4.2.2 过程</p>
+<h4 id="4-3-rdt2-0（会产生位错误的信道，被成为ARQ—-自动重传请求协议）"><a href="#4-3-rdt2-0（会产生位错误的信道，被成为ARQ—-自动重传请求协议）" class="headerlink" title="4.3 rdt2.0（会产生位错误的信道，被成为ARQ—-自动重传请求协议）"></a>4.3 rdt2.0（会产生位错误的信道，被成为ARQ—-自动重传请求协议）</h4><p>4.3.1 具体情况描述</p>
+<ul>
+<li><p>只会存在位错误</p>
 </li>
-<li><p>间接通信是通过端口或者邮箱，来完成发送和接收消息的过程，例如下图（P为进程）</p>
-<img src="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/image-20210527223418825.png" alt="image-20210527223418825" style="zoom:50%;"></li>
+<li><p>信道不再可靠</p>
+</li>
+<li><p>可检错（通过校验和）</p>
+</li>
+<li><p>应对错误方式</p>
+<ul>
+<li>存在确认机制（ACK），接收方通过ACK告知发送方分组已经正确收到</li>
+<li>NAK，接收方通过NAK告诉发送方分组有错误，发送方收到NAK会重传分组    </li>
 </ul>
 </li>
-<li><p>同步或异步通信（阻塞和非阻塞)</p>
+</ul>
+<p>4.3.2 过程（发送方会等待确认信息）</p>
 <ul>
-<li>同步发送：发送进程是阻塞态，直到消息被对方接收时解除此种状态</li>
-<li>同步接收：接收者阻塞，直到收到发送来的消息</li>
-<li>异步发送：发送进程发送消息并继续操作</li>
-<li>异步接收：接收者收到一个有效消息或空消息</li>
+<li>无错误的状况</li>
+<li>有错误的状况</li>
+</ul>
+<p>4.3.3 存在的缺陷</p>
+<ul>
+<li>当NAK或者ACK出错或者被破坏时，发送方无法知道接收方是否正确接收上一次发送的数据</li>
+</ul>
+<h4 id="4-4-rdt2-1和rdt2-2"><a href="#4-4-rdt2-1和rdt2-2" class="headerlink" title="4.4 rdt2.1和rdt2.2"></a>4.4 rdt2.1和rdt2.2</h4><ul>
+<li>rdt2.1（rdt2.0改进） <ul>
+<li>每个分组增加了序列号这一属性（此种情况下用0和1即可）</li>
+<li>要检验ACK和NAK是否出错</li>
 </ul>
 </li>
-<li><p>自动或显式缓冲（通信缓冲）</p>
-<ul>
-<li>将通信进程交换的消息都存在临时的队列中（在这里名为缓冲）</li>
+<li>rdt2.2（进一步改进）<ul>
+<li>只使用ACK，不再有NAK</li>
+<li>实现方式：在ACK之中加入已经被确认的分组的序列号</li>
 </ul>
 </li>
+</ul>
+<h4 id="4-5-rdt3-0-还会产生丢包的情况"><a href="#4-5-rdt3-0-还会产生丢包的情况" class="headerlink" title="4.5 rdt3.0(还会产生丢包的情况)"></a>4.5 rdt3.0(还会产生丢包的情况)</h4><p>4.5.1 具体情况描述</p>
+<ul>
+<li>增加了一个倒计时定时器（在一段时间未收到ACK的时候，重传分组并重置定时器）</li>
+<li></li>
+<li></li>
+</ul>
+<p>4.5.2过程</p>
+<p>4.5.3 性能分析（分析可得存在的问题）</p>
+<p>例：在1Gbps链路中，15ms的端到端传播延迟，1KB的分组</p>
+<p>发送方的利用率 （L/R）/（RTT+L/R）=0.00027</p>
+<p><strong>存在利用率很低的问题（停等操作都存在的问题）</strong></p>
+<h4 id="4-6-改进rdt3-0"><a href="#4-6-改进rdt3-0" class="headerlink" title="4.6 改进rdt3.0"></a>4.6 改进rdt3.0</h4><p>4.6.1 流水线可靠传输协议（解决性能问题，提高资源利用率）</p>
+<ul>
+<li>如何实现流水线：不以停等方式运行，而是允许发送方依次发送多个分组，不需要等待确认消息</li>
+<li>注意事项  <ul>
+<li>要增加序号的范围（不再是0和1）</li>
+<li>发送方和接收方都需要更大的存储空间以<strong>缓存分组</strong></li>
+<li>发送方和接收方有缓存下面的两种方法是用来解决流水线之中的差错恢复</li>
+</ul>
+</li>
+</ul>
+<p>4.6.2 回退N步协议（GBN协议，滑动窗口协议）</p>
+<ul>
+<li>有一个长度为n的窗口</li>
+</ul>
+<p>4.6.3选择重传</p>
+<h3 id="5-TCP（面向连接的传输控制协议）"><a href="#5-TCP（面向连接的传输控制协议）" class="headerlink" title="5. TCP（面向连接的传输控制协议）"></a>5. TCP（面向连接的传输控制协议）</h3><h4 id="5-1-TCP特性"><a href="#5-1-TCP特性" class="headerlink" title="5.1 TCP特性"></a>5.1 TCP特性</h4><ul>
+<li>基本的特性<ul>
+<li>点对点（一个发送方对应一个接收方）</li>
+<li>传输的是可靠且有序的字节流</li>
+<li><strong>流水线机制</strong></li>
+<li>全双工（同一个连接之中的数据是双向的）</li>
+<li>面向连接的</li>
+<li>存在流量控制机制和拥塞控制机制（后面细说）</li>
+</ul>
+</li>
+<li>与可靠数据传输相关的特性<ul>
+<li>累计确认机制</li>
+<li>单一重传计时器</li>
+<li>当超时或者收到重复ACK时会重传</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-2-TCP连接"><a href="#5-2-TCP连接" class="headerlink" title="5.2 TCP连接"></a>5.2 TCP连接</h4><ul>
+<li>TCP连接是一种逻辑连接，建立在两个主机之间的某两个进程之间</li>
+<li>TCP会将应用层传过来的数据存入发送缓存（三次握手的时候建立的，在接收方也有接受缓存）</li>
+</ul>
+<h4 id="5-3-TCP报文结构（补充英文版本在实践过程中容易理解）"><a href="#5-3-TCP报文结构（补充英文版本在实践过程中容易理解）" class="headerlink" title="5.3 TCP报文结构（补充英文版本在实践过程中容易理解）"></a>5.3 TCP报文结构（补充英文版本在实践过程中容易理解）</h4><img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/image-20210509232349814.png" alt="image-20210509232349814" style="zoom:50%;">
+
+<img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/image-20210509232957119.png" alt="image-20210509232957119" style="zoom:50%;">
+
+<ul>
+<li>sequence number（序列号），是报文段中的第一个字节的编号，</li>
+<li>ack number，希望接受到的下一个字节的序列号</li>
+<li>URG，ACK，PSH，RST，SYN，FIN</li>
+</ul>
+<h4 id="5-4-估计RTT（RTT是动态变化的）"><a href="#5-4-估计RTT（RTT是动态变化的）" class="headerlink" title="5.4 估计RTT（RTT是动态变化的）"></a>5.4 估计RTT（RTT是动态变化的）</h4><ul>
+<li>目的是确定定时器应当设置的时长（定时器时长&gt;RTT）</li>
+<li>估计方式<ul>
+<li>求多个SampleRTT，再取平均值</li>
+<li>这里的SampleRTT指报文段发出去到收到ACK这一过程的总时长</li>
+</ul>
+</li>
+<li>如何设置定时器<ul>
+<li>估计的RTT+<strong>安全边界</strong></li>
+<li>安全边界的值</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-5-TCP过程中的发送方和接收方"><a href="#5-5-TCP过程中的发送方和接收方" class="headerlink" title="5.5 TCP过程中的发送方和接收方"></a>5.5 TCP过程中的发送方和接收方</h4><ul>
+<li>发送端</li>
+<li><h2 id="接收端"><a href="#接收端" class="headerlink" title="接收端"></a>接收端</h2></li>
+<li><h2 id="补充重传发生时的情况"><a href="#补充重传发生时的情况" class="headerlink" title="补充重传发生时的情况"></a>补充重传发生时的情况</h2><ul>
+<li>快速重传机制<ul>
+<li>产生的背景：如果发生超时的现象，会导致定时器重设时发生巨大的增加，极大的增加超时的等待时间，通过快速重传解决这样的问题</li>
+<li>通过检测重复ACK知道分组已经丢失</li>
+<li>如果发送方收到同一数据的3个ACK时，会认为该数据之后的段丢失，此时进行快速重传（在定时器超时之前重传）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-6-流量控制"><a href="#5-6-流量控制" class="headerlink" title="5.6 流量控制"></a>5.6 流量控制</h4><ul>
+<li>流量控制的目的是防止接收方缓存溢出（接收方上层应用的处理速度可能比较慢，导致数据堆积在缓存之中）</li>
+<li>如何实现<ul>
+<li>接收方将<strong>空余的缓存大小</strong>（定义为RevWindow）封装在确认报文头部字段返回发送方</li>
+<li>发送方收到后开始控制自己发送的数据大小，不能超过空余缓存的大小</li>
+<li><strong>特殊情况</strong>：当空余缓存为0时，发送方仍然发送一个很小的报文段，以确认后续的情况</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-7-管理链接（建立和拆除）"><a href="#5-7-管理链接（建立和拆除）" class="headerlink" title="5.7 管理链接（建立和拆除）"></a>5.7 管理链接（建立和拆除）</h4><h5 id="5-7-1建立连接（三次握手机制）"><a href="#5-7-1建立连接（三次握手机制）" class="headerlink" title="5.7.1建立连接（三次握手机制）"></a>5.7.1建立连接（三次握手机制）</h5><ul>
+<li>初始化</li>
+<li>三次握手的过程<ol>
+<li>客户端向服务器发送一个特殊的TCP报文段（SYN报文段，不携带任何数据）</li>
+<li>服务器端收到SYN之后会向客户发送SYNACK报文段，表明允许连接（服务器此时会为TCP连接分配好缓存）</li>
+<li>客户端收到SYNACK，再向服务器发送一个报文段（可以携带数据），表明收到允许连接的报文（此时客户端会为TCP分配好缓存）</li>
 </ol>
 </li>
 </ul>
+<h5 id="5-7-2-拆除连接"><a href="#5-7-2-拆除连接" class="headerlink" title="5.7.2 拆除连接"></a>5.7.2 拆除连接</h5><ol>
+<li>客户端发送FIN报文段</li>
+<li>服务器收到FIN后回复ACK，并且会向客户端发送FIN</li>
+<li>客户端收到FIN，回复ACK</li>
+<li>服务器收到ACK，连接关闭</li>
+</ol>
+<h4 id="5-8-拥塞控制概述"><a href="#5-8-拥塞控制概述" class="headerlink" title="5.8 拥塞控制概述"></a>5.8 拥塞控制概述</h4><h5 id="5-8-1-拥塞"><a href="#5-8-1-拥塞" class="headerlink" title="5.8.1 拥塞"></a>5.8.1 拥塞</h5><ul>
+<li><p>数据太多网络来不及处理</p>
+</li>
+<li><p>会导致路由器缓存溢出使分组丢失</p>
+</li>
+<li><p>还会导致分组在路由器中排队使分组延时太大（排队延时大）</p>
+</li>
+<li><p>拥塞控制和流量控制的区别</p>
+</li>
+</ul>
+<h5 id="5-8-2-拥塞成因和代价"><a href="#5-8-2-拥塞成因和代价" class="headerlink" title="5.8.2 拥塞成因和代价"></a>5.8.2 拥塞成因和代价</h5><h5 id="5-8-3-如何进行拥塞控制"><a href="#5-8-3-如何进行拥塞控制" class="headerlink" title="5.8.3 如何进行拥塞控制"></a>5.8.3 如何进行拥塞控制</h5><ul>
+<li>端到端的拥塞控制（TCP采取的方法）<ul>
+<li>端系统通过观察丢包，延时增大的网络行为判断是否发生拥塞</li>
+</ul>
+</li>
+<li>网络辅助的拥塞控制<ul>
+<li>路由器反馈网络拥塞信息，指示发送方采取的发送速率</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-9-TCP中的拥塞控制"><a href="#5-9-TCP中的拥塞控制" class="headerlink" title="5.9 TCP中的拥塞控制"></a>5.9 TCP中的拥塞控制</h4><h5 id="5-9-1-要解决哪些问题"><a href="#5-9-1-要解决哪些问题" class="headerlink" title="5.9.1 要解决哪些问题"></a>5.9.1 要解决哪些问题</h5><ul>
+<li>发送方如何限制发送速率<ul>
+<li>引入拥塞窗口这一变量（CongestionWin，简写为CW），这一个变量是动态变化的（可以参考流量控制中的模式）</li>
+<li>CongestionWin=最后一个发送的序列号-最后一个确认的序列号</li>
+<li>通过改变CongestionWin来改变发送速率 </li>
+</ul>
+</li>
+<li>发送方如何得知网络拥塞<ul>
+<li>当<strong>发生超时事件或者有3个重复的ACK</strong>（定义为事件A）时，表明出现了拥塞</li>
+</ul>
+</li>
+<li>如何调整速率（主要分成两种机制）<ul>
+<li>慢启动<ul>
+<li>CW的初始值很小（比如500字节）</li>
+<li>后续要快速增长（指数型增长）</li>
+<li>具体的方式是：每经过一个RTT之后CW翻倍，在收到ACK时进行这一操作</li>
+</ul>
+</li>
+<li>拥塞避免<ul>
+<li>遇到拥塞CW直接减半，之后保守的逐渐上调（线性增长），直到事件A（<del>定义在上面</del>）发生，之后再重复此过程</li>
+<li></li>
+</ul>
+</li>
+<li>上述两种模式如何切换<ul>
+<li>引入变量Threshold（指A事件发生时CW的一半）</li>
+<li>CW达到这个值之后会由指数增长转为线性增长</li>
+</ul>
 </li>
 </ul>
 </li>
-<li><p>共享内存</p>
-<ul>
-<li><img src="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/image-20210527212746572.png" alt="image-20210527212746572" style="zoom:43%;"></li>
-<li>两个进程之间有一块共享的内存区域，进程通过向此区域读写数据来交换信息</li>
-<li>不需要内核干涉，通信的速度很快</li>
-<li><strong>注意事项</strong><ul>
-<li>进行这样的通信方式，必须保障不能有多个进程同时向共享区域<strong>写数据</strong>，故需要同步机制</li>
-<li>具体的机制是什么样的模式见 操作系统</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="5-管道"><a href="#5-管道" class="headerlink" title="5. 管道"></a>5. 管道</h3><h4 id="5-1-概述"><a href="#5-1-概述" class="headerlink" title="5.1 概述"></a>5.1 概述</h4><ul>
-<li>一种通信机制，管道通信方式存在一个文件作为中间介质，此类文件称作管道文件</li>
-<li>通信的过程中，存在一个写进程（向管道中写数据）和一个读进程（向管道之中读数据）</li>
-</ul>
-<h4 id="5-2-普通管道（匿名管道）"><a href="#5-2-普通管道（匿名管道）" class="headerlink" title="5.2 普通管道（匿名管道）"></a>5.2 普通管道（匿名管道）</h4><ul>
-<li>半双工，只允许单向通信</li>
-<li>双方互相通信的时候，要建立两个管道</li>
-<li>只能用于父进程和子进程之间（即只能用于一台机器的进程之间）</li>
-</ul>
-<h4 id="5-3-命名管道"><a href="#5-3-命名管道" class="headerlink" title="5.3 命名管道"></a>5.3 命名管道</h4><ul>
-<li>全双工</li>
-<li>建立之后，多个进程都可以去使用它进行通信</li>
 </ul>
 
       
@@ -406,7 +487,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/13/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/archives/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/21/">21</a><a class="extend next" rel="next" href="/archives/page/15/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/13/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/archives/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/23/">23</a><a class="extend next" rel="next" href="/archives/page/15/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

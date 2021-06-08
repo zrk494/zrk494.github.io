@@ -176,7 +176,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/04/11/programing%20language/Python/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -189,7 +189,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-title-link" itemprop="url">设计数据库</a>
+          <a href="/2021/04/11/programing%20language/Python/" class="post-title-link" itemprop="url">Python</a>
         </h2>
 
         <div class="post-meta-container">
@@ -200,15 +200,8 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-04-08 07:43:48" itemprop="dateCreated datePublished" datetime="2021-04-08T07:43:48+08:00">2021-04-08</time>
+      <time title="创建时间：2021-04-11 20:34:27" itemprop="dateCreated datePublished" datetime="2021-04-11T20:34:27+08:00">2021-04-11</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-05-28 23:26:05" itemprop="dateModified" datetime="2021-05-28T23:26:05+08:00">2021-05-28</time>
-      </span>
 
   
 </div>
@@ -220,217 +213,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="设计数据库"><a href="#设计数据库" class="headerlink" title="设计数据库"></a>设计数据库</h2><h3 id="1-概述-需求分析"><a href="#1-概述-需求分析" class="headerlink" title="1.概述+需求分析"></a>1.概述+需求分析</h3><h4 id="1-1-设计的内容"><a href="#1-1-设计的内容" class="headerlink" title="1.1 设计的内容"></a>1.1 设计的内容</h4><ul>
-<li>数据库的逻辑和物理结构（满足用户需求）</li>
-<li>满足用户的信息管理要求（包括存储和管理的对象）</li>
-<li>满足用户的数据操作需求（增删改查，统计等操作）</li>
-</ul>
-<h4 id="1-2-设计的目标"><a href="#1-2-设计的目标" class="headerlink" title="1.2 设计的目标"></a>1.2 设计的目标</h4><ul>
-<li>信息基础设施</li>
-<li>高效的运行环境<ul>
-<li> 存取效率</li>
-<li>存储空间</li>
-<li>运行管理</li>
-</ul>
-</li>
-</ul>
-<h4 id="1-3-特征"><a href="#1-3-特征" class="headerlink" title="1.3 特征"></a>1.3 特征</h4><ul>
-<li>结构设计（）</li>
-<li>行为设计（）</li>
-</ul>
-<h4 id="1-4-设计的流程"><a href="#1-4-设计的流程" class="headerlink" title="1.4 设计的流程"></a>1.4 设计的流程</h4><ul>
-<li><p>需求分析+设计（花最多的时间打下好的基础）</p>
-</li>
-<li><p>设计概念结构</p>
-</li>
-<li><p>设计逻辑结构</p>
-</li>
-<li><p>优化数据模型</p>
-</li>
-<li><p>设计物理结构</p>
-</li>
-<li><p>性能评测</p>
-</li>
-<li><p>物理实现</p>
-</li>
-<li><p>运行和维护</p>
-</li>
-<li><p>补充：在优化或者评估的过程中，可能会返回之前的步骤进行设计上的修改</p>
-</li>
-</ul>
-<h4 id="1-5-需求分析"><a href="#1-5-需求分析" class="headerlink" title="1.5 需求分析"></a>1.5 需求分析</h4><ul>
-<li><p>需求分析就是分析用户的要求，要处理以下任务</p>
-<ul>
-<li><p>任务1</p>
-</li>
-<li><p>任务2</p>
-</li>
-<li><p>任务3</p>
-</li>
-<li><p>任务4</p>
-</li>
-</ul>
-</li>
-<li><p>重点的方面包括</p>
-<ul>
-<li>信息要求</li>
-<li>处理要求</li>
-<li>安全性和完整性要求</li>
-</ul>
-</li>
-</ul>
-<h4 id="1-6-需求分析步骤"><a href="#1-6-需求分析步骤" class="headerlink" title="1.6 需求分析步骤"></a>1.6 需求分析步骤</h4><ul>
-<li>调查分析</li>
-<li>定义数据库支持的信息与应用</li>
-<li>定义数据操作任务</li>
-<li>定义<strong>数据项字典</strong></li>
-<li>预测未来可能的改变</li>
-</ul>
-<h4 id="1-7-数据项字典（数据字典）"><a href="#1-7-数据项字典（数据字典）" class="headerlink" title="1.7 数据项字典（数据字典）"></a>1.7 数据项字典（数据字典）</h4><ul>
-<li><p>数据项（不可再分的数据单位）</p>
-</li>
-<li><p>数据结构（数据的组成方式）</p>
-</li>
-<li><p>数据流（数据结构在系统内传输的路径）？？？</p>
-</li>
-<li><p>数据存储（数据存在哪）</p>
-</li>
-<li><p>处理过程</p>
-</li>
-</ul>
-<h3 id="2-概念数据库设计"><a href="#2-概念数据库设计" class="headerlink" title="2. 概念数据库设计"></a>2. 概念数据库设计</h3><h4 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h4><ul>
-<li>设计的主要内容有两个方面<ul>
-<li>概念模式设计</li>
-<li>事务设计</li>
-</ul>
-</li>
-</ul>
-<h4 id="2-2-实体联系模型（ER模型）"><a href="#2-2-实体联系模型（ER模型）" class="headerlink" title="2.2 实体联系模型（ER模型）"></a>2.2 实体联系模型（ER模型）</h4><p>2.2.1 三个主要元素</p>
-<p>实体+属性+联系</p>
-<p>2.2.2 基本概念解释</p>
-<ul>
-<li>实体         是ER模型之中的基本对象，通过对现实之中的事物抽象得到（如人，车，学校，课程都可以作为一个实体）</li>
-<li>实体的属性       指实体的一组特性，实体的属性值一般作为数据库之中的主要数据</li>
-<li>实体集（相同类型的实体的集合）</li>
-<li>码（超码，主码，候选码）      在ER模型之中，指用来区别不同实体的一个或者多个属性</li>
-<li>联系    指不同实体间的某某种关联方式<ul>
-<li>实体之间存在着多对多，一对一，一对多这样的联系</li>
-</ul>
-</li>
-<li>联系集    指同类联系的集合<ul>
-<li>联系集的阶（关联的实体级的数量）</li>
-<li>属性表示联系集</li>
-<li>描述性属性</li>
-</ul>
-</li>
-<li>弱实体    <ul>
-<li>此类实体没有足够的属性形成自己的主码</li>
-<li>为了区分各个实体，弱实体必须和其他的实体相关联</li>
-<li>弱实体之中必须存在可以与其他实体的主码相结合的属性</li>
-</ul>
-</li>
-</ul>
-<p>2.3.3 ER图（实体关系图）</p>
-<ul>
-<li><p>是表示ER模型的图形工具</p>
-</li>
-<li><p>基本符号</p>
-<p><img src="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210528193729838.png" alt="image-20210528193729838"></p>
-</li>
-<li><p>具体示例</p>
-<ul>
-<li>两个以上实体间的多元联系  <img src="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210528194114917.png" alt="image-20210528194114917" style="zoom: 25%;"> </li>
-<li>两个不同实体间有多种联系         <img src="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210528194241884.png" alt="image-20210528194241884" style="zoom:25%;"></li>
-<li>一个实体内部个体的二元联系       <img src="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210528195540950.png" alt="image-20210528195540950" style="zoom:25%;"></li>
-</ul>
-</li>
-<li><p>设计ER模型时的一些注意事项</p>
-<ul>
-<li>实体集和属性的区分</li>
-</ul>
-</li>
-<li><p>ER图的另一种表示方式</p>
-<p>- </p>
-</li>
-</ul>
-<h3 id="3-逻辑数据库设计"><a href="#3-逻辑数据库设计" class="headerlink" title="3.逻辑数据库设计"></a>3.逻辑数据库设计</h3><h4 id="3-1-要解决哪些存在的问题"><a href="#3-1-要解决哪些存在的问题" class="headerlink" title="3.1 要解决哪些存在的问题"></a>3.1 要解决哪些存在的问题</h4><p>3.1.1 数据冗余</p>
-<p>3.1.2 更新异常</p>
-<p>3.1.3 插入异常</p>
-<p>3.1.4 删除异常</p>
-<ul>
-<li>备注：产生问题的主要原因是数据之间的依赖</li>
-</ul>
-<h4 id="3-2-概念到初始的关系模式"><a href="#3-2-概念到初始的关系模式" class="headerlink" title="3.2 概念到初始的关系模式"></a>3.2 概念到初始的关系模式</h4><p>3.1.1</p>
-<h4 id="3-3-函数依赖和关系模式规范化（第一次优化初始形成的关系模式）"><a href="#3-3-函数依赖和关系模式规范化（第一次优化初始形成的关系模式）" class="headerlink" title="3.3 函数依赖和关系模式规范化（第一次优化初始形成的关系模式）"></a>3.3 函数依赖和关系模式规范化（第一次优化初始形成的关系模式）</h4><h5 id="3-3-1-函数依赖"><a href="#3-3-1-函数依赖" class="headerlink" title="3.3.1 函数依赖"></a>3.3.1 函数依赖</h5><ul>
-<li><p>定义     R是一个关系模式，U是R的属性集合，X和Y是U的子集。对于R（U）的任意关系实例r，r中的任意两个元组t1和t2，如果t1[X]=t2 [X]，则t1 [Y]=t2[Y]，则称Y函数依赖于X，即X→Y。（备注）</p>
-</li>
-<li><p>关系的一个实例r     （根据关系模式的定义来理解，可简单理解为在此中关系模式之下形成的一张表） 当且仅当U上的一个关系满足F时，r是R的一个关系实例</p>
-</li>
-<li><p>关系模式简化表示（R&lt;U，F&gt;，U是属性，F是关系依赖的集合）</p>
-</li>
-<li><p>部分函数依赖        在关系模式R(U)之中，如果X→Y， 且对于任意Z$\subset$X,Z→Y都不成立</p>
-</li>
-<li><p>完全函数依赖        如果X→Y，Y不完全依赖于X</p>
-<p>例</p>
-<p><img src="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/0E0D6D327CBF969118446364D54C93AE-1620139774277.png" alt="0E0D6D327CBF969118446364D54C93AE"></p>
-<p>（Snow,Cno)→Grade 是一个完全函数依赖</p>
-<p>​    (Sno,Cno)→Sdept是部分函数依赖</p>
-</li>
-<li><p>传递函数依赖        若X→Y(Y$\nsubseteq$Y)，Y→Z，Y$\nrightarrow$X,则称Z对X传递依赖</p>
-</li>
-<li><p>码相关的定义（使用函数依赖）</p>
-<ul>
-<li>超码         对于一个关系模式R（U），K$\subseteq$U。若K→U，则K是R的一个超码</li>
-<li>候选码       对于R（U），K$\subseteq$U。若K是R的一个超码，且不存在K的真子集Z，使得Z→U，则K为R的一个候选码（最小的超码）</li>
-<li>主码   在候选码之中选择一个作为主码（来识别关系元组）</li>
-<li>主属性（键属性）         包含在候选码之中的属性</li>
-<li>非主属性（非键属性）    不包含在任何候选码的属性</li>
-<li>全码               候选码包括了关系模式的所有属性</li>
-<li>外码        X是R的属性子集，且X是另一个关系模式的主码</li>
-</ul>
-</li>
-<li><p>逻辑蕴含        </p>
-<ul>
-<li>定义 对于R的任意一个F都成立的关系实例r，函数依赖X→Y都成立，称F逻辑蕴含X→Y</li>
-<li>例R（A，B，C，D）F={A→B,  A→C,B→D}  A→D就被F蕴含</li>
-</ul>
-</li>
-<li><p><strong>函数依赖的公理系统</strong></p>
-<ul>
-<li>通过此公理系统，由给定的函数依赖集合推导出这个集合蕴涵的所有函数依赖<ul>
-<li>用途1  求蕴含的函数依赖</li>
-<li>用途2   求候选键</li>
-</ul>
-</li>
-<li>包括的推理规则<ul>
-<li>自反率   若$Y\subseteq X\subseteq U$，则X→Y为F所蕴含。</li>
-<li>增广率     若X→Y为F所蕴含，且 Z $\subseteq $U，则XZ→YZ为F所蕴含。</li>
-<li>传递率       若X→Y及Y→Z为F所蕴含 ，则X→Z为F所蕴含。</li>
-<li>合并规则        由X→Y，X→Z，有X→YZ。</li>
-<li>伪传递规则       由X→Y，WY→Z，有XW→Z。</li>
-<li>分解规则        由X→Y及Z$\subseteq$Y，有X→Z。</li>
-<li>一个推论  X→$A\tiny1$$A\tiny2$$A\tiny3$…..$A\tiny k$ 成立的充要条件为 X→$A\tiny i$成立（i=1，2，……，k）</li>
-<li>闭包   关系模式R中F所逻辑蕴含的所有函数依赖，记作$F^+$</li>
-<li>设F为属性集U上的一组函数依赖，X$\subseteq$U， $$X \tiny F     \normalsize ^+$$ ={  A|X→A能由F根据Armstrong公理导出}， $$X \tiny F     \normalsize ^+$$称为属 性集X关于函数依赖集F的闭包。</li>
-</ul>
-</li>
-<li>求$$X \tiny F     \normalsize ^+$$的算法</li>
-<li>快速求候选键的方式</li>
-<li>函数依赖集合等价（即他们的闭包等价）</li>
-<li>极小函数依赖（最小覆盖）<ul>
-<li>要满足的条件1     F中任何函数依赖的右部只有一个属性</li>
-<li>要满足的条件2      F中不存在这样的函数依赖X→A，使得F与F-{X→A}等价(F中的函数依赖均不能由F中的其他函数依赖导出)</li>
-<li>要满足的条件3   F中不存在这样的函数依赖X→A， X有真子集Z使得F-{X→A}  ∪{Z→A}与F等价</li>
-<li>补充  最小函数依赖不唯一</li>
-<li>计算最小函数依赖</li>
-</ul>
-</li>
-<li></li>
-</ul>
-</li>
-</ul>
-<h5 id="3-3-2-规范化"><a href="#3-3-2-规范化" class="headerlink" title="3.3.2 规范化"></a>3.3.2 规范化</h5><p>​    </p>
-<h4 id="3-4-完整性和安全性约束（）"><a href="#3-4-完整性和安全性约束（）" class="headerlink" title="3.4 完整性和安全性约束（）"></a>3.4 完整性和安全性约束（）</h4>
+          
       
     </div>
 
@@ -449,7 +232,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/12/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/archives/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/21/">21</a><a class="extend next" rel="next" href="/archives/page/14/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/12/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/archives/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/23/">23</a><a class="extend next" rel="next" href="/archives/page/14/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

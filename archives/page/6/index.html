@@ -176,7 +176,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/05/31/programing%20language/%E6%B1%87%E7%BC%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -189,7 +189,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/" class="post-title-link" itemprop="url">操作系统---进程调度</a>
+          <a href="/2021/05/31/programing%20language/%E6%B1%87%E7%BC%96/" class="post-title-link" itemprop="url">汇编</a>
         </h2>
 
         <div class="post-meta-container">
@@ -199,16 +199,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2021-05-27 21:46:28" itemprop="dateCreated datePublished" datetime="2021-05-27T21:46:28+08:00">2021-05-27</time>
+      <time title="创建时间：2021-05-31 11:08:42 / 修改时间：14:20:23" itemprop="dateCreated datePublished" datetime="2021-05-31T11:08:42+08:00">2021-05-31</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-06-10 10:43:47" itemprop="dateModified" datetime="2021-06-10T10:43:47+08:00">2021-06-10</time>
-      </span>
 
   
 </div>
@@ -220,145 +214,48 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h2><h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><ul>
-<li>CPU调度==进程调度（<del>大概</del>）</li>
-<li>进程可以控制CPU</li>
-<li>在多道程序的系统之中，将多个进程载入内存，一个进程等待I/O时，操作系统将代替该进程接管CPU的控制，并将CPU交给另一个进程，CPU调度就是解决怎样合理的将进程交给CPU运行</li>
-<li>进程的执行过程包括<strong>CPU执行</strong>（发生在CPU区间中）和<strong>I/O等待</strong>（发生在I/O区间中）这两个状态，在进程执行的过程之中，它会在这两个状态之间来回切换</li>
-<li>CPU调度程序：是一种<a href="https://zrk494.github.io/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/#2-2-%E8%B0%83%E5%BA%A6%E7%A8%8B%E5%BA%8F">短期调度程序</a></li>
-<li>dispatcher：将CPU的控制权交给CPU调度（还要实现上下文切换，切换到用户模式，重启程序等功能）</li>
-<li>发生CPU调度的时候<ul>
-<li>进程从运行状态到等待状态（可能进程发出了I/O请求）—–抢占的调度</li>
-<li>进程从运行状态到就绪状态（可能发生I/O中断）—–非抢占的调度</li>
-<li>进程从等待状态到就绪状态（可能I/O完成了）—–非抢占的调度</li>
-<li>进程终止—–抢占的调度</li>
-</ul>
-</li>
-<li>非抢占和抢占的区别<ul>
-<li>非抢占的调度是在整个过程之中进程会一直占用CPU，直到进程结束，或者进程进入等待状态</li>
-<li>抢占的调度是在进程在使用CPU的时候会被其他进程抢占使用权</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-调度准则"><a href="#2-调度准则" class="headerlink" title="2. 调度准则"></a>2. 调度准则</h3><ul>
-<li>进行CPU调度是要参考哪些指标：<ul>
-<li>CPU使用率 </li>
-<li>吞吐量</li>
-<li>周转时间</li>
-<li>等待时间：在就绪队列中等待的时间</li>
-<li>响应时间：从提交请求到产生第一次响应的时间</li>
-</ul>
-</li>
-<li>等待时间和响应时间是描述调度算法最重要的两个指标</li>
-</ul>
-<h3 id="3-调度算法"><a href="#3-调度算法" class="headerlink" title="3. 调度算法"></a>3. 调度算法</h3><p>注：</p>
+          <h3 id="汇编语言（以8086为例）的常用指令"><a href="#汇编语言（以8086为例）的常用指令" class="headerlink" title="汇编语言（以8086为例）的常用指令"></a>汇编语言（以8086为例）的常用指令</h3><h4 id="1-8086概述"><a href="#1-8086概述" class="headerlink" title="1. 8086概述"></a>1. 8086概述</h4><p>8个通用寄存器（X表示可以存储一个字，可以分成高位和低位，H指高8位，L指低8位）</p>
 <ul>
-<li>实际的调度过程非常复杂，下面讨论的算法中每个CPU仅被一个进程占用，大部分情况下的比较指标是平均等待时间</li>
-<li>引入甘特图直观展示调度算法，数字指时间</li>
+<li>AX（AH和AL）</li>
+<li>BX（BH和BL）</li>
+<li>CX（CH和CL）</li>
+<li>DX（DH和DL）</li>
+<li>SP（堆栈指针）</li>
+<li>BP</li>
+<li>SI</li>
+<li>DI</li>
 </ul>
-<h4 id="3-1-先到先服务调度（FCFS或者FIFO）"><a href="#3-1-先到先服务调度（FCFS或者FIFO）" class="headerlink" title="3.1 先到先服务调度（FCFS或者FIFO）"></a>3.1 先到先服务调度（FCFS或者FIFO）</h4><ul>
-<li><p>先向CPU发送请求的进程先使用CPU，不会发生抢占</p>
-</li>
-<li><p>存在一种问题：当一个会长时间占用CPU的进程先发送了请求，会大幅度提高平均等待时间</p>
-</li>
-<li><p>实例      1. <img src="/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/image-20210605161541116.png" alt="image-20210605161541116" style="zoom:30%;">2. <img src="/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/image-20210605161624614.png" alt="image-20210605161624614" style="zoom:30%;"></p>
-<p>1的平均等待时间为（3+6+0）/3=3</p>
-<p>2的平均等待时间为（24+27+0）/3=17</p>
-</li>
-</ul>
-<h4 id="3-2-最短作业优先调度"><a href="#3-2-最短作业优先调度" class="headerlink" title="3.2 最短作业优先调度"></a>3.2 最短作业优先调度</h4><ul>
-<li><p>选择占用CPU时间最短的进程（在就绪队列之中比较进程占用CPU的时间），当两个进程占用CPU的时间相同时按先到先服务的原则</p>
-</li>
-<li><p>在平均等待时间层面看，最短作业优先调度算法是最优的算法，能解决上面描述的问题</p>
-</li>
-<li><p>存在的问题：预先知道下一个进程的CPU占用时间是比较困难的</p>
-</li>
-<li><p>实例    <img src="/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/image-20210605162753957.png" alt="image-20210605162753957" style="zoom:33%;"></p>
-<p>甘特图描述的情况：<img src="/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/image-20210605162841616.png" alt="image-20210605162841616" style="zoom:33%;"></p>
-<p>平均等待时间</p>
-</li>
-<li><p>实例的甘特图描述补充，p1最先到达，此时无其他的进程，之间占用CPU即可（从0到7的这段时间会一直占用，不会被抢占），后面3个到达时间都在7之前，故选择占用CPU时间最短的，剩下的两个占用时间相同，先到的先上</p>
-</li>
-<li><p>两种情况：抢占式和<strong>非抢占式</strong></p>
-</li>
-</ul>
-<h4 id="3-3-优先级调度"><a href="#3-3-优先级调度" class="headerlink" title="3.3 优先级调度"></a>3.3 优先级调度</h4><ul>
-<li><p>将进程设置一个优先级数字，数字小的优先级高，在就绪队列之中比较进程的优先级</p>
-</li>
-<li><p>两种类型</p>
+<p>2个控制寄存器</p>
 <ul>
-<li><p>抢占式优先级调度</p>
-</li>
-<li><p>非抢占式优先级调度</p>
-</li>
+<li>IP</li>
+<li><h2 id="F（标志寄存器）"><a href="#F（标志寄存器）" class="headerlink" title="F（标志寄存器）"></a>F（标志寄存器）</h2></li>
 </ul>
-</li>
-<li><p>存在的问题：优先级低的进程可能永远无法运行</p>
-</li>
-<li><p>解决方法：在较长的一段时间中，如果优先级较低的进程未被调用，则提高该进程优先级</p>
-</li>
-</ul>
-<h4 id="3-4-轮转发调度"><a href="#3-4-轮转发调度" class="headerlink" title="3.4 轮转发调度"></a>3.4 轮转发调度</h4><ul>
-<li><p>是FCFS的变种，给进程增加了<strong>时间片</strong>（一般为10ms到100ms），系统每隔一个时间片就会调度另一个进程（通过抢占来实现），原本的进程被放入就绪队列（此时的就绪队列是循环队列）</p>
-</li>
-<li><p>如果进程在在时间片内结束，则立即调用下一个进程</p>
-</li>
-<li><p>实例：  <img src="/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/image-20210605165936751.png" alt="image-20210605165936751" style="zoom:40%;"></p>
-<p>甘特图：<img src="/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/image-20210605170035246.png" alt="image-20210605170035246" style="zoom:50%;"></p>
-</li>
-<li><p>存在的问题</p>
+<p>4个段寄存器</p>
 <ul>
-<li>时间片太长，就相当于是FCFS（FIFO）</li>
-<li>时间片太短，上下文切换太频繁</li>
+<li>CS</li>
+<li>DS</li>
+<li>SS</li>
+<li>ES</li>
+</ul>
+<p>寻址方式</p>
+<h4 id="2-基本指令"><a href="#2-基本指令" class="headerlink" title="2. 基本指令"></a>2. 基本指令</h4><h5 id="2-1-传数据的指令"><a href="#2-1-传数据的指令" class="headerlink" title="2.1 传数据的指令"></a>2.1 传数据的指令</h5><ul>
+<li>MOV a,b           (指把b传给a)<ul>
+<li>可以传立即数（MOV CL,4）</li>
+<li>传数的时候类型要匹配（字和字，字节和字节等）</li>
+<li>立即数不能传到段寄存器之中（<strong>CS和立即数不能作为目的操作数</strong>）</li>
+<li>两个段寄存器（或者是两个存储器）之间不能传数</li>
+</ul>
+</li>
+<li>XCHG a,b        (交换a，b的值)</li>
+<li>堆栈的操作（8086中的堆栈高地址在栈底部，低地址在栈顶部）<ul>
+<li>POP和PUSH<ul>
+<li>这些操作都是字操作，入栈sp-2出栈sp+2</li>
 </ul>
 </li>
 </ul>
-<h4 id="3-5-多级队列调度"><a href="#3-5-多级队列调度" class="headerlink" title="3.5 多级队列调度"></a>3.5 多级队列调度</h4><ul>
-<li>就绪队列被分成多个，每个队列采用自己的调度算法，还存在就绪队列之间的调度机制</li>
-<li>队列之间的调度<ul>
-<li>固定优先级抢占调度</li>
-<li>队列之间划分时间片</li>
-</ul>
 </li>
 </ul>
-<h4 id="3-6-多级反馈队列调度"><a href="#3-6-多级反馈队列调度" class="headerlink" title="3.6 多级反馈队列调度"></a>3.6 多级反馈队列调度</h4><ul>
-<li>此种情况下，一个进程可以被分配到其他的就绪队列之中，通过这样的方式可以防止产生永远不会被调度的进程的产生</li>
-</ul>
-<h3 id="4-多线程调度"><a href="#4-多线程调度" class="headerlink" title="4. 多线程调度"></a>4. 多线程调度</h3><h4 id="4-1-概述"><a href="#4-1-概述" class="headerlink" title="4.1 概述"></a>4.1 概述</h4><ul>
-<li>指如何调度线程，而在实际情况中，内核并不能直接调度用户线程（是由线程库管理的），用户线程要先映射到内核线程（建立联系，参照上一章的那几个模型），再通过调度内核线程来完成用户线程的间接调度</li>
-</ul>
-<h4 id="4-2-两种调度方式"><a href="#4-2-两种调度方式" class="headerlink" title="4.2 两种调度方式"></a>4.2 两种调度方式</h4><ul>
-<li>Process-Contention Scope（PCS）—–用户进程间的调度（只存在多对一，多对多模型之中）<ul>
-<li>指线程库调度用户线程到LWP之中</li>
-<li>此过程根据优先级完成，优先级是人为设置的</li>
-</ul>
-</li>
-<li>System-Contention Scope（SCS）<ul>
-<li>系统将内核线程调度到CPU上，这些内核线程都存在竞争关系</li>
-</ul>
-</li>
-</ul>
-<h3 id="5-多处理器调度"><a href="#5-多处理器调度" class="headerlink" title="5. 多处理器调度"></a>5. 多处理器调度</h3><h4 id="5-1-概述"><a href="#5-1-概述" class="headerlink" title="5.1 概述"></a>5.1 概述</h4><ul>
-<li>系统中有多个处理器，多处理器调度规定多个CPU如何共同工作完成进程调度</li>
-</ul>
-<h4 id="5-2-两种可行的调度方法"><a href="#5-2-两种可行的调度方法" class="headerlink" title="5.2 两种可行的调度方法"></a>5.2 两种可行的调度方法</h4><ul>
-<li>非对称处理：选择一个CPU作为主处理器，处理调度相关的事务，其余的处理器听从其指挥，只执行用户的代码</li>
-<li>对称处理：每个处理器使用自己的调度算法，从一个公共的就绪队列之中选择进程，调度过程之中必须确保处理器不会选择同一个进程</li>
-</ul>
-<h4 id="5-3-处理器的亲和性"><a href="#5-3-处理器的亲和性" class="headerlink" title="5.3 处理器的亲和性"></a>5.3 处理器的亲和性</h4><ul>
-<li>允许进程在处理器之间移动</li>
-<li>不允许进程在处理器之间移动</li>
-</ul>
-<h4 id="5-4-负载平衡"><a href="#5-4-负载平衡" class="headerlink" title="5.4 负载平衡"></a>5.4 负载平衡</h4><ul>
-<li>设法将工作（运行进程）平均的分配到所有的处理器上（在对称处理器的系统中发挥作用）</li>
-</ul>
-<h3 id="6-实时CPU调度"><a href="#6-实时CPU调度" class="headerlink" title="6. 实时CPU调度"></a>6. 实时CPU调度</h3><h4 id="6-1-硬实时系统"><a href="#6-1-硬实时系统" class="headerlink" title="6.1 硬实时系统"></a>6.1 硬实时系统</h4><ul>
-<li>必须严格遵守时间</li>
-</ul>
-<h4 id="6-2-软实时系统"><a href="#6-2-软实时系统" class="headerlink" title="6.2 软实时系统"></a>6.2 软实时系统</h4><ul>
-<li>可以在适当范围内超时</li>
-</ul>
-
+<h5 id="2-2"><a href="#2-2" class="headerlink" title="2.2"></a>2.2</h5><h5 id="2-3"><a href="#2-3" class="headerlink" title="2.3"></a>2.3</h5><h5 id="2-4"><a href="#2-4" class="headerlink" title="2.4"></a>2.4</h5>
       
     </div>
 
@@ -377,7 +274,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/archives/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/23/">23</a><a class="extend next" rel="next" href="/archives/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/archives/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/24/">24</a><a class="extend next" rel="next" href="/archives/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

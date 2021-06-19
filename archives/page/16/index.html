@@ -176,7 +176,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -189,7 +189,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/" class="post-title-link" itemprop="url">操作系统--进程</a>
+          <a href="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-title-link" itemprop="url">设计数据库</a>
         </h2>
 
         <div class="post-meta-container">
@@ -200,14 +200,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-31 20:46:26" itemprop="dateCreated datePublished" datetime="2021-03-31T20:46:26+08:00">2021-03-31</time>
+      <time title="创建时间：2021-04-08 07:43:48" itemprop="dateCreated datePublished" datetime="2021-04-08T07:43:48+08:00">2021-04-08</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-06-09 23:25:20" itemprop="dateModified" datetime="2021-06-09T23:25:20+08:00">2021-06-09</time>
+        <time title="修改时间：2021-05-28 23:26:05" itemprop="dateModified" datetime="2021-05-28T23:26:05+08:00">2021-05-28</time>
       </span>
 
   
@@ -220,174 +220,217 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="进程概述"><a href="#进程概述" class="headerlink" title="进程概述"></a>进程概述</h2><h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>1.1 任务（task）和作业（job）的区别</p>
-<p>简单来说，作业就是任务的一个实例（类比类和对象的概念）</p>
-<p>1.2 程序和进程的区别</p>
-<p>程序是被动的，进程是活动的，<strong>当程序被载入内存的时候，这个程序就成了进程</strong></p>
-<p><strong>1.3进程的结构形式（组成部分）</strong></p>
-<p>1.3.1代码块（文本段）</p>
-<p>包括程序代码</p>
-<p>1.3.2栈</p>
-<p>包括函数参数，返回值，局部变量</p>
-<p>1.3.3数据段</p>
-<p>包含全局变量</p>
-<p>1.3.4堆</p>
-<p>程序运行过程之中动态分配的内存</p>
-<p>1.4 进程控制块（PCB process control block ==TCB task control block）</p>
+          <h2 id="设计数据库"><a href="#设计数据库" class="headerlink" title="设计数据库"></a>设计数据库</h2><h3 id="1-概述-需求分析"><a href="#1-概述-需求分析" class="headerlink" title="1.概述+需求分析"></a>1.概述+需求分析</h3><h4 id="1-1-设计的内容"><a href="#1-1-设计的内容" class="headerlink" title="1.1 设计的内容"></a>1.1 设计的内容</h4><ul>
+<li>数据库的逻辑和物理结构（满足用户需求）</li>
+<li>满足用户的信息管理要求（包括存储和管理的对象）</li>
+<li>满足用户的数据操作需求（增删改查，统计等操作）</li>
+</ul>
+<h4 id="1-2-设计的目标"><a href="#1-2-设计的目标" class="headerlink" title="1.2 设计的目标"></a>1.2 设计的目标</h4><ul>
+<li>信息基础设施</li>
+<li>高效的运行环境<ul>
+<li> 存取效率</li>
+<li>存储空间</li>
+<li>运行管理</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-3-特征"><a href="#1-3-特征" class="headerlink" title="1.3 特征"></a>1.3 特征</h4><ul>
+<li>结构设计（）</li>
+<li>行为设计（）</li>
+</ul>
+<h4 id="1-4-设计的流程"><a href="#1-4-设计的流程" class="headerlink" title="1.4 设计的流程"></a>1.4 设计的流程</h4><ul>
+<li><p>需求分析+设计（花最多的时间打下好的基础）</p>
+</li>
+<li><p>设计概念结构</p>
+</li>
+<li><p>设计逻辑结构</p>
+</li>
+<li><p>优化数据模型</p>
+</li>
+<li><p>设计物理结构</p>
+</li>
+<li><p>性能评测</p>
+</li>
+<li><p>物理实现</p>
+</li>
+<li><p>运行和维护</p>
+</li>
+<li><p>补充：在优化或者评估的过程中，可能会返回之前的步骤进行设计上的修改</p>
+</li>
+</ul>
+<h4 id="1-5-需求分析"><a href="#1-5-需求分析" class="headerlink" title="1.5 需求分析"></a>1.5 需求分析</h4><ul>
+<li><p>需求分析就是分析用户的要求，要处理以下任务</p>
 <ul>
-<li><p>进程创建的时候，系统新建PCB来保存进程的当前状态信息</p>
+<li><p>任务1</p>
 </li>
-<li><p><strong>对于操作系统，PCB就表示了一个进程（通过PCB知道进程是哪一个）</strong></p>
+<li><p>任务2</p>
 </li>
-<li><p>在CPU执行不同的程序时，会不停的切换，这时候一个程序已经执行部分的信息就存在PCB之中</p>
+<li><p>任务3</p>
 </li>
-<li><p>包括8个内容: 进程ID（唯一的），进程状态，进程计数器，CPU寄存器，CPU调度信息，内存管理信息，记账信息，I/O状态信息</p>
-</li>
-</ul>
-<p>1.5 进程状态</p>
-<p>5种状态: new, ready, running, waiting, terminated</p>
-<p>进程状态图</p>
-<p>1.6 并发</p>
-<p>一个CPU上交替的执行多个程序（进程）</p>
-<h3 id="2-进程的调度概述（介绍概念为主）"><a href="#2-进程的调度概述（介绍概念为主）" class="headerlink" title="2. 进程的调度概述（介绍概念为主）"></a>2. 进程的调度概述（介绍概念为主）</h3><h4 id="2-1-进程调度队列（里面存储的是PCB块，组织进程的形式）"><a href="#2-1-进程调度队列（里面存储的是PCB块，组织进程的形式）" class="headerlink" title="2.1 进程调度队列（里面存储的是PCB块，组织进程的形式）"></a>2.1 进程调度队列（里面存储的是PCB块，组织进程的形式）</h4><ul>
-<li><p>CPU往往要在多个可用进程之间快速切换，此时调度程序要选择其中一个进程运行，这些进程就存放在队列之中</p>
-</li>
-<li><p>队列有如下几种，队列一般为链表的形式</p>
+<li><p>任务4</p>
 </li>
 </ul>
-<h5 id="2-1-1-设备队列"><a href="#2-1-1-设备队列" class="headerlink" title="2.1.1 设备队列"></a>2.1.1 设备队列</h5><ul>
-<li>包括在等待某个事件的进程</li>
-<li>结构与就绪队列类似</li>
-</ul>
-<h5 id="2-1-2-就绪队列"><a href="#2-1-2-就绪队列" class="headerlink" title="2.1.2 就绪队列"></a>2.1.2 就绪队列</h5><ul>
-<li><p>包括等待运行的进程</p>
 </li>
-<li><p>结构 头节点包括两个指针，一个指向第一个PCB，另一个指向尾部PCB</p>
-</li>
-</ul>
-<h5 id="2-1-3-作业队列"><a href="#2-1-3-作业队列" class="headerlink" title="2.1.3 作业队列"></a>2.1.3 作业队列</h5><p>包括了系统内的所有进程</p>
-<h5 id="2-1-4-队列图"><a href="#2-1-4-队列图" class="headerlink" title="2.1.4 队列图"></a>2.1.4 队列图</h5><p>用于展示进程调度的过程</p>
-<h4 id="2-2-调度程序"><a href="#2-2-调度程序" class="headerlink" title="2.2 调度程序"></a>2.2 调度程序</h4><ul>
-<li>调度程序即调度器</li>
-<li>作用是选择要执行哪一个进程</li>
-<li>分成3种：<ul>
-<li>长期调度程序，从存储设备的缓冲池中选择进程，并装入就绪队列</li>
-<li>中期调度程序，将进程从内存之中移出，装入就绪队列</li>
-<li>短期调度程序，从准备好的进程中选择一个，并装入就绪队列</li>
-</ul>
-</li>
-</ul>
-<h4 id="2-3-上下文切换"><a href="#2-3-上下文切换" class="headerlink" title="2.3 上下文切换"></a>2.3 上下文切换</h4><ul>
-<li>CPU在切换到另一进程时，要保存当前进程的状态，并恢复另一进程的状态</li>
-</ul>
+<li><p>重点的方面包括</p>
 <ul>
-<li>补充：调度的本质上就是让进程调度器选择一个可用的进程到CPU上运行</li>
-</ul>
-<p><strong>更详细的进程调度解释（CPU调度）见另一篇：——-</strong></p>
-<h3 id="3-进程操作过程"><a href="#3-进程操作过程" class="headerlink" title="3. 进程操作过程"></a>3. 进程操作过程</h3><h4 id="3-1-进程创建"><a href="#3-1-进程创建" class="headerlink" title="3.1 进程创建"></a>3.1 进程创建</h4><ul>
-<li>进程是树状结构，所以有子进程和父进程</li>
-<li>PID是进程唯一的标识符（操作系统通过PID来识别进程）</li>
-<li>一个进程可以创建另一个进程（即创建一个子进程）</li>
-<li>进程创建时的可选项<ul>
-<li>资源共享选项：父进程和子进程如何共享资源</li>
-<li>执行选项：父进程和子进程何时结束</li>
-<li>地址空间选项：<ul>
-<li>子进程复制父进程</li>
-<li>子进程覆盖父进程</li>
+<li>信息要求</li>
+<li>处理要求</li>
+<li>安全性和完整性要求</li>
 </ul>
 </li>
 </ul>
+<h4 id="1-6-需求分析步骤"><a href="#1-6-需求分析步骤" class="headerlink" title="1.6 需求分析步骤"></a>1.6 需求分析步骤</h4><ul>
+<li>调查分析</li>
+<li>定义数据库支持的信息与应用</li>
+<li>定义数据操作任务</li>
+<li>定义<strong>数据项字典</strong></li>
+<li>预测未来可能的改变</li>
+</ul>
+<h4 id="1-7-数据项字典（数据字典）"><a href="#1-7-数据项字典（数据字典）" class="headerlink" title="1.7 数据项字典（数据字典）"></a>1.7 数据项字典（数据字典）</h4><ul>
+<li><p>数据项（不可再分的数据单位）</p>
 </li>
-<li>创建过程   在系统内部创建程序块—-&gt;分配内存—-&gt;载入可执行文件—-&gt;初始化程序</li>
-<li>（以UNIX系统为例）fork()函数<ul>
-<li>创建新的进程</li>
-</ul>
+<li><p>数据结构（数据的组成方式）</p>
 </li>
-<li>exec指一组函数，包括了6个函数<ul>
-<li>作用是根据文件名找到可执行文件，在调用进程的内部执行这个可执行文件</li>
-</ul>
+<li><p>数据流（数据结构在系统内传输的路径）？？？</p>
 </li>
-</ul>
-<h4 id="3-2-进程终止"><a href="#3-2-进程终止" class="headerlink" title="3.2 进程终止"></a>3.2 进程终止</h4><ul>
-<li>第一种模式，系统调用exit<ul>
-<li>进程完成之后用exit()删除自身并终止运行</li>
-<li>子进程在结束前可以用wait()向父进程传数据，之后它占用的资源被操作系统回收（要使用exit）</li>
-</ul>
+<li><p>数据存储（数据存在哪）</p>
 </li>
-<li> 第二种模式，父进程终止子进程</li>
-<li>wait函数扩展<ul>
-<li>进程调用wait函数就会立刻将自己阻塞</li>
-</ul>
+<li><p>处理过程</p>
 </li>
 </ul>
-<h3 id="4-进程之间的通信（便于进程之间的协作工作）"><a href="#4-进程之间的通信（便于进程之间的协作工作）" class="headerlink" title="4. 进程之间的通信（便于进程之间的协作工作）"></a>4. 进程之间的通信（便于进程之间的协作工作）</h3><h4 id="4-1-两种通信模式"><a href="#4-1-两种通信模式" class="headerlink" title="4.1 两种通信模式"></a>4.1 两种通信模式</h4><ul>
-<li><p>消息传递</p>
+<h3 id="2-概念数据库设计"><a href="#2-概念数据库设计" class="headerlink" title="2. 概念数据库设计"></a>2. 概念数据库设计</h3><h4 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h4><ul>
+<li>设计的主要内容有两个方面<ul>
+<li>概念模式设计</li>
+<li>事务设计</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-2-实体联系模型（ER模型）"><a href="#2-2-实体联系模型（ER模型）" class="headerlink" title="2.2 实体联系模型（ER模型）"></a>2.2 实体联系模型（ER模型）</h4><p>2.2.1 三个主要元素</p>
+<p>实体+属性+联系</p>
+<p>2.2.2 基本概念解释</p>
 <ul>
-<li><img src="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/image-20210527212717964.png" alt="image-20210527212717964" style="zoom:43%;"></li>
-<li><p>通过进程之间交换信息实现</p>
+<li>实体         是ER模型之中的基本对象，通过对现实之中的事物抽象得到（如人，车，学校，课程都可以作为一个实体）</li>
+<li>实体的属性       指实体的一组特性，实体的属性值一般作为数据库之中的主要数据</li>
+<li>实体集（相同类型的实体的集合）</li>
+<li>码（超码，主码，候选码）      在ER模型之中，指用来区别不同实体的一个或者多个属性</li>
+<li>联系    指不同实体间的某某种关联方式<ul>
+<li>实体之间存在着多对多，一对一，一对多这样的联系</li>
+</ul>
 </li>
-<li><p>一般用来传递较少的数据</p>
+<li>联系集    指同类联系的集合<ul>
+<li>联系集的阶（关联的实体级的数量）</li>
+<li>属性表示联系集</li>
+<li>描述性属性</li>
+</ul>
 </li>
-<li><p>需要内核干涉（操作系统提供通信的机制）</p>
+<li>弱实体    <ul>
+<li>此类实体没有足够的属性形成自己的主码</li>
+<li>为了区分各个实体，弱实体必须和其他的实体相关联</li>
+<li>弱实体之中必须存在可以与其他实体的主码相结合的属性</li>
+</ul>
 </li>
-<li><p>存在两种操作，send(message)和receive(message)，通信的时候需要先建立好通讯线路</p>
+</ul>
+<p>2.3.3 ER图（实体关系图）</p>
 <ul>
-<li><p>通讯线路的逻辑实现方法(物理链路的实现在这里是无关紧要的)</p>
-<ol>
-<li><p>直接或间接通信</p>
+<li><p>是表示ER模型的图形工具</p>
+</li>
+<li><p>基本符号</p>
+<p><img src="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210528193729838.png" alt="image-20210528193729838"></p>
+</li>
+<li><p>具体示例</p>
 <ul>
-<li><p>直接通信必须明确指定接受者和发送者是谁，可以一对一（对称寻址方式），一对多（非对称寻址方式）</p>
-</li>
-<li><p>间接通信是通过端口或者邮箱，来完成发送和接收消息的过程，例如下图（P为进程）</p>
-<img src="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/image-20210527223418825.png" alt="image-20210527223418825" style="zoom:50%;"></li>
+<li>两个以上实体间的多元联系  <img src="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210528194114917.png" alt="image-20210528194114917" style="zoom: 25%;"> </li>
+<li>两个不同实体间有多种联系         <img src="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210528194241884.png" alt="image-20210528194241884" style="zoom:25%;"></li>
+<li>一个实体内部个体的二元联系       <img src="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210528195540950.png" alt="image-20210528195540950" style="zoom:25%;"></li>
 </ul>
 </li>
-<li><p>同步或异步通信（阻塞和非阻塞)</p>
+<li><p>设计ER模型时的一些注意事项</p>
 <ul>
-<li>同步发送：发送进程是阻塞态，直到消息被对方接收时解除此种状态</li>
-<li>同步接收：接收者阻塞，直到收到发送来的消息</li>
-<li>异步发送：发送进程发送消息并继续操作</li>
-<li>异步接收：接收者收到一个有效消息或空消息</li>
+<li>实体集和属性的区分</li>
 </ul>
 </li>
-<li><p>自动或显式缓冲（通信缓冲）</p>
+<li><p>ER图的另一种表示方式</p>
+<p>- </p>
+</li>
+</ul>
+<h3 id="3-逻辑数据库设计"><a href="#3-逻辑数据库设计" class="headerlink" title="3.逻辑数据库设计"></a>3.逻辑数据库设计</h3><h4 id="3-1-要解决哪些存在的问题"><a href="#3-1-要解决哪些存在的问题" class="headerlink" title="3.1 要解决哪些存在的问题"></a>3.1 要解决哪些存在的问题</h4><p>3.1.1 数据冗余</p>
+<p>3.1.2 更新异常</p>
+<p>3.1.3 插入异常</p>
+<p>3.1.4 删除异常</p>
 <ul>
-<li>将通信进程交换的消息都存在临时的队列中（在这里名为缓冲）</li>
+<li>备注：产生问题的主要原因是数据之间的依赖</li>
 </ul>
+<h4 id="3-2-概念到初始的关系模式"><a href="#3-2-概念到初始的关系模式" class="headerlink" title="3.2 概念到初始的关系模式"></a>3.2 概念到初始的关系模式</h4><p>3.1.1</p>
+<h4 id="3-3-函数依赖和关系模式规范化（第一次优化初始形成的关系模式）"><a href="#3-3-函数依赖和关系模式规范化（第一次优化初始形成的关系模式）" class="headerlink" title="3.3 函数依赖和关系模式规范化（第一次优化初始形成的关系模式）"></a>3.3 函数依赖和关系模式规范化（第一次优化初始形成的关系模式）</h4><h5 id="3-3-1-函数依赖"><a href="#3-3-1-函数依赖" class="headerlink" title="3.3.1 函数依赖"></a>3.3.1 函数依赖</h5><ul>
+<li><p>定义     R是一个关系模式，U是R的属性集合，X和Y是U的子集。对于R（U）的任意关系实例r，r中的任意两个元组t1和t2，如果t1[X]=t2 [X]，则t1 [Y]=t2[Y]，则称Y函数依赖于X，即X→Y。（备注）</p>
 </li>
-</ol>
+<li><p>关系的一个实例r     （根据关系模式的定义来理解，可简单理解为在此中关系模式之下形成的一张表） 当且仅当U上的一个关系满足F时，r是R的一个关系实例</p>
 </li>
-</ul>
+<li><p>关系模式简化表示（R&lt;U，F&gt;，U是属性，F是关系依赖的集合）</p>
 </li>
-</ul>
+<li><p>部分函数依赖        在关系模式R(U)之中，如果X→Y， 且对于任意Z$\subset$X,Z→Y都不成立</p>
 </li>
-<li><p>共享内存</p>
+<li><p>完全函数依赖        如果X→Y，Y不完全依赖于X</p>
+<p>例</p>
+<p><img src="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/0E0D6D327CBF969118446364D54C93AE-1620139774277.png" alt="0E0D6D327CBF969118446364D54C93AE"></p>
+<p>（Snow,Cno)→Grade 是一个完全函数依赖</p>
+<p>​    (Sno,Cno)→Sdept是部分函数依赖</p>
+</li>
+<li><p>传递函数依赖        若X→Y(Y$\nsubseteq$Y)，Y→Z，Y$\nrightarrow$X,则称Z对X传递依赖</p>
+</li>
+<li><p>码相关的定义（使用函数依赖）</p>
 <ul>
-<li><img src="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/image-20210527212746572.png" alt="image-20210527212746572" style="zoom:43%;"></li>
-<li>两个进程之间有一块共享的内存区域，进程通过向此区域读写数据来交换信息</li>
-<li>不需要内核干涉，通信的速度很快</li>
-<li><strong>注意事项</strong><ul>
-<li>进行这样的通信方式，必须保障不能有多个进程同时向共享区域<strong>写数据</strong>，故需要同步机制</li>
-<li>具体的机制是什么样的模式见 操作系统</li>
+<li>超码         对于一个关系模式R（U），K$\subseteq$U。若K→U，则K是R的一个超码</li>
+<li>候选码       对于R（U），K$\subseteq$U。若K是R的一个超码，且不存在K的真子集Z，使得Z→U，则K为R的一个候选码（最小的超码）</li>
+<li>主码   在候选码之中选择一个作为主码（来识别关系元组）</li>
+<li>主属性（键属性）         包含在候选码之中的属性</li>
+<li>非主属性（非键属性）    不包含在任何候选码的属性</li>
+<li>全码               候选码包括了关系模式的所有属性</li>
+<li>外码        X是R的属性子集，且X是另一个关系模式的主码</li>
+</ul>
+</li>
+<li><p>逻辑蕴含        </p>
+<ul>
+<li>定义 对于R的任意一个F都成立的关系实例r，函数依赖X→Y都成立，称F逻辑蕴含X→Y</li>
+<li>例R（A，B，C，D）F={A→B,  A→C,B→D}  A→D就被F蕴含</li>
+</ul>
+</li>
+<li><p><strong>函数依赖的公理系统</strong></p>
+<ul>
+<li>通过此公理系统，由给定的函数依赖集合推导出这个集合蕴涵的所有函数依赖<ul>
+<li>用途1  求蕴含的函数依赖</li>
+<li>用途2   求候选键</li>
+</ul>
+</li>
+<li>包括的推理规则<ul>
+<li>自反率   若$Y\subseteq X\subseteq U$，则X→Y为F所蕴含。</li>
+<li>增广率     若X→Y为F所蕴含，且 Z $\subseteq $U，则XZ→YZ为F所蕴含。</li>
+<li>传递率       若X→Y及Y→Z为F所蕴含 ，则X→Z为F所蕴含。</li>
+<li>合并规则        由X→Y，X→Z，有X→YZ。</li>
+<li>伪传递规则       由X→Y，WY→Z，有XW→Z。</li>
+<li>分解规则        由X→Y及Z$\subseteq$Y，有X→Z。</li>
+<li>一个推论  X→$A\tiny1$$A\tiny2$$A\tiny3$…..$A\tiny k$ 成立的充要条件为 X→$A\tiny i$成立（i=1，2，……，k）</li>
+<li>闭包   关系模式R中F所逻辑蕴含的所有函数依赖，记作$F^+$</li>
+<li>设F为属性集U上的一组函数依赖，X$\subseteq$U， $$X \tiny F     \normalsize ^+$$ ={  A|X→A能由F根据Armstrong公理导出}， $$X \tiny F     \normalsize ^+$$称为属 性集X关于函数依赖集F的闭包。</li>
+</ul>
+</li>
+<li>求$$X \tiny F     \normalsize ^+$$的算法</li>
+<li>快速求候选键的方式</li>
+<li>函数依赖集合等价（即他们的闭包等价）</li>
+<li>极小函数依赖（最小覆盖）<ul>
+<li>要满足的条件1     F中任何函数依赖的右部只有一个属性</li>
+<li>要满足的条件2      F中不存在这样的函数依赖X→A，使得F与F-{X→A}等价(F中的函数依赖均不能由F中的其他函数依赖导出)</li>
+<li>要满足的条件3   F中不存在这样的函数依赖X→A， X有真子集Z使得F-{X→A}  ∪{Z→A}与F等价</li>
+<li>补充  最小函数依赖不唯一</li>
+<li>计算最小函数依赖</li>
+</ul>
+</li>
+<li></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<h3 id="5-管道"><a href="#5-管道" class="headerlink" title="5. 管道"></a>5. 管道</h3><h4 id="5-1-概述"><a href="#5-1-概述" class="headerlink" title="5.1 概述"></a>5.1 概述</h4><ul>
-<li>一种通信机制，管道通信方式存在一个文件作为中间介质，此类文件称作管道文件</li>
-<li>通信的过程中，存在一个写进程（向管道中写数据）和一个读进程（向管道之中读数据）</li>
-</ul>
-<h4 id="5-2-普通管道（匿名管道）"><a href="#5-2-普通管道（匿名管道）" class="headerlink" title="5.2 普通管道（匿名管道）"></a>5.2 普通管道（匿名管道）</h4><ul>
-<li>半双工，只允许单向通信</li>
-<li>双方互相通信的时候，要建立两个管道</li>
-<li>只能用于父进程和子进程之间（即只能用于一台机器的进程之间）</li>
-</ul>
-<h4 id="5-3-命名管道"><a href="#5-3-命名管道" class="headerlink" title="5.3 命名管道"></a>5.3 命名管道</h4><ul>
-<li>全双工</li>
-<li>建立之后，多个进程都可以去使用它进行通信</li>
-</ul>
-
+<h5 id="3-3-2-规范化"><a href="#3-3-2-规范化" class="headerlink" title="3.3.2 规范化"></a>3.3.2 规范化</h5><p>​    </p>
+<h4 id="3-4-完整性和安全性约束（）"><a href="#3-4-完整性和安全性约束（）" class="headerlink" title="3.4 完整性和安全性约束（）"></a>3.4 完整性和安全性约束（）</h4>
       
     </div>
 
@@ -406,7 +449,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/15/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/archives/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/23/">23</a><a class="extend next" rel="next" href="/archives/page/17/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/15/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/archives/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/24/">24</a><a class="extend next" rel="next" href="/archives/page/17/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

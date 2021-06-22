@@ -207,7 +207,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-05-27 12:04:34" itemprop="dateModified" datetime="2021-05-27T12:04:34+08:00">2021-05-27</time>
+        <time title="修改时间：2021-06-21 10:36:08" itemprop="dateModified" datetime="2021-06-21T10:36:08+08:00">2021-06-21</time>
       </span>
 
   
@@ -224,35 +224,82 @@
 <li>关系表的列</li>
 <li>列是同质的，即为同一数据类型</li>
 </ul>
-<h5 id="1-1-2-域"><a href="#1-1-2-域" class="headerlink" title="1.1.2 域"></a>1.1.2 域</h5><p>相同类型数据的集合</p>
-<h5 id="1-1-3-关系"><a href="#1-1-3-关系" class="headerlink" title="1.1.3 关系"></a>1.1.3 关系</h5><p>笛卡尔集的子集（<del>详见集合论与图论</del>）</p>
+<h5 id="1-1-2-域"><a href="#1-1-2-域" class="headerlink" title="1.1.2 域"></a>1.1.2 域</h5><ul>
+<li><p>相同类型数据的集合，简单理解为表的列的值</p>
+</li>
+<li><p>原子域</p>
+</li>
+</ul>
+<h5 id="1-1-3-关系"><a href="#1-1-3-关系" class="headerlink" title="1.1.3 关系"></a>1.1.3 关系</h5><p>笛卡尔乘积的子集（<del>详见集合论与图论</del>）</p>
 <h5 id="1-1-4-关系模式"><a href="#1-1-4-关系模式" class="headerlink" title="1.1.4 关系模式"></a>1.1.4 关系模式</h5><p>关系的形<br>记作 R（U）,U为A1…An组成的属性集合，R是关系名<br>例：Student（学号，姓名，性别，年龄，专业）<br>Grade（学生编号，课程编号，成绩）</p>
 <h5 id="1-1-5-关系实例"><a href="#1-1-5-关系实例" class="headerlink" title="1.1.5 关系实例"></a>1.1.5 关系实例</h5><p>一个关系的任何一个“当前值”是该关系的实例</p>
 <h5 id="1-1-6-元组"><a href="#1-1-6-元组" class="headerlink" title="1.1.6 元组"></a>1.1.6 元组</h5><p>笛卡尔积得到的集合中的每一个元素</p>
-<h5 id="1-1-7-码（又称作键，-那个名为篝酱的少女）"><a href="#1-1-7-码（又称作键，-那个名为篝酱的少女）" class="headerlink" title="1.1.7 码（又称作键， 那个名为篝酱的少女）"></a>1.1.7 码（又称作键， <del>那个名为篝酱的少女</del>）</h5><h6 id="超码"><a href="#超码" class="headerlink" title="超码"></a>超码</h6><p>可以==唯一==标识一个元组的一个属性集合</p>
-<h6 id="候选码"><a href="#候选码" class="headerlink" title="候选码"></a>候选码</h6><p>唯一的一个属性集合或者属性集合组，超码是候选码的特殊表现，可存在多个</p>
+<h5 id="1-1-7-码（又称作键，-那个名为篝酱的少女）"><a href="#1-1-7-码（又称作键，-那个名为篝酱的少女）" class="headerlink" title="1.1.7 码（又称作键， 那个名为篝酱的少女）"></a>1.1.7 码（又称作键， <del>那个名为篝酱的少女</del>）<img src="/2021/03/16/database/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/img_chara_rewrite.png" alt="img_chara_rewrite" style="zoom: 25%;"></h5><h6 id="超码"><a href="#超码" class="headerlink" title="超码"></a>超码</h6><p>可以<strong>唯一</strong>标识一个元组的一个属性<strong>集合</strong></p>
+<h6 id="候选码"><a href="#候选码" class="headerlink" title="候选码"></a>候选码</h6><p>唯一的一个元组的属性集合或者属性集合的一个元素，并且候选码的任何真子集都不能作为唯一的标识，可存在多个</p>
 <h6 id="主码"><a href="#主码" class="headerlink" title="主码"></a>主码</h6><p>数据库设计者选择的用于区分不同元组的候选码（从候选码之中选出一个）</p>
-<h6 id="外码"><a href="#外码" class="headerlink" title="外码"></a>外码</h6><p>非关系R的候选码，而是关系S的候选码，将两个关系联系在一起</p>
+<h6 id="外码"><a href="#外码" class="headerlink" title="外码"></a>外码</h6><p>在元素R中的属性集合或者属性集合的一个元素，非关系R的候选码，而是关系S的候选码，将两个关系联系在一起</p>
 <h5 id="1-1-8-关系的第一范式"><a href="#1-1-8-关系的第一范式" class="headerlink" title="1.1.8 关系的第一范式"></a>1.1.8 关系的第一范式</h5><p>属性不可再分</p>
-<h4 id="1-2-关系的完整性"><a href="#1-2-关系的完整性" class="headerlink" title="1.2 关系的完整性"></a>1.2 关系的完整性</h4><h5 id="1-2-1-实体完整性约束"><a href="#1-2-1-实体完整性约束" class="headerlink" title="1.2.1 实体完整性约束"></a>1.2.1 实体完整性约束</h5><p>主键属性不空（不存在或者无意义）</p>
-<h5 id="1-2-2-参照完整性约束（连接两个关系）"><a href="#1-2-2-参照完整性约束（连接两个关系）" class="headerlink" title="1.2.2 参照完整性约束（连接两个关系）"></a>1.2.2 参照完整性约束（连接两个关系）</h5><p>外码在R1之中的值为空或者对应其在R2（在R2之中为主码）之中的值</p>
-<h5 id="1-2-3-用户定义的完整性"><a href="#1-2-3-用户定义的完整性" class="headerlink" title="1.2.3 用户定义的完整性"></a>1.2.3 用户定义的完整性</h5><h4 id="1-3-关系运算相关（重点）"><a href="#1-3-关系运算相关（重点）" class="headerlink" title="1.3 关系运算相关（重点）"></a>1.3 关系运算相关（重点）</h4><h5 id="1-3-1-关系代数（操作-关系得到另一个关系，一般来说由内向外进行书写）"><a href="#1-3-1-关系代数（操作-关系得到另一个关系，一般来说由内向外进行书写）" class="headerlink" title="1.3.1 关系代数（操作+关系得到另一个关系，一般来说由内向外进行书写）"></a>1.3.1 关系代数（操作+关系得到另一个关系，一般来说由内向外进行书写）</h5><ul>
-<li>并                    同一个表                    $\bigcap$</li>
-<li>差                    同一个表                     –</li>
-<li>笛卡尔积        表与表之间                 $\times$</li>
-<li>交                   同一个表                     $\bigcup$</li>
-<li>选择               同一个表                    $\sigma$                 (简单理解为select)</li>
-<li>投影               同一个表                     $\prod$               </li>
-<li>重命名           同一个表                     $\rho$</li>
-<li>除法             </li>
-<li>连接</li>
-<li>等值连接</li>
-<li>自然连接</li>
-<li>外连接</li>
-<li>全外连接</li>
+<h4 id="1-2-关系的完整性"><a href="#1-2-关系的完整性" class="headerlink" title="1.2 关系的完整性"></a>1.2 关系的完整性</h4><h5 id="1-2-1-实体完整性约束"><a href="#1-2-1-实体完整性约束" class="headerlink" title="1.2.1 实体完整性约束"></a>1.2.1 实体完整性约束</h5><ul>
+<li>指主键属性不空（不存在或者无意义）</li>
+<li></li>
 </ul>
-<h5 id="1-3-2-元组演算"><a href="#1-3-2-元组演算" class="headerlink" title="1.3.2 元组演算"></a>1.3.2 元组演算</h5><h5 id="1-3-3-域演算"><a href="#1-3-3-域演算" class="headerlink" title="1.3.3 域演算"></a>1.3.3 域演算</h5><h3 id="2-SQL语言基础"><a href="#2-SQL语言基础" class="headerlink" title="2. SQL语言基础"></a>2. SQL语言基础</h3><p>结构化查询语言，关系数据库的标准语言 </p>
-<p>操作的对象是集合，之后得到的结果也是集合</p>
+<h5 id="1-2-2-参照完整性约束（连接两个关系）"><a href="#1-2-2-参照完整性约束（连接两个关系）" class="headerlink" title="1.2.2 参照完整性约束（连接两个关系）"></a>1.2.2 参照完整性约束（连接两个关系）</h5><ul>
+<li><p>主键和外键之间的约束</p>
+</li>
+<li><p>外码在R1之中的值不为空+对应其在R2（在R2之中为主码）之中的值不空+一个元组在R1中外键的值=R2中与其对应的主键的值</p>
+</li>
+</ul>
+<h5 id="1-2-3-用户定义的完整性"><a href="#1-2-3-用户定义的完整性" class="headerlink" title="1.2.3 用户定义的完整性"></a>1.2.3 用户定义的完整性</h5><h4 id="1-3-关系运算相关（重点）"><a href="#1-3-关系运算相关（重点）" class="headerlink" title="1.3 关系运算相关（重点）"></a>1.3 关系运算相关（重点）</h4><h5 id="1-3-1-关系代数符号（操作-关系得到另一个关系，一般来说由内向外进行书写）"><a href="#1-3-1-关系代数符号（操作-关系得到另一个关系，一般来说由内向外进行书写）" class="headerlink" title="1.3.1 关系代数符号（操作+关系得到另一个关系，一般来说由内向外进行书写）"></a>1.3.1 关系代数符号（操作+关系得到另一个关系，一般来说由内向外进行书写）</h5><ul>
+<li>补充：<ul>
+<li>约束条件—相容：指两个关系的属性相同，且第i个属性域相同</li>
+</ul>
+</li>
+<li>基本代数操作<ul>
+<li>差      –<ul>
+<li>R-S</li>
+<li>R和S是相容的</li>
+</ul>
+</li>
+<li>笛卡尔积      $\times$<ul>
+<li>两个关系的所有元组作笛卡尔积</li>
+</ul>
+</li>
+<li>并     $\bigcup$<ul>
+<li> $R\bigcup S$       指合并R和S中的元组组成新关系</li>
+<li>R和S是相同的，合并后会删除重复元组</li>
+</ul>
+</li>
+<li>选择   $\sigma$      <ul>
+<li>用于找到满足适合条件的元组信息           </li>
+<li>实例： $\ \Large \sigma \small 姓名=”李华” \ (Student)$—— 指找到关系Student中姓名为李华的学生信息    </li>
+</ul>
+</li>
+<li>投影     $\prod$           <ul>
+<li>用于从已有的关系中选择出若干列，以组成新的关系    </li>
+<li>实例： $\prod \small 学生编号,专业 \normalsize (Student)$ ——指取出关系Student中学生编号+专业 这两列，形成新的关系</li>
+<li>要删除重复元组</li>
+</ul>
+</li>
+<li>重命名  $\rho$</li>
+</ul>
+</li>
+<li>附加关系操作<ul>
+<li>交        $\bigcap$</li>
+<li>除法             </li>
+<li><h2 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h2></li>
+<li>外连接</li>
+<li>赋值</li>
+</ul>
+</li>
+<li>广义投影</li>
+<li>聚集</li>
+</ul>
+<h5 id="1-3-2-元组演算"><a href="#1-3-2-元组演算" class="headerlink" title="1.3.2 元组演算"></a>1.3.2 元组演算</h5><h5 id="1-3-3-域演算"><a href="#1-3-3-域演算" class="headerlink" title="1.3.3 域演算"></a>1.3.3 域演算</h5><h3 id="2-SQL语言基础"><a href="#2-SQL语言基础" class="headerlink" title="2. SQL语言基础"></a>2. SQL语言基础</h3><ul>
+<li><p>结构化查询语言，关系数据库的标准语言 </p>
+</li>
+<li><p>操作的对象是集合，之后得到的结果也是集合</p>
+</li>
+</ul>
 <h4 id="2-1-基本的9个引导词"><a href="#2-1-基本的9个引导词" class="headerlink" title="2.1 基本的9个引导词"></a>2.1 基本的9个引导词</h4><ul>
 <li><input disabled type="checkbox"> <table>
 <thead>
@@ -277,20 +324,30 @@
 </li>
 </ul>
 <p>示例数据库(带下划线的为主键)</p>
-<p>Student(<u>Sno</u>,Sname,Ssex,Sage,Sdept)</p>
-<p>Course(<u>Cno</u>,Cname,Cpno,Ccredit)</p>
-<p>SC(<u>Sno</u>,Cno,Grade)</p>
+<p>Student(<u>Sno</u>,Sname,Ssex,Sage,Sdept)—学号、姓名、性别、年龄、所在系</p>
+<p>Course(<u>Cno</u>,Cname,Cpno,Ccredit)—课程号、课程名、先行课、学分</p>
+<p>SC(<u>Sno</u>,Cno,Grade)—学号、课程号、成绩</p>
 <h4 id="2-2-数据定义"><a href="#2-2-数据定义" class="headerlink" title="2.2 数据定义"></a>2.2 数据定义</h4><h5 id="2-2-1-create（创建，包括表，视图—一种虚拟的表，索引）"><a href="#2-2-1-create（创建，包括表，视图—一种虚拟的表，索引）" class="headerlink" title="2.2.1 create（创建，包括表，视图—一种虚拟的表，索引）"></a>2.2.1 create（创建，包括表，视图—一种虚拟的表，索引）</h5><ul>
 <li><p>create table  </p>
 <p>语法格式 ：</p>
 <p>create table &lt;关系名&gt; (&lt;属性名&gt; &lt;属性类型&gt;[NOT NULL], … , &lt;属性名&gt; &lt;属性类型&gt;[NOT NULL], 完整性约束1，完整性约束2,…)</p>
 <p>实例：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Game</span><br><span class="line">( Name <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="keyword">null</span>,<span class="operator">/</span><span class="operator">/</span>长度可变的字符串,且非空</span><br><span class="line">NUM <span class="type">char</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">Type  <span class="type">char</span>(<span class="number">5</span>),<span class="operator">/</span><span class="operator">/</span>定长字符串</span><br><span class="line"><span class="keyword">year</span>   <span class="type">integer</span>,</span><br><span class="line"><span class="keyword">Primary</span> key (NUM))</span><br><span class="line"><span class="comment">/* 例二 */</span></span><br><span class="line">creat <span class="keyword">table</span> Course</span><br><span class="line">(</span><br><span class="line">	Cno <span class="type">char</span>(<span class="number">4</span>) <span class="keyword">primary</span> key,</span><br><span class="line">    Cname <span class="type">char</span>(<span class="number">40</span>),</span><br><span class="line">    Cpno <span class="type">char</span>(<span class="number">4</span>),</span><br><span class="line">    Ccredit <span class="type">smallint</span>,</span><br><span class="line">	<span class="keyword">foreign</span> key (Cpno) <span class="keyword">references</span> Course(Cno)<span class="comment">/*定义外键，一个非主键，参照另一个表的主键*/</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
-<li><p>create index(为加快查询而定义的)</p>
+<li><p>create index(<strong>为加快查询而定义的</strong>)</p>
 <p>语法格式：CREATE [UNIQUE] INDEX 〈索引名〉 ON 〈关系名〉(〈列名 〉[ORDER], …,〈列名〉[ORDER]) [CLUSTER]</p>
 <p>其中 [unique]，表示索引属性是不能重复出现的，还可以是[cluster]</p>
 <p>order有两种值 ASC(升序)或者DESC(降序)</p>
-<p>create unique index NUM on Game(NUM ASC) cluster</p>
+<p><code>create unique index NUM on Game(NUM ASC) cluster</code></p>
+</li>
+<li><p>create view(定义视图)</p>
+<p>语法格式：CREATE VIEW &lt;视图名&gt;  [(&lt;列名&gt; [，&lt;列名&gt;]…)] AS &lt;子查询&gt; [WITH CHECK OPTION]；</p>
+<p>实例</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> Zrk</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> Sno, Sname,Sage</span><br><span class="line"><span class="keyword">FROM</span> Student</span><br><span class="line"><span class="keyword">WHERE</span> Sdept<span class="operator">=</span><span class="string">&#x27;CS&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>补充1： 视图简化了用户的操作，且提供了一种安全保护，不可以通过视图改变底层表的数据</li>
+<li>补充2：当数据库逻辑结构要改变的时候，通过建立视图，可以不必修改原来编写的查询程序</li>
+</ul>
 </li>
 </ul>
 <h5 id="2-2-2-drop-删除"><a href="#2-2-2-drop-删除" class="headerlink" title="2.2.2 drop (删除)"></a>2.2.2 drop (删除)</h5><ul>
@@ -302,7 +359,7 @@
 <p>语法格式：</p>
 <p>drop index&lt;索引名&gt;</p>
 </li>
-<li><p>drop </p>
+<li><p><code>drop table name</code></p>
 </li>
 </ul>
 <h5 id="2-2-3-alter-（修改）"><a href="#2-2-3-alter-（修改）" class="headerlink" title="2.2.3 alter （修改）"></a>2.2.3 alter （修改）</h5><ul>
@@ -350,9 +407,7 @@
 <ul>
 <li><p>使用select-from-where的表示方法</p>
 <p>在from之后</p>
-<p>from student, SC</p>
-<p>where student.no=SC.no</p>
-</li>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> student, SC</span><br><span class="line"><span class="keyword">where</span> student.no<span class="operator">=</span>SC.no</span><br></pre></td></tr></table></figure></li>
 <li><p>使用R join S on &lt; 连接条件 &gt;  的方法</p>
 <p>在from之后 from student join SC on student.no = SC.no</p>
 </li>
@@ -389,37 +444,45 @@
 <p>into &lt;表名&gt;</p>
 <p>values（‘常量1’，‘常量2’…..）</p>
 <p>例</p>
-<p>INSERT </p>
-<p>INTO Student </p>
-<p>VALUES (‘ 200215130’ ， ‘陈冬’ ， ‘男’ ，18 ， ‘CS’)；</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> </span><br><span class="line"><span class="keyword">INTO</span> Student </span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">&#x27;200215130&#x27;</span>,<span class="string">&#x27;陈冬&#x27;</span>,<span class="string">&#x27;男&#x27;</span> ,<span class="number">18</span>, ‘CS<span class="string">&#x27;);</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>补充：插入子查询结果，原来的value处改为一个子查询</li>
+</ul>
 </li>
-<li><p>插入子查询结果，原来的value处改为一个子查询</p>
-</li>
-<li><p>update关键字</p>
+<li><p>update关键字（更新元组之中的数据）</p>
 <p>语法格式</p>
 <p>UPDATE &lt;表名&gt; </p>
 <p>SET &lt;列名&gt;=&lt;表达式&gt;[，&lt;列名&gt;=&lt;表达式&gt;]… </p>
 <p>[WHERE &lt;条件&gt;]；</p>
-</li>
+<p>实例</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UPDATE Student</span><br><span class="line"><span class="keyword">SET</span> Sage<span class="operator">=</span><span class="number">22</span></span><br><span class="line"><span class="keyword">WHERE</span> Sno<span class="operator">=</span><span class="string">&#x27;2191110520&#x27;</span></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>将学号为<span class="number">2191110520</span>的学生年龄改为<span class="number">22</span></span><br></pre></td></tr></table></figure></li>
+<li><p>delete关键字（删除某个元组）</p>
+<p>语法格式：DELETE FROM &lt;表名&gt;  WHERE &lt;条件&gt;；</p>
+<p>实例</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> </span><br><span class="line"><span class="keyword">FROM</span> Student</span><br><span class="line"><span class="keyword">WHERE</span> Sno<span class="operator">=</span><span class="string">&#x27;2191110520&#x27;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="3-数据库安全性，完整性（用SQL实现）"><a href="#3-数据库安全性，完整性（用SQL实现）" class="headerlink" title="3.数据库安全性，完整性（用SQL实现）"></a>3.数据库安全性，完整性（用SQL实现）</h3><h4 id="3-1-基本概念"><a href="#3-1-基本概念" class="headerlink" title="3.1 基本概念"></a>3.1 基本概念</h4><h5 id="3-1-1安全性"><a href="#3-1-1安全性" class="headerlink" title="3.1.1安全性"></a>3.1.1安全性</h5><ul>
 <li>不允许恶意修改或者未经授权的存取和修改</li>
 </ul>
 <h5 id="3-1-2完整性（为保障数据正确性，相容性，添加的约束条件和规则）"><a href="#3-1-2完整性（为保障数据正确性，相容性，添加的约束条件和规则）" class="headerlink" title="3.1.2完整性（为保障数据正确性，相容性，添加的约束条件和规则）"></a>3.1.2完整性（为保障数据正确性，相容性，添加的约束条件和规则）</h5><ul>
 <li>语义完整性（重点）</li>
-<li>并发控制，安全控制，DB回复等</li>
+<li>并发控制（详细见后续），安全控制，DB回复等</li>
 </ul>
 <h4 id="3-2-控制安全性"><a href="#3-2-控制安全性" class="headerlink" title="3.2 控制安全性"></a>3.2 控制安全性</h4><h5 id="3-2-1授权"><a href="#3-2-1授权" class="headerlink" title="3.2.1授权"></a>3.2.1授权</h5><p>语法格式</p>
 <p>GRANT &lt;权限&gt; [, 权限] …</p>
 <p>ON &lt;对象类型&gt; &lt;对象名&gt; [, &lt;对象类型&gt; &lt;对象名&gt; ] …</p>
 <p>TO &lt;用户&gt; [,用户] … [WITH GRANT OPTION];</p>
-<p>例</p>
-<p>Grant select </p>
-<p>on table game</p>
-<p>to krzkrz;</p>
+<p>例1</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Grant</span> <span class="keyword">select</span><span class="operator">/</span><span class="operator">/</span><span class="keyword">ALL</span> PRIVILEGES </span><br><span class="line"><span class="keyword">on</span> <span class="keyword">table</span> game</span><br><span class="line"><span class="keyword">to</span> krzkrz<span class="operator">/</span><span class="operator">/</span>(<span class="keyword">with</span> <span class="keyword">grant</span> option);</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>给用户krzkrz表game的查询权限</span><br></pre></td></tr></table></figure>
+
 <h5 id="3-2-2-权限回收"><a href="#3-2-2-权限回收" class="headerlink" title="3.2.2 权限回收"></a>3.2.2 权限回收</h5><p>REVOKE &lt;权限&gt; [, 权限] … </p>
 <p>ON &lt;对象类型&gt; &lt;对象名&gt; [, &lt;对象类型&gt; &lt;对象名&gt;] </p>
 <p>FROM &lt;用户&gt; [, 用户] … [CASCADE | RESTRICT]</p>
+<ul>
+<li>cascade 表示级联回收</li>
+<li>restrict  表示存在级联回收的时候</li>
+</ul>
 <h5 id="3-2-3-存取控制机制"><a href="#3-2-3-存取控制机制" class="headerlink" title="3.2.3 存取控制机制"></a>3.2.3 存取控制机制</h5><p>常用方法</p>
 <ul>
 <li>强制存取机制（MAC）发生在DAC之后<ul>
@@ -429,14 +492,34 @@
 </ul>
 </li>
 </ul>
-<h5 id="3-2-4-审计"><a href="#3-2-4-审计" class="headerlink" title="3.2.4 审计"></a>3.2.4 审计</h5><p>在SQL语言之中，用audit，noaudit  </p>
-<h5 id="3-2-5-数据加密"><a href="#3-2-5-数据加密" class="headerlink" title="3.2.5 数据加密"></a>3.2.5 数据加密</h5><h4 id="3-3完整性控制"><a href="#3-3完整性控制" class="headerlink" title="3.3完整性控制"></a>3.3完整性控制</h4><h5 id="3-3-1-包括的几个方面"><a href="#3-3-1-包括的几个方面" class="headerlink" title="3.3.1 包括的几个方面"></a>3.3.1 包括的几个方面</h5><h5 id="3-3-2-域完整性"><a href="#3-3-2-域完整性" class="headerlink" title="3.3.2 域完整性"></a>3.3.2 域完整性</h5><p>not null</p>
-<p>unique</p>
-<p>default</p>
-<p>check(逻辑表达式,或者查询子句)</p>
-<h5 id="3-3-3-参照完整性"><a href="#3-3-3-参照完整性" class="headerlink" title="3.3.3 参照完整性"></a>3.3.3 参照完整性</h5><p>某些操作会破坏完整性</p>
-<p>系统采用以下策略 拒绝，级联，设为空值</p>
-<p>例如on update cascade ，on delete no action之类的语句</p>
+<h5 id="3-2-4-审计"><a href="#3-2-4-审计" class="headerlink" title="3.2.4 审计"></a>3.2.4 审计</h5><p>在SQL语言之中，用audit，noaudit关键字 </p>
+<p><code> AUDIT ALTER, UPDATE ON SC;</code> 表示对修改表SC中的数据的操作添加审计</p>
+<p><code> NOAUDIT ALTER, UPDATE ON SC;</code>表示取消审计</p>
+<h5 id="3-2-5-数据加密"><a href="#3-2-5-数据加密" class="headerlink" title="3.2.5 数据加密"></a>3.2.5 数据加密</h5><h4 id="3-3完整性控制"><a href="#3-3完整性控制" class="headerlink" title="3.3完整性控制"></a>3.3完整性控制</h4><h5 id="3-3-1-域完整性"><a href="#3-3-1-域完整性" class="headerlink" title="3.3.1 域完整性"></a>3.3.1 域完整性</h5><ul>
+<li><p>指：保障关系表之中的列的值是合理的，一般在建表或者建视图的时候确定</p>
+</li>
+<li><p>not null（列值非空）</p>
+</li>
+<li><p>unique（列值是唯一的）</p>
+</li>
+<li><p>default（设值默认值）</p>
+</li>
+<li><p>check(逻辑表达式,或者查询子句，以检查列值是否满足表达式)</p>
+</li>
+</ul>
+<h5 id="3-3-2实体完整性"><a href="#3-3-2实体完整性" class="headerlink" title="3.3.2实体完整性"></a>3.3.2实体完整性</h5><ul>
+<li>关系主码唯一且非空</li>
+</ul>
+<h5 id="3-3-3-参照完整性"><a href="#3-3-3-参照完整性" class="headerlink" title="3.3.3 参照完整性"></a>3.3.3 参照完整性</h5><ul>
+<li><p>一般在建表或者建视图的时候确定（设定外键时确定）</p>
+</li>
+<li><p>某些操作会破坏完整性，系统采用以下策略 拒绝，级联，设为空值</p>
+<ul>
+<li>on update/delete cascade —–指级联操作，更新或者删除的时候会修改本表的数据和参照表的数据</li>
+<li>on delete no action—指拒绝操作</li>
+</ul>
+</li>
+</ul>
 <h5 id="3-3-4用户自定义完整性"><a href="#3-3-4用户自定义完整性" class="headerlink" title="3.3.4用户自定义完整性"></a>3.3.4用户自定义完整性</h5><ul>
 <li><p>完整系约束命名子句</p>
 <p>语法结构</p>

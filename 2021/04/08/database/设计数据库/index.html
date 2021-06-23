@@ -20,24 +20,26 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;zrk494.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Pisces&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
-<meta name="description" content="设计数据库1.概述+需求分析1.1 设计的内容 数据库的逻辑和物理结构（满足用户需求） 满足用户的信息管理要求（包括存储和管理的对象） 满足用户的数据操作需求（增删改查，统计等操作）  1.2 设计的目标 信息基础设施 高效的运行环境  存取效率 存储空间 运行管理    1.3 特征 结构设计（） 行为设计（）  1.4 设计的流程 需求分析+设计（花最多的时间打下好的基础）  设计概念结构">
+<meta name="description" content="设计数据库1.概述+需求分析1.1 设计的内容 数据库的逻辑和物理结构（满足用户需求） 满足用户的信息管理要求（包括存储和管理的对象） 满足用户的数据操作需求（增删改查，统计等操作）  1.2 设计的目标 信息基础设施 高效的运行环境  存取效率 存储空间 运行管理    1.3 特征 结构设计（） 行为设计（）  1.4 设计的流程 需求分析+设计（花最多的时间打下好的基础） 设计概念结构 设计">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计数据库">
 <meta property="og:url" content="http://zrk494.github.io/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
 <meta property="og:site_name" content="post">
-<meta property="og:description" content="设计数据库1.概述+需求分析1.1 设计的内容 数据库的逻辑和物理结构（满足用户需求） 满足用户的信息管理要求（包括存储和管理的对象） 满足用户的数据操作需求（增删改查，统计等操作）  1.2 设计的目标 信息基础设施 高效的运行环境  存取效率 存储空间 运行管理    1.3 特征 结构设计（） 行为设计（）  1.4 设计的流程 需求分析+设计（花最多的时间打下好的基础）  设计概念结构">
+<meta property="og:description" content="设计数据库1.概述+需求分析1.1 设计的内容 数据库的逻辑和物理结构（满足用户需求） 满足用户的信息管理要求（包括存储和管理的对象） 满足用户的数据操作需求（增删改查，统计等操作）  1.2 设计的目标 信息基础设施 高效的运行环境  存取效率 存储空间 运行管理    1.3 特征 结构设计（） 行为设计（）  1.4 设计的流程 需求分析+设计（花最多的时间打下好的基础） 设计概念结构 设计">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zrk494.github.io/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210622183215825.png">
 <meta property="og:image" content="http://zrk494.github.io/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210528193729838.png">
 <meta property="og:image" content="http://zrk494.github.io/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210528194114917.png">
 <meta property="og:image" content="http://zrk494.github.io/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210528194241884.png">
 <meta property="og:image" content="http://zrk494.github.io/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210528195540950.png">
 <meta property="og:image" content="http://zrk494.github.io/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/0E0D6D327CBF969118446364D54C93AE-1620139774277.png">
+<meta property="og:image" content="http://zrk494.github.io/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210623235142781.png">
 <meta property="article:published_time" content="2021-04-07T23:43:48.000Z">
-<meta property="article:modified_time" content="2021-06-22T02:41:03.371Z">
+<meta property="article:modified_time" content="2021-06-23T16:14:35.943Z">
 <meta property="article:author" content="zrk">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://zrk494.github.io/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210528193729838.png">
+<meta name="twitter:image" content="http://zrk494.github.io/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210622183215825.png">
 
 
 <link rel="canonical" href="http://zrk494.github.io/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/">
@@ -126,7 +128,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">设计数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">1.1.</span> <span class="nav-text">1.概述+需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 设计的内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 设计的目标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E7%89%B9%E5%BE%81"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 设计的流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.5 需求分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.1.6.</span> <span class="nav-text">1.6 需求分析步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-7-%E6%95%B0%E6%8D%AE%E9%A1%B9%E5%AD%97%E5%85%B8%EF%BC%88%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%EF%BC%89"><span class="nav-number">1.1.7.</span> <span class="nav-text">1.7 数据项字典（数据字典）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%A6%82%E5%BF%B5%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.2.</span> <span class="nav-text">2. 概念数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E5%AE%9E%E4%BD%93%E8%81%94%E7%B3%BB%E6%A8%A1%E5%9E%8B%EF%BC%88ER%E6%A8%A1%E5%9E%8B%EF%BC%89"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 实体联系模型（ER模型）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E6%A6%82%E5%BF%B5%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 概念设计的步骤</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%80%BB%E8%BE%91%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.3.</span> <span class="nav-text">3.逻辑数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E8%A6%81%E8%A7%A3%E5%86%B3%E5%93%AA%E4%BA%9B%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 要解决哪些存在的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E6%A6%82%E5%BF%B5%E5%88%B0%E5%88%9D%E5%A7%8B%E7%9A%84%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 概念到初始的关系模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-1-%E6%99%AE%E9%80%9A%E5%AE%9E%E4%BD%93%E9%9B%86%E7%9A%84%E5%8F%98%E6%8D%A2%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">3.1.1 普通实体集的变换方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-2-%E5%BC%B1%E5%AE%9E%E4%BD%93%E7%9A%84%E5%8F%98%E6%8D%A2"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">3.1.2 弱实体的变换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-3-%E5%A4%9A%E5%80%BC%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8F%98%E6%8D%A2"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">3.1.3 多值属性的变换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-4-%E5%AE%9E%E4%BD%93%E9%97%B4%E8%81%94%E7%B3%BB%E7%9A%84%E5%8F%98%E6%8D%A2"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">3.1.4 实体间联系的变换</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E8%A7%84%E8%8C%83%E5%8C%96%EF%BC%88%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BC%98%E5%8C%96%E5%88%9D%E5%A7%8B%E5%BD%A2%E6%88%90%E7%9A%84%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 函数依赖和关系模式规范化（第一次优化初始形成的关系模式）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-1-%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">3.3.1 函数依赖</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-2-%E8%A7%84%E8%8C%83%E5%8C%96"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">3.3.2 规范化</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">关系模式分解算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-%E5%AE%8C%E6%95%B4%E6%80%A7%E5%92%8C%E5%AE%89%E5%85%A8%E6%80%A7%E7%BA%A6%E6%9D%9F"><span class="nav-number">2.0.1.</span> <span class="nav-text">3.4 完整性和安全性约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5%E5%AD%90%E6%A8%A1%E5%BC%8F%E5%AE%9A%E4%B9%89%E5%92%8C%E6%80%A7%E8%83%BD%E4%BC%B0%E8%AE%A1"><span class="nav-number">2.0.2.</span> <span class="nav-text">3.5子模式定义和性能估计</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%89%A9%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.1.</span> <span class="nav-text">4. 物理数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-%E5%BD%B1%E5%93%8D%E5%9B%A0%E7%B4%A0"><span class="nav-number">2.1.1.</span> <span class="nav-text">4.1 影响因素</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">设计数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">1.1.</span> <span class="nav-text">1.概述+需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 设计的内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 设计的目标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E7%89%B9%E5%BE%81"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 设计的流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.5 需求分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.1.6.</span> <span class="nav-text">1.6 需求分析步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-7-%E6%95%B0%E6%8D%AE%E9%A1%B9%E5%AD%97%E5%85%B8%EF%BC%88%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%EF%BC%89"><span class="nav-number">1.1.7.</span> <span class="nav-text">1.7 数据项字典（数据字典）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%A6%82%E5%BF%B5%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.2.</span> <span class="nav-text">2. 概念数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E5%AE%9E%E4%BD%93%E8%81%94%E7%B3%BB%E6%A8%A1%E5%9E%8B%EF%BC%88ER%E6%A8%A1%E5%9E%8B%EF%BC%89"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 实体联系模型（ER模型）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E6%A6%82%E5%BF%B5%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 概念设计的步骤</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%80%BB%E8%BE%91%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.3.</span> <span class="nav-text">3.逻辑数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E8%A6%81%E8%A7%A3%E5%86%B3%E5%93%AA%E4%BA%9B%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 要解决哪些存在的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E6%A6%82%E5%BF%B5%E5%88%B0%E5%88%9D%E5%A7%8B%E7%9A%84%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 概念到初始的关系模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-1-%E6%99%AE%E9%80%9A%E5%AE%9E%E4%BD%93%E9%9B%86%E7%9A%84%E5%8F%98%E6%8D%A2%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">3.1.1 普通实体集的变换方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-2-%E5%BC%B1%E5%AE%9E%E4%BD%93%E7%9A%84%E5%8F%98%E6%8D%A2"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">3.1.2 弱实体的变换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-3-%E5%A4%9A%E5%80%BC%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8F%98%E6%8D%A2"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">3.1.3 多值属性的变换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-4-%E5%AE%9E%E4%BD%93%E9%97%B4%E8%81%94%E7%B3%BB%E7%9A%84%E5%8F%98%E6%8D%A2"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">3.1.4 实体间联系的变换</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E8%A7%84%E8%8C%83%E5%8C%96%EF%BC%88%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BC%98%E5%8C%96%E5%88%9D%E5%A7%8B%E5%BD%A2%E6%88%90%E7%9A%84%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 函数依赖和关系模式规范化（第一次优化初始形成的关系模式）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-1-%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">3.3.1 函数依赖</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-2-%E8%A7%84%E8%8C%83%E5%8C%96"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">3.3.2 规范化</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BCNF%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">BCNF分解算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-%E5%AE%8C%E6%95%B4%E6%80%A7%E5%92%8C%E5%AE%89%E5%85%A8%E6%80%A7%E7%BA%A6%E6%9D%9F"><span class="nav-number">2.0.1.</span> <span class="nav-text">3.4 完整性和安全性约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5%E5%AD%90%E6%A8%A1%E5%BC%8F%E5%AE%9A%E4%B9%89%E5%92%8C%E6%80%A7%E8%83%BD%E4%BC%B0%E8%AE%A1"><span class="nav-number">2.0.2.</span> <span class="nav-text">3.5子模式定义和性能估计</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%89%A9%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.1.</span> <span class="nav-text">4. 物理数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-%E5%BD%B1%E5%93%8D%E5%9B%A0%E7%B4%A0"><span class="nav-number">2.1.1.</span> <span class="nav-text">4.1 影响因素</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -218,7 +220,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-06-22 10:41:03" itemprop="dateModified" datetime="2021-06-22T10:41:03+08:00">2021-06-22</time>
+        <time title="修改时间：2021-06-24 00:14:35" itemprop="dateModified" datetime="2021-06-24T00:14:35+08:00">2021-06-24</time>
       </span>
 
   
@@ -250,24 +252,16 @@
 <li>行为设计（）</li>
 </ul>
 <h4 id="1-4-设计的流程"><a href="#1-4-设计的流程" class="headerlink" title="1.4 设计的流程"></a>1.4 设计的流程</h4><ul>
-<li><p>需求分析+设计（花最多的时间打下好的基础）</p>
-</li>
-<li><p>设计概念结构</p>
-</li>
-<li><p>设计逻辑结构</p>
-</li>
-<li><p>优化数据模型</p>
-</li>
-<li><p>设计物理结构</p>
-</li>
-<li><p>性能评测</p>
-</li>
-<li><p>物理实现</p>
-</li>
-<li><p>运行和维护</p>
-</li>
-<li><p>补充：在优化或者评估的过程中，可能会返回之前的步骤进行设计上的修改</p>
-</li>
+<li>需求分析+设计（花最多的时间打下好的基础）</li>
+<li>设计概念结构</li>
+<li>设计逻辑结构</li>
+<li>优化数据模型</li>
+<li>设计物理结构</li>
+<li>性能评测</li>
+<li>物理实现</li>
+<li>运行和维护</li>
+<li>补充：在优化或者评估的过程中，可能会返回之前的步骤进行设计上的修改</li>
+<li><img src="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210622183215825.png" alt="image-20210622183215825"></li>
 </ul>
 <h4 id="1-5-需求分析"><a href="#1-5-需求分析" class="headerlink" title="1.5 需求分析"></a>1.5 需求分析</h4><ul>
 <li><p>需求分析就是分析用户的要求，要明确一下内容</p>
@@ -397,7 +391,7 @@
 <li><p>完全函数依赖        如果X→Y，Y不完全依赖于X</p>
 <p>例</p>
 <p><img src="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/0E0D6D327CBF969118446364D54C93AE-1620139774277.png" alt="0E0D6D327CBF969118446364D54C93AE"></p>
-<p>（Snow,Cno)→Grade 是一个完全函数依赖</p>
+<p>（Sno,Cno)→Grade 是一个完全函数依赖</p>
 <p>​    (Sno,Cno)→Sdept是部分函数依赖</p>
 </li>
 <li><p>传递函数依赖        若X→Y(Y$\nsubseteq$Y)，Y→Z，Y$\nrightarrow$X,则称Z对X传递依赖</p>
@@ -473,7 +467,11 @@
 <li>要满足的条件2      F中不存在这样的函数依赖X→A，使得F与F-{X→A}等价(F中的函数依赖均不能由F中的其他函数依赖导出)</li>
 <li>要满足的条件3   F中不存在这样的函数依赖X→A， X有真子集Z使得F-{X→A}  ∪{Z→A}与F等价</li>
 <li>补充  最小函数依赖不唯一</li>
-<li>计算最小函数依赖</li>
+<li>计算最小函数依赖集<ul>
+<li>将右边有多个属性的函数依赖拆开</li>
+<li>去除可以被其他条件推出的函数依赖</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -487,7 +485,7 @@
 </ul>
 </li>
 <li>第一范式<ul>
-<li>简单来说，就是只有一个关系表</li>
+<li>简单来说，就是只有一个关系表，有非键属性部分函数依赖于R的候选键</li>
 <li>是任何一个关系数据库最起码的要求，一般假定所有关系模式都是1NF</li>
 </ul>
 </li>
@@ -518,18 +516,42 @@
 <li>关系模式分解必须满足的条件<ol>
 <li>保持无损连接性<ul>
 <li>无损连接性的定义：设关系模式R被分解为若干个关系模式 R1，R2，… ，Rn，若R与R1，R2，… ，Rn自然连接的结果相等，则此种分解模式具有无损连接性</li>
-<li>判断无损连接性方式</li>
+<li>Fi指F在Ui上的投影</li>
+<li>判断无损连接性方式（通过表简单的描述）<ul>
+<li>建表，首行为U之中的所有属性，首列为$\rho$中所有的关系集合</li>
+<li>将元组t=（ai）根据$\rho$的关系填入表中，其余用bij补上</li>
+<li>根据F中的函数依赖，用a将b的指替换</li>
+<li>如果最终得到一行包括完整的元组t=（ai），则保持无损连接性</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>函数依赖保持性<ul>
 <li>定义：设关系模式R被分解为若干个关系模式 R1，R2，… ，Rn，F所逻辑蕴含的函数依赖一定也由分解得到的关系模式中的所有函数依赖所逻辑蕴含</li>
 <li>充要条件$\ F^x=(\bigcup\binom{n}{i=1}F\tiny i\normalsize )^+$</li>
-<li>判断方法</li>
+<li>判断方法<ul>
+<li>根据$\rho$求出对应的投影</li>
+<li>投影求交集，结果与F等价，则分解具有函数依赖保持性</li>
+<li>例题：<img src="/2021/04/08/database/%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210623235142781.png" alt="image-20210623235142781"></li>
+</ul>
+</li>
 </ul>
 </li>
 </ol>
 </li>
-<li><h2 id="关系模式分解算法"><a href="#关系模式分解算法" class="headerlink" title="关系模式分解算法"></a>关系模式分解算法</h2></li>
+<li>关系模式分解算法<ul>
+<li>3NF算法1（达到3NF且保持函数依赖的分解）<ul>
+<li>求出F的最小函数依赖集</li>
+<li>最小函数依赖集中的一个函数依赖对应一个$\rho$中的关系</li>
+</ul>
+</li>
+<li>3NF算法2（达到3NF且具有无损连接和保持函数依赖的分解）<ul>
+<li>完成算法1之后，将候选键作为一个关系放入分解$\rho$中，如果候选键包括在$\rho$中，则完成算法1即可</li>
+</ul>
+</li>
+<li><h2 id="BCNF分解算法"><a href="#BCNF分解算法" class="headerlink" title="BCNF分解算法"></a>BCNF分解算法</h2></li>
+</ul>
+</li>
 <li>补充：经常被更新、插入和删除关系，应当具有第三范式形式，</li>
 </ul>
 <h4 id="3-4-完整性和安全性约束"><a href="#3-4-完整性和安全性约束" class="headerlink" title="3.4 完整性和安全性约束"></a>3.4 完整性和安全性约束</h4><h4 id="3-5子模式定义和性能估计"><a href="#3-5子模式定义和性能估计" class="headerlink" title="3.5子模式定义和性能估计"></a>3.5子模式定义和性能估计</h4><h3 id="4-物理数据库设计"><a href="#4-物理数据库设计" class="headerlink" title="4. 物理数据库设计"></a>4. 物理数据库设计</h3><h4 id="4-1-影响因素"><a href="#4-1-影响因素" class="headerlink" title="4.1 影响因素"></a>4.1 影响因素</h4><ul>

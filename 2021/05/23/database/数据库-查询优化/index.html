@@ -20,18 +20,20 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;zrk494.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Pisces&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
-<meta name="description" content="查询优化1. SQL查询的过程 引入多个树描述查询过程 Parser Tree （语法树） Logical Query Plan Tree（查询树—由基本关系操作符组成） Physical Query Plan Tree（查询树—-由物理操作符组成）    2. 关系代数操作算法2.1 概述（主要讨论算法的如下几方面） 算法参考指标  算法运行环境 算法运行代价 算法处理能力   由于数据量很大，">
+<meta name="description" content="查询优化1. SQL查询的过程 引入多个树描述查询过程 Parser Tree （语法树） Logical Query Plan Tree（查询树—由基本关系操作符组成） Physical Query Plan Tree（查询树—-由物理操作符组成）    2. 关系代数操作算法2.1 概述（主要讨论算法的如下几方面） 算法参考指标  算法运行环境 算法运行代价：一般值磁盘块存取数 算法处理能力">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库--查询优化">
 <meta property="og:url" content="http://zrk494.github.io/2021/05/23/database/%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="post">
-<meta property="og:description" content="查询优化1. SQL查询的过程 引入多个树描述查询过程 Parser Tree （语法树） Logical Query Plan Tree（查询树—由基本关系操作符组成） Physical Query Plan Tree（查询树—-由物理操作符组成）    2. 关系代数操作算法2.1 概述（主要讨论算法的如下几方面） 算法参考指标  算法运行环境 算法运行代价 算法处理能力   由于数据量很大，">
+<meta property="og:description" content="查询优化1. SQL查询的过程 引入多个树描述查询过程 Parser Tree （语法树） Logical Query Plan Tree（查询树—由基本关系操作符组成） Physical Query Plan Tree（查询树—-由物理操作符组成）    2. 关系代数操作算法2.1 概述（主要讨论算法的如下几方面） 算法参考指标  算法运行环境 算法运行代价：一般值磁盘块存取数 算法处理能力">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zrk494.github.io/2021/05/23/database/%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/image-20210624003319991.png">
 <meta property="article:published_time" content="2021-05-23T02:32:55.000Z">
-<meta property="article:modified_time" content="2021-06-21T16:51:17.475Z">
+<meta property="article:modified_time" content="2021-06-24T01:31:02.795Z">
 <meta property="article:author" content="zrk">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zrk494.github.io/2021/05/23/database/%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/image-20210624003319991.png">
 
 
 <link rel="canonical" href="http://zrk494.github.io/2021/05/23/database/%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/">
@@ -120,7 +122,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">查询优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-SQL%E6%9F%A5%E8%AF%A2%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">1. SQL查询的过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0%E6%93%8D%E4%BD%9C%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">2. 关系代数操作算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E6%A6%82%E8%BF%B0%EF%BC%88%E4%B8%BB%E8%A6%81%E8%AE%A8%E8%AE%BA%E7%AE%97%E6%B3%95%E7%9A%84%E5%A6%82%E4%B8%8B%E5%87%A0%E6%96%B9%E9%9D%A2%EF%BC%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 概述（主要讨论算法的如下几方面）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E9%80%89%E6%8B%A9%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 选择算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E6%8A%95%E5%BD%B1%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 投影算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-%E8%BF%9E%E6%8E%A5%E6%93%8D%E4%BD%9C%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 连接操作算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 集合操作算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AE%9E%E7%8E%B0%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96"><span class="nav-number">1.3.</span> <span class="nav-text">3. 实现查询优化</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">查询优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-SQL%E6%9F%A5%E8%AF%A2%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">1. SQL查询的过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0%E6%93%8D%E4%BD%9C%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">2. 关系代数操作算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E6%A6%82%E8%BF%B0%EF%BC%88%E4%B8%BB%E8%A6%81%E8%AE%A8%E8%AE%BA%E7%AE%97%E6%B3%95%E7%9A%84%E5%A6%82%E4%B8%8B%E5%87%A0%E6%96%B9%E9%9D%A2%EF%BC%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 概述（主要讨论算法的如下几方面）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E9%80%89%E6%8B%A9%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 选择算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E6%8A%95%E5%BD%B1%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 投影算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-%E8%BF%9E%E6%8E%A5%E6%93%8D%E4%BD%9C%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 连接操作算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 集合操作算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AE%9E%E7%8E%B0%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96"><span class="nav-number">1.3.</span> <span class="nav-text">3. 实现查询优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E6%80%A7%E8%83%BD%E4%BC%B0%E8%AE%A1"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 性能估计</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -212,7 +214,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-06-22 00:51:17" itemprop="dateModified" datetime="2021-06-22T00:51:17+08:00">2021-06-22</time>
+        <time title="修改时间：2021-06-24 09:31:02" itemprop="dateModified" datetime="2021-06-24T09:31:02+08:00">2021-06-24</time>
       </span>
 
   
@@ -237,22 +239,20 @@
 <li><p>算法参考指标</p>
 <ul>
 <li>算法运行环境</li>
-<li>算法运行代价</li>
+<li>算法运行代价：一般值磁盘块存取数</li>
 <li>算法处理能力</li>
 </ul>
 </li>
 <li><p>由于数据量很大，存在外存之中，故补充外存中的Merge-Sort</p>
 <ul>
-<li><p>条件：文件R存储在BR个磁盘块中, 排序R中的记录并写 回磁盘, 可用缓冲区有M个块</p>
-</li>
-<li><p>过程：</p>
-<ol>
+<li>条件：文件R存储在BR个磁盘块中, 排序R中的记录并写 回磁盘, 可用缓冲区有M个块</li>
+<li>过程：<ol>
 <li>先读入R的M个块到缓冲区之中，在内存之中对这些记录排序，写回到磁盘上，得到一个子表，一轮之后得到BR/M个有序的子表</li>
 <li>通过缓冲区合并至多M个有序子表，得到一个更长的有序子表，经过一轮操作之后，子表的数量变为之前的1/M</li>
 </ol>
 </li>
-<li><p>结果：多轮合并后得到一个包括<strong>R中所有记录</strong>的有序子表</p>
-</li>
+<li>结果：多轮合并后得到一个包括<strong>R中所有记录</strong>的有序子表</li>
+<li>磁盘存取代价: $\ 2log\tiny M \normalsize B\tiny R\normalsize ×B\tiny R$</li>
 </ul>
 </li>
 </ul>
@@ -300,14 +300,63 @@
 <li>处理方式：按排序的顺序扫描R和S，查找在<strong>排序的属性</strong>上值相同的元组，连接即可</li>
 </ul>
 </li>
-<li>Hash-连接(Hash-Join)算法</li>
+<li>Hash-连接(Hash-Join)算法<ul>
+<li>1</li>
 </ul>
 </li>
+</ul>
+</li>
+<li>总结：关系R的磁盘块数为BR，关系S的磁盘块数为BS<img src="/2021/05/23/database/%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/image-20210624003319991.png" alt="image-20210624003319991"></li>
 </ul>
 <h4 id="2-5-集合操作算法"><a href="#2-5-集合操作算法" class="headerlink" title="2.5 集合操作算法"></a>2.5 集合操作算法</h4><ul>
 <li></li>
 </ul>
-<h3 id="3-实现查询优化"><a href="#3-实现查询优化" class="headerlink" title="3. 实现查询优化"></a>3. 实现查询优化</h3>
+<h3 id="3-实现查询优化"><a href="#3-实现查询优化" class="headerlink" title="3. 实现查询优化"></a>3. 实现查询优化</h3><h4 id="3-1-表达式"><a href="#3-1-表达式" class="headerlink" title="3.1 表达式"></a>3.1 表达式</h4><ul>
+<li><p>将SQL语句边为关系代数表达式</p>
+</li>
+<li><p>涉及选择的定律</p>
+<ul>
+<li>对二元操作符进行下推选择</li>
+</ul>
+</li>
+<li><p>涉及投影的定律</p>
+<ul>
+<li>会改变元组的长度，不会改变元组的数量</li>
+<li>投影下推到多个其他操作符中</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-2-性能估计"><a href="#3-2-性能估计" class="headerlink" title="3.2 性能估计"></a>3.2 性能估计</h4><ul>
+<li>选择操作大小估计<ul>
+<li>等值条件<ul>
+<li>𝑻(𝑹)/𝑽(𝑹,𝑨)（R在属性A上的投影）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>运算结果估计<ul>
+<li>并运算并R∪S<ul>
+<li>$\max( T(R),T(S))+\frac{1}{2}min(T(R),T(S))$</li>
+</ul>
+</li>
+<li>交运算R∩S<ul>
+<li>$\frac{1}{2}min(T(R),T(S))$</li>
+</ul>
+</li>
+<li>差运算R−S<ul>
+<li>$\ T(R)-\frac{1}{2}T(S)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>连接大小估计（自然连接R(X,Y) $\bowtie$S(Y,Z)）<ul>
+<li>估计大小（元组数量）为：T(R)T(S)/MAX(V(R,Y), V(S,Y))</li>
+</ul>
+</li>
+</ul>
+
     </div>
 
     

@@ -207,7 +207,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-06-21 10:36:08" itemprop="dateModified" datetime="2021-06-21T10:36:08+08:00">2021-06-21</time>
+        <time title="修改时间：2021-06-24 10:40:29" itemprop="dateModified" datetime="2021-06-24T10:40:29+08:00">2021-06-24</time>
       </span>
 
   
@@ -286,7 +286,7 @@
 <li>附加关系操作<ul>
 <li>交        $\bigcap$</li>
 <li>除法             </li>
-<li><h2 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h2></li>
+<li>连接</li>
 <li>外连接</li>
 <li>赋值</li>
 </ul>
@@ -332,7 +332,7 @@
 <p>语法格式 ：</p>
 <p>create table &lt;关系名&gt; (&lt;属性名&gt; &lt;属性类型&gt;[NOT NULL], … , &lt;属性名&gt; &lt;属性类型&gt;[NOT NULL], 完整性约束1，完整性约束2,…)</p>
 <p>实例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Game</span><br><span class="line">( Name <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="keyword">null</span>,<span class="operator">/</span><span class="operator">/</span>长度可变的字符串,且非空</span><br><span class="line">NUM <span class="type">char</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">Type  <span class="type">char</span>(<span class="number">5</span>),<span class="operator">/</span><span class="operator">/</span>定长字符串</span><br><span class="line"><span class="keyword">year</span>   <span class="type">integer</span>,</span><br><span class="line"><span class="keyword">Primary</span> key (NUM))</span><br><span class="line"><span class="comment">/* 例二 */</span></span><br><span class="line">creat <span class="keyword">table</span> Course</span><br><span class="line">(</span><br><span class="line">	Cno <span class="type">char</span>(<span class="number">4</span>) <span class="keyword">primary</span> key,</span><br><span class="line">    Cname <span class="type">char</span>(<span class="number">40</span>),</span><br><span class="line">    Cpno <span class="type">char</span>(<span class="number">4</span>),</span><br><span class="line">    Ccredit <span class="type">smallint</span>,</span><br><span class="line">	<span class="keyword">foreign</span> key (Cpno) <span class="keyword">references</span> Course(Cno)<span class="comment">/*定义外键，一个非主键，参照另一个表的主键*/</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Game</span><br><span class="line">( </span><br><span class="line">Name <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="keyword">null</span>,<span class="operator">/</span><span class="operator">/</span>长度可变的字符串,且非空</span><br><span class="line">NUM <span class="type">char</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">Type  <span class="type">char</span>(<span class="number">5</span>),<span class="operator">/</span><span class="operator">/</span>定长字符串</span><br><span class="line"><span class="keyword">year</span>   <span class="type">integer</span>,</span><br><span class="line"><span class="keyword">Primary</span> key (NUM))</span><br><span class="line"><span class="comment">/* 例二 */</span></span><br><span class="line">creat <span class="keyword">table</span> Course</span><br><span class="line">(</span><br><span class="line">	Cno <span class="type">char</span>(<span class="number">4</span>) <span class="keyword">primary</span> key,</span><br><span class="line">    Cname <span class="type">char</span>(<span class="number">40</span>),</span><br><span class="line">    Cpno <span class="type">char</span>(<span class="number">4</span>),</span><br><span class="line">    Ccredit <span class="type">smallint</span>,</span><br><span class="line">	<span class="keyword">foreign</span> key (Cpno) <span class="keyword">references</span> Course(Cno)<span class="comment">/*定义外键，一个非主键，参照另一个表的主键*/</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
 <li><p>create index(<strong>为加快查询而定义的</strong>)</p>
 <p>语法格式：CREATE [UNIQUE] INDEX 〈索引名〉 ON 〈关系名〉(〈列名 〉[ORDER], …,〈列名〉[ORDER]) [CLUSTER]</p>
 <p>其中 [unique]，表示索引属性是不能重复出现的，还可以是[cluster]</p>
@@ -397,7 +397,7 @@
 <p><code>Select count(*) From Game;</code></p>
 </li>
 <li><p>结果分组</p>
-<p>Group by 按某一会重复出现的列属性分组</p>
+<p>Group by 按某一会重复出现的列属性分组（一般要和分组函数一起使用）</p>
 <p>Having 为分组添加筛选条件，只有满足条件的分组才会出现</p>
 <p><strong>备注：Having和where的区别，简单来说就是先后顺序的区别，where在分组前筛选，having再分组之后筛选</strong></p>
 </li>
@@ -409,18 +409,23 @@
 <p>在from之后</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> student, SC</span><br><span class="line"><span class="keyword">where</span> student.no<span class="operator">=</span>SC.no</span><br></pre></td></tr></table></figure></li>
 <li><p>使用R join S on &lt; 连接条件 &gt;  的方法</p>
-<p>在from之后 from student join SC on student.no = SC.no</p>
+<p>在from之后</p>
+<p> <code>from student join SC on student.no = SC.no</code></p>
 </li>
 </ul>
 </li>
 <li><p>自然连接</p>
 <p>使用natural join 关键字</p>
-<p>在from之后  from student natural join SC</p>
+<p>在from之后</p>
+<p><code> from student natural join SC</code></p>
 </li>
 <li><p>自联结</p>
 <p>在from之后</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> course.first, course.second</span><br><span class="line"><span class="keyword">where</span> first.Cpno <span class="operator">=</span> second.Cno</span><br></pre></td></tr></table></figure></li>
 <li><p>外连接</p>
+<ul>
+<li>会保留一部分信息</li>
+</ul>
 </li>
 <li><p>内连接</p>
 </li>
@@ -428,11 +433,33 @@
 </li>
 </ul>
 <h5 id="2-3-3嵌套查询（一个查询嵌在另一个里面）"><a href="#2-3-3嵌套查询（一个查询嵌在另一个里面）" class="headerlink" title="2.3.3嵌套查询（一个查询嵌在另一个里面）"></a>2.3.3嵌套查询（一个查询嵌在另一个里面）</h5><ul>
-<li>in和not in的子查询</li>
-<li>相关子程序和不相关子查询</li>
-<li>exist和not exist的子查询***</li>
-<li>带any或all的子查序</li>
-<li>比较运算符的子查询</li>
+<li><p>in和not in的子查询</p>
+</li>
+<li><p>相关子程序和不相关子查询</p>
+</li>
+<li><p><strong>exist和not exist的子查询</strong></p>
+<ul>
+<li>此类子查询不会返回数据，只会返回逻辑值</li>
+</ul>
+</li>
+<li><p>带any或all的子查序</p>
+<ul>
+<li>一般要配合比较运算符一起使用</li>
+<li>all表示所有值</li>
+<li>any表示任意一个值</li>
+</ul>
+</li>
+<li><p>比较运算符的子查询</p>
+<ul>
+<li>子查询必须在比较符号之后</li>
+</ul>
+</li>
+<li><p>补充：</p>
+<ul>
+<li>子查询中不建议使用Order by子句</li>
+<li>部分嵌套可以用连接替代</li>
+</ul>
+</li>
 </ul>
 <h5 id="2-3-4集合查询"><a href="#2-3-4集合查询" class="headerlink" title="2.3.4集合查询"></a>2.3.4集合查询</h5><ul>
 <li>并，交，差</li>

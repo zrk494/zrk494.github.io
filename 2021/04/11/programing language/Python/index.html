@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;zrk494.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Pisces&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
-<meta name="description" content="包括专业课学习的相关笔记，以及其他">
+<meta name="description" content="Python语言基础1. 基本语法1.1 输入输出 print()，用于表示输出 input()，用于表示输入，返回值为String类型  1.2 变量和常量1.2.1 变量   变量无需像其他语言一样提前声明  可以同时给多个变量赋值 1a,b,c&#x3D;1,2,3  # 一种特殊的数据类型—分数 1234567from fractions import FractionFraction(1,2) #">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python">
 <meta property="og:url" content="http://zrk494.github.io/2021/04/11/programing%20language/Python/index.html">
 <meta property="og:site_name" content="post">
-<meta property="og:description" content="包括专业课学习的相关笔记，以及其他">
+<meta property="og:description" content="Python语言基础1. 基本语法1.1 输入输出 print()，用于表示输出 input()，用于表示输入，返回值为String类型  1.2 变量和常量1.2.1 变量   变量无需像其他语言一样提前声明  可以同时给多个变量赋值 1a,b,c&#x3D;1,2,3  # 一种特殊的数据类型—分数 1234567from fractions import FractionFraction(1,2) #">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-11T12:34:27.000Z">
-<meta property="article:modified_time" content="2021-04-11T12:34:27.729Z">
+<meta property="article:modified_time" content="2021-07-04T10:14:06.937Z">
 <meta property="article:author" content="zrk">
 <meta name="twitter:card" content="summary">
 
@@ -106,7 +106,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -119,6 +119,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">Python语言基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">1. 基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 输入输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E5%8F%98%E9%87%8F%E5%92%8C%E5%B8%B8%E9%87%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 变量和常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E8%BF%90%E7%AE%97%E7%9B%B8%E5%85%B3"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 运算相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-%E5%B8%B8%E7%94%A8%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 常用内置函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%BB%93%E6%9E%84%E4%B8%8E%E5%BC%82%E5%B8%B8%E6%8E%A7%E5%88%B6"><span class="nav-number">1.2.</span> <span class="nav-text">2. 结构与异常控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E5%88%A4%E6%96%AD%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 判断语句</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -132,7 +133,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -205,6 +206,13 @@
 
       <time title="创建时间：2021-04-11 20:34:27" itemprop="dateCreated datePublished" datetime="2021-04-11T20:34:27+08:00">2021-04-11</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-04 18:14:06" itemprop="dateModified" datetime="2021-07-04T18:14:06+08:00">2021-07-04</time>
+      </span>
 
   
 </div>
@@ -216,7 +224,46 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h2 id="Python语言基础"><a href="#Python语言基础" class="headerlink" title="Python语言基础"></a>Python语言基础</h2><h3 id="1-基本语法"><a href="#1-基本语法" class="headerlink" title="1. 基本语法"></a>1. 基本语法</h3><h4 id="1-1-输入输出"><a href="#1-1-输入输出" class="headerlink" title="1.1 输入输出"></a>1.1 输入输出</h4><ul>
+<li>print()，用于表示输出</li>
+<li>input()，用于表示输入，返回值为String类型</li>
+</ul>
+<h4 id="1-2-变量和常量"><a href="#1-2-变量和常量" class="headerlink" title="1.2 变量和常量"></a>1.2 变量和常量</h4><p>1.2.1 变量 </p>
+<ul>
+<li><p>变量无需像其他语言一样提前声明</p>
+</li>
+<li><p>可以同时给多个变量赋值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a,b,c=<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>  <span class="comment">#</span></span><br></pre></td></tr></table></figure></li>
+<li><p>一种特殊的数据类型—分数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fractions <span class="keyword">import</span> Fraction</span><br><span class="line">Fraction(<span class="number">1</span>,<span class="number">2</span>) <span class="comment">#表示分数二分之一</span></span><br><span class="line">Fraction(<span class="number">12</span>,<span class="number">20</span>) <span class="comment">#Fraction(3, 5)</span></span><br><span class="line">Fraction(<span class="number">1.25</span>) <span class="comment">#Fraction(5, 4)</span></span><br><span class="line">a=Fraction(<span class="number">1</span>,<span class="number">3</span>)</span><br><span class="line">b=Fraction(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(a+b) <span class="comment">#结果为1</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>1.2.2 常量</p>
+<h4 id="1-3-运算相关"><a href="#1-3-运算相关" class="headerlink" title="1.3 运算相关"></a>1.3 运算相关</h4><ul>
+<li><p>算数运算</p>
+</li>
+<li><p>lambda（自定义一种简单的运算）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f=<span class="keyword">lambda</span> x,y:x+y</span><br><span class="line">f(<span class="number">1</span>,<span class="number">2</span>)<span class="comment">#结果为3</span></span><br><span class="line">f(<span class="number">2</span>,<span class="number">6</span>)<span class="comment">#结果为8</span></span><br></pre></td></tr></table></figure></li>
+<li><p>逻辑运算<strong>（or, and, not）</strong></p>
+</li>
+<li><p>关系运算（&lt;, &lt;=, &gt;, &gt;=, !=, ==）</p>
+</li>
+</ul>
+<h4 id="1-4-常用内置函数"><a href="#1-4-常用内置函数" class="headerlink" title="1.4 常用内置函数"></a>1.4 常用内置函数</h4><ul>
+<li><p>转换函数（转换一个变量的类型，如abs(x), bin(x), bool(x), int(x)）</p>
+</li>
+<li><p>sorted()，返回一个列表的升序排序，并不会改变原来的列表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=[<span class="number">6</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sorted</span>(a))<span class="comment">#结果[1, 2, 4, 5, 6, 7]</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-结构与异常控制"><a href="#2-结构与异常控制" class="headerlink" title="2. 结构与异常控制"></a>2. 结构与异常控制</h3><ul>
+<li>Python中语句块通过格式区分，不使用大括号</li>
+</ul>
+<h4 id="2-1-判断语句"><a href="#2-1-判断语句" class="headerlink" title="2.1 判断语句"></a>2.1 判断语句</h4><p>例1：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> a&lt;b:</span><br><span class="line">	<span class="built_in">print</span>(a)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">print</span>(b)</span><br></pre></td></tr></table></figure>
+
+<p>例2：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a&lt;<span class="number">0</span> <span class="keyword">or</span> a&gt;<span class="number">100</span>)</span><br><span class="line">	b=<span class="number">1</span></span><br><span class="line"><span class="keyword">elif</span>(a&gt;=<span class="number">90</span>)</span><br><span class="line">	b=<span class="number">2</span></span><br><span class="line"><span class="keyword">elif</span>(a&lt;<span class="number">90</span>)    </span><br><span class="line">	b=<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     

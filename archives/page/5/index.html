@@ -130,7 +130,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -176,7 +176,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/06/05/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%90%8C%E6%AD%A5/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/06/30/analyze%20and%20design/%E5%90%8C%E4%B8%80%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80UML/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -189,7 +189,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/05/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%90%8C%E6%AD%A5/" class="post-title-link" itemprop="url">操作系统---同步</a>
+          <a href="/2021/06/30/analyze%20and%20design/%E5%90%8C%E4%B8%80%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80UML/" class="post-title-link" itemprop="url">统一建模语言UML</a>
         </h2>
 
         <div class="post-meta-container">
@@ -200,14 +200,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-06-05 22:09:15" itemprop="dateCreated datePublished" datetime="2021-06-05T22:09:15+08:00">2021-06-05</time>
+      <time title="创建时间：2021-06-30 22:31:12" itemprop="dateCreated datePublished" datetime="2021-06-30T22:31:12+08:00">2021-06-30</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-06-10 12:19:28" itemprop="dateModified" datetime="2021-06-10T12:19:28+08:00">2021-06-10</time>
+        <time title="修改时间：2021-07-01 10:36:57" itemprop="dateModified" datetime="2021-07-01T10:36:57+08:00">2021-07-01</time>
       </span>
 
   
@@ -220,87 +220,66 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h3><h4 id="1-1-同步机制是什么"><a href="#1-1-同步机制是什么" class="headerlink" title="1.1 同步机制是什么"></a>1.1 同步机制是什么</h4><ul>
-<li>协作的进程之间存在共享的内存空间，通过此空间来进行通信（通过读写数据完成），同步机制就是要保障这样的进程在共享内存中有序地进行通讯，并维护数据的一致性</li>
-</ul>
-<h4 id="1-2-竞争条件"><a href="#1-2-竞争条件" class="headerlink" title="1.2 竞争条件"></a>1.2 竞争条件</h4><ul>
-<li>多个进程并发访问和操作同一块数据的时候，最终的执行结果和进程的访问顺序有关</li>
-</ul>
-<h3 id="2-临界区问题"><a href="#2-临界区问题" class="headerlink" title="2. 临界区问题"></a>2. 临界区问题</h3><h4 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h4><ul>
-<li>临界区：在多个进程操作共享的区域时，每个进程用于操作共享区域的代码段</li>
-<li>临界区问题就是要设计一个规则，使协作的进程在工作之中不发生操作冲突，数据不一致等问题</li>
-</ul>
-<h4 id="2-2-解决问题的模式"><a href="#2-2-解决问题的模式" class="headerlink" title="2.2 解决问题的模式"></a>2.2 解决问题的模式</h4><ul>
-<li>一次只有一个进程在临界区之中执行代码</li>
-<li>其他进程等待临界区之中的进程执行，当临界区空闲的时候，按照一定的规则决定进入临界区的顺序，要确保临界区中存在正在执行的进程</li>
-</ul>
-<h3 id="3-Peterson算法"><a href="#3-Peterson算法" class="headerlink" title="3. Peterson算法"></a>3. Peterson算法</h3><ul>
-<li>是一种基于软件的算法，用来解决临界区问题</li>
-<li>使用条件是只有两个进程交错运行的情况，记为$P\tiny j$和$P\tiny i$，存在这样的关系j==1 - i</li>
-</ul>
-<h4 id="3-1-算法的伪代码描述"><a href="#3-1-算法的伪代码描述" class="headerlink" title="3.1 算法的伪代码描述"></a>3.1 算法的伪代码描述</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    flag[i] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">int</span> turn = j;</span><br><span class="line">    <span class="keyword">while</span>(flag[j]&amp;&amp;turn == j);</span><br><span class="line">    <span class="comment">//临界区</span></span><br><span class="line">    flag[i] = <span class="literal">false</span>;</span><br><span class="line">    <span class="comment">//后续剩余的代码</span></span><br><span class="line">&#125;<span class="keyword">while</span>(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+          <h3 id="UML（UNIFIED-MODELING-LANGUAGE）"><a href="#UML（UNIFIED-MODELING-LANGUAGE）" class="headerlink" title="UML（UNIFIED MODELING LANGUAGE）"></a>UML（UNIFIED MODELING LANGUAGE）</h3><h4 id="1-一般通过5个视图描述一个软件"><a href="#1-一般通过5个视图描述一个软件" class="headerlink" title="1. 一般通过5个视图描述一个软件"></a>1. 一般通过5个视图描述一个软件</h4><img src="/2021/06/30/analyze%20and%20design/%E5%90%8C%E4%B8%80%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80UML/image-20210630223838949.png" alt="image-20210630223838949" style="zoom:50%;">
 
-<h4 id="3-2-代码解释"><a href="#3-2-代码解释" class="headerlink" title="3.2 代码解释"></a>3.2 代码解释</h4><ul>
-<li><p>变量 <code> int turn</code>表示哪个进程可以进入临界区</p>
-</li>
-<li><p><code>boolean flag[2]</code>表示哪个进程准备进入临界区</p>
-</li>
+<h4 id="2-UML之中图的分类"><a href="#2-UML之中图的分类" class="headerlink" title="2. UML之中图的分类"></a>2. UML之中图的分类</h4><ul>
+<li>可以分成两大类</li>
+<li>结构图</li>
 </ul>
-<h3 id="4-硬件同步"><a href="#4-硬件同步" class="headerlink" title="4. 硬件同步"></a>4. 硬件同步</h3><ul>
-<li>是一种通过硬件指令（是原子指令）解决同步问题的方法</li>
-<li>原子指令：不可中断的指令</li>
-</ul>
-<h4 id="4-1-指令test-and-set"><a href="#4-1-指令test-and-set" class="headerlink" title="4.1 指令test_and_set()"></a>4.1 指令test_and_set()</h4><ul>
-<li><p>指令代码</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">boolean <span class="title">test_and_set</span><span class="params">()</span></span>&#123;</span><br><span class="line">    boolean rv = *target;</span><br><span class="line">    *target = TRUE;</span><br><span class="line">    <span class="keyword">return</span> rv;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="4-2-指令compare-and-swap"><a href="#4-2-指令compare-and-swap" class="headerlink" title="4.2 指令compare_and_swap()"></a>4.2 指令compare_and_swap()</h4><ul>
-<li><p>指令代码</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span> <span class="params">(boolean *a, boolean *b)</span></span>&#123;</span><br><span class="line">boolean temp = *a;</span><br><span class="line">*a = *b;</span><br><span class="line">*b = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li></li>
-</ul>
-<h4 id="4-3-存在的问题"><a href="#4-3-存在的问题" class="headerlink" title="4.3 存在的问题"></a>4.3 存在的问题</h4><ul>
-<li>忙等待，在代码之中表现为陷入死循环</li>
-</ul>
-<h3 id="5-信号量"><a href="#5-信号量" class="headerlink" title="5. 信号量"></a>5. 信号量</h3><h4 id="5-1-概述"><a href="#5-1-概述" class="headerlink" title="5.1 概述"></a>5.1 概述</h4><ul>
-<li>引入整型变量S，作为信号量，信号量的初始值一般为可用资源数量</li>
-<li>只能通过原子指令修改信号量<ul>
-<li>包括wait()指令和signal()指令（后面细说）</li>
-</ul>
-</li>
-<li>二进制信号量：值只能为1或者0，适用于单资源的共享</li>
-<li>计数信号量：值不收限制，适用于多资源的共享</li>
-</ul>
-<h4 id="5-2-信号量的实现"><a href="#5-2-信号量的实现" class="headerlink" title="5.2 信号量的实现"></a>5.2 信号量的实现</h4><ul>
-<li><p>信号量的代码定义（此条件下不会出现**<a href>忙等待</a>**等问题）</p>
- <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> value;<span class="comment">//资源数量</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">process</span> *<span class="title">list</span>;</span><span class="comment">//进程链表（队列），当进程等待信号量的时候就被添加进去</span></span><br><span class="line">&#125;semaphore;</span><br></pre></td></tr></table></figure></li>
-<li><p>wait(S)指令（会减少信号量）</p>
- <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wait(semaphore *S)&#123;</span><br><span class="line">	S-&gt;value--;</span><br><span class="line">    <span class="keyword">if</span>(S-&gt;value&lt;<span class="number">0</span>)&#123;</span><br><span class="line">     	add <span class="keyword">this</span> process to S-&gt;<span class="built_in">list</span><span class="comment">//将等待状态的进程添加到进程链表中</span></span><br><span class="line">        block();<span class="comment">//将进程挂起，即将进程从运行状态转换为等待状态</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>signal(S)指令（会增加信号量）</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">signal(semaphore *S)&#123;</span><br><span class="line">	S-&gt;value++;</span><br><span class="line">    <span class="keyword">if</span>(S-&gt;value&lt;=<span class="number">0</span>)&#123;</span><br><span class="line">        remove process P from S-&gt;<span class="built_in">list</span>;<span class="comment">//将运行状态的进程从进程链表中移出</span></span><br><span class="line">    	wakeup(P);<span class="comment">//唤醒进程P</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>饥饿问题</p>
-</li>
-</ul>
-<h3 id="6-同步问题的实例"><a href="#6-同步问题的实例" class="headerlink" title="6. 同步问题的实例"></a>6. 同步问题的实例</h3><h4 id="6-1-有限缓冲问题"><a href="#6-1-有限缓冲问题" class="headerlink" title="6.1 有限缓冲问题"></a>6.1 有限缓冲问题</h4><ul>
-<li><p>设缓冲池之中存在n个缓存项，缓冲池满时不能进行写操作，缓冲池空时不能进行读操作，不能同时进行读写操作（读写互斥）</p>
-</li>
-<li><p>解决方案：</p>
+<table>
+<thead>
+<tr>
+<th>Structural diagrams</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Package diagram</td>
+</tr>
+<tr>
+<td>Class diagram</td>
+</tr>
+<tr>
+<td>Component diagram</td>
+</tr>
+<tr>
+<td>Deployment diagram</td>
+</tr>
+<tr>
+<td>Object diagram</td>
+</tr>
+<tr>
+<td>Composite diagram</td>
+</tr>
+</tbody></table>
 <ul>
-<li>信号量empty表示空缓冲项的个数，初始化为n</li>
-<li>信号量full表示满缓存项的个数，初始化为0</li>
-<li>信号量mutex表示读写互斥 ，初始化为1</li>
+<li>行为图</li>
 </ul>
-</li>
-<li><p>写入缓冲的方式</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line"><span class="comment">// produce an item</span></span><br><span class="line">wait (empty);<span class="comment">//empty&gt;0, 只要有空缓冲项，就写</span></span><br><span class="line">wait (mutex);</span><br><span class="line"><span class="comment">// add the item to the buffer,即执行写入的相关操作</span></span><br><span class="line">signal (mutex);</span><br><span class="line">signal (full);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>从缓冲中读数据的方式</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">wait (full); <span class="comment">//full &gt; 0, 只要缓冲项里有数据，就读</span></span><br><span class="line">wait (mutex);</span><br><span class="line"><span class="comment">// remove an item from buffer</span></span><br><span class="line">signal (mutex);</span><br><span class="line">signal (empty);</span><br><span class="line"><span class="comment">// consume the removed item</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="6-2-读者写者问题"><a href="#6-2-读者写者问题" class="headerlink" title="6.2 读者写者问题"></a>6.2 读者写者问题</h4><ul>
-<li>主要目的是确保同步，即数据的一致性</li>
-<li>可以多个同时读，不可以多个同时写</li>
-</ul>
-<h4 id="6-3-哲学家进餐问题"><a href="#6-3-哲学家进餐问题" class="headerlink" title="6.3 哲学家进餐问题"></a>6.3 哲学家进餐问题</h4><h3 id="7-管程"><a href="#7-管程" class="headerlink" title="7. 管程"></a>7. 管程</h3>
+<table>
+<thead>
+<tr>
+<th>Behavior diagrams</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Use Case diagram</td>
+</tr>
+<tr>
+<td>Activity diagram</td>
+</tr>
+<tr>
+<td>State Machine diagram</td>
+</tr>
+<tr>
+<td>diagram</td>
+</tr>
+<tr>
+<td>diagram</td>
+</tr>
+<tr>
+<td>diagram</td>
+</tr>
+</tbody></table>
+
       
     </div>
 
@@ -319,7 +298,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/archives/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/24/">24</a><a class="extend next" rel="next" href="/archives/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/archives/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/33/">33</a><a class="extend next" rel="next" href="/archives/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

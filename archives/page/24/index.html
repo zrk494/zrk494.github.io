@@ -130,7 +130,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -176,7 +176,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/07/algorithm%20and%20data_structure/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -189,7 +189,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/07/algorithm%20and%20data_structure/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">数据结构</a>
+          <a href="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/" class="post-title-link" itemprop="url">计算机网络--传输层</a>
         </h2>
 
         <div class="post-meta-container">
@@ -200,14 +200,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-07 15:58:26" itemprop="dateCreated datePublished" datetime="2021-03-07T15:58:26+08:00">2021-03-07</time>
+      <time title="创建时间：2021-04-11 16:22:00" itemprop="dateCreated datePublished" datetime="2021-04-11T16:22:00+08:00">2021-04-11</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-05-11 22:12:01" itemprop="dateModified" datetime="2021-05-11T22:12:01+08:00">2021-05-11</time>
+        <time title="修改时间：2021-05-23 22:10:47" itemprop="dateModified" datetime="2021-05-23T22:10:47+08:00">2021-05-23</time>
       </span>
 
   
@@ -220,28 +220,255 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//存储结构</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> *elem;</span><br><span class="line">    <span class="keyword">int</span> length;<span class="comment">//当前长度</span></span><br><span class="line">    <span class="keyword">int</span> listsize;<span class="comment">//存储容量</span></span><br><span class="line">&#125;List;<span class="comment">//elem中的元素从零开始，而实际操作从1开始</span></span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><p>插入操作</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">ListInsert</span><span class="params">(<span class="keyword">int</span> i,List &amp;L,<span class="keyword">int</span> e )</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">1</span>||i&gt;List.length+<span class="number">1</span>)<span class="comment">//可以在末尾插入，故条件为length+1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(L.length&gt;L.listsize)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=L.length;j&gt;=i;j--)</span><br><span class="line">        L.elem[j]=L.elem[j<span class="number">-1</span>];</span><br><span class="line">        L.elem[i<span class="number">-1</span>]=e;</span><br><span class="line">    L.length++;    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>删除操作</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">ListDelete</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> &amp;e,List &amp;L)</span></span>&#123;</span><br><span class="line"> 	<span class="keyword">if</span>(i&lt;<span class="number">1</span>||i&gt;List.length)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    e=L.elem[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;L.length;j++)</span><br><span class="line">        L.elem[j]=L.elem[j+<span class="number">1</span>];</span><br><span class="line">    L.length--;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>已知线性表LA,LB求</p>
+          <h2 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h2><h3 id="1-传输层服务"><a href="#1-传输层服务" class="headerlink" title="1. 传输层服务"></a>1. 传输层服务</h3><h4 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h4><p>传输层协议为运行在不同主机之上的进程提供了一种逻辑通信机制（端到端）</p>
+<h4 id="1-2-逻辑通信机制"><a href="#1-2-逻辑通信机制" class="headerlink" title="1.2 逻辑通信机制"></a>1.2 逻辑通信机制</h4><p>可理解为不同主机直接相连通信，在通信中无需考虑承载报文的物理设施细节</p>
+<h4 id="1-3-与网络层的关系"><a href="#1-3-与网络层的关系" class="headerlink" title="1.3 与网络层的关系"></a>1.3 与网络层的关系</h4><p>网络层提供<strong>不同主机</strong>间的逻辑通信</p>
+<p>传输层提供<strong>不同主机的不同应用进程</strong>间的逻辑通信</p>
+<p>传输层依赖于网络层提供的服务</p>
+<h3 id="2-多路复用-多路分解"><a href="#2-多路复用-多路分解" class="headerlink" title="2. 多路复用+多路分解"></a>2. 多路复用+多路分解</h3><p><img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/image-20210509214831903.png" alt="image-20210509214831903"></p>
+<h4 id="2-1-多路复用（发送端）"><a href="#2-1-多路复用（发送端）" class="headerlink" title="2.1 多路复用（发送端）"></a>2.1 多路复用（发送端）</h4><p>2.1.1 是什么</p>
+<p>从多个Socket接收数据，为每 块数据封装上头部信息，生成 报文段，交给网络层</p>
+<h4 id="2-2-多路分解（接收端）"><a href="#2-2-多路分解（接收端）" class="headerlink" title="2.2 多路分解（接收端）"></a>2.2 多路分解（接收端）</h4><p>2.2.1 是什么</p>
+<p>传输层依据头部信息将收到的报文段交给正确的套接字（进入应用层）， 即不同的进程</p>
+<p>2.2.2 如何工作</p>
+<p>主机收到IP数据报（包括源IP，目的IP，源端口，目的端口）—–&gt;主机收到数据段后，传输层提取IP和端口号，再将数据段导向套接字</p>
+<p>2.2.3 无连接的复用和分解(UDP</p>
+<p>二元组标识套接字：（IP，端口号）</p>
+<p>2.2.4 面向连接的分用和分解(TCP</p>
+<p>四元组标识套接字：（源IP，源端口，目的IP，目的端口）</p>
+<h3 id="3-UDP（无连接的用户数据报协议）"><a href="#3-UDP（无连接的用户数据报协议）" class="headerlink" title="3. UDP（无连接的用户数据报协议）"></a>3. UDP（无连接的用户数据报协议）</h3><h4 id="3-1-特征"><a href="#3-1-特征" class="headerlink" title="3.1 特征"></a>3.1 特征</h4><ul>
+<li>不需要建立连接，收到报文之后也不需要确认（延时很小</li>
+<li>基于IP协议，增加了复用/分用，以及简单的错误校验这些内容，实现简单</li>
+<li>UDP使用最大努力交付，不保证交付数据可靠性，UDP段可能丢失或者非按序到达</li>
+<li> 无拥塞控制，更好地控制发送时间和速率</li>
+<li>面向报文</li>
+<li>首部开销小（8字节）</li>
+<li>通过应用层的可靠性机制可能实现UDP上的可靠数据传输</li>
+</ul>
+<h4 id="3-2-报文格式"><a href="#3-2-报文格式" class="headerlink" title="3.2 报文格式"></a>3.2 报文格式</h4><p>首部字段（源端口+目的端口+UDP长度+UDP检验和）+数据字段</p>
+<p><img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/image-20210509232638326.png" alt="image-20210509232638326"></p>
+<h4 id="3-3-UDP校验和（若有错则直接丢弃报文）"><a href="#3-3-UDP校验和（若有错则直接丢弃报文）" class="headerlink" title="3.3 UDP校验和（若有错则直接丢弃报文）"></a>3.3 UDP校验和（若有错则直接丢弃报文）</h4><p>发送方：将该段的内容视为16位整数，计算所有整数的和，得到的和按位取反，就是校验和，放在校验和字段之中</p>
+<p>接收方：计算收到的字段的校验和，与校验和字段对比</p>
+<h3 id="4-可靠传输协议（TCP基础，简写为rdt）"><a href="#4-可靠传输协议（TCP基础，简写为rdt）" class="headerlink" title="4. 可靠传输协议（TCP基础，简写为rdt）"></a>4. 可靠传输协议（TCP基础，简写为rdt）</h3><h4 id="4-1-传输中存在的问题-相关概念"><a href="#4-1-传输中存在的问题-相关概念" class="headerlink" title="4.1 传输中存在的问题+相关概念"></a>4.1 传输中存在的问题+相关概念</h4><ul>
+<li><p>信道不可靠，传输中可能丢，可能错，还可能混乱</p>
 </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LAULB</span><br></pre></td></tr></table></figure>
-<p>算法代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">union</span><span class="params">(List *LA,list Lb)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//存储结构1（二叉树）</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span>&#123;</span></span><br><span class="line">   <span class="keyword">int</span> data;</span><br><span class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> *<span class="title">lchild</span>,*<span class="title">rchild</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<li><p>rdt_send() 由上层应用调用，将数据发送给下层</p>
+</li>
+<li><p>deliver_send() 向上层应用交付数据</p>
+</li>
+<li><p>udt_send()通过不可靠信道将数据传送给接收方</p>
+</li>
+<li><p>rdt_rcv()数据包到达接收方信道时被调用</p>
+</li>
+</ul>
+<p><img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/rdt.png" alt="rdt"></p>
+<p>备注：</p>
 <ol>
-<li>二叉树的遍历</li>
+<li>假设数据单向（控制信息仍是双向传播），方便讨论</li>
+<li>fsm 有限状态机(用于描述传输协议的工具)</li>
+<li>一步步完善可靠传输协议</li>
 </ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//前序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> *<span class="title">preorder</span><span class="params">(struct BiTNode* root,<span class="keyword">int</span> *returesize)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    *returnsize=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> *</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-2-rdt1-0（）"><a href="#4-2-rdt1-0（）" class="headerlink" title="4.2 rdt1.0（）"></a>4.2 rdt1.0（）</h4><p>4.2.1 情况</p>
+<ul>
+<li>不丢不错</li>
+<li>底层信道完全可靠</li>
+<li>发送方和接收方的FSM独立，只有一个状态</li>
+</ul>
+<p>4.2.2 过程</p>
+<h4 id="4-3-rdt2-0（会产生位错误的信道，被成为ARQ—-自动重传请求协议）"><a href="#4-3-rdt2-0（会产生位错误的信道，被成为ARQ—-自动重传请求协议）" class="headerlink" title="4.3 rdt2.0（会产生位错误的信道，被成为ARQ—-自动重传请求协议）"></a>4.3 rdt2.0（会产生位错误的信道，被成为ARQ—-自动重传请求协议）</h4><p>4.3.1 具体情况描述</p>
+<ul>
+<li><p>只会存在位错误</p>
+</li>
+<li><p>信道不再可靠</p>
+</li>
+<li><p>可检错（通过校验和）</p>
+</li>
+<li><p>应对错误方式</p>
+<ul>
+<li>存在确认机制（ACK），接收方通过ACK告知发送方分组已经正确收到</li>
+<li>NAK，接收方通过NAK告诉发送方分组有错误，发送方收到NAK会重传分组    </li>
+</ul>
+</li>
+</ul>
+<p>4.3.2 过程（发送方会等待确认信息）</p>
+<ul>
+<li>无错误的状况</li>
+<li>有错误的状况</li>
+</ul>
+<p>4.3.3 存在的缺陷</p>
+<ul>
+<li>当NAK或者ACK出错或者被破坏时，发送方无法知道接收方是否正确接收上一次发送的数据</li>
+</ul>
+<h4 id="4-4-rdt2-1和rdt2-2"><a href="#4-4-rdt2-1和rdt2-2" class="headerlink" title="4.4 rdt2.1和rdt2.2"></a>4.4 rdt2.1和rdt2.2</h4><ul>
+<li>rdt2.1（rdt2.0改进） <ul>
+<li>每个分组增加了序列号这一属性（此种情况下用0和1即可）</li>
+<li>要检验ACK和NAK是否出错</li>
+</ul>
+</li>
+<li>rdt2.2（进一步改进）<ul>
+<li>只使用ACK，不再有NAK</li>
+<li>实现方式：在ACK之中加入已经被确认的分组的序列号</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-5-rdt3-0-还会产生丢包的情况"><a href="#4-5-rdt3-0-还会产生丢包的情况" class="headerlink" title="4.5 rdt3.0(还会产生丢包的情况)"></a>4.5 rdt3.0(还会产生丢包的情况)</h4><p>4.5.1 具体情况描述</p>
+<ul>
+<li>增加了一个倒计时定时器（在一段时间未收到ACK的时候，重传分组并重置定时器）</li>
+<li></li>
+<li></li>
+</ul>
+<p>4.5.2过程</p>
+<p>4.5.3 性能分析（分析可得存在的问题）</p>
+<p>例：在1Gbps链路中，15ms的端到端传播延迟，1KB的分组</p>
+<p>发送方的利用率 （L/R）/（RTT+L/R）=0.00027</p>
+<p><strong>存在利用率很低的问题（停等操作都存在的问题）</strong></p>
+<h4 id="4-6-改进rdt3-0"><a href="#4-6-改进rdt3-0" class="headerlink" title="4.6 改进rdt3.0"></a>4.6 改进rdt3.0</h4><p>4.6.1 流水线可靠传输协议（解决性能问题，提高资源利用率）</p>
+<ul>
+<li>如何实现流水线：不以停等方式运行，而是允许发送方依次发送多个分组，不需要等待确认消息</li>
+<li>注意事项  <ul>
+<li>要增加序号的范围（不再是0和1）</li>
+<li>发送方和接收方都需要更大的存储空间以<strong>缓存分组</strong></li>
+<li>发送方和接收方有缓存下面的两种方法是用来解决流水线之中的差错恢复</li>
+</ul>
+</li>
+</ul>
+<p>4.6.2 回退N步协议（GBN协议，滑动窗口协议）</p>
+<ul>
+<li>有一个长度为n的窗口</li>
+</ul>
+<p>4.6.3选择重传</p>
+<h3 id="5-TCP（面向连接的传输控制协议）"><a href="#5-TCP（面向连接的传输控制协议）" class="headerlink" title="5. TCP（面向连接的传输控制协议）"></a>5. TCP（面向连接的传输控制协议）</h3><h4 id="5-1-TCP特性"><a href="#5-1-TCP特性" class="headerlink" title="5.1 TCP特性"></a>5.1 TCP特性</h4><ul>
+<li>基本的特性<ul>
+<li>点对点（一个发送方对应一个接收方）</li>
+<li>传输的是可靠且有序的字节流</li>
+<li><strong>流水线机制</strong></li>
+<li>全双工（同一个连接之中的数据是双向的）</li>
+<li>面向连接的</li>
+<li>存在流量控制机制和拥塞控制机制（后面细说）</li>
+</ul>
+</li>
+<li>与可靠数据传输相关的特性<ul>
+<li>累计确认机制</li>
+<li>单一重传计时器</li>
+<li>当超时或者收到重复ACK时会重传</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-2-TCP连接"><a href="#5-2-TCP连接" class="headerlink" title="5.2 TCP连接"></a>5.2 TCP连接</h4><ul>
+<li>TCP连接是一种逻辑连接，建立在两个主机之间的某两个进程之间</li>
+<li>TCP会将应用层传过来的数据存入发送缓存（三次握手的时候建立的，在接收方也有接受缓存）</li>
+</ul>
+<h4 id="5-3-TCP报文结构（补充英文版本在实践过程中容易理解）"><a href="#5-3-TCP报文结构（补充英文版本在实践过程中容易理解）" class="headerlink" title="5.3 TCP报文结构（补充英文版本在实践过程中容易理解）"></a>5.3 TCP报文结构（补充英文版本在实践过程中容易理解）</h4><img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/image-20210509232349814.png" alt="image-20210509232349814" style="zoom:50%;">
 
+<img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/image-20210509232957119.png" alt="image-20210509232957119" style="zoom:50%;">
 
-<h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2>
+<ul>
+<li>sequence number（序列号），是报文段中的第一个字节的编号，</li>
+<li>ack number，希望接受到的下一个字节的序列号</li>
+<li>URG，ACK，PSH，RST，SYN，FIN</li>
+</ul>
+<h4 id="5-4-估计RTT（RTT是动态变化的）"><a href="#5-4-估计RTT（RTT是动态变化的）" class="headerlink" title="5.4 估计RTT（RTT是动态变化的）"></a>5.4 估计RTT（RTT是动态变化的）</h4><ul>
+<li>目的是确定定时器应当设置的时长（定时器时长&gt;RTT）</li>
+<li>估计方式<ul>
+<li>求多个SampleRTT，再取平均值</li>
+<li>这里的SampleRTT指报文段发出去到收到ACK这一过程的总时长</li>
+</ul>
+</li>
+<li>如何设置定时器<ul>
+<li>估计的RTT+<strong>安全边界</strong></li>
+<li>安全边界的值</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-5-TCP过程中的发送方和接收方"><a href="#5-5-TCP过程中的发送方和接收方" class="headerlink" title="5.5 TCP过程中的发送方和接收方"></a>5.5 TCP过程中的发送方和接收方</h4><ul>
+<li>发送端</li>
+<li><h2 id="接收端"><a href="#接收端" class="headerlink" title="接收端"></a>接收端</h2></li>
+<li><h2 id="补充重传发生时的情况"><a href="#补充重传发生时的情况" class="headerlink" title="补充重传发生时的情况"></a>补充重传发生时的情况</h2><ul>
+<li>快速重传机制<ul>
+<li>产生的背景：如果发生超时的现象，会导致定时器重设时发生巨大的增加，极大的增加超时的等待时间，通过快速重传解决这样的问题</li>
+<li>通过检测重复ACK知道分组已经丢失</li>
+<li>如果发送方收到同一数据的3个ACK时，会认为该数据之后的段丢失，此时进行快速重传（在定时器超时之前重传）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-6-流量控制"><a href="#5-6-流量控制" class="headerlink" title="5.6 流量控制"></a>5.6 流量控制</h4><ul>
+<li>流量控制的目的是防止接收方缓存溢出（接收方上层应用的处理速度可能比较慢，导致数据堆积在缓存之中）</li>
+<li>如何实现<ul>
+<li>接收方将<strong>空余的缓存大小</strong>（定义为RevWindow）封装在确认报文头部字段返回发送方</li>
+<li>发送方收到后开始控制自己发送的数据大小，不能超过空余缓存的大小</li>
+<li><strong>特殊情况</strong>：当空余缓存为0时，发送方仍然发送一个很小的报文段，以确认后续的情况</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-7-管理链接（建立和拆除）"><a href="#5-7-管理链接（建立和拆除）" class="headerlink" title="5.7 管理链接（建立和拆除）"></a>5.7 管理链接（建立和拆除）</h4><h5 id="5-7-1建立连接（三次握手机制）"><a href="#5-7-1建立连接（三次握手机制）" class="headerlink" title="5.7.1建立连接（三次握手机制）"></a>5.7.1建立连接（三次握手机制）</h5><ul>
+<li>初始化</li>
+<li>三次握手的过程<ol>
+<li>客户端向服务器发送一个特殊的TCP报文段（SYN报文段，不携带任何数据）</li>
+<li>服务器端收到SYN之后会向客户发送SYNACK报文段，表明允许连接（服务器此时会为TCP连接分配好缓存）</li>
+<li>客户端收到SYNACK，再向服务器发送一个报文段（可以携带数据），表明收到允许连接的报文（此时客户端会为TCP分配好缓存）</li>
+</ol>
+</li>
+</ul>
+<h5 id="5-7-2-拆除连接"><a href="#5-7-2-拆除连接" class="headerlink" title="5.7.2 拆除连接"></a>5.7.2 拆除连接</h5><ol>
+<li>客户端发送FIN报文段</li>
+<li>服务器收到FIN后回复ACK，并且会向客户端发送FIN</li>
+<li>客户端收到FIN，回复ACK</li>
+<li>服务器收到ACK，连接关闭</li>
+</ol>
+<h4 id="5-8-拥塞控制概述"><a href="#5-8-拥塞控制概述" class="headerlink" title="5.8 拥塞控制概述"></a>5.8 拥塞控制概述</h4><h5 id="5-8-1-拥塞"><a href="#5-8-1-拥塞" class="headerlink" title="5.8.1 拥塞"></a>5.8.1 拥塞</h5><ul>
+<li><p>数据太多网络来不及处理</p>
+</li>
+<li><p>会导致路由器缓存溢出使分组丢失</p>
+</li>
+<li><p>还会导致分组在路由器中排队使分组延时太大（排队延时大）</p>
+</li>
+<li><p>拥塞控制和流量控制的区别</p>
+</li>
+</ul>
+<h5 id="5-8-2-拥塞成因和代价"><a href="#5-8-2-拥塞成因和代价" class="headerlink" title="5.8.2 拥塞成因和代价"></a>5.8.2 拥塞成因和代价</h5><h5 id="5-8-3-如何进行拥塞控制"><a href="#5-8-3-如何进行拥塞控制" class="headerlink" title="5.8.3 如何进行拥塞控制"></a>5.8.3 如何进行拥塞控制</h5><ul>
+<li>端到端的拥塞控制（TCP采取的方法）<ul>
+<li>端系统通过观察丢包，延时增大的网络行为判断是否发生拥塞</li>
+</ul>
+</li>
+<li>网络辅助的拥塞控制<ul>
+<li>路由器反馈网络拥塞信息，指示发送方采取的发送速率</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-9-TCP中的拥塞控制"><a href="#5-9-TCP中的拥塞控制" class="headerlink" title="5.9 TCP中的拥塞控制"></a>5.9 TCP中的拥塞控制</h4><h5 id="5-9-1-要解决哪些问题"><a href="#5-9-1-要解决哪些问题" class="headerlink" title="5.9.1 要解决哪些问题"></a>5.9.1 要解决哪些问题</h5><ul>
+<li>发送方如何限制发送速率<ul>
+<li>引入拥塞窗口这一变量（CongestionWin，简写为CW），这一个变量是动态变化的（可以参考流量控制中的模式）</li>
+<li>CongestionWin=最后一个发送的序列号-最后一个确认的序列号</li>
+<li>通过改变CongestionWin来改变发送速率 </li>
+</ul>
+</li>
+<li>发送方如何得知网络拥塞<ul>
+<li>当<strong>发生超时事件或者有3个重复的ACK</strong>（定义为事件A）时，表明出现了拥塞</li>
+</ul>
+</li>
+<li>如何调整速率（主要分成两种机制）<ul>
+<li>慢启动<ul>
+<li>CW的初始值很小（比如500字节）</li>
+<li>后续要快速增长（指数型增长）</li>
+<li>具体的方式是：每经过一个RTT之后CW翻倍，在收到ACK时进行这一操作</li>
+</ul>
+</li>
+<li>拥塞避免<ul>
+<li>遇到拥塞CW直接减半，之后保守的逐渐上调（线性增长），直到事件A（<del>定义在上面</del>）发生，之后再重复此过程</li>
+<li></li>
+</ul>
+</li>
+<li>上述两种模式如何切换<ul>
+<li>引入变量Threshold（指A事件发生时CW的一半）</li>
+<li>CW达到这个值之后会由指数增长转为线性增长</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
       
     </div>
 
@@ -260,7 +487,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/23/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/23/">23</a><span class="page-number current">24</span>
+    <a class="extend prev" rel="prev" href="/archives/page/23/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/23/">23</a><span class="page-number current">24</span><a class="page-number" href="/archives/page/25/">25</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/33/">33</a><a class="extend next" rel="next" href="/archives/page/25/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

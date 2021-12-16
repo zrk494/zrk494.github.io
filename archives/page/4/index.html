@@ -135,7 +135,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/16/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/16/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-title-link" itemprop="url">关系数据库</a>
+          <a href="/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/" class="post-title-link" itemprop="url">计算机网络--网络层</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,24 +205,15 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-16 21:02:24" itemprop="dateCreated datePublished" datetime="2021-03-16T21:02:24+08:00">2021-03-16</time>
+      <time title="创建时间：2021-04-27 15:02:06" itemprop="dateCreated datePublished" datetime="2021-04-27T15:02:06+08:00">2021-04-27</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-16 17:07:30" itemprop="dateModified" datetime="2021-12-16T17:07:30+08:00">2021-12-16</time>
+        <time title="修改时间：2021-05-27 12:03:08" itemprop="dateModified" datetime="2021-05-27T12:03:08+08:00">2021-05-27</time>
       </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-        </span>
-    </span>
 
   
 </div>
@@ -234,355 +225,532 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="关系数据库"><a href="#关系数据库" class="headerlink" title="关系数据库"></a>关系数据库</h2><h3 id="1-关系"><a href="#1-关系" class="headerlink" title="1.关系"></a>1.关系</h3><h4 id="1-1-相关概念"><a href="#1-1-相关概念" class="headerlink" title="1.1 相关概念"></a>1.1 相关概念</h4><h5 id="1-1-1-属性"><a href="#1-1-1-属性" class="headerlink" title="1.1.1 属性"></a>1.1.1 属性</h5><ul>
-<li>关系表的列</li>
-<li>列是同质的，即为同一数据类型</li>
+          <h2 id="网络层（两大方面，数据平面和控制平面-）"><a href="#网络层（两大方面，数据平面和控制平面-）" class="headerlink" title="网络层（两大方面，数据平面和控制平面 ）"></a>网络层（两大方面，数据平面和控制平面 ）</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h3><h4 id="1-1-数据平面"><a href="#1-1-数据平面" class="headerlink" title="1.1 数据平面"></a>1.1 数据平面</h4><p>包括网络层中路由器的功能，他的功能决定到达路由器输入链路之一的数据报如何转发到路由器的一条输出链路</p>
+<h4 id="1-2-控制平面"><a href="#1-2-控制平面" class="headerlink" title="1.2 控制平面"></a>1.2 控制平面</h4><p>包括网络范围的逻辑，控制数据报沿着从源主机到目的主机的端到端路径中路由器之间的路由方式。</p>
+<p>补充</p>
+<ul>
+<li>为了保证转发效率，数据传输的信道是不可靠的</li>
+<li>每个主机和路由器都运行带着网络层的协议</li>
+<li>路由器会检验每个经过它的IP数据报，但是只检测头部</li>
+<li>网络层为发送端到接收端的数据报传送通道提供了相关服务</li>
 </ul>
-<h5 id="1-1-2-域"><a href="#1-1-2-域" class="headerlink" title="1.1.2 域"></a>1.1.2 域</h5><ul>
-<li><p>相同类型数据的集合，简单理解为表的列的值</p>
+<h3 id="2-提供的服务"><a href="#2-提供的服务" class="headerlink" title="2. 提供的服务"></a>2. 提供的服务</h3><h4 id="2-1两个核心功能"><a href="#2-1两个核心功能" class="headerlink" title="2.1两个核心功能"></a>2.1两个核心功能</h4><p>2.1.1 转发（forwarding）</p>
+<ul>
+<li><p>将分组从路由器的<strong>输入端口</strong>运输到<strong>合适的出口</strong></p>
 </li>
-<li><p>原子域</p>
-</li>
-</ul>
-<h5 id="1-1-3-关系"><a href="#1-1-3-关系" class="headerlink" title="1.1.3 关系"></a>1.1.3 关系</h5><p>笛卡尔乘积的子集（<del>详见集合论与图论</del>）</p>
-<h5 id="1-1-4-关系模式"><a href="#1-1-4-关系模式" class="headerlink" title="1.1.4 关系模式"></a>1.1.4 关系模式</h5><p>关系的形<br>记作 R（U）,U为A1…An组成的属性集合，R是关系名<br>例：Student（学号，姓名，性别，年龄，专业）<br>Grade（学生编号，课程编号，成绩）</p>
-<h5 id="1-1-5-关系实例"><a href="#1-1-5-关系实例" class="headerlink" title="1.1.5 关系实例"></a>1.1.5 关系实例</h5><p>一个关系的任何一个“当前值”是该关系的实例</p>
-<h5 id="1-1-6-元组"><a href="#1-1-6-元组" class="headerlink" title="1.1.6 元组"></a>1.1.6 元组</h5><p>笛卡尔积得到的集合中的每一个元素</p>
-<h5 id="1-1-7-码（又称作键，-那个名为篝酱的少女）"><a href="#1-1-7-码（又称作键，-那个名为篝酱的少女）" class="headerlink" title="1.1.7 码（又称作键， 那个名为篝酱的少女）"></a>1.1.7 码（又称作键， <del>那个名为篝酱的少女</del>）<img src="/2021/03/16/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/img_chara_rewrite.png" alt="img_chara_rewrite" style="zoom: 25%;"></h5><h6 id="超码"><a href="#超码" class="headerlink" title="超码"></a>超码</h6><p>可以<strong>唯一</strong>标识一个元组的一个属性<strong>集合</strong></p>
-<h6 id="候选码"><a href="#候选码" class="headerlink" title="候选码"></a>候选码</h6><p>唯一的一个元组的属性集合或者属性集合的一个元素，并且候选码的任何真子集都不能作为唯一的标识，可存在多个</p>
-<h6 id="主码"><a href="#主码" class="headerlink" title="主码"></a>主码</h6><p>数据库设计者选择的用于区分不同元组的候选码（从候选码之中选出一个）</p>
-<h6 id="外码"><a href="#外码" class="headerlink" title="外码"></a>外码</h6><p>在元素R中的属性集合或者属性集合的一个元素，非关系R的候选码，而是关系S的候选码，将两个关系联系在一起</p>
-<h5 id="1-1-8-关系的第一范式"><a href="#1-1-8-关系的第一范式" class="headerlink" title="1.1.8 关系的第一范式"></a>1.1.8 关系的第一范式</h5><p>属性不可再分</p>
-<h4 id="1-2-关系的完整性"><a href="#1-2-关系的完整性" class="headerlink" title="1.2 关系的完整性"></a>1.2 关系的完整性</h4><h5 id="1-2-1-实体完整性约束"><a href="#1-2-1-实体完整性约束" class="headerlink" title="1.2.1 实体完整性约束"></a>1.2.1 实体完整性约束</h5><ul>
-<li>指主键属性不空（不存在或者无意义）</li>
-<li></li>
-</ul>
-<h5 id="1-2-2-参照完整性约束（连接两个关系）"><a href="#1-2-2-参照完整性约束（连接两个关系）" class="headerlink" title="1.2.2 参照完整性约束（连接两个关系）"></a>1.2.2 参照完整性约束（连接两个关系）</h5><ul>
-<li><p>主键和外键之间的约束</p>
-</li>
-<li><p>外码在R1之中的值不为空+对应其在R2（在R2之中为主码）之中的值不空+一个元组在R1中外键的值=R2中与其对应的主键的值</p>
+<li><p>转发表（包括地址和输出链路）辅助完成上述的过程</p>
 </li>
 </ul>
-<h5 id="1-2-3-用户定义的完整性"><a href="#1-2-3-用户定义的完整性" class="headerlink" title="1.2.3 用户定义的完整性"></a>1.2.3 用户定义的完整性</h5><h4 id="1-3-关系运算相关"><a href="#1-3-关系运算相关" class="headerlink" title="1.3 关系运算相关"></a>1.3 关系运算相关</h4><h5 id="1-3-1-关系代数符号（操作-关系得到另一个关系，一般来说由内向外进行书写）"><a href="#1-3-1-关系代数符号（操作-关系得到另一个关系，一般来说由内向外进行书写）" class="headerlink" title="1.3.1 关系代数符号（操作+关系得到另一个关系，一般来说由内向外进行书写）"></a>1.3.1 关系代数符号（操作+关系得到另一个关系，一般来说由内向外进行书写）</h5><ul>
-<li>补充：<ul>
-<li>约束条件—相容：指两个关系的属性相同，且第i个属性域相同</li>
-</ul>
+<p>2.1.2 路由（routing）</p>
+<ul>
+<li><p>通过<strong>路由算法</strong>计算从H1（起点）到H2（终点）的<strong>路径集合</strong></p>
 </li>
-<li>基本代数操作<ul>
-<li>差      –<ul>
-<li>R-S</li>
-<li>R和S是相容的</li>
-</ul>
-</li>
-<li>笛卡尔积      $\times$<ul>
-<li>两个关系的所有元组作笛卡尔积</li>
-</ul>
-</li>
-<li>并     $\bigcup$<ul>
-<li> $R\bigcup S$       指合并R和S中的元组组成新关系</li>
-<li>R和S是相同的，合并后会删除重复元组</li>
-</ul>
-</li>
-<li>选择   $\sigma$      <ul>
-<li>用于找到满足适合条件的元组信息           </li>
-<li>实例： $\ \Large \sigma \small 姓名=”李华” \ (Student)$—— 指找到关系Student中姓名为李华的学生信息    </li>
-</ul>
-</li>
-<li>投影     $\prod$           <ul>
-<li>用于从已有的关系中选择出若干列，以组成新的关系    </li>
-<li>实例： $\prod \small 学生编号,专业 \normalsize (Student)$ ——指取出关系Student中学生编号+专业 这两列，形成新的关系</li>
-<li>要删除重复元组</li>
-</ul>
-</li>
-<li>重命名  $\rho$</li>
-</ul>
-</li>
-<li>附加关系操作<ul>
-<li>交        $\bigcap$</li>
-<li>除法             </li>
-<li>连接</li>
-<li>外连接</li>
-<li>赋值</li>
-</ul>
-</li>
-<li>广义投影</li>
-<li>聚集</li>
-</ul>
-<h5 id="1-3-2-元组演算"><a href="#1-3-2-元组演算" class="headerlink" title="1.3.2 元组演算"></a>1.3.2 元组演算</h5><h5 id="1-3-3-域演算"><a href="#1-3-3-域演算" class="headerlink" title="1.3.3 域演算"></a>1.3.3 域演算</h5><h3 id="2-SQL语言基础"><a href="#2-SQL语言基础" class="headerlink" title="2. SQL语言基础"></a>2. SQL语言基础</h3><ul>
-<li><p>结构化查询语言，关系数据库的标准语言 </p>
-</li>
-<li><p>操作的对象是集合，之后得到的结果也是集合</p>
+<li><p>用<strong>路由表</strong>记录路由信息（如何转发分组）</p>
 </li>
 </ul>
-<h4 id="2-1-基本的9个引导词"><a href="#2-1-基本的9个引导词" class="headerlink" title="2.1 基本的9个引导词"></a>2.1 基本的9个引导词</h4><ul>
-<li><input disabled type="checkbox"> <table>
-<thead>
-<tr>
-<th>数据定义</th>
-<th align="center">create ,drop,alter</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>查询</td>
-<td align="center">select</td>
-</tr>
-<tr>
-<td>修改</td>
-<td align="center">insert,update,delete</td>
-</tr>
-<tr>
-<td>数据控制</td>
-<td align="center">grant,revote</td>
-</tr>
-</tbody></table>
+<h4 id="2-2-其他的服务"><a href="#2-2-其他的服务" class="headerlink" title="2.2 其他的服务"></a>2.2 其他的服务</h4><p>2.2.1 连接建立（不是所有的都是必要的）</p>
+<p>与传输层的区别: </p>
+<ul>
+<li><p>对于网络层：所有线路上的设备都参与连接，是主机之间的连接</p>
+</li>
+<li><p>对于传输层：是两个应用进程之间的连接</p>
 </li>
 </ul>
-<p>示例数据库(带下划线的为主键)</p>
-<p>Student(<u>Sno</u>,Sname,Ssex,Sage,Sdept)—学号、姓名、性别、年龄、所在系</p>
-<p>Course(<u>Cno</u>,Cname,Cpno,Ccredit)—课程号、课程名、先行课、学分</p>
-<p>SC(<u>Sno</u>,Cno,Grade)—学号、课程号、成绩</p>
-<h4 id="2-2-数据定义"><a href="#2-2-数据定义" class="headerlink" title="2.2 数据定义"></a>2.2 数据定义</h4><h5 id="2-2-1-create（创建，包括表，视图—一种虚拟的表，索引）"><a href="#2-2-1-create（创建，包括表，视图—一种虚拟的表，索引）" class="headerlink" title="2.2.1 create（创建，包括表，视图—一种虚拟的表，索引）"></a>2.2.1 create（创建，包括表，视图—一种虚拟的表，索引）</h5><ul>
-<li><p>create table  </p>
-<p>语法格式 ：</p>
-<p>create table &lt;关系名&gt; (&lt;属性名&gt; &lt;属性类型&gt;[NOT NULL], … , &lt;属性名&gt; &lt;属性类型&gt;[NOT NULL], 完整性约束1，完整性约束2,…)</p>
-<p>实例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Game</span><br><span class="line">( </span><br><span class="line">Name <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="keyword">null</span>,<span class="operator">/</span><span class="operator">/</span>长度可变的字符串,且非空</span><br><span class="line">NUM <span class="type">char</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">Type  <span class="type">char</span>(<span class="number">5</span>),<span class="operator">/</span><span class="operator">/</span>定长字符串</span><br><span class="line"><span class="keyword">year</span>   <span class="type">integer</span>,</span><br><span class="line"><span class="keyword">Primary</span> key (NUM))</span><br><span class="line"><span class="comment">/* 例二 */</span></span><br><span class="line">creat <span class="keyword">table</span> Course</span><br><span class="line">(</span><br><span class="line">	Cno <span class="type">char</span>(<span class="number">4</span>) <span class="keyword">primary</span> key,</span><br><span class="line">    Cname <span class="type">char</span>(<span class="number">40</span>),</span><br><span class="line">    Cpno <span class="type">char</span>(<span class="number">4</span>),</span><br><span class="line">    Ccredit <span class="type">smallint</span>,</span><br><span class="line">	<span class="keyword">foreign</span> key (Cpno) <span class="keyword">references</span> Course(Cno)<span class="comment">/*定义外键，一个非主键，参照另一个表的主键*/</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
-<li><p>create index(<strong>为加快查询而定义的</strong>)</p>
-<p>语法格式：CREATE [UNIQUE] INDEX 〈索引名〉 ON 〈关系名〉(〈列名 〉[ORDER], …,〈列名〉[ORDER]) [CLUSTER]</p>
-<p>其中 [unique]，表示索引属性是不能重复出现的，还可以是[cluster]</p>
-<p>order有两种值 ASC(升序)或者DESC(降序)</p>
-<p><code>create unique index NUM on Game(NUM ASC) cluster</code></p>
+<p>2.2.2 网络服务模型 （为传输层提供的服务）</p>
+<ul>
+<li><p>不同类型的网络提供的服务是不同的（例如：因特网停供的是一种尽力服务），主要分成以下两种</p>
 </li>
-<li><p>create view(定义视图)</p>
-<p>语法格式：CREATE VIEW &lt;视图名&gt;  [(&lt;列名&gt; [，&lt;列名&gt;]…)] AS &lt;子查询&gt; [WITH CHECK OPTION]；</p>
-<p>实例</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> Zrk</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> Sno, Sname,Sage</span><br><span class="line"><span class="keyword">FROM</span> Student</span><br><span class="line"><span class="keyword">WHERE</span> Sdept<span class="operator">=</span><span class="string">&#x27;CS&#x27;</span></span><br></pre></td></tr></table></figure>
+<li><p>无连接服务</p>
+<ul>
+<li>每个分组时独立确定传输路径的，不同分组经过的路径不同</li>
+</ul>
+</li>
+<li><p>连接服务</p>
+<ul>
+<li>建立逻辑连接（确认了一条传输路径）</li>
+<li>后续分组都沿着此路径传输</li>
+<li>结束后要拆除连接</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-3-虚电路网络（连接服务的代表）"><a href="#2-3-虚电路网络（连接服务的代表）" class="headerlink" title="2.3 虚电路网络（连接服务的代表）"></a>2.3 虚电路网络（连接服务的代表）</h4><h4 id="2-4-数据报（报文）网络（无连接服务的代表）"><a href="#2-4-数据报（报文）网络（无连接服务的代表）" class="headerlink" title="2.4 数据报（报文）网络（无连接服务的代表）"></a>2.4 数据报（报文）网络（无连接服务的代表）</h4><h3 id="3-路由器工作原理"><a href="#3-路由器工作原理" class="headerlink" title="3. 路由器工作原理"></a>3. 路由器工作原理</h3><p>路由表</p>
+<p>结构</p>
+<p>输入输出端口（多端口，可进可出）</p>
+<p>交换结构</p>
+<p>路由选择处理器 </p>
+<h3 id="4-ip协议（因特网的网络层）"><a href="#4-ip协议（因特网的网络层）" class="headerlink" title="4. ip协议（因特网的网络层）"></a>4. ip协议（因特网的网络层）</h3><h4 id="4-1-概述"><a href="#4-1-概述" class="headerlink" title="4.1 概述"></a>4.1 概述</h4><ul>
+<li>IP协议用于处理和转发数据分组（根据路由表）</li>
+<li>包括如何寻址，如何处理分组等</li>
+</ul>
+<h4 id="4-2-数局报格式（两部分：首部（对应下图option及之前的内容）-数据）—–以IPv4为例"><a href="#4-2-数局报格式（两部分：首部（对应下图option及之前的内容）-数据）—–以IPv4为例" class="headerlink" title="4.2 数局报格式（两部分：首部（对应下图option及之前的内容）+数据）—–以IPv4为例"></a>4.2 数局报格式（两部分：首部（对应下图option及之前的内容）+数据）—–以IPv4为例</h4> <img src="/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/image-20210512210314741.png" alt="image-20210512210314741" style="zoom:50%;">                                                  
 
 <ul>
-<li>补充1： 视图简化了用户的操作，且提供了一种安全保护，不可以通过视图改变底层表的数据</li>
-<li>补充2：当数据库逻辑结构要改变的时候，通过建立视图，可以不必修改原来编写的查询程序</li>
+<li>版本号 4位 </li>
+<li>首部长度  4位，<strong>以4字节为单位</strong></li>
+<li>服务类型   8位，一般情况下不使用</li>
+<li>数据报总长度   16位，<strong>以字节为单位</strong></li>
+<li>标识，标识位，片偏移（详见IP分段）</li>
+<li>寿命（生存时间TTL） 8位，表示IP分组在网络中可以通过的路由器数，路由器转发一次TTL减1，while（TTL=0），该分组被丢弃 </li>
+<li>协议  8位，表示IP分组封装的是哪一个协议的数据包</li>
+<li>首部检验和  16位，同UDP的差错检测算法，在每次转发过程中都要重新计算，重新校验</li>
+<li>源IP和目的IP地址  各32位</li>
+<li>选项字段（很少用）+填充（补齐）</li>
+<li>数据</li>
 </ul>
+<h4 id="4-3-数据段分片（IP分段）"><a href="#4-3-数据段分片（IP分段）" class="headerlink" title="4.3 数据段分片（IP分段）"></a>4.3 数据段分片（IP分段）</h4><h5 id="4-3-1-最大传输单元MTU"><a href="#4-3-1-最大传输单元MTU" class="headerlink" title="4.3.1 最大传输单元MTU"></a>4.3.1 最大传输单元MTU</h5><ul>
+<li><p>一个链路层贺能承载的最大数据量</p>
 </li>
-</ul>
-<h5 id="2-2-2-drop-删除"><a href="#2-2-2-drop-删除" class="headerlink" title="2.2.2 drop (删除)"></a>2.2.2 drop (删除)</h5><ul>
-<li><p>drop table（删除整个表）</p>
-<p>语法格式：</p>
-<p>drop table  &lt;关系名&gt;</p>
+<li><p>因为链路层的协议不同，MTU的大小不同</p>
 </li>
-<li><p>drop index</p>
-<p>语法格式：</p>
-<p>drop index&lt;索引名&gt;</p>
-</li>
-<li><p><code>drop table name</code></p>
-</li>
-</ul>
-<h5 id="2-2-3-alter-（修改）"><a href="#2-2-3-alter-（修改）" class="headerlink" title="2.2.3 alter （修改）"></a>2.2.3 alter （修改）</h5><ul>
-<li><p>alter table（增加或减少一列）</p>
-<p>语法格式：</p>
-<p>alter table &lt;关系名&gt; ADD(增加)|DROP(删除)&lt;列名&gt;&lt;列类型&gt;</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*例1*/</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Student <span class="keyword">add</span> S_entrance <span class="type">DATE</span>;<span class="comment">/*新增加一列，列名为S_entrance,数据类型为DATE*/</span></span><br><span class="line"><span class="comment">/*例2*/</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Course <span class="keyword">add</span> <span class="keyword">UNIQUE</span>(Cname);<span class="comment">/*添加完整性约束*/</span></span><br></pre></td></tr></table></figure></li>
-<li><p>alter index &lt;旧索引名&gt;rename to &lt;新索引名&gt;</p>
+<li><p> 一个较大的IP分组向MTU小的链路转发时，可以（<strong>不是一定</strong>）将IP分段，以封装进入<em>链路层帧</em>（定义详见数据链路层笔记）之中（为什么要分片）</p>
 </li>
 </ul>
-<h4 id="2-3-查询"><a href="#2-3-查询" class="headerlink" title="2.3 查询"></a>2.3 查询</h4><h5 id="2-3-1-单表查询（只有一个表，一般为查找一个表的一列或者多列）"><a href="#2-3-1-单表查询（只有一个表，一般为查找一个表的一列或者多列）" class="headerlink" title="2.3.1 单表查询（只有一个表，一般为查找一个表的一列或者多列）"></a>2.3.1 单表查询（只有一个表，一般为查找一个表的一列或者多列）</h5><p>​    有一个表 Game(Gname, Gsize, Gtype, Gyear)</p>
+<h5 id="4-3-2-数据分片之后的事项"><a href="#4-3-2-数据分片之后的事项" class="headerlink" title="4.3.2 数据分片之后的事项"></a>4.3.2 数据分片之后的事项</h5><ul>
+<li><p>分片到达目的主机之后再进行重组</p>
+</li>
+<li><p>为了让主机知道如何将这些分段重组，IP数据报之中的一些字段包含了标识以及确定顺序的信息</p>
 <ul>
-<li><p>查询指定列(例子中的名称和大小)</p>
-<p><strong>Select</strong> Sname, Ssize</p>
-<p><strong>From</strong> Game;</p>
-</li>
-<li><p>查询全部</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Select  *</span><br><span class="line">From Game;</span><br></pre></td></tr></table></figure></li>
-<li><p>distinct 去除重复的</p>
-</li>
-<li><p>查符合条件的元组</p>
-<p>where子句用于附加查询的条件，作用于基表或者视图( between and, not between and, in , not in, like, not like, and, or, is null)</p>
-<p>例1 2001到2020年发行的游戏的名称</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> Sname</span><br><span class="line"><span class="keyword">From</span> Game</span><br><span class="line"><span class="keyword">Where</span> <span class="keyword">year</span> <span class="keyword">between</span> <span class="number">2001</span> <span class="keyword">and</span> <span class="number">2020</span>;</span><br></pre></td></tr></table></figure>
-
-<p>Escape短语</p>
-<p>在字符匹配，由于转义，如%，_之类的符号</p>
-<p>例2 以”sum_”开头的游戏名</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">From</span> Game</span><br><span class="line"><span class="keyword">Where</span> Gname <span class="keyword">like</span> ‘sum\_<span class="string">&#x27;escape&#x27;</span>\’;`</span><br></pre></td></tr></table></figure></li>
-<li><p>对结果排序(ASC是升序DESC是降序)</p>
-<p>例3</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> Sname</span><br><span class="line"><span class="keyword">From</span> Game</span><br><span class="line"><span class="keyword">Where</span> <span class="keyword">year</span> <span class="keyword">between</span> <span class="number">2001</span> <span class="keyword">and</span> <span class="number">2020</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">year</span> <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure></li>
-<li><p>聚集函数（6种，SUM,AVG,MAX,MIN,COUNT,COUNT(*)）</p>
-<p>例4 统计游戏个数</p>
-<p><code>Select count(*) From Game;</code></p>
-</li>
-<li><p>结果分组</p>
-<p>Group by 按某一会重复出现的列属性分组（一般要和分组函数一起使用）</p>
-<p>Having 为分组添加筛选条件，只有满足条件的分组才会出现</p>
-<p><strong>备注：Having和where的区别，简单来说就是先后顺序的区别，where在分组前筛选，having再分组之后筛选</strong></p>
-</li>
-</ul>
-<h5 id="2-3-2连接查询（包括多个表）"><a href="#2-3-2连接查询（包括多个表）" class="headerlink" title="2.3.2连接查询（包括多个表）"></a>2.3.2连接查询（包括多个表）</h5><ul>
-<li><p>$\theta$连接</p>
+<li><p>标识字段（ID）</p>
 <ul>
-<li><p>使用select-from-where的表示方法</p>
-<p>在from之后</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> student, SC</span><br><span class="line"><span class="keyword">where</span> student.no<span class="operator">=</span>SC.no</span><br></pre></td></tr></table></figure></li>
-<li><p>使用R join S on &lt; 连接条件 &gt;  的方法</p>
-<p>在from之后</p>
-<p> <code>from student join SC on student.no = SC.no</code></p>
-</li>
+<li>16位，标识IP分组（IP协议中存在一个计数器，每产生一个IP分组，计数器+1，作为IP分组的标识）</li>
+<li>和其他一些分组的信息一起才可以唯一标识一个IP分组</li>
 </ul>
 </li>
-<li><p>自然连接</p>
-<p>使用natural join 关键字</p>
-<p>在from之后</p>
-<p><code> from student natural join SC</code></p>
+<li><p>标志位 </p>
 </li>
-<li><p>自联结</p>
-<p>在from之后</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> course.first, course.second</span><br><span class="line"><span class="keyword">where</span> first.Cpno <span class="operator">=</span> second.Cno</span><br></pre></td></tr></table></figure></li>
-<li><p>外连接</p>
+<li><p>3位，包括DF（Don’t Fragment，表示是否可以分片）和MF字段（表示是否是分片的最后一片）</p>
+</li>
+<li><p>片偏移  </p>
 <ul>
-<li>会保留一部分信息</li>
+<li>13位，指一个IP分片封装的IP数据的相对偏移量</li>
+<li>以8字节为单位</li>
 </ul>
 </li>
-<li><p>内连接</p>
-</li>
-<li><p>多表连接</p>
+</ul>
 </li>
 </ul>
-<h5 id="2-3-3嵌套查询（一个查询嵌在另一个里面）"><a href="#2-3-3嵌套查询（一个查询嵌在另一个里面）" class="headerlink" title="2.3.3嵌套查询（一个查询嵌在另一个里面）"></a>2.3.3嵌套查询（一个查询嵌在另一个里面）</h5><ul>
-<li><p>in和not in的子查询</p>
+<h5 id="4-3-3-IP分片的过程及相关计算（设原IP分组总长位L，MTU为M）"><a href="#4-3-3-IP分片的过程及相关计算（设原IP分组总长位L，MTU为M）" class="headerlink" title="4.3.3 IP分片的过程及相关计算（设原IP分组总长位L，MTU为M）"></a>4.3.3 IP分片的过程及相关计算（设原IP分组总长位L，MTU为M）</h5><ul>
+<li>IF（L&gt;M）则需要分片</li>
+<li>分片后每个分片会复制原IP的标识</li>
+<li>计算长度时注意前20字节的首部</li>
+</ul>
+<h4 id="4-4-IP编址"><a href="#4-4-IP编址" class="headerlink" title="4.4 IP编址"></a>4.4 IP编址</h4><h5 id="4-4-1概述"><a href="#4-4-1概述" class="headerlink" title="4.4.1概述"></a>4.4.1概述</h5><ul>
+<li>接口<ul>
+<li>主机与物理链路之间的边界</li>
+</ul>
 </li>
-<li><p>相关子程序和不相关子查询</p>
+<li>IP地址<ul>
+<li>IP地址长度为32比特</li>
+<li>用点分十进制记法书写</li>
+</ul>
 </li>
-<li><p><strong>exist和not exist的子查询</strong></p>
+<li>引入IP子网的概念<ul>
+<li>将IP地址分成两部分：网络号（高位）+主机号（低位）<img src="/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/image-20210517155308698.png" alt="image-20210517155308698"></li>
+<li>IP子网内的设备网络号相同</li>
+<li>路由器一般为一个IP子网的边界</li>
+</ul>
+</li>
+</ul>
+<h5 id="4-4-2-IP编址方式，地址划分"><a href="#4-4-2-IP编址方式，地址划分" class="headerlink" title="4.4.2 IP编址方式，地址划分"></a>4.4.2 IP编址方式，地址划分</h5><ul>
+<li><p>有类IP地址</p>
 <ul>
-<li>此类子查询不会返回数据，只会返回逻辑值</li>
+<li>A类， 前8位为网络号</li>
+<li>B类， 前16位为网络号</li>
+<li>C类， 前32位为网络号</li>
+<li>D类</li>
+<li>E类</li>
+<li>特殊：</li>
+<li><img src="/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/image-20210526210807373.png" alt="image-20210526210807373"></li>
 </ul>
 </li>
-<li><p>带any或all的子查序</p>
+<li><p>IP子网划分</p>
 <ul>
-<li>一般要配合比较运算符一起使用</li>
-<li>all表示所有值</li>
-<li>any表示任意一个值</li>
-</ul>
+<li><p>有类IP地址划分不平衡，像是ABC类网络太大，会存在浪费现象，用子网划分的方式进一步对大的网络进行划分</p>
 </li>
-<li><p>比较运算符的子查询</p>
+<li><p>IP地址分成3部分：网络号+子网号+主机号（将之前的高位主机号的一部分划分成SubID）                                                                                      <img src="/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/image-20210516154203095.png" alt="image-20210516154203095" style="zoom:50%;">  </p>
+</li>
+<li><p>子网掩码</p>
 <ul>
-<li>子查询必须在比较符号之后</li>
+<li>用于确定是否划分了子网，以及使用多少位去划分子网</li>
+<li>格式同IP，32位，点分十进制，NetID和SubID全0，HostID全1</li>
 </ul>
 </li>
-<li><p>补充：</p>
+<li><p>子网地址=IP分组的目的IP地址与子网掩码按位与（子网地址标识一个子网，<strong>就是子网开始的IP地址</strong>，让路由器明白将IP分组转发到哪一个子网）</p>
+</li>
+<li><p>子网地址+子网掩码可以准确确认一个子网的大小，并且可以用这样的形式表示一个子网</p>
+</li>
+</ul>
+</li>
+<li><p>CIDR（新的地址模式，称为无类域间路由）</p>
 <ul>
-<li>子查询中不建议使用Order by子句</li>
-<li>部分嵌套可以用连接替代</li>
-</ul>
+<li><p><strong>消除了传统的ABC三类地址的界限</strong>，将NetID和SubID合并为Prefix（前缀），Prefix可以为任意长度</p>
 </li>
-</ul>
-<h5 id="2-3-4集合查询"><a href="#2-3-4集合查询" class="headerlink" title="2.3.4集合查询"></a>2.3.4集合查询</h5><ul>
-<li>并，交，差</li>
-</ul>
-<h4 id="2-4-修改数据"><a href="#2-4-修改数据" class="headerlink" title="2.4 修改数据"></a>2.4 修改数据</h4><ul>
-<li><p>插入单个元组（insert，注意要避免破坏完整性约束）</p>
-<p>语法格式</p>
-<p>Insert </p>
-<p>into &lt;表名&gt;</p>
-<p>values（‘常量1’，‘常量2’…..）</p>
-<p>例</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> </span><br><span class="line"><span class="keyword">INTO</span> Student </span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">&#x27;200215130&#x27;</span>,<span class="string">&#x27;陈冬&#x27;</span>,<span class="string">&#x27;男&#x27;</span> ,<span class="number">18</span>, ‘CS<span class="string">&#x27;);</span></span><br></pre></td></tr></table></figure>
-
+<li><p>与子网划分的模式相结合，便于划分IP地址</p>
+</li>
+<li><p>无类地址的格式a.b.c.d/x，x为前缀长度（位长），可直接表示一个子网</p>
 <ul>
-<li>补充：插入子查询结果，原来的value处改为一个子查询</li>
+<li>例    子网   <strong>201.2.3.64，255.255.255.192</strong>   的无类地址  201.2.3.64/26           </li>
 </ul>
 </li>
-<li><p>update关键字（更新元组之中的数据）</p>
-<p>语法格式</p>
-<p>UPDATE &lt;表名&gt; </p>
-<p>SET &lt;列名&gt;=&lt;表达式&gt;[，&lt;列名&gt;=&lt;表达式&gt;]… </p>
-<p>[WHERE &lt;条件&gt;]；</p>
-<p>实例</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UPDATE Student</span><br><span class="line"><span class="keyword">SET</span> Sage<span class="operator">=</span><span class="number">22</span></span><br><span class="line"><span class="keyword">WHERE</span> Sno<span class="operator">=</span><span class="string">&#x27;2191110520&#x27;</span></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>将学号为<span class="number">2191110520</span>的学生年龄改为<span class="number">22</span></span><br></pre></td></tr></table></figure></li>
-<li><p>delete关键字（删除某个元组）</p>
-<p>语法格式：DELETE FROM &lt;表名&gt;  WHERE &lt;条件&gt;；</p>
-<p>实例</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> </span><br><span class="line"><span class="keyword">FROM</span> Student</span><br><span class="line"><span class="keyword">WHERE</span> Sno<span class="operator">=</span><span class="string">&#x27;2191110520&#x27;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="3-数据库安全性，完整性（用SQL实现）"><a href="#3-数据库安全性，完整性（用SQL实现）" class="headerlink" title="3.数据库安全性，完整性（用SQL实现）"></a>3.数据库安全性，完整性（用SQL实现）</h3><h4 id="3-1-基本概念"><a href="#3-1-基本概念" class="headerlink" title="3.1 基本概念"></a>3.1 基本概念</h4><h5 id="3-1-1安全性"><a href="#3-1-1安全性" class="headerlink" title="3.1.1安全性"></a>3.1.1安全性</h5><ul>
-<li>不允许恶意修改或者未经授权的存取和修改</li>
-</ul>
-<h5 id="3-1-2完整性（为保障数据正确性，相容性，添加的约束条件和规则）"><a href="#3-1-2完整性（为保障数据正确性，相容性，添加的约束条件和规则）" class="headerlink" title="3.1.2完整性（为保障数据正确性，相容性，添加的约束条件和规则）"></a>3.1.2完整性（为保障数据正确性，相容性，添加的约束条件和规则）</h5><ul>
-<li>语义完整性（重点）</li>
-<li>并发控制（详细见后续），安全控制，DB回复等</li>
-</ul>
-<h4 id="3-2-控制安全性"><a href="#3-2-控制安全性" class="headerlink" title="3.2 控制安全性"></a>3.2 控制安全性</h4><h5 id="3-2-1授权"><a href="#3-2-1授权" class="headerlink" title="3.2.1授权"></a>3.2.1授权</h5><p>语法格式</p>
-<p>GRANT &lt;权限&gt; [, 权限] …</p>
-<p>ON &lt;对象类型&gt; &lt;对象名&gt; [, &lt;对象类型&gt; &lt;对象名&gt; ] …</p>
-<p>TO &lt;用户&gt; [,用户] … [WITH GRANT OPTION];</p>
-<p>例1</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Grant</span> <span class="keyword">select</span><span class="operator">/</span><span class="operator">/</span><span class="keyword">ALL</span> PRIVILEGES </span><br><span class="line"><span class="keyword">on</span> <span class="keyword">table</span> game</span><br><span class="line"><span class="keyword">to</span> krzkrz<span class="operator">/</span><span class="operator">/</span>(<span class="keyword">with</span> <span class="keyword">grant</span> option);</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>给用户krzkrz表game的查询权限</span><br></pre></td></tr></table></figure>
-
-<h5 id="3-2-2-权限回收"><a href="#3-2-2-权限回收" class="headerlink" title="3.2.2 权限回收"></a>3.2.2 权限回收</h5><p>REVOKE &lt;权限&gt; [, 权限] … </p>
-<p>ON &lt;对象类型&gt; &lt;对象名&gt; [, &lt;对象类型&gt; &lt;对象名&gt;] </p>
-<p>FROM &lt;用户&gt; [, 用户] … [CASCADE | RESTRICT]</p>
+<li><p>此种模式的优点 </p>
 <ul>
-<li>cascade 表示级联回收</li>
-<li>restrict  表示存在级联回收的时候</li>
+<li>提高地址分配效率</li>
+<li>提高路由效率<ul>
+<li>此种方式可以将多个子网聚合成为更大的子网，形成层级化的编址</li>
+<li><strong>路由聚合</strong>，路由表记录更大的子网的无类地址（记录更高层的地址），减少不必要的信息的记录</li>
+<li>连续的几段地址才可以聚合成更大的子网</li>
+<li>补充 最长前缀匹配优先</li>
 </ul>
-<h5 id="3-2-3-存取控制机制"><a href="#3-2-3-存取控制机制" class="headerlink" title="3.2.3 存取控制机制"></a>3.2.3 存取控制机制</h5><p>常用方法</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="4-4-3-主机如何获取IP地址（DHCP协议）"><a href="#4-4-3-主机如何获取IP地址（DHCP协议）" class="headerlink" title="4.4.3 主机如何获取IP地址（DHCP协议）"></a>4.4.3 主机如何获取IP地址（DHCP协议）</h5><ul>
+<li><p>”硬编码“，静态配置（<del>后续补充完吧，大概</del>）</p>
 <ul>
-<li>强制存取机制（MAC）发生在DAC之后<ul>
-<li>主体和客体</li>
-<li>敏感度</li>
-<li>只能修改（写）同级或者更高级（此时数据未泄漏）的相关数据</li>
+<li>默认网关      某一个路由器与一个子网相连的一个接口的IP，作为这个子网之中所有主机的默认网关</li>
 </ul>
 </li>
-</ul>
-<h5 id="3-2-4-审计"><a href="#3-2-4-审计" class="headerlink" title="3.2.4 审计"></a>3.2.4 审计</h5><p>在SQL语言之中，用audit，noaudit关键字 </p>
-<p><code> AUDIT ALTER, UPDATE ON SC;</code> 表示对修改表SC中的数据的操作添加审计</p>
-<p><code> NOAUDIT ALTER, UPDATE ON SC;</code>表示取消审计</p>
-<h5 id="3-2-5-数据加密"><a href="#3-2-5-数据加密" class="headerlink" title="3.2.5 数据加密"></a>3.2.5 数据加密</h5><h4 id="3-3完整性控制"><a href="#3-3完整性控制" class="headerlink" title="3.3完整性控制"></a>3.3完整性控制</h4><h5 id="3-3-1-域完整性"><a href="#3-3-1-域完整性" class="headerlink" title="3.3.1 域完整性"></a>3.3.1 域完整性</h5><ul>
-<li><p>指：保障关系表之中的列的值是合理的，一般在建表或者建视图的时候确定</p>
-</li>
-<li><p>not null（列值非空）</p>
-</li>
-<li><p>unique（列值是唯一的）</p>
-</li>
-<li><p>default（设值默认值）</p>
-</li>
-<li><p>check(逻辑表达式,或者查询子句，以检查列值是否满足表达式)</p>
-</li>
-</ul>
-<h5 id="3-3-2实体完整性"><a href="#3-3-2实体完整性" class="headerlink" title="3.3.2实体完整性"></a>3.3.2实体完整性</h5><ul>
-<li>关系主码唯一且非空</li>
-</ul>
-<h5 id="3-3-3-参照完整性"><a href="#3-3-3-参照完整性" class="headerlink" title="3.3.3 参照完整性"></a>3.3.3 参照完整性</h5><ul>
-<li><p>一般在建表或者建视图的时候确定（设定外键时确定）</p>
-</li>
-<li><p>某些操作会破坏完整性，系统采用以下策略 拒绝，级联，设为空值</p>
+<li><p>动态配置（动态主机配置协议DHCP）</p>
 <ul>
-<li>on update/delete cascade —–指级联操作，更新或者删除的时候会修改本表的数据和参照表的数据</li>
-<li>on delete no action—指拒绝操作</li>
-</ul>
+<li><p>动态的从DHCP服务器获取IP地址+子网掩码+默认网关地址+DNS服务器名称及其IP地址</p>
 </li>
-</ul>
-<h5 id="3-3-4用户自定义完整性"><a href="#3-3-4用户自定义完整性" class="headerlink" title="3.3.4用户自定义完整性"></a>3.3.4用户自定义完整性</h5><ul>
-<li><p>完整系约束命名子句</p>
-<p>语法结构</p>
-<p>constraint 完整性约束条件名 完整性约束条件(包括 not null, unique, primary  )</p>
+<li><p>地址是可以重用的（一个主机下线之后他的地址可以被分配给其他的主机）</p>
 </li>
-<li><p>断言assertion（复杂的完整性约束）</p>
-<p>语法结构</p>
-<p>create assertion 断言名</p>
-<p>drop assertion 断言名</p>
-</li>
-<li><p>触发器 trigger（由用户的操作激活）</p>
-<p>触发事件（insert, delete, update, 或者前三个的组合）</p>
-<p>按间隔划分</p>
+<li><p>配置过程</p>
 <ol>
-<li><p>行级触发器</p>
+<li>找到DHCP服务器（主机通过<strong>广播</strong>DHCP发现报文，此时主机的IP地址为0.0.0.0，此条广播只有DHCP服务器会响应）</li>
+<li>DHCP服务器响应（DHCP服务器通过<strong>广播</strong>发送一个DHCP提供报文，报文包括服务器的IP地址+端口号+拟分配IP地址+IP地址有效时间）</li>
+<li>请求IP地址（主机通过<strong>广播</strong>发送DHCP请求报文）</li>
+<li>DHCP确认（DHCP服务器向主机发送DHCP ACK，表示可以给主机提供IP地址）</li>
+</ol>
+<ul>
+<li>补充，第3步还是通过广播发送的原因是主机告诉其他DHCP服务器已经选择好了用哪个DHCP服务器了，其他DHCP服务器会收回拟分配的IP地址</li>
+</ul>
 </li>
-<li><p>语句级触发器</p>
+<li><p>DHCP协议是在应用层实现的（运输层使用UDP协议）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="4-4-4-网络地址转换（NAT）"><a href="#4-4-4-网络地址转换（NAT）" class="headerlink" title="4.4.4 网络地址转换（NAT）"></a>4.4.4 网络地址转换（NAT）</h5><ul>
+<li><p>出现背景       </p>
+<ul>
+<li>本地网络（使用私有地址）无法直接访问公共网络，要通过地址转换接入公共网络</li>
+<li>IPv4地址用尽，通过一个公共IP标识一个本地网络</li>
+</ul>
+</li>
+<li><p>实现方法</p>
+<ol>
+<li>替换（向公共网络发出数据报时）<ul>
+<li> 利用<strong>NAT IP地址和新的端口号</strong>换发出去的IP数据报的<strong>源IP地址和源端口号</strong></li>
+</ul>
+</li>
+<li><h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2></li>
+<li>再替换</li>
+</ol>
+</li>
+<li><p>NAT转换表</p>
+<ul>
+<li>WAN端地址+LAN端地址</li>
+</ul>
+</li>
+<li><p>NAT的缺陷</p>
+<ul>
+<li>通过端口号寻找主机</li>
+</ul>
+</li>
+<li><h2 id="NAP穿透问题（解决NAP中存在的一些问题）"><a href="#NAP穿透问题（解决NAP中存在的一些问题）" class="headerlink" title="NAP穿透问题（解决NAP中存在的一些问题）"></a>NAP穿透问题（解决NAP中存在的一些问题）</h2></li>
+</ul>
+<h3 id="5-ICMP协议（互联网控制报文协议）"><a href="#5-ICMP协议（互联网控制报文协议）" class="headerlink" title="5. ICMP协议（互联网控制报文协议）"></a>5. ICMP协议（互联网控制报文协议）</h3><h4 id="5-1-用途"><a href="#5-1-用途" class="headerlink" title="5.1 用途"></a>5.1 用途</h4><ul>
+<li>完成差错报告的功能</li>
+<li>网络探寻</li>
+<li>路由器遇到有差错的IP数据报时会将其丢弃，并向源主机发送一个ICMP报文</li>
+</ul>
+<h4 id="5-2-ICMP报文"><a href="#5-2-ICMP报文" class="headerlink" title="5.2 ICMP报文"></a>5.2 ICMP报文</h4><p>5.2.1 差错报告报文</p>
+<p>5.2.2 网络探寻报文</p>
+<p>5.2.3 报文格式（类型+编码表示一种特定意义的报文）</p>
+<ul>
+<li>ICMP报文封装在IP数据报之中传输</li>
+<li>头部+数据部分</li>
+</ul>
+<h4 id="5-3-一些特殊情况（可能不发送ICMP报文）"><a href="#5-3-一些特殊情况（可能不发送ICMP报文）" class="headerlink" title="5.3 一些特殊情况（可能不发送ICMP报文）"></a>5.3 一些特殊情况（可能不发送ICMP报文）</h4><ul>
+<li><p>在分片的IP数据报之中，只对第一个分片发送ICMP差错报告报文，后续的分片不发送</p>
+</li>
+<li><p>多播IP数据报不发送ICMP报文</p>
+</li>
+<li><p>特殊地址的不发送ICMP</p>
+</li>
+</ul>
+<h4 id="5-4-部分ICMP报文不再使用"><a href="#5-4-部分ICMP报文不再使用" class="headerlink" title="5.4 部分ICMP报文不再使用"></a>5.4 部分ICMP报文不再使用</h4><h3 id="6-IPv6"><a href="#6-IPv6" class="headerlink" title="6. IPv6"></a>6. IPv6</h3><h4 id="6-1-诞生背景"><a href="#6-1-诞生背景" class="headerlink" title="6.1 诞生背景"></a>6.1 诞生背景</h4><ul>
+<li>32位IPv4地址已经分配完了</li>
+<li>改进首部（更快的处理和转发数据报）</li>
+</ul>
+<h4 id="6-2-数据报格式变化"><a href="#6-2-数据报格式变化" class="headerlink" title="6.2 数据报格式变化"></a>6.2 数据报格式变化</h4><ul>
+<li><p>基本首部固定为40字节</p>
+</li>
+<li><p>不允许路由器分片（若分片则源主机分，目的主机组装）</p>
+</li>
+<li><p>基本格式如下，路由器只处理基本首部即可</p>
+<img src="/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/image-20210524155220426.png" alt="image-20210524155220426" style="zoom:50%;">
+
+<ul>
+<li>跳步限制对应IPv4中的TTL</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-3-与IPv4的不同"><a href="#6-3-与IPv4的不同" class="headerlink" title="6.3 与IPv4的不同"></a>6.3 与IPv4的不同</h4><ul>
+<li>移除校验和，以减少路由器处理数据报的时间</li>
+<li>选项进化为“下一个首部”字段</li>
+<li>ICMPv6（新版ICMP）<ul>
+<li>增加了报文类型（如：“Packet too big”）</li>
+<li>多播组管理功能</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-4-IPv6地址"><a href="#6-4-IPv6地址" class="headerlink" title="6.4 IPv6地址"></a>6.4 IPv6地址</h4><ul>
+<li><p>冒号分隔的十六进制表示，划分成8组</p>
+</li>
+<li><p>压缩形式        连续多组的0用两个冒号替代（例 FF01:0:0:0:0:0:0:43==FF01::43）</p>
+</li>
+<li><p>IPv4嵌入形式（为了兼容IPv4）最后32位仍以IPv4的形式表示</p>
+</li>
+<li><p>地址前缀（IPv6不再使用掩码）</p>
+</li>
+<li><p>在URL的表示之中IPv6的地址放在[]之中</p>
+</li>
+<li><p>地址类型</p>
+<ul>
+<li>单播地址，一对一通信</li>
+<li>多播地址，一对多（表示目的主机中一系列的网络接口）</li>
+<li>任意播，一对多之中的一个</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-5-与IPv4的兼容问题"><a href="#6-5-与IPv4的兼容问题" class="headerlink" title="6.5 与IPv4的兼容问题"></a>6.5 与IPv4的兼容问题</h4><ul>
+<li>隧道技术：IPv6数据报被封装在IPv4数据报的载荷部分，然后穿过IPv4网络</li>
+</ul>
+<h3 id="7-路由算法"><a href="#7-路由算法" class="headerlink" title="7. 路由算法"></a>7. 路由算法</h3><h4 id="7-1-将网络局部简单抽象"><a href="#7-1-将网络局部简单抽象" class="headerlink" title="7.1 将网络局部简单抽象"></a>7.1 将网络局部简单抽象</h4><ul>
+<li>用抽象的带权无向图表示网络</li>
+<li>结点表示路由器，边表示路由器之间的物理链路，权重可以表示很多内容（具体问题具体分析）</li>
+</ul>
+<h4 id="7-2-链路状态路由算法"><a href="#7-2-链路状态路由算法" class="headerlink" title="7.2 链路状态路由算法"></a>7.2 链路状态路由算法</h4><ul>
+<li><p>计算的过程</p>
+<ul>
+<li>LS分组扩散（通告）</li>
+<li>路由器构造完整的拓扑图</li>
+<li>用Dijkstra算法计算路由</li>
+</ul>
+</li>
+<li><p>Dijkstra算法（求最小代价的值）</p>
+<ul>
+<li><p>前提条件：要掌握整个网络的拓补结构和链路权值</p>
+</li>
+<li><p>引入一些符号，方便描述算法</p>
+<ul>
+<li>c(x,y)，x与y两点之间的代价值，若x，y不相邻，则c(x,y)=$\infty$</li>
+<li>D(v)，从起点到v点的路径代价值</li>
+<li>p(v)，一条路径之中v点的前序结点</li>
+<li>N’，最短路径上结点的集合</li>
+</ul>
+</li>
+<li><p>算法描述：</p>
+<ol>
+<li>初始化步骤，N’={u}，u为起点，找到u所有的相邻节点v，D(v)=c(v,y)，不相邻，则D(v)=$\infty$</li>
+<li>循环体<ul>
+<li>找出一个不在N’之中的结点w，使得D(w)最小，并将w加入N’</li>
+<li>更新w的相邻结点的D(v)的值（更新方法：比较原来的D(v)与已知到达w的最小权值+w到v的权值，取较小的值）</li>
+</ul>
 </li>
 </ol>
-<p>rollback（理解为撤销）</p>
+</li>
+<li><p>例子<img src="/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/image-20210524213209515.png" alt="image-20210524213209515"></p>
+</li>
+<li><p>补充</p>
+<ul>
+<li>此过程之中会得到一个最小生成树，会存在u的转发表（包括两部分，目的结点和到目的结点之间的链路）</li>
+<li>震荡现象（<del>以后补充吧</del>）</li>
+</ul>
 </li>
 </ul>
+</li>
+</ul>
+<h4 id="7-3-距离向量路由算法"><a href="#7-3-距离向量路由算法" class="headerlink" title="7.3 距离向量路由算法"></a>7.3 距离向量路由算法</h4><ul>
+<li>引入符号和计算方法（理想状态）<ul>
+<li>$d_x(y)$:表示<strong>从x</strong>到y的最小权值，x为起点（关键点）</li>
+<li>$d_x(y)=min$${c(x,v)+d_v(y)}$      v包括了所有与x相邻的结点   </li>
+</ul>
+</li>
+<li>实际情况<ul>
+<li>开始时要估计某些结点之间的最小权值（即相邻结点的记录下来），后续通过一次次计算不断趋近于最小值，这个值记作DV</li>
+<li>每个结点存储的内容包括<ul>
+<li>与其相邻的结点之间链路的权值</li>
+<li> 最小权值的估计值</li>
+</ul>
+</li>
+<li>每个结点都要定期将自己计算出的最小权值的估计值传送给他自己的相邻结点</li>
+<li>x结点收到他相邻结点发过来的最小权值的估计值时，会根据上面的公式更新自己的</li>
+</ul>
+</li>
+<li>一些注意事项：<ul>
+<li>每个结点只有当自己的DV值变化时才会通知相邻结点</li>
+<li>当一块网络中的某链路权值发生变化，用次算法跟新网络内结点的路由表</li>
+</ul>
+</li>
+<li>存在的问题—-无穷计数问题（当某一链路的权值变大了很多）<ul>
+<li>解决手段  <ul>
+<li>毒性逆转</li>
+<li>定义最大度量</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-4-层次路由"><a href="#7-4-层次路由" class="headerlink" title="7.4 层次路由"></a>7.4 层次路由</h4><p>7.4.1 出现的背景</p>
+<ul>
+<li>如今的互联网规模很大，直接统一管理时开销巨大，路由计算也会十分复杂</li>
+<li>希望通过分层的模式，方便各个组织地区实现自制管理</li>
+</ul>
+<p>7.4.2 什么是层次路由</p>
+<ul>
+<li>层次路由会对大规模的网络再一次进行划分<ul>
+<li>一组处于相同管理状态之下的路由器及其之间链路的集合，位于同一个ISP之中，称为自治系统AS（有一个唯一标识）</li>
+<li>一个AS内部的使用路由器运行同一种路由算法（自治系统内部路由协议）</li>
+<li>AS之间通过<strong>网关路由器</strong>与其他的AS交换信息</li>
+</ul>
+</li>
+</ul>
+<p>7.4.3 网关路由</p>
+<ul>
+<li><p>网关路由器的转发表包括AS内部的路由算法和AS之间的路由算法</p>
+</li>
+<li><p>网关路由的任务</p>
+<ul>
+<li>知道哪些同级的区域是可以到达的</li>
+<li>把可到达的信息告诉内部</li>
+</ul>
+</li>
+</ul>
+<p>补充：采用这样的分层方法可以将一个AS抽象为拓扑图的结点，便于进行自制系统之间的路由选择的研究，一个AS的内部仍然按上面的抽象方式进行抽象</p>
+<h4 id="7-5-自制系统内的路由算法（路由协议）"><a href="#7-5-自制系统内的路由算法（路由协议）" class="headerlink" title="7.5 自制系统内的路由算法（路由协议）"></a>7.5 自制系统内的路由算法（路由协议）</h4><h5 id="7-5-1-RIP-路由信息协议"><a href="#7-5-1-RIP-路由信息协议" class="headerlink" title="7.5.1 RIP(路由信息协议)"></a>7.5.1 RIP(路由信息协议)</h5><ul>
+<li>使用距离向量路由算法，有一些特殊的地方如下<ul>
+<li>路由表包括下一条的信息</li>
+<li>引入距离度量的描述：跳步数，一条链路==一个跳步，最大跳步数限制为15</li>
+<li>每隔30s邻居交换一次DV</li>
+</ul>
+</li>
+<li>链路失效与恢复<ul>
+<li>180s未收到通告，则表明邻居链路失效</li>
+<li>恢复就是重新计算路由，并立即发送新的通告（扩散的过程之中可能会产生无穷计数问题）</li>
+</ul>
+</li>
+<li>其他的一些特性<ul>
+<li>RIP路由表在应用层进行管理</li>
+<li>通告的报文通过UDP数据报传输</li>
+</ul>
+</li>
+</ul>
+<h5 id="7-5-2-OSPF-开放最短路径协议-—-更详细的参考RFC-2328"><a href="#7-5-2-OSPF-开放最短路径协议-—-更详细的参考RFC-2328" class="headerlink" title="7.5.2 OSPF(开放最短路径协议)—-更详细的参考RFC 2328"></a>7.5.2 OSPF(开放最短路径协议)—-更详细的参考RFC 2328</h5><ul>
+<li><p>是一种链路状态协议，采用Dijkstra算法计算最小政策</p>
+</li>
+<li><p>OSPF通告在整个AS范围内洪泛，OSPF报文之间封装到IP数据报之中</p>
+</li>
+<li><p>一些RIP不具备的优点</p>
+<ul>
+<li><p>OSPF报文具有认证机制，预防恶意入侵，更安全</p>
+</li>
+<li><p>允许同时使用多条相同的代价值得路径，方便分流（RIP只能选一条）</p>
+</li>
+<li><p>集成单播和多播路由</p>
+</li>
+<li><p>支持对大规模的AS作进一步分层</p>
+<img src="/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/image-20210525190802752.png" alt="image-20210525190802752" style="zoom: 50%;">
+
+<ul>
+<li>包括主干区+局部区</li>
+<li>链路状态和拓扑图仅是一个区域之内的</li>
+<li>一个区域的<strong>区边界路由器</strong>汇总内部的信息告诉另一个区域的区边界路由器</li>
+<li><strong>主干路由器</strong>—可以运行OSFP算法</li>
+<li><strong>AS边界路由器</strong>—-连接其他的系统</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-5-自制系统之间的路由算法（路由协议）"><a href="#7-5-自制系统之间的路由算法（路由协议）" class="headerlink" title="7.5 自制系统之间的路由算法（路由协议）"></a>7.5 自制系统之间的路由算法（路由协议）</h4><ul>
+<li><p>BGP协议（边界网关协议）</p>
+<ul>
+<li><p>基本特征</p>
+<ul>
+<li>将Internet连接成一个整体</li>
+<li>可以帮助AS获得邻居的子网可达性信息，也可以向所有AS内部的路由器传播子网可达性信息</li>
+</ul>
+</li>
+<li><p>BGP一些基础功能</p>
+<ul>
+<li><p>BGP会话—-两个BGP路由器交换报文</p>
+<ul>
+<li>包括外部会话（eBGP）和内部会话（iBGP）</li>
+<li>可以通告去往不同子网的路径（交换的是整条路径的信息）</li>
+<li>他们之间的报文交换基于半永久的TCP连接（可以存在较长的时间）</li>
+</ul>
+</li>
+<li><p>BGP报文（4类）</p>
+<ul>
+<li>open：建立连接+认证</li>
+<li>update：通告有路径发生改变了（增或者减）</li>
+<li>keepalive：长时间未update时，告诉邻居连接依然是正常的+对open请求的确认</li>
+<li>notifcation：报告差错+关闭连接</li>
+</ul>
+</li>
+<li><p>BGP的通告中会将网络前缀聚合（聚合相关见前面的笔记）</p>
+</li>
+<li><p>BGP分发路径信息</p>
+<ol>
+<li><p>先向邻居发起eBGP会话，将前缀可达信息传给邻居的一个网关路由器</p>
+</li>
+<li><p>网关路由器发起iBGP会话，将信息传给这个网络之中的所有路由器，这其中的网关路由器<strong>可以</strong>继续再建立新的BGP会话以进一步传递信息</p>
+<p>补充：当路由器获得新的前缀可达性信息时，会更新自己的路由表（增加了新前缀的入口）</p>
+</li>
+</ol>
+</li>
+<li><p>前缀信息包括的BGP属性</p>
+<ul>
+<li><p>AS-path——AS路径，前缀通告已经经过的AS序列</p>
+</li>
+<li><p>NEXT-hop——-下一跳，指一个路由器接口（之后在AS-PATH中加入它指向的下一个AS），它指向下一个AS</p>
+<p>补充：</p>
+<ul>
+<li><p>BGP路由=前缀+属性</p>
+</li>
+<li><p>为什么要下一跳这个属性———在一些情况下，路由的AS-path相同，通过NEXT-hop区分这些路由</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>BGP的路由选择（从多条到目的地AS的路由之中选择一条）</p>
+<ul>
+<li><p>这是一种基于策略（网管设置的）的路由（这也是选择时的首要准则）</p>
+</li>
+<li><p>选择时遵守的准则</p>
+<ul>
+<li>本地偏好值（值高的优先）</li>
+<li>最短AS-PATH—–指的是经过的AS最少，而不是经过的路由器最少</li>
+<li>最近的下一跳（NEXT-HOP）路由器（热土豆路由）</li>
+<li>附加准则</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>总结（）</p>
 
       
     </div>
@@ -602,7 +770,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/archives/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/11/">11</a><a class="extend next" rel="next" href="/archives/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

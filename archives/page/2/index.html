@@ -135,7 +135,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/04/11/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/05/26/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%90%84%E5%B1%82%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/11/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">软件设计模式--策略模式</a>
+          <a href="/2021/05/26/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%90%84%E5%B1%82%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8/" class="post-title-link" itemprop="url">计算机网络--各层协议的综合应用</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,24 +205,15 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-04-11 16:22:00" itemprop="dateCreated datePublished" datetime="2021-04-11T16:22:00+08:00">2021-04-11</time>
+      <time title="创建时间：2021-05-26 21:12:29" itemprop="dateCreated datePublished" datetime="2021-05-26T21:12:29+08:00">2021-05-26</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-16 17:02:49" itemprop="dateModified" datetime="2021-12-16T17:02:49+08:00">2021-12-16</time>
+        <time title="修改时间：2021-05-27 09:57:15" itemprop="dateModified" datetime="2021-05-27T09:57:15+08:00">2021-05-27</time>
       </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">软件设计模式</span></a>
-        </span>
-    </span>
 
   
 </div>
@@ -234,33 +225,30 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="策略模式-Strategy-Pattern"><a href="#策略模式-Strategy-Pattern" class="headerlink" title="策略模式(Strategy Pattern)"></a>策略模式(Strategy Pattern)</h3><h4 id="1-应用的场景"><a href="#1-应用的场景" class="headerlink" title="1. 应用的场景"></a>1. 应用的场景</h4><ul>
-<li><p>一个程序中的某个类已经具有了”高内聚“的性质（即包括了好几种功能性的方法），通过策略模式进行完善，提高程序的可扩展性</p>
-</li>
-<li><p>举个栗子：有一个程序实现排序的功能，包括了四种不同的排序算法，即下图的形式，后续将通过策略模式改进，增加可扩展性</p>
-<img src="/2021/04/11/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/image-20211011200057368.png" alt="image-20211011200057368" style="zoom:50%;"></li>
-</ul>
-<h4 id="2-实现方式"><a href="#2-实现方式" class="headerlink" title="2. 实现方式"></a>2. 实现方式</h4><ul>
-<li>形式如下图</li>
-</ul>
-<img src="/2021/04/11/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/image-20211011200254346.png" alt="image-20211011200254346" style="zoom:50%;">
-
-<ul>
-<li><p>Strategy为一个接口，所有具体算法类（即ConcreteStrategy类）实现这个接口</p>
-</li>
-<li><p>Context类，是一种比较巧妙的设计（在某些简单的场合下可以省略），可以实现配置一个具体算法策略的功能，以及实现数据流的传递</p>
-<ul>
-<li>context的构造方法被Client调用，完成选择一个Strategy；</li>
-<li>context类中存在一些供Strategy类调用的方法</li>
-<li>Context将自己作为一个对象传递给Strategy类，然后Strategy类再利用该对象反过来调用Context类，以便获得某些数据与功能，实现的而方式描述如下：<ul>
-<li>在Context类中声明一个Strategy类的对象s，通过s.operation(this)，即调用Strategy中的方法完成传递（这个方法可能还有其他的参数），一般一个operation对应一个具体的Strategy。</li>
+          <h4 id="一台客户机如何请求一个Web界面（如www-baidu-com）"><a href="#一台客户机如何请求一个Web界面（如www-baidu-com）" class="headerlink" title="一台客户机如何请求一个Web界面（如www. baidu.com）"></a>一台客户机如何请求一个Web界面（如www. baidu.com）</h4><p>附加的前提条件：一开始没有IP，网关，DNS信息，ARP表信息</p>
+<p>（包括根据DHCP分配IP，如何进行域名解析，外网要怎么访问，HTTP，TCP通信这5个方面）</p>
+<ol>
+<li>先给此主机分配IP（通过DHCP协议）：<ul>
+<li>主机生成DHCP报文，将此报文封装进UDP报文段之中，此UDP报文又被封装在目的IP为255.255.255.255（本地广播地址），源IP地址为0.0.0.0的IP数据报之中，再将包括DHCP的IP数据报被封装入以太网帧之中，目的MAC地址为FF:FF:FF:FF:FF:FF，即可以将此帧广播到与交换机连接的所有设备上，而此本主机的MAC地址是已知的（按具体情况写）。</li>
+<li>路由器在它的某一个接口（MAC地址根据具体情况补充）接收到广播传过来的以太网帧（包括DHCP请求），从中提取出IP数据报，并将数据报其它的信息递交给上层处理，UDP报文段在传输层被抽出。此时DHCP就获得了DHCP请求报文</li>
+<li>DHCP服务器在子网块之中找到一个空闲的IP地址，和DNS服务器的IP，默认网关的IP以及该子网的DHCP ACK报文一并封装到UDP报文段之中，UDP再封装到IP数据报中，IP数据报再封装到以太网帧中，目的地址为该主机的MAC地址</li>
+<li>主机收到DHCP ACK报文，抽取IP数据报，再抽取UDP报文段，主机记录它自己的IP地址，它对应的DNS服务器的地址，默认网关地址。</li>
 </ul>
 </li>
-<li>context中会收到由client传进去的<strong>策略子类</strong>对象</li>
+<li>找到默认网关的MAC地址</li>
+<li>找到DNS服务器<ul>
+<li>将DNS查询报文封装在UDP报文之中，再封装进目的IP为（DNS服务器的IP）的IP数据报之中。数据报先送到包括默认网关的路由器之中进行解析，选择最适合的路由</li>
+<li>之后进行一步步的DNS查询（三层），找到<a target="_blank" rel="noopener" href="http://www.baidu/">www.baidu</a> .com的IP地址</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Client中的部分代码</span></span><br><span class="line">Strategy Stra;</span><br><span class="line">Context con;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(A)</span><br><span class="line">    	Stra = <span class="keyword">new</span> StrategyA();</span><br><span class="line">    <span class="keyword">if</span>(B)</span><br><span class="line">        Stra = <span class="keyword">new</span> StrategyA();</span><br><span class="line">	con = <span class="keyword">new</span> Context(Stra);</span><br><span class="line">    con.ContextInterface();<span class="comment">//同过这个方法将client中的一些要进行处理的数据传递过去（可以是一个数组，一个对象等内容）</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</li>
+<li>建立TCP连接<ul>
+<li>通过TCP套接字，向目的IP地址发送HTTP GET报文</li>
+<li>三次握手建立TCP连接</li>
+<li>交换HTTP报文交换得到需要的HTML等文件</li>
 </ul>
-<p>​         </p>
+</li>
+</ol>
+<p>补充，NAT协议可能在中途的2,3,4步中使用到，如果加入本地缓存服务器3,4两步会发生一些变化</p>
 
       
     </div>
@@ -280,7 +268,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/11/">11</a><a class="extend next" rel="next" href="/archives/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

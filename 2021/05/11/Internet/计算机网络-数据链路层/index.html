@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;zrk494.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Pisces&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
+<meta name="description" content="数据链路层1. 概述1.1 相关概念解释 节点    指主机和路由器等设备   链路    连接相邻节点的信道  有线链路 无线链路 局域网   链路层帧（帧）     指链路层之中的数据分组，用于封装网络层的数据报  两种类型的网络链路  点对点链路    一对一 广播链路    链路被多个设备共享   概括                数据链路层的工作就是通过一条链路，从一个节点向另一个与其">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络---数据链路层">
+<meta property="og:url" content="http://zrk494.github.io/2021/05/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/index.html">
+<meta property="og:site_name" content="post">
+<meta property="og:description" content="数据链路层1. 概述1.1 相关概念解释 节点    指主机和路由器等设备   链路    连接相邻节点的信道  有线链路 无线链路 局域网   链路层帧（帧）     指链路层之中的数据分组，用于封装网络层的数据报  两种类型的网络链路  点对点链路    一对一 广播链路    链路被多个设备共享   概括                数据链路层的工作就是通过一条链路，从一个节点向另一个与其">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-11T14:09:34.000Z">
+<meta property="article:modified_time" content="2021-05-27T01:57:15.122Z">
+<meta property="article:author" content="zrk">
+<meta property="article:tag" content="网络">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://zrk494.github.io/2021/05/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;http:&#x2F;&#x2F;zrk494.github.io&#x2F;2021&#x2F;05&#x2F;11&#x2F;Internet&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82&#x2F;&quot;,&quot;path&quot;:&quot;2021&#x2F;05&#x2F;11&#x2F;Internet&#x2F;计算机网络-数据链路层&#x2F;&quot;,&quot;title&quot;:&quot;计算机网络---数据链路层&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>计算机网络---数据链路层 | post</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">post</h1>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="/uploads/233.jpg" alt="post">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-number">1.</span> <span class="nav-text">数据链路层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">1. 概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E8%A7%A3%E9%87%8A"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 相关概念解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E6%8F%90%E4%BE%9B%E7%9A%84%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 提供的服务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%B7%AE%E9%94%99%E6%A3%80%E6%B5%8B%E5%92%8C%E7%BA%A0%E6%AD%A3"><span class="nav-number">1.2.</span> <span class="nav-text">2. 差错检测和纠正</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%A4%9A%E8%B7%AF%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE%EF%BC%88MAC%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">3. 多路访问协议（MAC）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E4%B8%89%E7%A7%8DMAC%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 三种MAC协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-ARP%E5%8D%8F%E8%AE%AE%EF%BC%88%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">4. ARP协议（地址解析协议）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1MAC%E5%9C%B0%E5%9D%80%EF%BC%88%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%EF%BC%8CLAN%E5%9C%B0%E5%9D%80%EF%BC%8C%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%9C%B0%E5%9D%80%EF%BC%89"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1MAC地址（物理地址，LAN地址，以太网地址）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-ARP"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 ARP</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zrk</p>
+  <div class="site-description" itemprop="description">包括专业课学习的相关笔记，以及其他</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/yourname" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/05/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zrk">
+      <meta itemprop="description" content="包括专业课学习的相关笔记，以及其他">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="post">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机网络---数据链路层
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-11 22:09:34" itemprop="dateCreated datePublished" datetime="2021-05-11T22:09:34+08:00">2021-05-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-05-27 09:57:15" itemprop="dateModified" datetime="2021-05-27T09:57:15+08:00">2021-05-27</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h3><h4 id="1-1-相关概念解释"><a href="#1-1-相关概念解释" class="headerlink" title="1.1 相关概念解释"></a>1.1 相关概念解释</h4><ul>
+<li><p>节点    指主机和路由器等设备 </p>
+</li>
+<li><p>链路    连接相邻节点的信道</p>
+<ul>
+<li>有线链路</li>
+<li>无线链路</li>
+<li>局域网</li>
+</ul>
+</li>
+<li><p>链路层帧（帧）     指链路层之中的数据分组，用于封装网络层的数据报</p>
+</li>
+<li><p>两种类型的网络链路</p>
+<ul>
+<li>点对点链路    一对一</li>
+<li>广播链路    链路被多个设备共享</li>
+</ul>
+</li>
+<li><p><strong>概括</strong>                数据链路层的工作就是通过<strong>一条链路</strong>，从一个节点向另一个<strong>与其直接相连的节点</strong>传送数据报文</p>
+</li>
+</ul>
+<h4 id="1-2-提供的服务"><a href="#1-2-提供的服务" class="headerlink" title="1.2 提供的服务"></a>1.2 提供的服务</h4><p>1.2.1 成帧（组帧）</p>
+<p>将数据报封入数据帧（添加了头和尾）</p>
+<p>1.2.2 链路接入</p>
+<p>某一链路可能需要被多个节点使用，链路接入问题就是哪个节点去使用链路</p>
+<p>1.2.3 可靠交付</p>
+<p><strong>一般来说</strong>，对于无线链路是必要的，而对于有线链路是不必要的</p>
+<p>1.2.4 流量控制</p>
+<p>1.2.5 差错检测和纠正</p>
+<p>1.2.6 全双工和半双工通信控制</p>
+<h3 id="2-差错检测和纠正"><a href="#2-差错检测和纠正" class="headerlink" title="2. 差错检测和纠正"></a>2. 差错检测和纠正</h3><h3 id="3-多路访问协议（MAC）"><a href="#3-多路访问协议（MAC）" class="headerlink" title="3. 多路访问协议（MAC）"></a>3. 多路访问协议（MAC）</h3><h4 id="3-1-概述"><a href="#3-1-概述" class="headerlink" title="3.1 概述"></a>3.1 概述</h4><ul>
+<li><p>在共享广播信道上，两个及以上的结点同时传输时会互相干扰，导致冲突（冲突指结点同时收到两个或者多个来自其他结点的信号）</p>
+</li>
+<li><p>解决了哪个设备使用共享链路的问题，尽可能的避免冲突（如何协调多个发送和接收节点对一个共享广播信道的访问）</p>
+</li>
+<li><p>通过算法决定节点如何合理的使用共享信道（节点通过多路访问协议规范它们在共享信道上的传输）</p>
+</li>
+<li><p>基于原本的信道进行协调</p>
+</li>
+</ul>
+<h4 id="3-2-三种MAC协议"><a href="#3-2-三种MAC协议" class="headerlink" title="3.2 三种MAC协议"></a>3.2 三种MAC协议</h4><p>3.2.1 信道划分MAC协议（多路复用）</p>
+<ul>
+<li>TDM（时分多路复用）</li>
+<li>FDM（频分多路复用）</li>
+<li>CDMA（码分多路复用）</li>
+</ul>
+<p>3.2.2 随机接入协议</p>
+<ul>
+<li><p>此类协议的概述</p>
+<ul>
+<li>不划分信道</li>
+<li>出现冲突再恢复即可</li>
+<li>结点在信道上用全速发送分组</li>
+<li>事先结点不协调，随时可能将报文发出去</li>
+<li>两个需要定义的重要事项<ul>
+<li>冲突检测机制</li>
+<li>恢复机制（发送失败了之后怎么做）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>具体例子（递进）</p>
+<ul>
+<li><p>时隙ALOHA（最简单的）</p>
+<ul>
+<li>前提假设<ul>
+<li>所有帧大小相同</li>
+<li>时间被划分成等长的时隙（一个时隙传一个帧）</li>
+<li>只能在时隙开始发送帧</li>
+<li>结点之间时钟同步</li>
+</ul>
+</li>
+<li>过程<ol>
+<li>结点有一个新的帧就在下一个时隙发送</li>
+<li>无冲突就继续发</li>
+<li>有冲突就在下一个时隙按概率p发送没发送成功的帧，直到成功发送</li>
+</ol>
+</li>
+<li>效率太低</li>
+</ul>
+</li>
+<li><p>ALOHA</p>
+<ul>
+<li>特征（只描述与时隙ALOHA不同的地方）<ul>
+<li>不划分时隙，不需要同步</li>
+<li>有帧生成就立刻发送</li>
+<li>效率更低</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>CSMA（载波侦听多路访问协议）</p>
+<ul>
+<li>特征<ul>
+<li>要监听信道</li>
+<li>当监测到信道空闲时发送帧，信道忙就等待（推迟发送也存在多种方式）</li>
+<li>冲突仍然可能发生</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>CSMA/CD（具有碰撞检测的载波侦听多路访问协议）</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>3.2.3 轮流协议</p>
+<ul>
+<li><p>此类协议概述</p>
+<ul>
+<li>结点轮流使用信道</li>
+</ul>
+</li>
+<li></li>
+</ul>
+<h3 id="4-ARP协议（地址解析协议）"><a href="#4-ARP协议（地址解析协议）" class="headerlink" title="4. ARP协议（地址解析协议）"></a>4. ARP协议（地址解析协议）</h3><h4 id="4-1MAC地址（物理地址，LAN地址，以太网地址）"><a href="#4-1MAC地址（物理地址，LAN地址，以太网地址）" class="headerlink" title="4.1MAC地址（物理地址，LAN地址，以太网地址）"></a>4.1MAC地址（物理地址，LAN地址，以太网地址）</h4><ul>
+<li>作用：标识链路层帧是从哪一个接口发出的，以及标识要到达哪个物理相连的其他接口</li>
+<li>地址格式：48位（一般固化在网卡之中），16进制数表示</li>
+<li>MAC是唯一的，是一种平面的地址（不像IP地址那样分层）</li>
+</ul>
+<h4 id="4-2-ARP"><a href="#4-2-ARP" class="headerlink" title="4.2 ARP"></a>4.2 ARP</h4><ul>
+<li><p>解决如何由已知目的接口的IP推出该接口的MAC地址的问题—–通过ARP表解决这个问题（存储着IP到MAC地址的映射关系，还会设置一个TTL）</p>
+</li>
+<li><p>TTL结束时会删除这条映射关系</p>
+</li>
+<li><p>同一个局域网内，A给B发数据时，如果B的MAC地址不在ARP表之中，将进行如下操作：</p>
+<ul>
+<li>A广播ARP分组，包含了B的IP地址，此分组的目的MAC地址为FF:FF:FF:FF:FF:FF</li>
+<li>这个局域网之内的所有结点都会接收这个ARP查询</li>
+<li>只有当分组中的IP地址与结点IP地址匹配的结点即B会向A发出应答自己的MAC地址（这一次应答是B到Ａ的单播）</li>
+<li>Ａ收到响应后记录后会将Ｂ的MAC地址与IP的映射记录在ARP表之中，并且设置一个超时时间</li>
+</ul>
+</li>
+<li><p>不同局域网，A在的子网与B所在的子网通过路由器R连接，A向B发数据时，如果B的MAC地址不在ARP表之中，将进行如下操作：</p>
+<ul>
+<li>封装A的链路数据帧，目的MAC地址为A的默认网关的MAC地址，即将这个帧发给默认网关的接口（MAC的地址是通过ARP协议获得，过程参考上面的情况）</li>
+<li>路由器R提取出IP数据报，交给上层协议处理（此过程之中可能会使用到NAT协议，改变源IP的值）</li>
+<li>路由器R将IP数据报封装封装到新的数据链路帧之中，目的MAC地址为B的MAC地址，源MAC地址为路由器进入B子网的接口的MAC地址</li>
+<li>数据帧到达B后经过解析将B的MAC，IP再发给A</li>
+</ul>
+</li>
+<li><p>ARP是个即插即用的协议（一般情况下ARP表为空，使用的时候才建立，并且是结点自主创建的）</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/" rel="prev" title="计算机网络--网络层">
+                  <i class="fa fa-chevron-left"></i> 计算机网络--网络层
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/05/26/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%90%84%E5%B1%82%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8/" rel="next" title="计算机网络--各层协议的综合应用">
+                  计算机网络--各层协议的综合应用 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zrk</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.2&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

@@ -20,25 +20,34 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;zrk494.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Pisces&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
-<meta name="description" content="包括专业课学习的相关笔记，以及其他">
-<meta property="og:type" content="website">
-<meta property="og:title" content="post">
-<meta property="og:url" content="http://zrk494.github.io/archives/index.html">
+<meta name="description" content="工厂方法模式（factory method pattern）本文只解释抽象的理论，具体的实例（UML图+源码）见 github仓库（HW1，HW2，HW3） 1.定义 将创建对象委托给工厂类，而不是用户类创建  2. 目的 在创建对象的相关代码之中，一般会存在较多的条件语句，让客户类看起来非常臃肿，维护困难，故通过工厂方法模式解决此问题  3. 工厂类的功能 选择一个满足条件的类 创建这个类的对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件设计模式--工厂方法模式">
+<meta property="og:url" content="http://zrk494.github.io/2021/04/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="post">
-<meta property="og:description" content="包括专业课学习的相关笔记，以及其他">
+<meta property="og:description" content="工厂方法模式（factory method pattern）本文只解释抽象的理论，具体的实例（UML图+源码）见 github仓库（HW1，HW2，HW3） 1.定义 将创建对象委托给工厂类，而不是用户类创建  2. 目的 在创建对象的相关代码之中，一般会存在较多的条件语句，让客户类看起来非常臃肿，维护困难，故通过工厂方法模式解决此问题  3. 工厂类的功能 选择一个满足条件的类 创建这个类的对象">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zrk494.github.io/2021/04/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/image-20210911101710160.png">
+<meta property="og:image" content="http://zrk494.github.io/2021/04/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/image-20210911101819299.png">
+<meta property="og:image" content="http://zrk494.github.io/2021/04/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/image-20210911103811864.png">
+<meta property="article:published_time" content="2021-04-11T08:22:00.000Z">
+<meta property="article:modified_time" content="2021-12-16T09:03:05.728Z">
 <meta property="article:author" content="zrk">
+<meta property="article:tag" content="软件设计">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="面向对象">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zrk494.github.io/2021/04/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/image-20210911101710160.png">
 
 
-<link rel="canonical" href="http://zrk494.github.io/archives/">
+<link rel="canonical" href="http://zrk494.github.io/2021/04/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:true,&quot;isPost&quot;:false,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:&quot;&quot;,&quot;permalink&quot;:&quot;&quot;,&quot;path&quot;:&quot;archives&#x2F;index.html&quot;,&quot;title&quot;:&quot;&quot;}</script>
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;http:&#x2F;&#x2F;zrk494.github.io&#x2F;2021&#x2F;04&#x2F;11&#x2F;%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F&#x2F;&quot;,&quot;path&quot;:&quot;2021&#x2F;04&#x2F;11&#x2F;工厂模式&#x2F;&quot;,&quot;title&quot;:&quot;软件设计模式--工厂方法模式&quot;}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
-<title>post</title><script src="/js/config.js"></script>
+<title>软件设计模式--工厂方法模式 | post</title><script src="/js/config.js"></script>
   
 
 
@@ -104,7 +113,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -117,6 +126,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%EF%BC%88factory-method-pattern%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">工厂方法模式（factory method pattern）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">1.定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%9B%AE%E7%9A%84"><span class="nav-number">1.2.</span> <span class="nav-text">2. 目的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%B7%A5%E5%8E%82%E7%B1%BB%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-number">1.3.</span> <span class="nav-text">3. 工厂类的功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-number">1.4.</span> <span class="nav-text">4.  工厂模式的优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.5.</span> <span class="nav-text">5. 简单工厂模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.6.</span> <span class="nav-text">6.工厂方法模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.7.</span> <span class="nav-text">7. 抽象工厂模式</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -171,16 +181,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/04/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -193,9 +204,9 @@
       <meta itemprop="name" content="post">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">软件设计模式--工厂方法模式</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          软件设计模式--工厂方法模式
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -234,7 +245,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="工厂方法模式（factory-method-pattern）"><a href="#工厂方法模式（factory-method-pattern）" class="headerlink" title="工厂方法模式（factory method pattern）"></a>工厂方法模式（factory method pattern）</h3><p>本文只解释抽象的理论，具体的实例（UML图+源码）见 <a target="_blank" rel="noopener" href="https://github.com/zrk494/Software-Architecture">github仓库</a>（HW1，HW2，HW3）</p>
+        <h3 id="工厂方法模式（factory-method-pattern）"><a href="#工厂方法模式（factory-method-pattern）" class="headerlink" title="工厂方法模式（factory method pattern）"></a>工厂方法模式（factory method pattern）</h3><p>本文只解释抽象的理论，具体的实例（UML图+源码）见 <a target="_blank" rel="noopener" href="https://github.com/zrk494/Software-Architecture">github仓库</a>（HW1，HW2，HW3）</p>
 <h4 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h4><ul>
 <li>将创建对象委托给工厂类，而不是用户类创建</li>
 </ul>
@@ -289,7 +300,6 @@
 </ul>
 <p>备注：设计模式的相关理论非常抽象，最好配合代码实例一起食用</p>
 
-      
     </div>
 
     
@@ -297,8 +307,23 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-tags">
+              <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/" rel="tag"># 软件设计</a>
+              <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag"># 面向对象</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/11/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" rel="prev" title="软件设计模式--策略模式">
+                  <i class="fa fa-chevron-left"></i> 软件设计模式--策略模式
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
@@ -306,9 +331,7 @@
 
 
 
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+
 <script src="/js/comments.js"></script>
 </div>
   </main>

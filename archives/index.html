@@ -135,7 +135,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/08/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CDN/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/04/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CDN/" class="post-title-link" itemprop="url">计算机网络--CDN</a>
+          <a href="/2021/04/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">软件设计模式--工厂方法模式</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,7 +205,23 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-08-11 11:29:15" itemprop="dateCreated datePublished" datetime="2021-08-11T11:29:15+08:00">2021-08-11</time>
+      <time title="创建时间：2021-04-11 16:22:00" itemprop="dateCreated datePublished" datetime="2021-04-11T16:22:00+08:00">2021-04-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-12-16 17:03:05" itemprop="dateModified" datetime="2021-12-16T17:03:05+08:00">2021-12-16</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">软件设计模式</span></a>
+        </span>
     </span>
 
   
@@ -218,7 +234,61 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <h3 id="工厂方法模式（factory-method-pattern）"><a href="#工厂方法模式（factory-method-pattern）" class="headerlink" title="工厂方法模式（factory method pattern）"></a>工厂方法模式（factory method pattern）</h3><p>本文只解释抽象的理论，具体的实例（UML图+源码）见 <a target="_blank" rel="noopener" href="https://github.com/zrk494/Software-Architecture">github仓库</a>（HW1，HW2，HW3）</p>
+<h4 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h4><ul>
+<li>将创建对象委托给工厂类，而不是用户类创建</li>
+</ul>
+<h4 id="2-目的"><a href="#2-目的" class="headerlink" title="2. 目的"></a>2. 目的</h4><ul>
+<li>在创建对象的相关代码之中，一般会存在较多的条件语句，让客户类看起来非常臃肿，维护困难，故通过工厂方法模式解决此问题</li>
+</ul>
+<h4 id="3-工厂类的功能"><a href="#3-工厂类的功能" class="headerlink" title="3. 工厂类的功能"></a>3. 工厂类的功能</h4><ul>
+<li>选择一个满足条件的类</li>
+<li>创建这个类的对象</li>
+<li>将这个对象返回给客户（以超类的类型返回）</li>
+</ul>
+<p>注意事项：一般来说，工厂类只完成上述的功能，不会在做其他任何事</p>
+<h4 id="4-工厂模式的优点"><a href="#4-工厂模式的优点" class="headerlink" title="4.  工厂模式的优点"></a>4.  工厂模式的优点</h4><ul>
+<li>客户类的代码更简洁，简化了应用程序</li>
+<li>隐藏了内部的工作机制，业务逻辑</li>
+<li>实现了责任分离</li>
+</ul>
+<h4 id="5-简单工厂模式"><a href="#5-简单工厂模式" class="headerlink" title="5. 简单工厂模式"></a>5. 简单工厂模式</h4><ul>
+<li>抽象的展示如下</li>
+</ul>
+<p><img src="/2021/04/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/image-20210911101710160.png" alt="image-20210911101710160"></p>
+<ul>
+<li>存在可扩展性差的问题，不符合开闭原则</li>
+<li>工厂类方法是静态的，不可被继承</li>
+</ul>
+<h4 id="6-工厂方法模式"><a href="#6-工厂方法模式" class="headerlink" title="6.工厂方法模式"></a>6.工厂方法模式</h4><ul>
+<li>此种模式之下，为了提高可扩展性，将<strong>工程类设计为层次类</strong>，即用一个接口作为超类，再继承这个超类来建立其他的类（解决简单工厂类的问题）</li>
+<li>下图为抽象的展示</li>
+</ul>
+<p><img src="/2021/04/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/image-20210911101819299.png" alt="image-20210911101819299"></p>
+<ul>
+<li>工厂模式符合开闭原则</li>
+<li>使用工厂模式的场合<ul>
+<li>存在大量条件语句</li>
+<li>创建对象的任务比较繁杂（逻辑复杂，分支多）</li>
+<li>需要封装创建类的对象的逻辑</li>
+</ul>
+</li>
+</ul>
+<p>工厂模式存在一种特殊的实现分发，不满足开闭原则，但是进一步简化了客户类</p>
+<h4 id="7-抽象工厂模式"><a href="#7-抽象工厂模式" class="headerlink" title="7. 抽象工厂模式"></a>7. 抽象工厂模式</h4><ul>
+<li>下图为抽象的展示</li>
+</ul>
+<p><img src="/2021/04/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/image-20210911103811864.png" alt="image-20210911103811864"></p>
+<ul>
+<li><p>此种情况下存在多个产品（他们结构是相同的），抽象工厂类之中有创建产品的接口，在工厂具体类中实现产品创建（对应每个产品类之中的一个产品）</p>
+</li>
+<li><p>此时，客户不必知道创建对象的细节，并且避免了复杂的重复的条件语句</p>
+</li>
+<li><p>抽象工厂模式满足开闭原则</p>
+</li>
+</ul>
+<p>备注：设计模式的相关理论非常抽象，最好配合代码实例一起食用</p>
+
       
     </div>
 
@@ -237,7 +307,7 @@
 
 
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/11/">11</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

@@ -30,13 +30,6 @@
   </url>
   
   <url>
-    <loc>http://zrk494.github.io/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/</loc>
-    
-    <lastmod>2021-10-18</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://zrk494.github.io/zrk/index.html</loc>
     
     <lastmod>2021-08-23</lastmod>
@@ -51,13 +44,6 @@
   </url>
   
   <url>
-    <loc>http://zrk494.github.io/2021/08/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CDN/</loc>
-    
-    <lastmod>2021-08-11</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://zrk494.github.io/tags/index.html</loc>
     
     <lastmod>2021-07-04</lastmod>
@@ -65,44 +51,9 @@
   </url>
   
   <url>
-    <loc>http://zrk494.github.io/2021/03/07/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
-    
-    <lastmod>2021-05-28</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://zrk494.github.io/categories/index.html</loc>
     
     <lastmod>2021-05-28</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zrk494.github.io/2021/04/27/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/</loc>
-    
-    <lastmod>2021-05-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zrk494.github.io/2021/05/26/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%90%84%E5%B1%82%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8/</loc>
-    
-    <lastmod>2021-05-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zrk494.github.io/2021/05/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</loc>
-    
-    <lastmod>2021-05-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zrk494.github.io/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/</loc>
-    
-    <lastmod>2021-05-09</lastmod>
     
   </url>
   
@@ -114,6 +65,20 @@
     <priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>http://zrk494.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <lastmod>2021-12-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://zrk494.github.io/tags/SQL/</loc>
+    <lastmod>2021-12-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
   <url>
     <loc>http://zrk494.github.io/tags/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/</loc>
@@ -136,45 +101,17 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>http://zrk494.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    <lastmod>2021-12-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://zrk494.github.io/tags/SQL/</loc>
-    <lastmod>2021-12-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://zrk494.github.io/tags/%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2021-12-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://zrk494.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2021-12-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   
   <url>
-    <loc>http://zrk494.github.io/categories/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>http://zrk494.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2021-12-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://zrk494.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <loc>http://zrk494.github.io/categories/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2021-12-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

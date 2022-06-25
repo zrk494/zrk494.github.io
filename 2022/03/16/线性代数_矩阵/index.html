@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;zrk494.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Pisces&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
+<meta name="description" content="矩阵基本定义 定义  零矩阵  单位矩阵E，如4阶单位矩阵如下图 $ \begin{pmatrix}1&amp;0&amp;0&amp;0 \\ 0&amp;1&amp;0&amp;0\\ 0&amp;0&amp;1&amp;0\\ 0&amp;0&amp;0&amp;1\end{pmatrix}$    矩阵加法  矩阵数乘（每个元素都和系数相乘）  矩阵的乘法（$A\times B$）  前提">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性代数_矩阵">
+<meta property="og:url" content="http://zrk494.github.io/2022/03/16/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%9F%A9%E9%98%B5/index.html">
+<meta property="og:site_name" content="post">
+<meta property="og:description" content="矩阵基本定义 定义  零矩阵  单位矩阵E，如4阶单位矩阵如下图 $ \begin{pmatrix}1&amp;0&amp;0&amp;0 \\ 0&amp;1&amp;0&amp;0\\ 0&amp;0&amp;1&amp;0\\ 0&amp;0&amp;0&amp;1\end{pmatrix}$    矩阵加法  矩阵数乘（每个元素都和系数相乘）  矩阵的乘法（$A\times B$）  前提">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-16T13:02:24.000Z">
+<meta property="article:modified_time" content="2022-06-25T08:49:57.525Z">
+<meta property="article:author" content="zrk">
+<meta property="article:tag" content="线性代数">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://zrk494.github.io/2022/03/16/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%9F%A9%E9%98%B5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;http:&#x2F;&#x2F;zrk494.github.io&#x2F;2022&#x2F;03&#x2F;16&#x2F;%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%9F%A9%E9%98%B5&#x2F;&quot;,&quot;path&quot;:&quot;2022&#x2F;03&#x2F;16&#x2F;线性代数_矩阵&#x2F;&quot;,&quot;title&quot;:&quot;线性代数_矩阵&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>线性代数_矩阵 | post</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">post</h1>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="/uploads/233.jpg" alt="post">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5"><span class="nav-number">1.</span> <span class="nav-text">矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">基本定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E7%9A%84%E5%85%B6%E4%BB%96%E8%BF%90%E7%AE%97"><span class="nav-number">1.2.</span> <span class="nav-text">矩阵的其他运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86"><span class="nav-number">1.3.</span> <span class="nav-text">矩阵的逆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E7%9A%84%E5%88%9D%E7%AD%89%E5%8F%98%E6%8D%A2"><span class="nav-number">1.4.</span> <span class="nav-text">矩阵的初等变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E7%9A%84%E7%A7%A9"><span class="nav-number">1.5.</span> <span class="nav-text">矩阵的秩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%B4%E9%9A%8F%E7%9F%A9%E9%98%B5"><span class="nav-number">1.6.</span> <span class="nav-text">伴随矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E5%9D%97%E7%9F%A9%E9%98%B5"><span class="nav-number">1.7.</span> <span class="nav-text">分块矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%A0%E7%A7%8D%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5%E7%9A%84%E6%80%BB%E7%BB%93"><span class="nav-number">1.8.</span> <span class="nav-text">几种特殊矩阵的总结</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zrk</p>
+  <div class="site-description" itemprop="description">包括专业课学习的相关笔记，以及其他</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/yourname" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/03/16/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%9F%A9%E9%98%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zrk">
+      <meta itemprop="description" content="包括专业课学习的相关笔记，以及其他">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="post">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          线性代数_矩阵
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-03-16 21:02:24" itemprop="dateCreated datePublished" datetime="2022-03-16T21:02:24+08:00">2022-03-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-06-25 16:49:57" itemprop="dateModified" datetime="2022-06-25T16:49:57+08:00">2022-06-25</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><h4 id="基本定义"><a href="#基本定义" class="headerlink" title="基本定义"></a>基本定义</h4><ul>
+<li><p>定义</p>
+<ul>
+<li><p>零矩阵</p>
+</li>
+<li><p>单位矩阵E，如4阶单位矩阵如下图</p>
+<p>$ \begin{pmatrix}1&amp;0&amp;0&amp;0 \\ 0&amp;1&amp;0&amp;0\\ 0&amp;0&amp;1&amp;0\\ 0&amp;0&amp;0&amp;1\end{pmatrix}$</p>
+</li>
+</ul>
+</li>
+<li><p>矩阵加法</p>
+</li>
+<li><p>矩阵数乘（每个元素都和系数相乘）</p>
+</li>
+<li><p>矩阵的乘法（$A\times B$）</p>
+<ul>
+<li><p>前提条件：矩阵A的列数=矩阵B的行数</p>
+</li>
+<li><p>A的一行和B的一列的所有元素，对应求积，再求出积的总和放到新的矩阵的对应行和列</p>
+</li>
+<li><p>矩阵乘法的一些相关性质</p>
+<ul>
+<li><p>矩阵乘法满足结合律和分配率</p>
+</li>
+<li><p>矩阵乘法不满足交换律和消去律</p>
+<p>​    （例$(AB)^2=ABAB\neq A^2B^2 ,(A+B)(A-B)=A^2-AB+BA-B^2$）</p>
+</li>
+<li><p>一般情况矩阵乘法不能因式分解，但是如果是A和E可以因式分解</p>
+</li>
+<li><p>一些特殊情况，矩阵乘法满足消去律（A可逆/A为列满秩/A为行满秩）</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="矩阵的其他运算"><a href="#矩阵的其他运算" class="headerlink" title="矩阵的其他运算"></a>矩阵的其他运算</h4><ul>
+<li>矩阵的转置（$A^T$）<ul>
+<li>定义：转置即交换矩阵的行和列得到矩阵</li>
+<li>性质相关<ul>
+<li>$(A+B)^T=A^T+B^T$</li>
+<li>$(kA)^T=kA^T$</li>
+<li>$(AB)^T=B^TA^T$</li>
+<li>$(A^T)^T=A$</li>
+<li>$|A^T|=|A|$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>对称矩阵<ul>
+<li>定义：满足$A^T=A$</li>
+</ul>
+</li>
+<li>反对称矩阵<ul>
+<li>定义：满足$A^T=-A$</li>
+<li><strong>补充结论：任意n阶矩阵均可分解为对称矩阵与反对称矩阵的和，详细见讲义</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="矩阵的逆"><a href="#矩阵的逆" class="headerlink" title="矩阵的逆"></a>矩阵的逆</h4><ul>
+<li>定义：$AB=E,B=A^{-1}$，则B为A的可逆矩阵</li>
+<li><p>性质相关</p>
+<ul>
+<li>$(kA)^{-1}= \frac{1}{k}A^{-1}$</li>
+<li>$(AB)^{-1}=B^{-1}A^{-1}$</li>
+<li>$|A^{-1}|=\frac{1}{|A|}$</li>
+<li>$(A^T)^{-1}=(A^{-1})^T$</li>
+<li>$(A^{-1})^{-1}=A$</li>
+</ul>
+</li>
+<li><p>矩阵是否可逆的充要条件</p>
+<ol>
+<li><p>$|A|\neq0$</p>
+</li>
+<li><p>$r(A)=n$</p>
+</li>
+<li><p>A的列（行）向量组线性无关</p>
+</li>
+<li><p>齐次线性方程组$Ax=0$只有0解</p>
+</li>
+<li><p>非齐次线性方程组$Ax=b$有唯一解</p>
+</li>
+<li><p>A的特征值不为0</p>
+<p>注：上面6个条件互相为充要条件</p>
+</li>
+</ol>
+</li>
+<li><p>矩阵不可逆的充要条件</p>
+<ol>
+<li>$|A|=0$</li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>$r(A)\lt n$<ol>
+<li>$Ax=0$有非0解</li>
+</ol>
+</li>
+<li>A的一个特征值为0<ol>
+<li>A的列（行）向量组线性相关</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><p>矩阵的逆的4种求法</p>
+<ul>
+<li>逆的定义</li>
+<li><strong>初等变换法（具体的矩阵最常用）</strong>$(A|E)$通过初等行变换变为$(E|A^{-1})$</li>
+<li>伴随矩阵法（抽象的矩阵常用）</li>
+<li>分块矩阵法</li>
+</ul>
+</li>
+</ul>
+<h4 id="矩阵的初等变换"><a href="#矩阵的初等变换" class="headerlink" title="矩阵的初等变换"></a>矩阵的初等变换</h4><ul>
+<li>初等行变换的定义：包括三种变换方式<ol>
+<li>两行（列）互换</li>
+<li>一行（列）乘非0常数k</li>
+<li>一行（列）乘k加到另一行（列）</li>
+</ol>
+</li>
+<li>初等矩阵定义：单位矩阵E，只经过一次初等变换得到的矩阵</li>
+<li>初等变换和初等矩阵（记为$E_1$）的一些性质<ul>
+<li>$|E_1|=-1$此时只经过一次两行互换，$|E_1|=k$此时矩阵的某一行乘了k，$|E_1|=1$此时矩阵的某一行乘k加到了另一行</li>
+<li>$E_1^T=E_1$此时只经过一次两行互换，或者此时矩阵的某一行乘了k，或者此时矩阵的某一行乘k加到了另一行</li>
+<li>$E_1^{-1}=E_1$此时只经过一次两行互换</li>
+<li>$E_1$为E在某一行乘了k得到，$E_1^{-1}$由E在该行乘$\frac{1}{k}$得到</li>
+<li>$E_1$为E在某一行乘k加到了另一行得到</li>
+<li>初等行（列）变换相当于左（右）乘相应的初等矩阵（做题很常用）<ul>
+<li>注：原矩阵乘一个初等矩阵得到新的矩阵，原矩阵到新矩阵初等变换的过程和得到初等矩阵变换的过程是一样的</li>
+</ul>
+</li>
+<li>可逆矩阵可以写成有限个初等矩阵的乘积</li>
+</ul>
+</li>
+<li><strong>初等变换的应用</strong>（综合性很强，很重要）<ul>
+<li>初等变换可以求矩阵的逆</li>
+<li>初等变换不会改变矩阵的秩，可以求矩阵的秩</li>
+<li>初等行变换不改变向量组的线性关系，可以用于求向量组的极大无关组</li>
+<li>初等行变换不改变线性方程组的解，可用于求线性方程组的解</li>
+</ul>
+</li>
+<li>矩阵等价<ul>
+<li>定义：矩阵A可以经过有限次的初等变换得到矩阵B，则A和B等价</li>
+<li>一组和等价相关的充要条件<ul>
+<li>r(A)=r(B)（更常用）</li>
+<li>存在m阶可逆矩阵P和n阶可逆矩阵Q，使得B=PAQ</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="矩阵的秩"><a href="#矩阵的秩" class="headerlink" title="矩阵的秩"></a>矩阵的秩</h4><ul>
+<li>基本定义相关<ul>
+<li>k阶子式：在一个m行n列的矩阵中任取k行k列，得到的这个k阶行列式即为k阶子式</li>
+<li>矩阵的秩：若矩阵A有一个r阶的子式不为0，而所有的r+1阶子式均为0，则矩阵的秩为r（记为r(A)）</li>
+<li>补充：<ul>
+<li>若矩阵A有一个r阶的子式，则$r(A)\ge r$</li>
+<li>若矩阵A所有r阶的子式均为0，则$r(A)\lt r+1$</li>
+<li>矩阵$A\neq 0$等价于$r(A)\ge 1$</li>
+</ul>
+</li>
+<li>满秩：矩阵A有m行n列，若r(A)=m的行满秩，若r(A)=n的列满秩</li>
+</ul>
+</li>
+<li>秩的性质（矩阵A有m行n列，矩阵B有n行s列）<ul>
+<li>$r(A)\le min\{m,n\}$</li>
+<li>$r(A+B)\le r(A)+r(B)$</li>
+<li>$r(AB)\le min\{r(A),r(B)\}$，实际使用时，可按需要写做$r(AB)\le r(A)$，并结合性质1</li>
+<li>$max\{r(A),r(B)\}\le r(A|B)\le r(A)+r(B)$—————————此处的|是分隔符号</li>
+<li>$r(A)=r(kA)$</li>
+<li>P为m阶可逆矩阵，Q为n阶可逆矩阵，则$r(A)=r(PA)=R(AQ)=R(PAQ)$</li>
+<li>若$r(A)=n$，则$r(A)=r(AB)$———左乘行满秩，秩不变———-$r(A)=m$，则$r(A)=r(CA)$———右乘列满秩，秩不变</li>
+<li>$r(A)=r(A^T)=r(AA^T)=r(A^TA)$</li>
+<li>若AB=0，则$r(A)+r(B)\le n$</li>
+</ul>
+</li>
+<li>矩阵的秩的求解方法<ul>
+<li>定义</li>
+<li>对于具体的矩阵A，对A初等行变换，化简为行阶梯形矩阵（每一行第一个非0的数的下方元素均为0），r(A)即为非0行行数</li>
+<li>对应抽象的矩阵A，使用之前的9条性质</li>
+</ul>
+</li>
+</ul>
+<h4 id="伴随矩阵"><a href="#伴随矩阵" class="headerlink" title="伴随矩阵"></a>伴随矩阵</h4><ul>
+<li><p>定义：由$a_{ij}$的代数余子式$A_{ij}$组成的矩阵，记作$A^<em>$（<em>*注意其形式，一行的代数余子式放在矩阵的一列上</em></em>）</p>
+</li>
+<li><p>性质：</p>
+<ul>
+<li><p>$A^<em>A=A^</em>A=|A|E$           $A^{-1}|A|=A^*$(很常用)</p>
+</li>
+<li><p>$(kA)^<em>=k^{n-1}A^</em>$(有上一条结论推出)</p>
+</li>
+<li><p>$(AB)^<em>=B^</em>A^*$</p>
+</li>
+<li><p>$|A^*|=|A|^{n-1}$</p>
+</li>
+<li><p>$(A^T)^<em>=(A^</em>)^T$</p>
+</li>
+<li><p>$(A^{-1})^<em>=(A^</em>)^{-1}=\frac{A}{|A|}$</p>
+</li>
+<li><p>$(A^<em>)^</em>=|A|^{n-2}A$</p>
+</li>
+<li><script type="math/tex; mode=display">
+r(A^*)=
+\begin{cases}
+    n & r(A)=n \\
+    1 & r(A)=n-1 \\
+    0 &  r(A)<n-1\\
+\end{cases}</script></li>
+</ul>
+</li>
+</ul>
+<h4 id="分块矩阵"><a href="#分块矩阵" class="headerlink" title="分块矩阵"></a>分块矩阵</h4><ul>
+<li><p>运算</p>
+<ul>
+<li><p>加法</p>
+</li>
+<li><p>数乘</p>
+</li>
+<li><p><strong>乘法</strong>（很重要，有两种方式，A为$m\times n$的矩阵，B为$n\times s$的矩阵）</p>
+<ul>
+<li>A按列分块</li>
+<li>B按行分块</li>
+</ul>
+</li>
+<li><p>分块矩阵转置</p>
+</li>
+<li>分块矩阵的逆</li>
+<li>分块矩阵的高次幂</li>
+<li>注：上面2种运算对应的矩阵除了主对角线都为0</li>
+</ul>
+</li>
+</ul>
+<h4 id="几种特殊矩阵的总结"><a href="#几种特殊矩阵的总结" class="headerlink" title="几种特殊矩阵的总结"></a>几种特殊矩阵的总结</h4><ul>
+<li>单位矩阵，E</li>
+<li>数量矩阵</li>
+<li>对角阵</li>
+<li>上（下）三角矩阵</li>
+<li>对称矩阵和反对称矩阵</li>
+<li>正交矩阵（与其转置相乘结果为E）</li>
+<li>初等矩阵</li>
+<li>行阶梯矩阵<ul>
+<li>每一行第一个非0的数的下方元素均为0</li>
+<li>全为0的行都在最下方</li>
+</ul>
+</li>
+<li>行最简矩阵<ul>
+<li>在行阶梯矩阵的基础上，让每一行第一个非0的数化简为1，且其正下方和正上方为0</li>
+</ul>
+</li>
+</ul>
+<p>补充内容</p>
+<ul>
+<li>对角矩阵（矩阵除了主对角线其余元素全为0），其求逆矩阵的公式</li>
+<li><strong>对于两个n维列向量$\alpha$和$\beta$，则矩阵$\alpha\beta^T$秩为1，且$\alpha^T\beta=\beta^T\alpha$为一个数，也是矩阵$\alpha\beta^T$的迹</strong></li>
+<li>题目中没有矩阵可逆相关的依据就不要考虑可逆，尝试考虑其他的方式化简（对于一个等式，可以考虑凑因式分解）</li>
+<li><p>矩阵的迹：即矩阵的主对角线之和</p>
+</li>
+<li><p>矩阵中含参数，初等行变换过程中尽量不要将这个参数放在分母的位置</p>
+</li>
+<li>矩阵的秩相等不要想当然的直接认为它们的行列式相等（行列式不为0的情况）</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag"># 线性代数</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/03/16/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E4%BA%8C%E6%AC%A1%E5%9E%8B/" rel="prev" title="线性代数_二次型">
+                  <i class="fa fa-chevron-left"></i> 线性代数_二次型
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/03/16/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84/" rel="next" title="线性代数_线性方程组">
+                  线性代数_线性方程组 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zrk</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;per_page&quot;:true,&quot;cdn&quot;:&quot;&#x2F;&#x2F;cdn.bootcss.com&#x2F;mathjax&#x2F;2.7.1&#x2F;latest.js?config&#x3D;TeX-AMS-MML_HTMLorMML&quot;,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.2&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

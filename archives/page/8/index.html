@@ -23,7 +23,7 @@
 <meta name="description" content="包括专业课学习的相关笔记，以及其他">
 <meta property="og:type" content="website">
 <meta property="og:title" content="post">
-<meta property="og:url" content="http://zrk494.github.io/archives/page/5/index.html">
+<meta property="og:url" content="http://zrk494.github.io/archives/page/8/index.html">
 <meta property="og:site_name" content="post">
 <meta property="og:description" content="包括专业课学习的相关笔记，以及其他">
 <meta property="og:locale" content="zh_CN">
@@ -31,11 +31,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://zrk494.github.io/archives/page/5/">
+<link rel="canonical" href="http://zrk494.github.io/archives/page/8/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:true,&quot;isPost&quot;:false,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:&quot;&quot;,&quot;permalink&quot;:&quot;&quot;,&quot;path&quot;:&quot;archives&#x2F;page&#x2F;5&#x2F;index.html&quot;,&quot;title&quot;:&quot;&quot;}</script>
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:true,&quot;isPost&quot;:false,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:&quot;&quot;,&quot;permalink&quot;:&quot;&quot;,&quot;path&quot;:&quot;archives&#x2F;page&#x2F;8&#x2F;index.html&quot;,&quot;title&quot;:&quot;&quot;}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
 <title>post</title><script src="/js/config.js"></script>
@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E4%BA%8C%E6%AC%A1%E5%9E%8B/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E4%BA%8C%E6%AC%A1%E5%9E%8B/" class="post-title-link" itemprop="url">线性代数_二次型</a>
+          <a href="/2022/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84/" class="post-title-link" itemprop="url">线性代数_线性方程组</a>
         </h2>
 
         <div class="post-meta-container">
@@ -212,7 +212,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-07-24 16:25:59" itemprop="dateModified" datetime="2022-07-24T16:25:59+08:00">2022-07-24</time>
+        <time title="修改时间：2022-07-19 19:24:16" itemprop="dateModified" datetime="2022-07-19T19:24:16+08:00">2022-07-19</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -234,45 +234,94 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="二次型"><a href="#二次型" class="headerlink" title="二次型"></a>二次型</h4><ul>
-<li>二次型（即含n个变量的二次齐次函数）<ul>
-<li>可以记作$f=x^TAx$（x为n个变量的列向量，A—-二次型矩阵—-为实对称矩阵，也是对应二次型的系数）</li>
-<li>A的秩即二次型的秩</li>
-<li>矩阵A中$a_{ij}=a_{ji}$，对角线元素为平方项系数，其余元素为$x_{ij}$的系数的一半</li>
+          <h4 id="线性方程组的解"><a href="#线性方程组的解" class="headerlink" title="线性方程组的解"></a>线性方程组的解</h4><ul>
+<li>齐次线性方程组<ul>
+<li>方程的右侧均为0</li>
+<li>系数矩阵记为A</li>
 </ul>
 </li>
-<li>标准形：只含有二次项的二次型</li>
-<li>可逆线性变换</li>
-<li>正负惯性指数：标准型中系数为正的个数</li>
-<li>规范形：标准型的系数为0或1或-1</li>
-<li>标准形的求法<ul>
-<li>拉格朗日配方法（计算量大，不太好用）</li>
-<li><strong>正交变换法</strong><ol>
-<li>求矩阵A的n个特征值</li>
-<li>求矩阵A的n个线性无关的特征向量</li>
-<li>将上一步的特征向量分别正交化（Schmidt或者其他方法），再单位化，得到正交矩阵Q，再经过正交变换x=Qy得到标准形的二次型矩阵（这个二次型的系数即为A的n个特征值，可以作为结论）</li>
-</ol>
+<li>非齐次线性方程组<ul>
+<li>方程右侧为常数，不全为0</li>
+<li>增广矩阵（系数矩阵与右侧的数组成的向量结合，记作$\overline A$）</li>
+</ul>
 </li>
+<li>解的定义：n维未知数x的列向量</li>
+<li>主变量和自由变量<ul>
+<li>A化为行阶梯形矩阵，每行第一个非0元素对应的变量即为主变量，其余的未知数为自由变量</li>
+</ul>
+</li>
+<li>解的性质<ul>
+<li>齐次线性方程组的线性组合仍然为该方程组的解</li>
+<li>非齐次线性方程组的解之差为齐次方程组的解</li>
+<li>齐次的解+非齐次的解为非齐次的解</li>
+</ul>
+</li>
+<li>解的性质推广（s个解）<ul>
+<li>对于非齐次的s个解，则当这s个解的线性组合的系数和为0，为齐次的解，和为1，为非齐次的解</li>
+<li>对于非齐次的s个<strong>线性无关</strong>的解，它们与第一个解的差为齐次的s-1个线性无关的解</li>
+</ul>
+</li>
+<li>齐次线性方程组解的判定（结合线性相关和线性无关来综合应用）<ul>
+<li>只有零解等价于r(A)=n</li>
+<li>有非零解等价于r(A)&lt;n</li>
+<li>上两个为充要条件</li>
+<li>补充一个推论，齐次方程有非0解的充分条件为m&lt;n（行数小于列数）</li>
+</ul>
+</li>
+<li>非齐次线性方程组解的判定（结合线性相关和线性无关）<ul>
+<li>无解等价于$r(A)&lt;r(\overline A) \text{等价于}r(A)=r(\overline A)-1$</li>
+<li>有唯一解等价于$r(A)=r(\overline A)=n $</li>
+<li>有无穷多解等价于$r(A)=r(\overline A)&lt;n $</li>
+<li>补充推论<ul>
+<li>非齐次方程组有解等价于$r(A)=r(\overline A) $</li>
+<li>有解的充分条件是$r(A)=m$</li>
 </ul>
 </li>
 </ul>
-<h4 id="合同矩阵"><a href="#合同矩阵" class="headerlink" title="合同矩阵"></a>合同矩阵</h4><ul>
-<li>定义：存在可逆矩阵C，使得$B=C^TAC$，则A和B合同</li>
-<li>合同的一组充要条件<ol>
-<li>A对应的二次型和B对应的二次型有相同的正负惯性指数</li>
-<li><strong>A，B有相同个数的正负特征值</strong>（更常用）</li>
-</ol>
 </li>
 </ul>
-<h4 id="正定二次型"><a href="#正定二次型" class="headerlink" title="正定二次型"></a>正定二次型</h4><ul>
-<li>正定：对任意的$x\neq0$，二次型的值&gt;0，此时对应的矩阵A为正定矩阵</li>
-<li>正定的一组充要条件<ul>
-<li>f的正惯性指数为n</li>
-<li>A与E合同（即存在可逆矩阵C，是$C^TAC=E$）</li>
-<li>A的特征值都大于0</li>
-<li>A的顺序主子式均大于0</li>
+<h4 id="求解齐次线性方程组"><a href="#求解齐次线性方程组" class="headerlink" title="求解齐次线性方程组"></a>求解齐次线性方程组</h4><ul>
+<li><p>基础解系</p>
+<ul>
+<li>定义：方程组的s个解线性无关，且方程组的任意解可以由这s个解表示，这s个解即为基础解系</li>
+<li><strong>基础解系即为解的极大无关组</strong>，不唯一，个数唯一（s=$n-r(A)$），故找到s个线性无关的解即可得到基础解系<ul>
+<li>注：结合上面的这个性质，可以适当变换形式得到不等式确定系数矩阵的秩的范围</li>
 </ul>
 </li>
+<li><strong>跟基础解系可证明秩的性质9</strong></li>
+</ul>
+</li>
+<li><p>求基础解系</p>
+<ul>
+<li>对于数字矩阵：初等行变换化为行最简，设特殊的自由变量（一个为1时，其余均为0），解得主变量</li>
+<li>对于抽象矩阵：求得r(A)，再利用定义+性质凑出n-r(A)个线性无关的解</li>
+<li>齐次方程的通解（所以解）：基础解析的线性组合</li>
+</ul>
+</li>
+</ul>
+<h4 id="求解非齐次线性方程组（解不唯一的情况下）"><a href="#求解非齐次线性方程组（解不唯一的情况下）" class="headerlink" title="求解非齐次线性方程组（解不唯一的情况下）"></a>求解非齐次线性方程组（解不唯一的情况下）</h4><ul>
+<li><strong>非齐次线性方程组的通解=齐次的通解+非齐次的特解</strong>（记得要求出两个部分）</li>
+<li>求特解（对于增广矩阵$\overline A$）<ul>
+<li>数字矩阵：化为行最简，令自由变量全为0，根据新的系数的方程解出主变量</li>
+<li>抽象矩阵：用定义+性质凑</li>
+</ul>
+</li>
+</ul>
+<h4 id="公共解"><a href="#公共解" class="headerlink" title="公共解"></a>公共解</h4><ul>
+<li>既是方程组1的解又是方程组2的解</li>
+<li>求法<ul>
+<li>联立两个方程组（在已知两个线性方程组的具体形式的前提下）</li>
+</ul>
+</li>
+</ul>
+<h4 id="同解"><a href="#同解" class="headerlink" title="同解"></a>同解</h4><ul>
+<li>方程组1的解均为方程组2的解，反之亦然</li>
+<li>同解的充要条件（系数矩阵分别为A，m$\times$n阶；B，l$\times$n阶）<ul>
+<li>AB的行向量组等价</li>
+<li>r(A)=r(B)</li>
+</ul>
+</li>
+<li>通过同解的相关内容和性质证明秩的两个性质</li>
 </ul>
 
       
@@ -293,7 +342,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/archives/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/10/">10</a><a class="extend next" rel="next" href="/archives/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/archives/page/9/">9</a><a class="page-number" href="/archives/page/10/">10</a><a class="extend next" rel="next" href="/archives/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

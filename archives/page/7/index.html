@@ -135,7 +135,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%89%B9%E5%BE%81%E5%80%BC&%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%9F%A9%E9%98%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%89%B9%E5%BE%81%E5%80%BC&%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F/" class="post-title-link" itemprop="url">线性代数_特征值&特征向量等</a>
+          <a href="/2022/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%9F%A9%E9%98%B5/" class="post-title-link" itemprop="url">线性代数_矩阵</a>
         </h2>
 
         <div class="post-meta-container">
@@ -212,7 +212,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-07-19 19:20:01" itemprop="dateModified" datetime="2022-07-19T19:20:01+08:00">2022-07-19</time>
+        <time title="修改时间：2022-07-19 19:03:48" itemprop="dateModified" datetime="2022-07-19T19:03:48+08:00">2022-07-19</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -234,113 +234,264 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="特征值-amp-特征向量"><a href="#特征值-amp-特征向量" class="headerlink" title="特征值&amp;特征向量"></a>特征值&amp;特征向量</h4><p>$    A\alpha=\lambda\alpha\\<br>其中A为n阶矩阵，\lambda为一个常数，\alpha为n维非0列向量$</p>
+          <h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><h4 id="基本定义"><a href="#基本定义" class="headerlink" title="基本定义"></a>基本定义</h4><ul>
+<li><p>定义</p>
 <ul>
-<li>特征值$\lambda$</li>
-<li><p>特征向量$\alpha$</p>
+<li><p>零矩阵</p>
 </li>
-<li><p>补充说明</p>
+<li><p>单位矩阵E，如4阶单位矩阵如下图</p>
+<script type="math/tex; mode=display">\begin{pmatrix}1&0&0&0 \\ 0&1&0&0\\ 0&0&1&0\\ 0&0&0&1\end{pmatrix}</script></li>
+</ul>
+</li>
+<li><p>矩阵加法</p>
+</li>
+<li><p>矩阵数乘（每个元素都和系数相乘）</p>
+</li>
+<li><p>矩阵的乘法（$A\times B$）</p>
 <ul>
-<li>A各行元素之和均为$\lambda$，则特征向量元素全为1</li>
+<li><p>前提条件：矩阵A的列数=矩阵B的行数</p>
+</li>
+<li><p>A的一行和B的一列的所有元素，对应求积，再求出积的总和放到新的矩阵的对应行和列</p>
+</li>
+<li><p>矩阵乘法的一些相关性质</p>
+<ul>
+<li>矩阵乘法满足结合律和分配率</li>
+<li>矩阵乘法不满足交换律和消去律</li>
+</ul>
+<p>​    （例$(AB)^2=ABAB\neq A^2B^2 ,(A+B)(A-B)=A^2-AB+BA-B^2$）</p>
+<ul>
+<li>一般情况矩阵乘法不能因式分解，但是如果是A和E可以因式分解</li>
+<li>一些特殊情况，矩阵乘法满足消去律（A可逆/A为列满秩/A为行满秩）</li>
 </ul>
 </li>
 </ul>
-<p>​                                                 $|A-\lambda E|=0$</p>
-<ul>
-<li>特征多项式（等号左边的部分）</li>
-<li><p>特征方程（整个方程）</p>
 </li>
-<li><p>特征方程法求特征值+特征向量</p>
-<ul>
-<li>解出特征方程，可以得到A的n个特征值（转圈化简法）</li>
-<li>解方程组$(A-\lambda_iE)x=0$，得到基础解系即为特征值$\lambda_i$的$n-r(A-\lambda_iE)$个线性无关的特征向量</li>
+</ul>
+<h4 id="矩阵的其他运算"><a href="#矩阵的其他运算" class="headerlink" title="矩阵的其他运算"></a>矩阵的其他运算</h4><ul>
+<li>矩阵的转置（$A^T$）<ul>
+<li>定义：转置即交换矩阵的行和列得到矩阵</li>
+<li>性质相关<ul>
+<li>$(A+B)^T=A^T+B^T$</li>
+<li>$(kA)^T=kA^T$</li>
+<li>$(AB)^T=B^TA^T$</li>
+<li>$(A^T)^T=A$</li>
+<li>$|A^T|=|A|$</li>
 </ul>
 </li>
-<li><p>两个推论</p>
+</ul>
+</li>
+<li>对称矩阵<ul>
+<li>定义：满足$A^T=A$</li>
+</ul>
+</li>
+<li>反对称矩阵<ul>
+<li>定义：满足$A^T=-A$</li>
+<li><strong>补充结论：任意n阶矩阵均可分解为对称矩阵与反对称矩阵的和，详细见讲义</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="矩阵的逆"><a href="#矩阵的逆" class="headerlink" title="矩阵的逆"></a>矩阵的逆</h4><ul>
+<li>定义：$AB=E,B=A^{-1}$，则B为A的可逆矩阵</li>
+<li><p>性质相关</p>
+<ul>
+<li>$(kA)^{-1}= \frac{1}{k}A^{-1}$</li>
+<li>$(AB)^{-1}=B^{-1}A^{-1}$</li>
+<li>$|A^{-1}|=\frac{1}{|A|}$</li>
+<li>$(A^T)^{-1}=(A^{-1})^T$</li>
+<li>$(A^{-1})^{-1}=A$</li>
+</ul>
+</li>
+<li><p>矩阵是否可逆的充要条件</p>
 <ol>
-<li>上（下）三角矩阵，主对角矩阵的特征值为主对角线的元素</li>
-<li>$aA+bB$不可逆（$|aA+bB|=0$），则$\lambda=-\frac{b}a{}$</li>
-</ol>
+<li><p>$|A|\neq0$</p>
 </li>
-<li><p>特征值和特征向量的一些性质</p>
-<ul>
-<li>不同特征值的特征向量线性无关</li>
-<li>不同特征值的特征向量之和不是特征向量</li>
-<li>k重特征值最多有k个线性无关的特征向量（<strong>线性无关的特征向量数表明了特征值的重数</strong>）</li>
-<li>|A|的值为A的特征向量之和</li>
-<li>一些基本运算对特征值的影响</li>
-<li>矩阵运算对特征值的影响</li>
-</ul>
+<li><p>$r(A)=n$</p>
 </li>
-<li>抽象矩阵通过性质得到特征值，数字矩阵则用特征方程</li>
-</ul>
-<h4 id="相似矩阵"><a href="#相似矩阵" class="headerlink" title="相似矩阵"></a>相似矩阵</h4><ul>
-<li>定义：$B=P^{-1}AP$</li>
-<li>性质<ul>
-<li>相似的矩阵行列式，秩，特征方程，特征值，迹相同</li>
-<li>A与B相似，则AB与BA相似，A和B的多项式相似，他俩的转置相似，他俩的逆相似，他俩的伴随相似</li>
-<li>传递性</li>
-</ul>
+<li><p>A的列（行）向量组线性无关</p>
 </li>
-<li>判断矩阵是否相似还要用到用相似对角化的相关性质</li>
-</ul>
-<h4 id="相似对角化"><a href="#相似对角化" class="headerlink" title="相似对角化"></a>相似对角化</h4><ul>
-<li>定义：矩阵A相似于对角矩阵（对角矩阵的元素即为A的特征值）</li>
-<li>推论<ul>
-<li>P的第i列为矩阵A的特征值$\lambda_i$对应的特征向量</li>
-<li>P是有A的n个详细无关的特征向量构成的可逆矩阵</li>
-<li>A和B均可以相似对角化，则有一个等价结论：A与B相似等价于A，B有相同的特征值</li>
-</ul>
+<li><p>齐次线性方程组$Ax=0$只有0解</p>
 </li>
-<li>相似对角化的一组充要条件<ul>
-<li>A有n个线性无关的特征向量</li>
-<li>k重特征值有k个线性无关的特征向量</li>
-</ul>
+<li><p>非齐次线性方程组$Ax=b$有唯一解</p>
 </li>
-<li>相似对角化的充分条件<ul>
-<li>A有n个不同的特征值</li>
-<li>A为实对称矩阵</li>
-</ul>
-</li>
-<li>备注：若A可以相似对角化（特别地，A为实对称矩阵），则r(A)=非0特征值的个数</li>
-</ul>
-<h4 id="实对称矩阵（A）"><a href="#实对称矩阵（A）" class="headerlink" title="实对称矩阵（A）"></a>实对称矩阵（A）</h4><ul>
-<li><p>性质</p>
-<ol>
-<li><p>特征值均为实数（不重要，知道即可）</p>
-</li>
-<li><p>不同特征值的特征向量正交</p>
-</li>
-<li><p>k重特征值有k个线性无关的特征向量，即可以相似对角化，即存在可逆矩阵P，使得$P^{-1}AP=\Lambda$，P是有A的n个线性无关的特征向量构成的可逆矩阵</p>
-</li>
-<li><p>A可以正交相似对角化，即存在正交矩阵Q，使得$Q^{-1}AQ=Q^TAQ=\Lambda$，</p>
-</li>
-</ol>
-</li>
-<li><p>Q的求法</p>
-<ol>
-<li><p>求A的n个特征值</p>
-</li>
-<li><p>求A的n个线性无关的特征向量</p>
-</li>
-<li><p>将不同特征值的特征向量分别正交化（Schmidt或者其他方法），再单位化，组合到一起即为正交矩阵Q（如果2求出的向量已经正交的向量直接单位化即可）</p>
+<li><p>A的特征值不为0</p>
+<p>注：上面6个条件互相为充要条件</p>
 </li>
 </ol>
 </li>
-<li><p>实对称矩阵分解定理</p>
+<li><p>矩阵不可逆的充要条件</p>
+<ol>
+<li>$|A|=0$</li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>$r(A)\lt n$<ol>
+<li>$Ax=0$有非0解</li>
+</ol>
+</li>
+<li>A的一个特征值为0<ol>
+<li>A的列（行）向量组线性相关</li>
+</ol>
+</li>
+</ol>
 <ul>
-<li>A=特征值$\times$单位正交的特征向量$\times$单位正交的特征向量的转置</li>
-<li>特别的，若r(A)=1，则A=tr(A)$\times$单位正交的特征向量1$\times$单位正交的特征向量1的转置</li>
+<li><p>矩阵的逆的4种求法</p>
+<ul>
+<li>逆的定义</li>
+<li><strong>初等变换法（具体的矩阵最常用）</strong>$(A|E)$通过初等行变换变为$(E|A^{-1})$</li>
+<li>伴随矩阵法（抽象的矩阵常用）</li>
+<li>分块矩阵法</li>
 </ul>
 </li>
 </ul>
-<p>补充内容：</p>
+<h4 id="矩阵的初等变换"><a href="#矩阵的初等变换" class="headerlink" title="矩阵的初等变换"></a>矩阵的初等变换</h4><ul>
+<li>初等行变换的定义：包括三种变换方式<ol>
+<li>两行（列）互换</li>
+<li>一行（列）乘非0常数k</li>
+<li>一行（列）乘k加到另一行（列）</li>
+</ol>
+</li>
+<li>初等矩阵定义：单位矩阵E，只经过一次初等变换得到的矩阵</li>
+<li>初等变换和初等矩阵（记为$E_1$）的一些性质（熟练掌握，可以大幅度提升做题速度）<ul>
+<li>$|E_1|=-1$此时只经过一次两行互换，$|E_1|=k$此时矩阵的某一行乘了k，$|E_1|=1$此时矩阵的某一行乘k加到了另一行</li>
+<li>$E_1^T=E_1$此时只经过一次两行互换，或者此时矩阵的某一行乘了k，或者此时矩阵的某一行乘k加到了另一行</li>
+<li>$E_1^{-1}=E_1$此时只经过一次两行互换</li>
+<li>$E_1$为E在某一行乘了k得到，$E_1^{-1}$由E在该行乘$\frac{1}{k}$得到</li>
+<li>$E_1$为E在某一行乘k加到了另一行得到</li>
+<li>初等行（列）变换相当于左（右）乘相应的初等矩阵（做题很常用）<ul>
+<li>注：原矩阵乘一个初等矩阵得到新的矩阵，原矩阵到新矩阵初等变换的过程和得到初等矩阵变换的过程是一样的</li>
+</ul>
+</li>
+<li>可逆矩阵可以写成有限个初等矩阵的乘积</li>
+</ul>
+</li>
+<li><strong>初等变换的应用</strong>（综合性很强，很重要）<ul>
+<li><strong>初等变换可以求矩阵的逆</strong>（例如660-296）</li>
+<li>初等变换不会改变矩阵的秩，可以求矩阵的秩</li>
+<li>初等行变换不改变向量组的线性关系，可以用于求向量组的极大无关组</li>
+<li>初等行变换不改变线性方程组的解，可用于求线性方程组的解</li>
+</ul>
+</li>
+<li>矩阵等价<ul>
+<li>定义：矩阵A可以经过有限次的初等变换得到矩阵B，则A和B等价</li>
+<li>一组和等价相关的充要条件<ul>
+<li>r(A)=r(B)（更常用）</li>
+<li>存在m阶可逆矩阵P和n阶可逆矩阵Q，使得B=PAQ</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="矩阵的秩"><a href="#矩阵的秩" class="headerlink" title="矩阵的秩"></a>矩阵的秩</h4><ul>
+<li>基本定义相关<ul>
+<li>k阶子式：在一个m行n列的矩阵中任取k行k列，得到的这个k阶行列式即为k阶子式</li>
+<li>矩阵的秩：若矩阵A有一个r阶的子式不为0，而所有的r+1阶子式均为0，则矩阵的秩为r（记为r(A)）</li>
+<li>补充：<ul>
+<li>若矩阵A有一个r阶的子式，则$r(A)\ge r$</li>
+<li>若矩阵A所有r阶的子式均为0，则$r(A)\lt r+1$</li>
+<li>矩阵$A\neq 0$等价于$r(A)\ge 1$</li>
+</ul>
+</li>
+<li>满秩：矩阵A有m行n列，若r(A)=m的行满秩，若r(A)=n的列满秩</li>
+</ul>
+</li>
+<li>秩的性质（矩阵A有m行n列，矩阵B有n行s列）<ul>
+<li>$r(A)\le min\{m,n\}$</li>
+<li>$r(A+B)\le r(A)+r(B)$</li>
+<li>$r(AB)\le min\{r(A),r(B)\}$，实际使用时，可按需要写做$r(AB)\le r(A)$，并结合性质1</li>
+<li>$max\{r(A),r(B)\}\le r(A|B)\le r(A)+r(B)$—————————此处的|是分隔符号</li>
+<li>$r(A)=r(kA)$</li>
+<li>P为m阶可逆矩阵，Q为n阶可逆矩阵，则$r(A)=r(PA)=R(AQ)=R(PAQ)$</li>
+<li>若$r(A)=n$，则$r(A)=r(AB)$———右乘行满秩，秩不变———-$r(A)=m$，则$r(A)=r(CA)$———左乘列满秩，秩不变</li>
+<li>$r(A)=r(A^T)=r(AA^T)=r(A^TA)$</li>
+<li>若AB=0，则$r(A)+r(B)\le n$</li>
+</ul>
+</li>
+<li>矩阵的秩的求解方法<ul>
+<li>定义</li>
+<li>对于具体的矩阵A，对A初等行变换，化简为行阶梯形矩阵（每一行第一个非0的数的下方元素均为0），r(A)即为非0行行数</li>
+<li>对应抽象的矩阵A，使用之前的9条性质</li>
+</ul>
+</li>
+</ul>
+<h4 id="伴随矩阵"><a href="#伴随矩阵" class="headerlink" title="伴随矩阵"></a>伴随矩阵</h4><ul>
+<li><p>定义：由$a_{ij}$的代数余子式$A_{ij}$组成的矩阵，记作$A^\ast$（<strong>注意其形式，一行的代数余子式放在矩阵的一列上</strong>）</p>
+</li>
+<li><p>性质：</p>
 <ul>
-<li><p>通过特征值可以求出A+kE这类行列式的值</p>
+<li><p>$A^\ast A=A^\ast A=|A|E$           $A^{-1}|A|=A^\ast $(很常用)</p>
 </li>
-<li><p>可以得到特征值有哪些，但不确定某个特征值有几重，可以先通过秩得到特征向量的数量，再通过特征向量的数量反推特征值的重数，以此得到矩阵的特征值的具体分布（特征值的个数即为A的阶数） </p>
+<li><p>$(kA)^\ast =k^{n-1}A^\ast $(有上一条结论推出)</p>
 </li>
-<li><p>根据已知特征值的特征，如果这个矩阵可以相似对角化，则可以通过得到的对角矩阵求出原矩阵的秩（将特征值和矩阵的秩联系起来）———17年真题</p>
+<li><p>$(AB)^\ast =B^\ast A^\ast $</p>
+</li>
+<li><p>$|A^\ast |=|A|^{n-1}$</p>
+</li>
+<li><p>$(A^T)^\ast =(A^\ast )^T$</p>
+</li>
+<li><p>$(A^{-1})^\ast =(A^\ast )^{-1}=\frac{A}{|A|}$</p>
+</li>
+<li><p>$(A^\ast )^\ast =|A|^{n-2}A$</p>
+</li>
+<li><p>$r(A^\ast)=\begin{cases} n &amp; r(A)=n \\1 &amp; r(A)=n-1 \\0 &amp;  r(A)&lt;n-1\\ \end{cases}$</p>
+</li>
+</ul>
+</li>
+<li>补充：对于列数较少的情况，用定义快，复杂的情况用性质根据A的逆求其伴随</li>
+</ul>
+<h4 id="分块矩阵"><a href="#分块矩阵" class="headerlink" title="分块矩阵"></a>分块矩阵</h4><ul>
+<li><p>运算</p>
+<ul>
+<li><p>加法</p>
+</li>
+<li><p>数乘</p>
+</li>
+<li><p><strong>乘法</strong>（很重要，有两种方式，A为$m\times n$的矩阵，B为$n\times s$的矩阵）</p>
+<ul>
+<li>A按列分块</li>
+<li>B按行分块</li>
+</ul>
+</li>
+<li><p>分块矩阵转置</p>
+</li>
+<li>分块矩阵的逆</li>
+<li>分块矩阵的高次幂</li>
+<li>注：上面2种运算对应的矩阵除了主对角线都为0</li>
+</ul>
+</li>
+</ul>
+<h4 id="几种特殊矩阵的总结"><a href="#几种特殊矩阵的总结" class="headerlink" title="几种特殊矩阵的总结"></a>几种特殊矩阵的总结</h4><ul>
+<li>单位矩阵，E</li>
+<li>数量矩阵</li>
+<li>对角阵</li>
+<li>上（下）三角矩阵</li>
+<li>对称矩阵和反对称矩阵</li>
+<li>正交矩阵（与其转置相乘结果为E，列向量和行向量的内积为0，且这些向量均单位化）</li>
+<li>初等矩阵</li>
+<li>行阶梯矩阵<ul>
+<li>每一行第一个非0的数的下方元素均为0</li>
+<li>全为0的行都在最下方</li>
+</ul>
+</li>
+<li>行最简矩阵<ul>
+<li>在行阶梯矩阵的基础上，让每一行第一个非0的数化简为1，且其正下方和正上方为0</li>
+</ul>
+</li>
+</ul>
+<p>补充内容</p>
+<ul>
+<li>对角矩阵（矩阵除了主对角线其余元素全为0），其求逆矩阵的公式</li>
+<li><strong>对于两个n维列向量$\alpha$和$\beta$，则矩阵$\alpha\beta^T$秩为1，且$\alpha^T\beta=\beta^T\alpha$为一个数，也是矩阵$\alpha\beta^T$的迹，$(\alpha\beta^T)^n=tr(A)^{n-1}\alpha\beta^T$，这个矩阵的一个特征值为tr(A)，其余特征值为0</strong></li>
+<li>题目中没有矩阵可逆相关的依据就不要考虑可逆，尝试考虑其他的方式化简（对于一个等式，可以考虑凑因式分解）</li>
+<li>矩阵的迹：即矩阵的主对角线之和，保持矩阵最原始的形式，</li>
+<li>矩阵中含参数，初等行变换过程中尽量不要将这个参数放在分母的位置</li>
+<li>矩阵的秩相等不要想当然的直接认为它们的行列式相等（行列式不为0的情况）</li>
+<li>矩阵的高次幂的求法（详细见660-258）<ol>
+<li>上面加粗的性质</li>
+<li>分解得A=B+E</li>
+<li>分块</li>
+<li>相似对角化的方式</li>
+</ol>
 </li>
 </ul>
 
@@ -362,7 +513,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/archives/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/10/">10</a><a class="extend next" rel="next" href="/archives/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/archives/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/11/">11</a><a class="extend next" rel="next" href="/archives/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

@@ -135,7 +135,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/07/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E6%A6%82%E8%BF%B0/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/07/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E6%A6%82%E8%BF%B0/" class="post-title-link" itemprop="url">操作系统---概述</a>
+          <a href="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/" class="post-title-link" itemprop="url">计算机网络--传输层</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,14 +205,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-07 16:02:01" itemprop="dateCreated datePublished" datetime="2021-03-07T16:02:01+08:00">2021-03-07</time>
+      <time title="创建时间：2021-04-11 16:22:00" itemprop="dateCreated datePublished" datetime="2021-04-11T16:22:00+08:00">2021-04-11</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-08-08 22:00:09" itemprop="dateModified" datetime="2022-08-08T22:00:09+08:00">2022-08-08</time>
+        <time title="修改时间：2022-09-24 09:48:01" itemprop="dateModified" datetime="2022-09-24T09:48:01+08:00">2022-09-24</time>
       </span>
 
   
@@ -225,244 +225,234 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="操作系统概述"><a href="#操作系统概述" class="headerlink" title="操作系统概述"></a>操作系统概述</h3><h4 id="操作系统的相关基本概念"><a href="#操作系统的相关基本概念" class="headerlink" title="操作系统的相关基本概念"></a>操作系统的相关基本概念</h4><ul>
-<li><p>操作系统，是包括以下几个功能的<strong>软件系统</strong></p>
+          <h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><h4 id="传输层概述"><a href="#传输层概述" class="headerlink" title="传输层概述"></a>传输层概述</h4><ul>
+<li>传输层协议为运行在不同主机之上的进程提供了一种逻辑通信机制（端到端），只有在主机上才有这一层</li>
+</ul>
+<ul>
+<li>传输层的功能：<ul>
+<li>传输层提供<strong>不同主机的不同应用进程</strong>间的逻辑通信</li>
+<li>传输层会对收到的报文进行差错检测</li>
+<li>主要包括2种协议TCP+UDP</li>
+</ul>
+</li>
+<li>与网络的区别<ul>
+<li>网络层提供<strong>不同主机</strong>间的逻辑通信</li>
+<li>网络层只会对<strong>IP数据报的头部</strong>进行差错检测</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>传输层的复用和分用<ul>
+<li>复用：应用层的所有进程都通过传输层传送到网络层</li>
+<li>分用：传输层从网络层收到数据后选择交付给哪一个应用</li>
+</ul>
+</li>
+<li>传输层寻址（如何找到某个进程）<ul>
+<li>通过端口号来标识主机之中的某一个进程</li>
+<li>不同主机之间的相同端口号没有联系，端口号的作用只是标识主机本地的某个进程</li>
+<li>端口号长度为16bit，总共能表示65536个端口，其中可以按范围分成：<ul>
+<li>熟知端口号：留给一些重要的应用程序，让所有的用户都知道（0~1023，服务端使用）</li>
+<li>登记端口号：给其他服务端的应用程序用（102~49151，服务端使用）</li>
+<li>客户端使用的端口号：仅仅在用户进程运行的时才会动态选择（49152~65535）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>套接字：用于唯一标识网络中的某个主机的某个进程，形式一般为一个二元组：(主机IP，端口号)</li>
+</ul>
+<h4 id="UDP（用户数据报协议-User-Datagram-Protocol）"><a href="#UDP（用户数据报协议-User-Datagram-Protocol）" class="headerlink" title="UDP（用户数据报协议,User Datagram Protocol）"></a>UDP（用户数据报协议,User Datagram Protocol）</h4><h5 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h5><ul>
+<li><strong>不需要建立连接</strong>，收到报文之后也不需要确认（延时很小</li>
+<li>基于IP协议，增加了复用/分用，以及简单的错误校验这些内容，实现简单</li>
+<li><p>UDP使用最大努力交付，不保证交付数据可靠性，UDP段可能丢失或者非按序到达</p>
+<ul>
+<li>通过应用层的可靠性机制可实现UDP上的可靠数据传输</li>
+</ul>
+</li>
+<li><p>无拥塞控制，适合更多实时性应用</p>
+</li>
+<li>面向报文（UDP对于应用层传来的报文，既不合并，也不拆分，一次发送一个完整的报文）</li>
+<li>首部开销小（8字节）</li>
+</ul>
+<h5 id="报文格式"><a href="#报文格式" class="headerlink" title="报文格式"></a>报文格式</h5><ul>
+<li>首部字段（源端口+目的端口+UDP长度+UDP检验和）+数据字段</li>
+<li><p><img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/image-20210509232638326.png" alt="image-20210509232638326" style="zoom:50%;"></p>
+<ul>
+<li>首部字段每一个部分都是16bit</li>
+<li>在分用是，如果找不到某一个端口，则丢弃报文，并向发送方发出一个“端口不可达”的ICMP差错报告报文</li>
+</ul>
+</li>
+<li><p>UDP校验和（若有错则直接丢弃报文）</p>
+<ul>
+<li><p>发送方：将该段的内容视为16位整数，计算所有整数的和，得到的和按位取反，就是校验和，放在校验和字段之中    </p>
+</li>
+<li><p>接收方：计算收到的字段的校验和，与校验和字段对比</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="TCP（面向连接的传输控制协议-Transmission-Control-Protocol）"><a href="#TCP（面向连接的传输控制协议-Transmission-Control-Protocol）" class="headerlink" title="TCP（面向连接的传输控制协议,Transmission Control Protocol）"></a>TCP（面向连接的传输控制协议,Transmission Control Protocol）</h4><h5 id="TCP特性"><a href="#TCP特性" class="headerlink" title="TCP特性"></a>TCP特性</h5><ul>
+<li>基本的特性<ul>
+<li>面向连接的传输层协议（要先建立连接才能通信）</li>
+<li>点对点的虚连接（一个发送方对应一个接收方，只有这两个端点）</li>
+<li>TCP传输的是可靠的，有序的</li>
+<li><strong>流水线机制</strong></li>
+<li>全双工（同一个连接之中的数据是双向的）</li>
+<li>包括两个缓存：<ul>
+<li>发送缓存 </li>
+<li>接收缓存 </li>
+</ul>
+</li>
+<li>TCP是面向字节流的（将应用程序传来的数据看成一串无结构的字节流，之后好分片）</li>
+<li>存在流量控制机制和拥塞控制机制（后面细说）</li>
+</ul>
+</li>
+<li>与可靠数据传输相关的特性<ul>
+<li>累计确认机制</li>
+<li>单一重传计时器</li>
+<li>当超时或者收到重复ACK时会重传）</li>
+</ul>
+</li>
+</ul>
+<h5 id="TCP报文结构（补充英文版本在实践过程中容易理解）"><a href="#TCP报文结构（补充英文版本在实践过程中容易理解）" class="headerlink" title="TCP报文结构（补充英文版本在实践过程中容易理解）"></a>TCP报文结构（补充英文版本在实践过程中容易理解）</h5><p><img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/image-20210509232349814.png" alt="image-20210509232349814" style="zoom:50%;"></p>
+<ul>
+<li>序号（32bit，seq），指报文段发送的<strong>数据部分</strong>的<strong>第一个字节</strong>的编号</li>
+<li>确认号（32bit），希望接受到的下一个报文段的序号</li>
+<li>首部长度（数据偏移），以4B为单位</li>
+<li><p>6个控制位（每个都是1bit）</p>
+<ul>
+<li>URG，为1则表明此报文段有紧急数据（最高优先级），要尽快发送，不用在发送缓存中排队</li>
+<li>ACK，为1表示确认号是有效的（建立连接是必须设置为1）</li>
+<li>PSH（不重要），为1时接收方要尽快将此报文交给对应进程，不用等待接收缓存填满再交付</li>
+<li>RST（不重要）</li>
+<li>SYN，为1时表明这个报文是<strong>连接请求</strong>报文</li>
+<li>FIN，为1时表明此报文段发送方数据已经发完，要求<strong>释放连接</strong></li>
+</ul>
+</li>
+<li><p>接收窗口（16bit）：表示发送报文段的那一方的接收窗口，表明了允许对方发送的数据量</p>
+</li>
+<li>检查和：基本同UDP，只是第4个字段为6</li>
+<li>紧急指针：URG为1时才有意义，此字段表明了紧急数据的字节数</li>
+<li>选项，如果不为4B的整数倍，则要用0填充到整数倍</li>
+</ul>
+<h5 id="流量控制（本质就是控制发送方的发送速率）"><a href="#流量控制（本质就是控制发送方的发送速率）" class="headerlink" title="流量控制（本质就是控制发送方的发送速率）"></a>流量控制（本质就是控制发送方的发送速率）</h5><ul>
+<li>流量控制就是让发送方发慢点，防止接收方缓存溢出（接收方上层应用的处理速度可能比较慢，导致数据堆积在缓存之中）</li>
+<li>如何实现<ul>
+<li>接收方将<strong>空余的缓存大小</strong>（rwnd）封装在确认报文头部字段返回发送方（即放在接收窗口字段）</li>
+<li>发送方收到确认报文后，根据接收窗口字段<strong>控制自己发送的数据大小</strong>（动态调整）</li>
+<li>当rwnd=0时，发送方暂时不会发数据，等待接收方的新的确认报文（这个过程会启动计时器，超时（接收方发的新的确认报文丢失）则发送方会发送探测报文段—-1B数据—-让接收方再发一次）</li>
+</ul>
+</li>
+</ul>
+<h5 id="TCP的连接管理（建立和拆除）"><a href="#TCP的连接管理（建立和拆除）" class="headerlink" title="TCP的连接管理（建立和拆除）"></a>TCP的连接管理（建立和拆除）</h5><ul>
+<li><p>TCP连接的建立使用<strong>客户服务器方式</strong>，主动发起连接的主机进程是客户，另一端是服务器</p>
+</li>
+<li><p>TCP传输过程1：建立连接（三次握手机制）</p>
+<ul>
+<li><p>初始化</p>
+</li>
+<li><p>三次握手的过程</p>
 <ol>
-<li>控制和管理计算机系统的软件硬件</li>
-<li>组织和调度计算机的工作和资源分配（核心目的是提高CPU的利用率）</li>
-<li>为用户和软件提供方便的接口与环境</li>
+<li>客户端向服务器发送一个特殊的TCP报文段（SYN报文段，SYN为1，不携带任何数据，报文段的序号为一个随机的数x）</li>
+<li>服务器端收到SYN之后会向客户发送SYNACK报文段（无数据），表明允许连接（服务器此时会为TCP连接分配好缓存）<ul>
+<li>这个报文的SYN=1，ACK=1，序号为一个随机值y，确认号为x+1</li>
+</ul>
+</li>
+<li>客户端收到SYNACK，再向服务器发送一个报文段（可以携带数据），表明收到允许连接的报文（此时客户端会为TCP分配好缓存）<ul>
+<li>这个报文段SYN=0，ACK=1，序号为x+1，确认号为y+1</li>
+</ul>
+</li>
 </ol>
 </li>
-<li><p>操作系统的4个重要的特征</p>
+<li>注：SYN洪泛攻击</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>TCP传输过程2：数据传送</p>
+</li>
+<li><p>TCP传输过程3：拆除连接（客户端和服务器都可以终止连接，下面以客户端终止连接为例说明这个过程）</p>
 <ol>
-<li>并发（Concurrence）：两个或者多个事件在同一时间间隔发生（在微观上是分时交替进行），注意与并行的区别<ul>
-<li>注，这个过程结合例子理解：9:10-9:20只吃东西，9:20-9:30只写字，9:30-9:40只吃东西，9:40-9:50只写字，这个过程就是并发（9:10-9:30吃东西，同时写字，这个过程是并行）</li>
+<li>客户端发送FIN报文段（此时报文的FIN=1，设此时的序号为u）</li>
+<li>服务器收到FIN报文段后发送一个回复报文，客户到服务器这个方向的连接被释放（半关闭状态，服务器仍然可以给客户端发数据）<ul>
+<li>这个报文ACK=1，确认号为u+1</li>
 </ul>
 </li>
-<li>共享（Sharing）：系统中的资源可以由并发的几个进程共同使用（但是在一段时间内，只能有一个进程访问这些资源）0注，共享是以并发为条件，没有并发的机制，就不会存在共享，同样，如果不能通过共享来有效的管理资源，则会影响到并发的过程</li>
-<li>虚拟（Virtual）：虚拟是指把物理上的实体变为若干逻辑上的对应物（实际存在比用户感觉要少），根据后续章节慢慢理解</li>
-<li>异步（Asynchronism）：进程在指向过程中不是一贯到底的，总会有执行和等待的状态交替进行，这样的特性就是异步性。</li>
-</ol>
-<ul>
-<li>注：1,2是操作系统最基本的特征（3,4的实现基于1和2）</li>
+<li>服务器不再发送数据时，就会发送一个连接释放报文段，主动关闭TCP连接<ul>
+<li>这个报文FIN=1，ACK=1，确认号为u+1，设此时序号为w</li>
 </ul>
 </li>
-<li><p>操作系统为用户提供的交互方式</p>
-<ol>
-<li><p>命令接口（允许用户直接使用，shell）</p>
-<p>1.1 联机命令接口（交互式命令接口），就比如windows下的cmd</p>
-<p>1.2 脱机命令接口（批处理命令接口），比如.bat文件</p>
-</li>
-<li><p>程序接口（考试中可以将其等同于系统调用，但实际上存在一些差别）：有一组系统调用组成的接口，用户可以间接调用</p>
-</li>
-</ol>
-</li>
-<li><p>补充1：命令解释器，解释如用户在cmd中输入的命令</p>
-</li>
-<li><p>补充2：BIOS(basic input output system)</p>
-<ul>
-<li>在裸机上，BIOS系统存在ROM中，安装操作系统或者开机的时候会用到</li>
-</ul>
-</li>
-</ul>
-<h4 id="操作系统的发展阶段"><a href="#操作系统的发展阶段" class="headerlink" title="操作系统的发展阶段"></a>操作系统的发展阶段</h4><h5 id="1-手工操作阶段"><a href="#1-手工操作阶段" class="headerlink" title="1 手工操作阶段"></a>1 手工操作阶段</h5><ul>
-<li>在计算机上所有过程的计算都要人为操作，等待时间长，资源利用率低</li>
-</ul>
-<h5 id="2-批处理系统"><a href="#2-批处理系统" class="headerlink" title="2 批处理系统"></a>2 批处理系统</h5><ul>
-<li><p>单道批处理系统</p>
-<ul>
-<li>CPU按顺序对任务进行处理，输入输出不需要人操作，交给机器按顺序一个一个作业依次完成</li>
-</ul>
-<p><img src="/2021/03/07/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E6%A6%82%E8%BF%B0/image-20220802200223942.png" alt="image-20220802200223942"></p>
-</li>
-<li><p>多道批处理系统（因为输入输出的运行时间较长，所以以此方式改进单道的方式，提高CPU利用率）</p>
-<ul>
-<li>有多个程序并发执行，CPU处理完一个任务之后，直接开始处理下一个任务，不会等待I/O（输入输出）</li>
-</ul>
-<p><img src="/2021/03/07/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E6%A6%82%E8%BF%B0/image-20220802200159436.png" alt="image-20220802200159436"></p>
-</li>
-</ul>
-<h5 id="3-分时操作系统"><a href="#3-分时操作系统" class="headerlink" title="3 分时操作系统"></a>3 分时操作系统</h5><ul>
-<li><p>批处理系统中不存在人机交互的功能，而设计分时操作系统来解决这个问题</p>
-</li>
-<li><p>将处理器处的运行时间划分为很短的时间片，按时间片轮流将处理器分配给任务（作业）去使用，即在宏观上感觉各个用户在同时在与计算机交互</p>
-</li>
-</ul>
-<h5 id="4-实时操作系统"><a href="#4-实时操作系统" class="headerlink" title="4 实时操作系统"></a>4 实时操作系统</h5><ul>
-<li>分时操作系统中，任务不区分优先级，循环地按照时间片分配处理器给用户，这样存在一些紧急任务无法立刻执行，故通过实时操作系统改进</li>
-<li>存在优先级，优先级高的先执行，某些紧急的任务不需要按时间片排队</li>
-<li>软实时操作系统</li>
-<li>硬实时操作系统</li>
-</ul>
-<h4 id="操作系统的运行"><a href="#操作系统的运行" class="headerlink" title="操作系统的运行"></a>操作系统的运行</h4><ul>
-<li>在程序的运行过程中，系统发生怎样的变化</li>
-</ul>
-<ul>
-<li>两种指令（指令是处理器（CPU）能识别、执行的最基本命令，注意与交互式命令接口的区别）<ul>
-<li>特权指令，一些比较危险，不能让用户去使用的指令<ul>
-<li>具体例子：输入输出指令（I/O），开中断指令，关中断指令（屏蔽中断指令），修改PSW指令</li>
-</ul>
-</li>
-<li>非特权指令，基本运算之类的</li>
-</ul>
-</li>
-<li>两种处理器状态（或者描述为操作系统的状态）<ul>
-<li>核心态（内核态，管态）<ul>
-<li>处于内核态时，说明此时正在运行的是内核程序，此时可以执行特权指令</li>
-</ul>
-</li>
-<li>用户态（目态）<ul>
-<li>处于用户态时，说明此时正在运行的是应用程序，此时只能执行非特权指令</li>
-</ul>
-</li>
-<li>CPU 中有一个寄存器叫 程序状态字寄存器（PSW），其中有个二进制位，1表示“内核态”，0表示“用户态”</li>
-<li><strong>二者之间的切换</strong>：<ul>
-<li>内核态到用户态通过一条<strong>特权指令</strong>，<strong>修改PSW</strong>的值来完成</li>
-<li>用户态到内核态只能由<strong>中断引起</strong>，硬件<strong>自动完成</strong>切换，操作系统重新活动CPU使用权。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>两种程序<ul>
-<li>内核程序：在操作系统内核中，实现操作系统核心功能的程序，最接近硬件部分</li>
-<li>应用程序：运行在操作系统内核外的程序</li>
-</ul>
-</li>
-<li><strong>陷入指令</strong>（访管指令，trap指令）<ul>
-<li>一条特殊的非特权指令</li>
-<li>只会在用户态下使用（因为内核没有必要使用这个指令）</li>
-<li>会将CPU控制权交还给内核（比如系统调用就是通过这个指令完成）</li>
-<li>陷入指令被用户程序调用之后，会产生一个中断事件，让操作系统的状态发生变化</li>
-</ul>
-</li>
-</ul>
-<h5 id="中断和异常"><a href="#中断和异常" class="headerlink" title="中断和异常"></a>中断和异常</h5><ul>
-<li>中断用于下达指令通知事件的发生，发生之后会中断应用程序执行，然后去执行内核程序</li>
-<li>内中断（也称作异常，软中断，信号来自CPU内部）<ol>
-<li>陷入，陷阱（trap）：陷入指令引发，往往是程序故意引发的</li>
-<li>故障（fault）：由错误的条件引起，可能被内核修复，修复完会将CPU使用权归还给应用程序</li>
-<li>终止（abort）：由致命错误引起，内核无法修复，</li>
-</ol>
-</li>
-<li>外中断（可称直接为中断，硬中断，信号来自外部，一般与硬件相关）<ol>
-<li>时钟终端</li>
-<li>I/O中断请求</li>
-</ol>
-</li>
-<li>中断向量表（保存着中断程序的地址和类型及其对应）</li>
-<li>中断机制基本原理（或具体过程）<ul>
-<li>发生中断时，系统保存当前进程的程序计数器（PC）</li>
-<li>CPU查询中断向量表，找到其位置，进行中断处理程序</li>
-<li>中断服务结束后，CPU返回到被中断的程序（通过PC找到中断的位置），程序继续向下进行</li>
-</ul>
-</li>
-</ul>
-<h5 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h5><ul>
-<li>系统调用=系统调用命令=广义指令：操作系统为用户提供了其与计算机硬件之间交互的接口，接口向用户提供了简单易用的服务，包括程序接口和命令接口，而系统调用就组成了这里的程序接口（也许就是操作系统提供的一组特殊命令（函数），可由应用程序调用）</li>
-<li><strong>系统调用发生在用户态</strong>，之后的响应操作发生在内核态</li>
-<li><p>与库函数比较</p>
-<ul>
-<li>库函数可能对系统调用做了一次封装，隐藏了细节，使调用更方便</li>
-<li>系统调用可以直接用程序调用，也可以通过库函数触发</li>
-<li>库函数不一定是操作系统提供的，而系统调用只能是操作系统提供给编程人员的</li>
-</ul>
-</li>
-<li><p>系统调用的具体过程</p>
-</li>
-</ul>
-<h5 id="操作系统内核"><a href="#操作系统内核" class="headerlink" title="操作系统内核"></a>操作系统内核</h5><ul>
-<li>内核主要的4个功能<ul>
-<li>时钟管理<br>- </li>
-<li>中断处理<br>- </li>
-<li>原语操作<ul>
-<li>一种特殊的处于操作系统最底层的，最接近硬件部分的程序</li>
-<li>具有原子性，即不可被中断</li>
-</ul>
-</li>
-<li>管理的数据结构及其处理<ul>
-<li>进程管理</li>
-<li>存储器管理</li>
-<li>设备管理</li>
-</ul>
-</li>
-<li>注：前三个功能与硬件紧密相关，而第四个更多是对数据结构进行管理，不直接涉及硬件</li>
-</ul>
-</li>
-<li><p>大（宏）内核</p>
-<ul>
-<li>所有系统功能都放在内核里，通常内核中的程序也是模块化的设计思路</li>
-</ul>
-</li>
-<li><p>微内核</p>
-<ul>
-<li></li>
-</ul>
-</li>
-<li><p>分层结构</p>
-<ul>
-<li>内核分成多层，每层会为<strong>上层</strong>提供调用接口（<strong>每一层只能调用更低一层的接口，不能跨层调用</strong>）</li>
-<li>优点</li>
-<li>缺点</li>
-</ul>
-</li>
-<li><p>模块化</p>
-<ul>
-<li>将内核划分成多个模块，包括主模块（负责核心功能，如进程管理）和可加载内核模块（一些不影响系统运行的模块）</li>
-</ul>
-</li>
-<li><p>外核</p>
-<ul>
-<li>内核负责，而划分出一个外核负责为用户进程分配未经过抽象（即一片连续的<strong>物理</strong>地址空间，而不是虚拟的一片连续的空间）的硬件资源，同时保证使用这批资源是安全的</li>
-<li>优点</li>
-<li>缺点</li>
-</ul>
-</li>
-</ul>
-<h5 id="操作系统的引导"><a href="#操作系统的引导" class="headerlink" title="操作系统的引导"></a>操作系统的引导</h5><ul>
-<li>就是开机的过程中，如何让操作系统在电脑上运行起来</li>
-<li>磁盘里存的内容<ul>
-<li>主引导记录（MBR），存在磁盘头部，包括两部分：<ol>
-<li>磁盘引导程序</li>
-<li>分区表（即每个盘的活动范围）</li>
-</ol>
-</li>
-<li>活动分区（在磁盘上划分的区域，比如C盘，D盘），每个活动分区有3个部分<ol>
-<li>引导记录：负责找到启动管理器</li>
-<li>根目录</li>
-<li>其他</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>补充内容：主存，主要包括两部分<ul>
-<li>RAM<ul>
-<li>关机数据会被清空</li>
-</ul>
-</li>
-<li>ROM<ul>
-<li>存有BIOS——Basic Input/Output System</li>
-<li>还包含了ROM引导程序</li>
-<li>断电后数据还在</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>引导的主要过程（本质上就是根据引导，不断执行一系列的程序，直到操作系统启动）<ol>
-<li>CPU从一个特定的主存地址开始，获取指令，执行ROM之中的引导程序（执行之前会检测一下是否存在硬件上的问题）</li>
-<li>将磁盘的第一块，就是主引导记录读入内存，CPU执行其中的磁盘引导程序，并开始扫描分区表</li>
-<li>根据分区表，找到操作系统本体所在的活动分区，读入分区头部的引导记录，执行这块区域的程序</li>
-<li>在根目录下找到操作系统的初始化程序并执行（比如Windows操作系统的初始化程序就在C:\Windows\Boot中），完成“开机”。</li>
-</ol>
-</li>
-</ul>
-<h4 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h4><ul>
-<li>使用虚拟化技术，将一台物理机器虚拟化为多台虚拟机器，而每个虚拟及其都可以独立的运行一个操作系统，可以分成两类虚拟机管理程序<ol>
-<li>第一类，即直接运行在硬件上的<br>* </li>
-<li>第二类，即运行在宿主操作系统上<ul>
-<li></li>
+<li>客户端发送一个确认报文段，再等待一段时间后才彻底关闭连接（等待的时间为2MSL，防止此确认报文丢失）<ul>
+<li>此报文ACK=1，确认号为w+1，序号为u+1</li>
 </ul>
 </li>
 </ol>
+<ul>
+<li>注：MSL指最长报文段寿命</li>
+</ul>
+</li>
+</ul>
+<h5 id="TCP的可靠数据传输"><a href="#TCP的可靠数据传输" class="headerlink" title="TCP的可靠数据传输"></a>TCP的可靠数据传输</h5><ul>
+<li>可靠：指发送方发送的字节流和接收方从缓存中读出的字节流<strong>完全一致</strong></li>
+<li>4种保证可靠传输的机制<ol>
+<li>校验（即靠报文段的检查和部分实现）</li>
+<li>序号</li>
+<li>确认（类似SR协议，见链路层）</li>
+<li>重传<ul>
+<li>如何设置重传时间，同时避免不必要的重传：采用自适应算法，动态改变重传时间为RTTs（加权的平均往返时间）</li>
+<li>上一条的模式可能会等待比较长的时间，引入冗余ACK和快速重传机制改进</li>
+<li>快速重传机制<ul>
+<li>通过检测重复ACK知道分组已经丢失</li>
+<li>如果发送方收到同一数据的3个ACK时，会认为该数据之后的段丢失，此时进行快速重传（在定时器超时之前重传）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h5 id="TCP的拥塞控制"><a href="#TCP的拥塞控制" class="headerlink" title="TCP的拥塞控制"></a>TCP的拥塞控制</h5><ul>
+<li><p>拥塞</p>
+<ul>
+<li><p>拥塞就是数据太多网络来不及处理，导致网络性能下降（会产生分组丢失等问题）</p>
+</li>
+<li><p>当需求资源总和&gt;实际可用资源时会出现拥塞</p>
+</li>
+<li><p>拥塞控制的目的就是防止过多数据注入网络</p>
+</li>
+<li><p>拥塞控制（全局性的控制）和流量控制（点到点的控制）的区别</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>拥塞控制的4种方法</p>
+<ul>
+<li>一些前提条件：<ul>
+<li>数据单向传</li>
+<li>拥塞窗口，即发送窗口</li>
+<li>窗口值经过一轮传输（发送了一批报文段并收到确认）之后发生一次变化</li>
+</ul>
+</li>
+<li>慢启动（慢开始）<ul>
+<li>开始只有一个报文段</li>
+<li>后续要快速增长（指数型增长）</li>
+<li>到达发送窗口上限值（ssthresh）会变成拥塞避免的方式</li>
+</ul>
+</li>
+<li>拥塞避免<ul>
+<li>在慢开始方式达到上限后，增长方式发生变化，随着轮次变化依次+1</li>
+<li>遇到拥塞ssthresh直接减半，发送窗口再次回到1，按慢开始的方式重新开始（注意此时慢开始的上限有变化）</li>
+</ul>
+</li>
+<li>快恢复<ul>
+<li>最初过程仍然是一轮慢启动+拥塞避免，发送拥塞时，<strong>发送窗口</strong>减半之后接着开始传输</li>
+</ul>
+</li>
+<li>快重传<ul>
+<li>快恢复之后，发送窗口按轮次线性增长</li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 
@@ -484,7 +474,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/10/">10</a><span class="page-number current">11</span>
+    <a class="extend prev" rel="prev" href="/archives/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/archives/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/16/">16</a><a class="extend next" rel="next" href="/archives/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

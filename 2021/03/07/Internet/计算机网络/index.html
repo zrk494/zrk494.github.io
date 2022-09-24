@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;zrk494.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Pisces&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
+<meta name="description" content="计算机网络概述 （RFC是一个重要的参考资料有空可以看看）  概述部分可以简单了解一下历史背景   计算机网络的概述 计算机网络  定义1：  简单来说就是互连的自治的计算机集合。（由通信链路连接，没有主从关系） 定义2：一个将很多分散的、具有独立系统的计算机系统，通过线路（一般可以是逻辑上的线路）和通信设备（比如路由器）连接的，有软件实现资源共享和信息传递的系统   计网的功能  数据通信 资源">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络概述">
+<meta property="og:url" content="http://zrk494.github.io/2021/03/07/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.html">
+<meta property="og:site_name" content="post">
+<meta property="og:description" content="计算机网络概述 （RFC是一个重要的参考资料有空可以看看）  概述部分可以简单了解一下历史背景   计算机网络的概述 计算机网络  定义1：  简单来说就是互连的自治的计算机集合。（由通信链路连接，没有主从关系） 定义2：一个将很多分散的、具有独立系统的计算机系统，通过线路（一般可以是逻辑上的线路）和通信设备（比如路由器）连接的，有软件实现资源共享和信息传递的系统   计网的功能  数据通信 资源">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-07T08:00:48.000Z">
+<meta property="article:modified_time" content="2022-08-24T12:05:37.648Z">
+<meta property="article:author" content="zrk">
+<meta property="article:tag" content="网络">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://zrk494.github.io/2021/03/07/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;http:&#x2F;&#x2F;zrk494.github.io&#x2F;2021&#x2F;03&#x2F;07&#x2F;Internet&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;&quot;,&quot;path&quot;:&quot;2021&#x2F;03&#x2F;07&#x2F;Internet&#x2F;计算机网络&#x2F;&quot;,&quot;title&quot;:&quot;计算机网络概述&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>计算机网络概述 | post</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">post</h1>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="/uploads/233.jpg" alt="post">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">计算机网络概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">计算机网络的概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84-%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">计算机网络的体系结构+参考模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E5%88%86%E5%B1%82"><span class="nav-number">1.2.1.</span> <span class="nav-text">计算机网络的分层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E7%A7%8D%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.2.2.</span> <span class="nav-text">2种参考模型</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zrk</p>
+  <div class="site-description" itemprop="description">包括专业课学习的相关笔记，以及其他</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/yourname" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/07/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zrk">
+      <meta itemprop="description" content="包括专业课学习的相关笔记，以及其他">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="post">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机网络概述
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-07 16:00:48" itemprop="dateCreated datePublished" datetime="2021-03-07T16:00:48+08:00">2021-03-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-08-24 20:05:37" itemprop="dateModified" datetime="2022-08-24T20:05:37+08:00">2022-08-24</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="计算机网络概述"><a href="#计算机网络概述" class="headerlink" title="计算机网络概述"></a>计算机网络概述</h3><ul>
+<li><p>（RFC是一个重要的参考资料有空可以看看）</p>
+</li>
+<li><p>概述部分可以简单了解一下历史背景</p>
+</li>
+</ul>
+<h4 id="计算机网络的概述"><a href="#计算机网络的概述" class="headerlink" title="计算机网络的概述"></a>计算机网络的概述</h4><ul>
+<li><p>计算机网络</p>
+<ul>
+<li>定义1：  简单来说就是互连的自治的计算机集合。（由通信链路连接，没有主从关系）</li>
+<li>定义2：一个将很多分散的、具有独立系统的<strong>计算机系统</strong>，通过<strong>线路</strong>（一般可以是逻辑上的线路）和通信设备（比如路由器）连接的，有软件实现资源共享和信息传递的系统</li>
+</ul>
+</li>
+<li><p>计网的功能</p>
+<ul>
+<li>数据通信</li>
+<li>资源共享（硬件，软件，数据）</li>
+<li>分布式处理</li>
+<li>与因特网相连的接口（套接字接口）</li>
+</ul>
+</li>
+<li><p>计算机网络的三个发展阶段</p>
+<ol>
+<li>ARPAnet产生<ul>
+<li>注：互联网就是把多个计算机网络连接起来的一个更大的系统</li>
+</ul>
+</li>
+<li>三级结构</li>
+<li>多层次ISP结构<ul>
+<li>ISP：因特网服务提供者，向用户提供互联网接入业务，信息业务等（分为主干ISP，地区ISP和本地ISP）</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>计网的组成</p>
+<ul>
+<li>总体来看，计算机网络包括三个部分，即：硬件+软件+协议（规则集合，规定了不同设备在模型的同一层如何通信）</li>
+<li>按功能划分，包括资源子网和通信子网</li>
+<li>按工作方式划分，包括如下的两个部分<ul>
+<li>计网的边缘部分（即端系统，两个端系统之间一般进行通信的是每个系统中的一个进程）</li>
+<li>计网的核心部分</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>计算机网络的分类</p>
+</li>
+<li><p>相关性能指标</p>
+<ul>
+<li><p>数据传输速率（比特率）：主机在数字信道上传输位数的速率</p>
+<ul>
+<li>补充：注意速率单位和存储容量单位的区别</li>
+</ul>
+</li>
+<li><p>带宽：描述网络通道传输数据的能力</p>
+<ul>
+<li>补充：是理想值，一般不能达到</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>吞吐量：单位时间内通过信道的数据量</p>
+</li>
+<li><p>时延$\times4$</p>
+<ul>
+<li>传输（发送）时延：数据从路由之中全部进入到信道这一过程需要的时间</li>
+<li>传播时延：在信道之中传输花费的时间</li>
+<li><p>排队时延：等待的时间，一般在拥塞的时候出现</p>
+</li>
+<li><p>处理时延：检错+找出口的时间</p>
+</li>
+</ul>
+</li>
+<li><p>RTT（往返时延）：包括一来一回的传播时延+末端处理时间</p>
+</li>
+<li>时延带宽积</li>
+<li>利用率<ul>
+<li>信道利用率</li>
+<li>网络利用率</li>
+</ul>
+</li>
+</ul>
+<h4 id="计算机网络的体系结构-参考模型"><a href="#计算机网络的体系结构-参考模型" class="headerlink" title="计算机网络的体系结构+参考模型"></a>计算机网络的体系结构+参考模型</h4><h5 id="计算机网络的分层"><a href="#计算机网络的分层" class="headerlink" title="计算机网络的分层"></a>计算机网络的分层</h5><ul>
+<li><p>按照计算机网络各个相对独立的功能划分、抽象，得到<strong>分层的</strong>计网体系结构，更直观的来研究计网，促进标准化工作</p>
+<ul>
+<li>注：这种分层的结构各层之间的功能相对独立，分界自然清晰，相互间的交流尽可能少</li>
+</ul>
+</li>
+<li><p>相关的一些概念：</p>
+<ul>
+<li>实体：即分层结构中的某一层的活动元素，不同端系统之间的同一层实体为对等实体</li>
+<li>协议：<strong>对等实体之间</strong>在数据交换时必须遵守的规则，包括三要素：<ol>
+<li>语法：传输数据的格式</li>
+<li>语义：规定要完成的功能</li>
+<li>同步：各种操作的先后顺序</li>
+</ol>
+</li>
+<li>接口：上层通过这个入口使用下层提供的服务<ul>
+<li>注：接口只在相邻层之间，提供的服务是已经封装好的</li>
+</ul>
+</li>
+<li>服务：下层为上层提供的功能调用（是单向的，只能上层用下层的服务）</li>
+<li>数据单元：SDU，PCI，PDU</li>
+</ul>
+</li>
+<li><p>计算机网络体系结构包括各个层次及同层直接的协议</p>
+</li>
+<li><p>体系结构是一种抽象的概念，具体实现这些功能的是计网中的软件和硬件</p>
+</li>
+</ul>
+<h5 id="2种参考模型"><a href="#2种参考模型" class="headerlink" title="2种参考模型"></a>2种参考模型</h5><ul>
+<li><p>封装：对于要发送的信息，在向下层传递的过程中，没经过一次就会将已有信息和此层附加的信息进行一次打包（封装）</p>
+</li>
+<li><p>7层OSI参考模型（一种理想的标准）</p>
+<ol>
+<li>应用层（用户使用的应用程序所在的那一层，比如HTTP，SMTP等）</li>
+<li>表示层（包括数据格式转换，数据加密解密，数据压缩和回复的功能）</li>
+<li>会话层<ul>
+<li>建立同步，即在建立连接的基础上有序的传输数据</li>
+<li>通过校验点/同步点恢复通信</li>
+</ul>
+</li>
+<li>传输层（主机之间两个进程之间的通信，即端到端），可实现4个功能<ul>
+<li>可靠传输和不可靠传输</li>
+<li>差错控制</li>
+<li>流量控制</li>
+<li>复用和分用</li>
+</ul>
+</li>
+<li>网络层（把各个分组向目的地传输），可以实现4个功能<ul>
+<li>路由选择</li>
+<li>流量控制</li>
+<li>差错控制</li>
+<li>拥塞控制</li>
+</ul>
+</li>
+<li>数据链路层（将网络层传来的数据组装成帧，就是一串0和1的数字序列），可以实现4个功能<ul>
+<li>成帧（要定义帧的开始和结束）</li>
+<li>差错控制</li>
+<li>流量控制</li>
+<li>访问（接入）控制（指控制对信道的访问）</li>
+</ul>
+</li>
+<li>物理层，5个功能<ul>
+<li>定义接口特性</li>
+<li>定义传输模式</li>
+<li>定义传输速率</li>
+<li>比特同步</li>
+<li>比特编码</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>4层TCP/IP参考模型（事实标准）</p>
+<ol>
+<li>应用层（HTTP，FTP，DNS）</li>
+<li>传输层（TCP，UDP）</li>
+<li>网际层（IP）</li>
+<li>网络接口层</li>
+</ol>
+</li>
+<li><p>补充：通信的过程：信息从应用层开始，在每一层都被添加一个末端信息（除了链路层在首位都添加了信息），直到到达物理层之后被转换为二进制比特流在信道上传输，到达另一终端后信息被一层层解包</p>
+</li>
+</ul>
+<p>​        </p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/03/07/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E6%A6%82%E8%BF%B0/" rel="next" title="操作系统---概述">
+                  操作系统---概述 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zrk</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;per_page&quot;:true,&quot;cdn&quot;:&quot;&#x2F;&#x2F;cdn.bootcss.com&#x2F;mathjax&#x2F;2.7.1&#x2F;latest.js?config&#x3D;TeX-AMS-MML_HTMLorMML&quot;,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.2&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

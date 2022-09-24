@@ -135,7 +135,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E5%90%91%E9%87%8F/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/03/07/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%89%A9%E7%90%86%E5%B1%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E5%90%91%E9%87%8F/" class="post-title-link" itemprop="url">线性代数_向量</a>
+          <a href="/2022/03/07/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%89%A9%E7%90%86%E5%B1%82/" class="post-title-link" itemprop="url">计算机网络-物理层</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,24 +205,15 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-16 21:02:24" itemprop="dateCreated datePublished" datetime="2021-03-16T21:02:24+08:00">2021-03-16</time>
+      <time title="创建时间：2022-03-07 18:00:48" itemprop="dateCreated datePublished" datetime="2022-03-07T18:00:48+08:00">2022-03-07</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-06-25 16:50:09" itemprop="dateModified" datetime="2022-06-25T16:50:09+08:00">2022-06-25</time>
+        <time title="修改时间：2022-08-25 21:58:54" itemprop="dateModified" datetime="2022-08-25T21:58:54+08:00">2022-08-25</time>
       </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
-        </span>
-    </span>
 
   
 </div>
@@ -234,115 +225,190 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="向量的基本运算"><a href="#向量的基本运算" class="headerlink" title="向量的基本运算"></a>向量的基本运算</h4><ul>
-<li>行向量（1$\times$n维的矩阵）和列向量（n$\times$1）</li>
-<li>向量的加法（各个元素相加）</li>
-<li>向量的数乘</li>
-<li>向量的内积（一个行向量乘一个列向量，方式同矩阵乘法，最终得到一个<strong>数</strong>）</li>
-<li>向量的长度（所有元素的平方和开根号，长度为1的为单位向量）</li>
-<li>正交矩阵A（A为n阶矩阵）<ul>
-<li>定义：$AA^T=E$</li>
-<li>正交矩阵相关的一组充要条件<ol>
-<li>$A^T=A^{-1}$</li>
-<li>A的列向量组为单位正交的向量组（长度为1且内积为0）</li>
-</ol>
+          <h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li><p>物理层的主要解决的问题就是如何传输数据比特流。</p>
 </li>
-<li>正交矩阵的性质<ol>
-<li>$|A|=\pm1$</li>
-<li>A和B正交，则$-A,AB,A^T,A^{-1},A^*$均为正交矩阵</li>
-</ol>
+<li><p>定义标准：物理层主要定义了与传输媒体接口的特性</p>
 </li>
+<li><p>信号：数据的电器表现，就是数据在传输过程中的存在形式，可以与计算机中的二进制1和0对应</p>
+</li>
+<li><p>数字信号：代表消息的参数的取值是离散的</p>
+<p><img src="/2022/03/07/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%89%A9%E7%90%86%E5%B1%82/image-20220824220624121.png" alt="image-20220824220624121"></p>
+</li>
+<li><p>模拟信号：代表消息的参数的取值是连续的</p>
+<p><img src="/2022/03/07/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%89%A9%E7%90%86%E5%B1%82/image-20220824220642009.png" alt="image-20220824220642009"></p>
+</li>
+<li><p>定义的特性</p>
+<ul>
+<li>机械特性</li>
+<li>电气特性</li>
+<li>功能特性</li>
+<li>过程特性</li>
 </ul>
 </li>
-<li><em>Schmidt正交化</em></li>
-</ul>
-<h4 id="线性表示"><a href="#线性表示" class="headerlink" title="线性表示"></a>线性表示</h4><ul>
-<li>线性组合（定义）</li>
-<li>线性表示（定义，存在一组数，使得这些数与向量组相乘的总和结果为一个向量$\beta$,则$\beta$可由该向量组表示）</li>
-<li>向量组等价（两个向量组，可以互相线性表示）</li>
-<li><strong>线性表示的一组充要条件</strong><ol>
-<li>对应的非齐次方程有解</li>
-<li>$r(\alpha_1,…\alpha_s)=r(\alpha_1,…\alpha_s|\beta)$</li>
-</ol>
+<li><p>数据通信模型</p>
 </li>
-<li>向量组等价的充要条件：这两个向量组各自对应矩阵A和B，排列到一起得到矩阵C，r(A)=r(B)=r(C)</li>
-<li>线性表示的充分条件</li>
-<li><strong>线性表示的求法</strong>：初等行变换将与$\alpha$相关的部分到<strong>行最简形矩阵</strong>（每行第一个非0数为1，正下方和正上方为0）</li>
-<li>补充内容：<ul>
-<li>与线性相关的题目中，有具体向量且带参数往往会用到<strong>与秩相关的性质，行列式，初等行变换</strong>，</li>
+<li><p>三种通信方式</p>
+<ul>
+<li>全双工通信：通信双方可同时发送和接收，需要两条信道</li>
+<li>半双工通信：双方可以发送和接收，但是任何一方不能同时发送和接收，需要两条信道</li>
+<li>单工通信：只能单方向通信，即一方只能发，另一方只能收，一条信道即可</li>
 </ul>
 </li>
+<li><p>两种传输方式A</p>
+<ul>
+<li>串行：8位二进制数依次按顺序发送</li>
+<li>并行：8位二进制数通过8条信道同时发送</li>
 </ul>
-<h4 id="线性相关和线性无关"><a href="#线性相关和线性无关" class="headerlink" title="线性相关和线性无关"></a>线性相关和线性无关</h4><ul>
-<li><p>定义相关：线性表示的系数不全为0则该向量组线性相关，全为0则线性无关</p>
 </li>
-<li><p>线性相关的一组充要条件</p>
+<li><p>两种传输方式B</p>
+<ul>
+<li>同步传输：以数据块为单位发送，数据块头部有<strong>同步字符</strong></li>
+<li>异步传输：将一个比特分成多个小组传输</li>
+</ul>
+</li>
+<li><p>码元：用一个<strong>固定时长</strong>的<strong>信号波形</strong>来代表不同离散数值的基本波形，它是数字信号的计量单位</p>
+<ul>
+<li>k进制码元，即k种离散的状态，即k种不同的信号波形</li>
+<li>例如，二进制码元有0和1两种状态，对应两种不同的波形，携带了1比特的信息量</li>
+</ul>
+</li>
+<li><p>速率：数据的传输速率，即单位时间内传输的数据量，有两种表示形式</p>
 <ol>
-<li>至少有一个向量可由其余向量线性表示</li>
-<li>对应的齐次方程组有非0解</li>
-<li>r($\alpha$)&lt;s（s为向量组向量的个数）</li>
+<li>码元传输速率：单位时间内传输的码元数量，单位为波特（Baud）</li>
+<li>信息传输速率：单位时间内传输的比特数（二进制码元数），单位为比特/秒（b/s）</li>
 </ol>
 <ul>
-<li>补充线性相关的一个推论：n个n维向量线性相关$\Leftrightarrow$其对应的行列式为0（感觉对于具体的向量比较好用）</li>
+<li>注：一个码元带有n bit的信息量，则M Baud的<strong>码元传输速率</strong>对应的<strong>信息传输速率</strong>为$M\times n \ \ b/s$</li>
 </ul>
 </li>
-<li><p>线性相关的充分条件</p>
+<li><p>波特，即码元传输速率的单位</p>
+</li>
+<li><p>带宽</p>
+<ul>
+<li>在模拟信号系统中，为最高频率和最低频率之差，单位为Hz</li>
+<li>在数字设备中，为最高能通过的数据率，单位为bps（比特每秒）</li>
+</ul>
+</li>
+</ul>
+<h4 id="相关数据计算"><a href="#相关数据计算" class="headerlink" title="相关数据计算"></a>相关数据计算</h4><h5 id="补充概念"><a href="#补充概念" class="headerlink" title="补充概念"></a>补充概念</h5><ul>
+<li>失真：信号波在现实的信道中传播后，波形发生改变</li>
+<li>码间串扰：一种失真现象，即在接收端收到的信号波形失去了码元直接的界限</li>
+</ul>
+<h5 id="奈氏准则"><a href="#奈氏准则" class="headerlink" title="奈氏准则"></a>奈氏准则</h5><ul>
+<li>在<strong>理想低通</strong>（无噪声且带宽受限制）的状态下，为了避免码间串扰，极限码元传输速率为2W Baud，其中W是带宽，单位为Hz</li>
+<li>这个准则说明了码元传输速率的上限（但是并未对信息速率做出限制，所以可以通过提高码元携带的比特数来提高数据传输速率）</li>
+<li><strong>理想情况</strong>下的<strong>极限</strong>数据传输率：$2Wlog_2V,\text{V表示有几种码元，即码元状态数}$</li>
+</ul>
+<h5 id="香农定理"><a href="#香农定理" class="headerlink" title="香农定理"></a>香农定理</h5><ul>
+<li><p>信噪比（S/N），这个值一般在题目中直接给出，</p>
+<ul>
+<li>用S/N表示则无单位</li>
+<li>若用dB（度量单位）表示，则存在如下的转换关系$\text{信噪比}(dB)=10log_{10}(S/N)$</li>
+</ul>
+</li>
+<li><p>在带宽受限且有噪声的信道中，为了不产生误差，信息的数据传输速率有一个上限值，这个值为$Wlog_2(1+S/N)\ \text{S/N表示信噪比}$</p>
+</li>
+<li>计算时注意信噪比的单位</li>
+</ul>
+<h5 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h5><ul>
+<li>注1：在计算机网络中，只有在这两个处带宽的单位为Hz</li>
+<li><p>注2：奈氏准则用于求<strong>码元传输速率</strong>，香农定理用于求<strong>比特传输速率</strong></p>
+</li>
+<li><p>注3：题目给定的条件可以同时满足这两种方法求解的前提条件，则求出两个结果，取最小值</p>
+</li>
+</ul>
+<h4 id="编码和调制"><a href="#编码和调制" class="headerlink" title="编码和调制"></a>编码和调制</h4><h5 id="补充概念-1"><a href="#补充概念-1" class="headerlink" title="补充概念"></a>补充概念</h5><ul>
+<li><p>信道的两种分类方式</p>
 <ol>
-<li>含有0向量的向量组线性相关</li>
-<li>部分相关，整体相关</li>
-<li>高维相关，低维相关（指向量的元素数量）</li>
-<li>以少表多，多必相关（两个向量组，一个向量数多，一个少，多的可以由少的线性表示）</li>
-<li>4的逆否命题，无关被表示，则数量较少</li>
+<li><p>按传输信号：模拟信道/数字信道</p>
+</li>
+<li><p>按传输介质：无线信道/有线信道</p>
+</li>
 </ol>
-<ul>
-<li>补充推论：n+1个n维向量线性相关</li>
+</li>
+<li><p>基带信号：数字信号0和1直接用两种不同的电压表示，再送到<strong>数字信道</strong>上传输</p>
+</li>
+<li><p>宽带信号：将基带信号进行调制之后形成频分复用模拟信号，再送到<strong>模拟信道</strong>上传输</p>
+</li>
+</ul>
+<h5 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h5><ul>
+<li>数字数据编码成数字信号<ul>
+<li>非归零编码：高1低0</li>
+<li>曼彻斯特编码：一个码元分成两个相等的间隔，一半高一半低，这两种哪种代表0哪种代表1看具体情况<ul>
+<li>注：位中间的跳变既为时钟信号有为数据信号</li>
 </ul>
 </li>
-<li><p>线性无关的一组充要条件</p>
+<li>差分曼彻斯特编码：同1异0，即中间有跳变，和上一个码元电平用于为1不一样为0</li>
+</ul>
+</li>
+<li>模拟信号编码成数字信号<ul>
+<li>PCM（3个步骤，抽样+量化+编码）</li>
+</ul>
+</li>
+</ul>
+<h5 id="调制"><a href="#调制" class="headerlink" title="调制"></a>调制</h5><ul>
+<li>数字信号到模拟信号<ul>
+<li>调幅</li>
+<li>调频</li>
+<li>调相</li>
+<li>调幅+调相</li>
+</ul>
+</li>
+<li>模拟信号到模拟信号</li>
+</ul>
+<h4 id="数据交换方式"><a href="#数据交换方式" class="headerlink" title="数据交换方式"></a>数据交换方式</h4><h5 id="电路交换"><a href="#电路交换" class="headerlink" title="电路交换"></a>电路交换</h5><ul>
+<li>源结点和目的结点之间有中间结点的构成的专用<strong>物理</strong>线路（物理连接）</li>
+<li>具体过程，包括3个步骤<ol>
+<li>建立连接</li>
+<li>数据传输</li>
+<li>释放连接</li>
+</ol>
+</li>
+<li>通信期间会独占端到端的传输带宽，适合大规模的数据传输</li>
+</ul>
+<h5 id="报文交换"><a href="#报文交换" class="headerlink" title="报文交换"></a>报文交换</h5><ul>
+<li>报文：站点一次性发送出去的<strong>数据块</strong>，一般包括了要发送的完整数据信息和控制信息（地址等），长度可变</li>
+<li>通过<strong>存储转发</strong>的方式完成报文交换，即：<ul>
+<li>结点暂存报文并查错（存放在交换设备的缓冲区之中）</li>
+<li>等输出电路<strong>空闲时</strong>根据路由信息将报文发送到下一个结点</li>
+</ul>
+</li>
+</ul>
+<h5 id="分组交换（packet-exchanging）"><a href="#分组交换（packet-exchanging）" class="headerlink" title="分组交换（packet exchanging）"></a>分组交换（packet exchanging）</h5><ul>
+<li><p>分组：把要传输的数据分成多个小块，让后逐块的发送（可以理解为将报文划分得到，每一个小的数据块都有控制信息（地址，编号等））</p>
+</li>
+<li><p>分组交换的方式与报文基本相同，只不过是存储转发分组（会限制数据单位长度）</p>
+</li>
+<li><p>两种方式</p>
 <ol>
-<li><p>任意向量均不能由其余向量表示</p>
+<li><p>数据报方式：无连接服务（不事先规定好传输路径）</p>
 </li>
-<li><p>对应的齐次方程只有0解</p>
-</li>
-<li><p>$r(\alpha)=s$</p>
+<li><p>虚电路方式：存在一条逻辑上的路径连接源主机和目的主机，即确定了传输的路径（类似电路交换，但是建立<strong>逻辑连接</strong>）</p>
 </li>
 </ol>
 <ul>
-<li>补充推论：n个n维向量线性无关$\Leftrightarrow$其对应的行列式不为0</li>
-</ul>
-</li>
-<li><p>线性无关的充分条件</p>
-<ul>
-<li>整体无关，则部分无关</li>
-<li>低维无关，则高维无关</li>
-<li>不含0向量的正交向量组（向量组内积为0）线性无关———看看其证明</li>
-<li>不同特征值的特征向量线性无关（综合之后章节）</li>
-</ul>
-</li>
-<li><p>判定相关和无关的优先策略</p>
-<ul>
-<li>考虑定义</li>
-<li>秩</li>
-<li>行列式</li>
+<li>注：注意二者的区别和联系</li>
 </ul>
 </li>
 </ul>
-<h4 id="极大无关组"><a href="#极大无关组" class="headerlink" title="极大无关组"></a>极大无关组</h4><ul>
-<li>极大无关组的定义，对于向量组中的一部分向量，在加入向量组的一个向量则相关，则这一部分为极大无关组</li>
-<li>向量组的秩：极大无关组向量个数</li>
-<li>补充说明：<ul>
-<li>矩阵的秩等于其对应列向量的秩，也等于其行向量组的秩<strong>（新的一种求矩阵的秩的方法）</strong></li>
-<li>极大无关组往往不唯一，向量的秩确定为s，则在向量组中任意s个无关向量即为极大无关组</li>
+<h4 id="传输介质"><a href="#传输介质" class="headerlink" title="传输介质"></a>传输介质</h4><ul>
+<li>导向性传输介质<ul>
+<li>双绞线</li>
+<li>同轴电缆</li>
+<li>光纤</li>
 </ul>
 </li>
-<li><strong>求极大无关组</strong>：初等行变换化简为行阶梯形矩阵，每行第一个非0元素对应的列向量构成极大无关组</li>
+<li>非导向性传输介质<ul>
+<li>无线电波</li>
+<li>微波</li>
+<li>红外线/激光</li>
 </ul>
-<p>补充内容</p>
-<ul>
-<li><p>可以利用分块矩阵的思路转换一个复杂的向量组（按列分块的那种）</p>
 </li>
-<li><p>单位化的技巧（不受系数影响，只管向量即可，可以把不必要的系数提出来并且去掉）</p>
-</li>
+</ul>
+<h4 id="物理层设备"><a href="#物理层设备" class="headerlink" title="物理层设备"></a>物理层设备</h4><ul>
+<li>中继器：对信号再生和还原</li>
+<li>集线器：对信号放大转发</li>
 </ul>
 
       
@@ -363,7 +429,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/archives/page/10/">10</a><a class="page-number" href="/archives/page/11/">11</a><a class="extend next" rel="next" href="/archives/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/archives/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/16/">16</a><a class="extend next" rel="next" href="/archives/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

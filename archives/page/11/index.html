@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/05/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/" class="post-title-link" itemprop="url">计算机网络--传输层</a>
+          <a href="/2021/05/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" class="post-title-link" itemprop="url">计算机网络---数据链路层</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,14 +205,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-04-11 16:22:00" itemprop="dateCreated datePublished" datetime="2021-04-11T16:22:00+08:00">2021-04-11</time>
+      <time title="创建时间：2021-05-11 22:09:34" itemprop="dateCreated datePublished" datetime="2021-05-11T22:09:34+08:00">2021-05-11</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-09-24 09:48:01" itemprop="dateModified" datetime="2022-09-24T09:48:01+08:00">2022-09-24</time>
+        <time title="修改时间：2022-09-24 23:59:28" itemprop="dateModified" datetime="2022-09-24T23:59:28+08:00">2022-09-24</time>
       </span>
 
   
@@ -225,235 +225,247 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><h4 id="传输层概述"><a href="#传输层概述" class="headerlink" title="传输层概述"></a>传输层概述</h4><ul>
-<li>传输层协议为运行在不同主机之上的进程提供了一种逻辑通信机制（端到端），只有在主机上才有这一层</li>
-</ul>
+          <h3 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><ul>
+<li><p>基本概念</p>
 <ul>
-<li>传输层的功能：<ul>
-<li>传输层提供<strong>不同主机的不同应用进程</strong>间的逻辑通信</li>
-<li>传输层会对收到的报文进行差错检测</li>
-<li>主要包括2种协议TCP+UDP</li>
+<li>两种类型的网络链路<ul>
+<li>点对点链路    一对一</li>
+<li>广播链路    链路被多个设备共享</li>
 </ul>
 </li>
-<li>与网络的区别<ul>
-<li>网络层提供<strong>不同主机</strong>间的逻辑通信</li>
-<li>网络层只会对<strong>IP数据报的头部</strong>进行差错检测</li>
+<li>结点：指主机和路由器等设备</li>
+<li>链路：连接相邻节点之间的<strong>物理</strong>信道</li>
+<li>数据链路：连接相邻节点之间的<strong>逻辑</strong>信道</li>
+<li>帧：链路层的协议数据单元，封装网络层的数据报得到</li>
 </ul>
 </li>
-</ul>
+<li><p>数据链路层的工作就是通过<strong>一条数据链路</strong>，从一个节点向另一个<strong>与其直接相连的节点</strong>传送数据报（传输之前将数据表封装成帧）</p>
+</li>
+<li><p>透明传输：保证传输数据的比特组合能被识别出来，不会接收方误认为是控制信息</p>
 <ul>
-<li>传输层的复用和分用<ul>
-<li>复用：应用层的所有进程都通过传输层传送到网络层</li>
-<li>分用：传输层从网络层收到数据后选择交付给哪一个应用</li>
+<li>实现透明传输靠4种不同的组帧方法</li>
 </ul>
 </li>
-<li>传输层寻址（如何找到某个进程）<ul>
-<li>通过端口号来标识主机之中的某一个进程</li>
-<li>不同主机之间的相同端口号没有联系，端口号的作用只是标识主机本地的某个进程</li>
-<li>端口号长度为16bit，总共能表示65536个端口，其中可以按范围分成：<ul>
-<li>熟知端口号：留给一些重要的应用程序，让所有的用户都知道（0~1023，服务端使用）</li>
-<li>登记端口号：给其他服务端的应用程序用（102~49151，服务端使用）</li>
-<li>客户端使用的端口号：仅仅在用户进程运行的时才会动态选择（49152~65535）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>套接字：用于唯一标识网络中的某个主机的某个进程，形式一般为一个二元组：(主机IP，端口号)</li>
-</ul>
-<h4 id="UDP（用户数据报协议-User-Datagram-Protocol）"><a href="#UDP（用户数据报协议-User-Datagram-Protocol）" class="headerlink" title="UDP（用户数据报协议,User Datagram Protocol）"></a>UDP（用户数据报协议,User Datagram Protocol）</h4><h5 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h5><ul>
-<li><strong>不需要建立连接</strong>，收到报文之后也不需要确认（延时很小</li>
-<li>基于IP协议，增加了复用/分用，以及简单的错误校验这些内容，实现简单</li>
-<li><p>UDP使用最大努力交付，不保证交付数据可靠性，UDP段可能丢失或者非按序到达</p>
+<li><p>数据链路层的功能</p>
 <ul>
-<li>通过应用层的可靠性机制可实现UDP上的可靠数据传输</li>
-</ul>
-</li>
-<li><p>无拥塞控制，适合更多实时性应用</p>
-</li>
-<li>面向报文（UDP对于应用层传来的报文，既不合并，也不拆分，一次发送一个完整的报文）</li>
-<li>首部开销小（8字节）</li>
-</ul>
-<h5 id="报文格式"><a href="#报文格式" class="headerlink" title="报文格式"></a>报文格式</h5><ul>
-<li>首部字段（源端口+目的端口+UDP长度+UDP检验和）+数据字段</li>
-<li><p><img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/image-20210509232638326.png" alt="image-20210509232638326" style="zoom:50%;"></p>
+<li><p>成帧（组帧）：即将数据报封入数据帧（添加了头和尾）</p>
 <ul>
-<li>首部字段每一个部分都是16bit</li>
-<li>在分用是，如果找不到某一个端口，则丢弃报文，并向发送方发出一个“端口不可达”的ICMP差错报告报文</li>
+<li>帧同步：接收方从收到的二进制比特流中区分处帧的起始和终止（头和尾）</li>
+<li>组帧的4种方法</li>
 </ul>
-</li>
-<li><p>UDP校验和（若有错则直接丢弃报文）</p>
-<ul>
-<li><p>发送方：将该段的内容视为16位整数，计算所有整数的和，得到的和按位取反，就是校验和，放在校验和字段之中    </p>
-</li>
-<li><p>接收方：计算收到的字段的校验和，与校验和字段对比</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="TCP（面向连接的传输控制协议-Transmission-Control-Protocol）"><a href="#TCP（面向连接的传输控制协议-Transmission-Control-Protocol）" class="headerlink" title="TCP（面向连接的传输控制协议,Transmission Control Protocol）"></a>TCP（面向连接的传输控制协议,Transmission Control Protocol）</h4><h5 id="TCP特性"><a href="#TCP特性" class="headerlink" title="TCP特性"></a>TCP特性</h5><ul>
-<li>基本的特性<ul>
-<li>面向连接的传输层协议（要先建立连接才能通信）</li>
-<li>点对点的虚连接（一个发送方对应一个接收方，只有这两个端点）</li>
-<li>TCP传输的是可靠的，有序的</li>
-<li><strong>流水线机制</strong></li>
-<li>全双工（同一个连接之中的数据是双向的）</li>
-<li>包括两个缓存：<ul>
-<li>发送缓存 </li>
-<li>接收缓存 </li>
-</ul>
-</li>
-<li>TCP是面向字节流的（将应用程序传来的数据看成一串无结构的字节流，之后好分片）</li>
-<li>存在流量控制机制和拥塞控制机制（后面细说）</li>
-</ul>
-</li>
-<li>与可靠数据传输相关的特性<ul>
-<li>累计确认机制</li>
-<li>单一重传计时器</li>
-<li>当超时或者收到重复ACK时会重传）</li>
-</ul>
-</li>
-</ul>
-<h5 id="TCP报文结构（补充英文版本在实践过程中容易理解）"><a href="#TCP报文结构（补充英文版本在实践过程中容易理解）" class="headerlink" title="TCP报文结构（补充英文版本在实践过程中容易理解）"></a>TCP报文结构（补充英文版本在实践过程中容易理解）</h5><p><img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/image-20210509232349814.png" alt="image-20210509232349814" style="zoom:50%;"></p>
-<ul>
-<li>序号（32bit，seq），指报文段发送的<strong>数据部分</strong>的<strong>第一个字节</strong>的编号</li>
-<li>确认号（32bit），希望接受到的下一个报文段的序号</li>
-<li>首部长度（数据偏移），以4B为单位</li>
-<li><p>6个控制位（每个都是1bit）</p>
-<ul>
-<li>URG，为1则表明此报文段有紧急数据（最高优先级），要尽快发送，不用在发送缓存中排队</li>
-<li>ACK，为1表示确认号是有效的（建立连接是必须设置为1）</li>
-<li>PSH（不重要），为1时接收方要尽快将此报文交给对应进程，不用等待接收缓存填满再交付</li>
-<li>RST（不重要）</li>
-<li>SYN，为1时表明这个报文是<strong>连接请求</strong>报文</li>
-<li>FIN，为1时表明此报文段发送方数据已经发完，要求<strong>释放连接</strong></li>
-</ul>
-</li>
-<li><p>接收窗口（16bit）：表示发送报文段的那一方的接收窗口，表明了允许对方发送的数据量</p>
-</li>
-<li>检查和：基本同UDP，只是第4个字段为6</li>
-<li>紧急指针：URG为1时才有意义，此字段表明了紧急数据的字节数</li>
-<li>选项，如果不为4B的整数倍，则要用0填充到整数倍</li>
-</ul>
-<h5 id="流量控制（本质就是控制发送方的发送速率）"><a href="#流量控制（本质就是控制发送方的发送速率）" class="headerlink" title="流量控制（本质就是控制发送方的发送速率）"></a>流量控制（本质就是控制发送方的发送速率）</h5><ul>
-<li>流量控制就是让发送方发慢点，防止接收方缓存溢出（接收方上层应用的处理速度可能比较慢，导致数据堆积在缓存之中）</li>
-<li>如何实现<ul>
-<li>接收方将<strong>空余的缓存大小</strong>（rwnd）封装在确认报文头部字段返回发送方（即放在接收窗口字段）</li>
-<li>发送方收到确认报文后，根据接收窗口字段<strong>控制自己发送的数据大小</strong>（动态调整）</li>
-<li>当rwnd=0时，发送方暂时不会发数据，等待接收方的新的确认报文（这个过程会启动计时器，超时（接收方发的新的确认报文丢失）则发送方会发送探测报文段—-1B数据—-让接收方再发一次）</li>
-</ul>
-</li>
-</ul>
-<h5 id="TCP的连接管理（建立和拆除）"><a href="#TCP的连接管理（建立和拆除）" class="headerlink" title="TCP的连接管理（建立和拆除）"></a>TCP的连接管理（建立和拆除）</h5><ul>
-<li><p>TCP连接的建立使用<strong>客户服务器方式</strong>，主动发起连接的主机进程是客户，另一端是服务器</p>
-</li>
-<li><p>TCP传输过程1：建立连接（三次握手机制）</p>
-<ul>
-<li><p>初始化</p>
-</li>
-<li><p>三次握手的过程</p>
 <ol>
-<li>客户端向服务器发送一个特殊的TCP报文段（SYN报文段，SYN为1，不携带任何数据，报文段的序号为一个随机的数x）</li>
-<li>服务器端收到SYN之后会向客户发送SYNACK报文段（无数据），表明允许连接（服务器此时会为TCP连接分配好缓存）<ul>
-<li>这个报文的SYN=1，ACK=1，序号为一个随机值y，确认号为x+1</li>
-</ul>
-</li>
-<li>客户端收到SYNACK，再向服务器发送一个报文段（可以携带数据），表明收到允许连接的报文（此时客户端会为TCP分配好缓存）<ul>
-<li>这个报文段SYN=0，ACK=1，序号为x+1，确认号为y+1</li>
-</ul>
-</li>
+<li>字符计数法：帧头部有一个字节的字段，记录帧内的字符数</li>
+<li>字符填充法</li>
+<li>零比特填充法：先在帧的头部和尾部都放一个字节（即01111110），在发送端，会扫描整个信息字段，如果扫描到连续的5个1，则在这之后立即填入一个0，在接收端，先找到边界，再扫描比特流，如果出现连续的5个1，则删除这之后的0</li>
+<li>违规编码法：举个栗子，对于曼彻斯特编码，用“高-高”和“低低”这样的信号来界定帧的起始和终止</li>
 </ol>
-</li>
-<li>注：SYN洪泛攻击</li>
-</ul>
-</li>
-</ul>
 <ul>
-<li><p>TCP传输过程2：数据传送</p>
+<li>注：前两种方法存在比较明显的问题，实际上并不常用，3和4都实现了透明传输，不会误判帧的边界</li>
+</ul>
 </li>
-<li><p>TCP传输过程3：拆除连接（客户端和服务器都可以终止连接，下面以客户端终止连接为例说明这个过程）</p>
+<li><p>链路管理，即连接的建立、维持和释放</p>
+</li>
+<li><p>为网络层提供服务（包括无确认无连接服务/有确认无连接服务/有确认面向连接服务）</p>
+</li>
+<li><p>流量控制</p>
+</li>
+<li><p>差错检测和纠正（差错包括帧错和位错误）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="差错检测和纠正"><a href="#差错检测和纠正" class="headerlink" title="差错检测和纠正"></a>差错检测和纠正</h4><ul>
+<li><p>差错产生的原因：有噪声引起</p>
+</li>
+<li><p>两类差错</p>
 <ol>
-<li>客户端发送FIN报文段（此时报文的FIN=1，设此时的序号为u）</li>
-<li>服务器收到FIN报文段后发送一个回复报文，客户到服务器这个方向的连接被释放（半关闭状态，服务器仍然可以给客户端发数据）<ul>
-<li>这个报文ACK=1，确认号为u+1</li>
+<li>位错误：比特流的某一位错误，1变成0或者0变成1</li>
+<li>帧错误：帧丢失/帧重复/帧失序（一般解决方法就是丢弃+重传）</li>
+</ol>
+</li>
+<li><p>检错编码1——奇偶校验码</p>
+<ul>
+<li>奇校验码：在附加一个校验元（即在信息编码的尾部加一个比特），保证1的个数为奇数</li>
+<li>偶校验码：在附加一个校验元，保证1的个数为偶数</li>
 </ul>
 </li>
-<li>服务器不再发送数据时，就会发送一个连接释放报文段，主动关闭TCP连接<ul>
-<li>这个报文FIN=1，ACK=1，确认号为u+1，设此时序号为w</li>
+<li><p>检错编码2——循环冗余码</p>
+<ul>
+<li>生成多项式：双方约定好的一串序列（一般题目中有），用于辅助计算是否出错，这个多项式有<strong>r位</strong></li>
+<li>对于发送端：求出要传输的数据（数据有d位，还会在<strong>尾部补r个0</strong>，这个最终结果用于计算）和生成多项式作商的结果和余数，将最后的r位换成余数，发给接收端</li>
+<li>对于接收端：接收到的数据与生成多项式作商，余数为0，则判断为未发生错误</li>
+<li>这个过程中，如果判断某个帧有错误，则将这一帧丢弃</li>
 </ul>
 </li>
-<li>客户端发送一个确认报文段，再等待一段时间后才彻底关闭连接（等待的时间为2MSL，防止此确认报文丢失）<ul>
-<li>此报文ACK=1，确认号为w+1，序号为u+1</li>
+<li><p>纠错编码——海明码（可以发现错误，找到其位置，并纠正—-0换为1，1换为0）</p>
+<ul>
+<li>海明距离（码距）：两个合法编码的对应位比特取值不同的比特数<ul>
+<li>举个栗子：000,100他们俩的海明距离为1（只有第1位不同）</li>
+</ul>
+</li>
+<li>流程如下</li>
+</ul>
+<ol>
+<li>确定校验码位数r<ul>
+<li>满足不等式$2^r\ge m+r+1$，m表示数据的位数，根据不等式找r的最小值</li>
+</ul>
+</li>
+<li><p>确认校验码和数据的位置</p>
+<ul>
+<li>校验码放在$2^n$的位置（n为位数，最右边为1）</li>
+<li>数据依次放入空位即可</li>
+</ul>
+</li>
+<li><p>求出校验码的值</p>
+<ul>
+<li>根据序号的二进制形式判断每一位校验码对应的检验位置</li>
+</ul>
+</li>
+<li><p>检错并纠错</p>
+<ul>
+<li>根据每一位校验码对负责的比特位得到一个序列，根据偶校验的方式判断这个序列是否有误</li>
+<li>满足偶校验则记为1，不满足则记为0，有高位向低位排列每一位校验码对应的结果，序列表明了第几位有错</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="可靠传输机制-流量控制"><a href="#可靠传输机制-流量控制" class="headerlink" title="可靠传输机制+流量控制"></a>可靠传输机制+流量控制</h4><ul>
+<li>可靠传输：保证发送方发出的内容与接收方收到的内容一致</li>
+<li>流量控制：在接收方的缓存空间有限，通过控制发送的速率保证接收方有足够的空间接收传来的帧（传输层和数据链路层都有这个机制）</li>
+<li>3种流量控制的协议（也同时保证了可靠传输）</li>
+</ul>
+<ol>
+<li><p>停止等待协议</p>
+<ul>
+<li><p>目的是解决丢包（由多种原因导致数据包丢失）问题</p>
+</li>
+<li><p>为了讨论方便，仅考虑一方发生一方接收，并且更多关注传输的机制不用考虑数据在哪一个层次上传输</p>
+</li>
+<li><p>停止等待：发送方发送完一个分组之后就停止发送，直到收到接收方的确认信息再发送下一个分组</p>
+</li>
+<li><p>在这个协议中的几种传输情况</p>
+<ul>
+<li><p>无差错：发送一个分组，等接收方传回一个ACK（确认帧）之后开始传下一个分组</p>
+</li>
+<li><p>有差错情况A：分组丢失或者检测到分组出错：会设置定时器，发生一个分组就启动一个定时器，如果分组丢失则等到超时就再次发送该数据分组</p>
+<p>注1：发送完一个数据分组，会保留其副本</p>
+<p>注2：数据分组和ACK都有编号</p>
+</li>
+<li><p>有差错情况B：ACK丢失</p>
+</li>
+<li><p>有差错情况C：ACK迟到</p>
+</li>
+</ul>
+</li>
+<li><p>性能分析：信道利用率太低</p>
+</li>
 </ul>
 </li>
 </ol>
 <ul>
-<li>注：MSL指最长报文段寿命</li>
+<li>注1：对于这3种协议，重点在具体控制的模式，属于哪一层的不必在意</li>
 </ul>
-</li>
-</ul>
-<h5 id="TCP的可靠数据传输"><a href="#TCP的可靠数据传输" class="headerlink" title="TCP的可靠数据传输"></a>TCP的可靠数据传输</h5><ul>
-<li>可靠：指发送方发送的字节流和接收方从缓存中读出的字节流<strong>完全一致</strong></li>
-<li>4种保证可靠传输的机制<ol>
-<li>校验（即靠报文段的检查和部分实现）</li>
-<li>序号</li>
-<li>确认（类似SR协议，见链路层）</li>
-<li>重传<ul>
-<li>如何设置重传时间，同时避免不必要的重传：采用自适应算法，动态改变重传时间为RTTs（加权的平均往返时间）</li>
-<li>上一条的模式可能会等待比较长的时间，引入冗余ACK和快速重传机制改进</li>
-<li>快速重传机制<ul>
-<li>通过检测重复ACK知道分组已经丢失</li>
-<li>如果发送方收到同一数据的3个ACK时，会认为该数据之后的段丢失，此时进行快速重传（在定时器超时之前重传）</li>
-</ul>
-</li>
+<ol>
+<li>后退N帧协议（GBN）：在停止等待协议之上就行改进<ul>
+<li>通过流水线技术改进（连续发送多个数据分组）</li>
+<li>发送窗口：规定了<strong>发送方</strong>一组<strong>连续</strong>发送的数据分组的序号范围（比如从第0个数据分组到第5个数据分组）</li>
+<li>接收窗口：规定了接收方一组<strong>连续</strong>接收的数据分组的序号范围</li>
+<li>接收ACK：收到ACK之后，会将该ACK对应的数据分组标记为已接收，并且会将发送窗口移动到这个分组之后</li>
+<li>累计确认：如果发送方收到n号的ACK分组，则表明n号之前的分组已经全部被接收</li>
+<li>超时处理：发送方重传丢失分组以及之后的已发送但是未被确认的分组（某一个分组出错也类似于这个过程）</li>
+<li>发送窗口最大为$2^n-1$，接收窗口大小为1</li>
+<li>存在的问题，累计确认的模式可能会丢失大量的分组，导致传输效率降低</li>
 </ul>
 </li>
 </ol>
-</li>
-</ul>
-<h5 id="TCP的拥塞控制"><a href="#TCP的拥塞控制" class="headerlink" title="TCP的拥塞控制"></a>TCP的拥塞控制</h5><ul>
-<li><p>拥塞</p>
 <ul>
-<li><p>拥塞就是数据太多网络来不及处理，导致网络性能下降（会产生分组丢失等问题）</p>
+<li>注2：这个过程结合图理解</li>
+</ul>
+<ol>
+<li>选择重传协议<ul>
+<li>在GBN协议上进行改进，设置单个确认+增大接收窗口+设置接收缓存（缓存乱序到达的帧）</li>
+<li>收到ACK：开始同GBN，但是发送窗口移动到此时<strong>最小序号</strong>的未确认的分组处</li>
+<li>超时事件：对应发送方，超时发生的时候只会重传一个数据分组</li>
+<li>对于接收方，接受窗口的范围内的分组“来者不拒”（失序的帧会被缓存），窗口会移到最小序号的未收到的分组处</li>
+<li>对应接收方，发送来的分组序号在窗口左边或者右边，则直接丢弃，左边的则还会发送一个ACK给发送方</li>
+<li>两边窗口最大为$2^{n-1}$</li>
+</ul>
 </li>
-<li><p>当需求资源总和&gt;实际可用资源时会出现拥塞</p>
+</ol>
+<ul>
+<li>注3：这个过程同样结合图理解</li>
+</ul>
+<h4 id="信道划分介质控制"><a href="#信道划分介质控制" class="headerlink" title="信道划分介质控制"></a>信道划分介质控制</h4><h5 id="3-1-概述"><a href="#3-1-概述" class="headerlink" title="3.1 概述"></a>3.1 概述</h5><ul>
+<li>两种链路：<ol>
+<li>点对点链路</li>
+<li>广播式链路</li>
+</ol>
 </li>
-<li><p>拥塞控制的目的就是防止过多数据注入网络</p>
+<li>存在的问题：在共享信道上，两个结点之间的通信可能受到其他节点的干扰，导致冲突（冲突指结点同时收到两个或者多个来自其他结点的信号，无法从信号中得到有效的信息）</li>
+<li><p>解决方法：（介质访问控制）解决了哪个设备使用共享链路的问题，尽可能的避免干扰（如何协调多个发送和接收节点对一个共享信道的访问）</p>
 </li>
-<li><p>拥塞控制（全局性的控制）和流量控制（点到点的控制）的区别</p>
+<li><p>信道划分方式包括动态的和静态的方式（详细内容在下一点）</p>
+</li>
+<li><p>节点通过多路访问协议规范它们在共享信道上的传输</p>
+</li>
+<li>基于原本的信道进行协调</li>
+<li>多路复用技术：多个计算机或者终端设备<strong>共享信道</strong>资源</li>
+</ul>
+<h4 id="介质访问控制"><a href="#介质访问控制" class="headerlink" title="介质访问控制"></a>介质访问控制</h4><ul>
+<li><p>信道划分介质访问控制（多路复用）——-静态分配信道的方式，提前给用户分好的信道</p>
+<ul>
+<li><p>TDM（时分多路复用）：用户交替使用信道（类似操作系统的并发过程）</p>
+<ul>
+<li>STDM（时分多路复用改进）：提高信道利用率，通过集中器收集多个用户通信的信息，动态分配时隙，在一条线路上将信息发出</li>
+</ul>
+</li>
+<li><p>FDM（频分多路复用）：划分出多个不同频率给不同用户（用户占用不同带宽）</p>
+</li>
+<li><p>CDMA（码分多路复用）</p>
+</li>
+<li><p>WDM（波分多路复用）：按照光的波长划分</p>
 </li>
 </ul>
 </li>
 </ul>
 <ul>
-<li><p>拥塞控制的4种方法</p>
+<li><p>随机接入协议（一种动态分配信道的方式）——-用户可以随机发信息，发送信息时占用全部带宽</p>
 <ul>
-<li>一些前提条件：<ul>
-<li>数据单向传</li>
-<li>拥塞窗口，即发送窗口</li>
-<li>窗口值经过一轮传输（发送了一批报文段并收到确认）之后发生一次变化</li>
+<li>时隙ALOHA（最简单的）<ul>
+<li>所有帧大小相同</li>
+<li>时间被划分成等长的时隙（一个时隙传一个帧）</li>
+<li>只能在时隙开始发送帧</li>
+<li>结点之间时钟同步</li>
 </ul>
 </li>
-<li>慢启动（慢开始）<ul>
-<li>开始只有一个报文段</li>
-<li>后续要快速增长（指数型增长）</li>
-<li>到达发送窗口上限值（ssthresh）会变成拥塞避免的方式</li>
+<li>过程<ol>
+<li>结点有一个新的帧就在下一个时隙发送</li>
+<li>无冲突就继续发</li>
+<li>有冲突就在下一个时隙按概率p发送没发送成功的帧，直到成功发送</li>
+</ol>
+</li>
+<li><p>效率太低</p>
+</li>
+<li><p>ALOHA（想发就发）</p>
+<ul>
+<li>不监听信道，不划分时隙，不需要同步，有帧生成就立刻发送</li>
+<li>效率更低</li>
 </ul>
 </li>
-<li>拥塞避免<ul>
-<li>在慢开始方式达到上限后，增长方式发生变化，随着轮次变化依次+1</li>
-<li>遇到拥塞ssthresh直接减半，发送窗口再次回到1，按慢开始的方式重新开始（注意此时慢开始的上限有变化）</li>
-</ul>
-</li>
-<li>快恢复<ul>
-<li>最初过程仍然是一轮慢启动+拥塞避免，发送拥塞时，<strong>发送窗口</strong>减半之后接着开始传输</li>
-</ul>
-</li>
-<li>快重传<ul>
-<li>快恢复之后，发送窗口按轮次线性增长</li>
+<li>CSMA（载波侦听多路访问协议）<ul>
+<li>特征<ul>
+<li>要监听信道</li>
+<li>当监测到信道空闲时发送帧，信道忙就等待（推迟发送也存在多种方式）</li>
+<li>冲突仍然可能发生</li>
 </ul>
 </li>
 </ul>
 </li>
+<li>CSMA/CD（具有碰撞检测的载波侦听多路访问协议）</li>
+</ul>
+</li>
+<li>轮流协议（了解即可）</li>
 </ul>
 
       
@@ -474,7 +486,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/archives/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/16/">16</a><a class="extend next" rel="next" href="/archives/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/archives/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/17/">17</a><a class="extend next" rel="next" href="/archives/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

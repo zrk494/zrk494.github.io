@@ -135,7 +135,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E8%A1%8C%E5%88%97%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E5%90%91%E9%87%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E8%A1%8C%E5%88%97%E5%BC%8F/" class="post-title-link" itemprop="url">线性代数_行列式</a>
+          <a href="/2021/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E5%90%91%E9%87%8F/" class="post-title-link" itemprop="url">线性代数_向量</a>
         </h2>
 
         <div class="post-meta-container">
@@ -212,7 +212,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-06-25 19:25:45" itemprop="dateModified" datetime="2022-06-25T19:25:45+08:00">2022-06-25</time>
+        <time title="修改时间：2022-06-25 16:50:09" itemprop="dateModified" datetime="2022-06-25T16:50:09+08:00">2022-06-25</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -234,81 +234,115 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="行列式的概念"><a href="#行列式的概念" class="headerlink" title="行列式的概念"></a>行列式的概念</h4><ul>
-<li>逆序数（后续的公式要用）</li>
-<li>行列式定义（求行列式的基本方法—-要大致了解）——看每一列，再对应每一行，不能同行同列。</li>
-<li>行列式的基本性质<ul>
-<li>行和列互换，行列式值不变</li>
-<li>两行或者两列互换，变一次符号</li>
-<li>可以提公因子（提出一个常数）</li>
-<li>按某一行或按某一列拆开，得到两个行列式（感觉抽象的行列式可能会用）</li>
-<li><strong>一行乘某一个常数加到另一行，行列式值不变</strong>（化简最常用）<ul>
-<li>衍生出的推论：某两行（两列）成比例，行列式为0</li>
-</ul>
+          <h4 id="向量的基本运算"><a href="#向量的基本运算" class="headerlink" title="向量的基本运算"></a>向量的基本运算</h4><ul>
+<li>行向量（1$\times$n维的矩阵）和列向量（n$\times$1）</li>
+<li>向量的加法（各个元素相加）</li>
+<li>向量的数乘</li>
+<li>向量的内积（一个行向量乘一个列向量，方式同矩阵乘法，最终得到一个<strong>数</strong>）</li>
+<li>向量的长度（所有元素的平方和开根号，长度为1的为单位向量）</li>
+<li>正交矩阵A（A为n阶矩阵）<ul>
+<li>定义：$AA^T=E$</li>
+<li>正交矩阵相关的一组充要条件<ol>
+<li>$A^T=A^{-1}$</li>
+<li>A的列向量组为单位正交的向量组（长度为1且内积为0）</li>
+</ol>
+</li>
+<li>正交矩阵的性质<ol>
+<li>$|A|=\pm1$</li>
+<li>A和B正交，则$-A,AB,A^T,A^{-1},A^*$均为正交矩阵</li>
+</ol>
 </li>
 </ul>
 </li>
+<li><em>Schmidt正交化</em></li>
 </ul>
-<h4 id="特殊的行列式（表明做题时化简的方向）"><a href="#特殊的行列式（表明做题时化简的方向）" class="headerlink" title="特殊的行列式（表明做题时化简的方向）"></a>特殊的行列式（表明做题时化简的方向）</h4><ul>
-<li>主对角线的上（下）三角行列式（对角线之积）</li>
-<li>副对角线的上（下）三角行列式（注意系数：$(-1)^{\frac{n(n-1)}{2}}$对角线之积）</li>
-<li><p>n阶ab型行列式（主对角线为a其余全b）= $[a+(n-1)b ]\times(a-b)^{n-1}$</p>
+<h4 id="线性表示"><a href="#线性表示" class="headerlink" title="线性表示"></a>线性表示</h4><ul>
+<li>线性组合（定义）</li>
+<li>线性表示（定义，存在一组数，使得这些数与向量组相乘的总和结果为一个向量$\beta$,则$\beta$可由该向量组表示）</li>
+<li>向量组等价（两个向量组，可以互相线性表示）</li>
+<li><strong>线性表示的一组充要条件</strong><ol>
+<li>对应的非齐次方程有解</li>
+<li>$r(\alpha_1,…\alpha_s)=r(\alpha_1,…\alpha_s|\beta)$</li>
+</ol>
 </li>
-<li><p>拉普拉斯展开式（必须为类似主对角线，副对角线的形式，划分了4个部分）</p>
+<li>向量组等价的充要条件：这两个向量组各自对应矩阵A和B，排列到一起得到矩阵C，r(A)=r(B)=r(C)</li>
+<li>线性表示的充分条件</li>
+<li><strong>线性表示的求法</strong>：初等行变换将与$\alpha$相关的部分到<strong>行最简形矩阵</strong>（每行第一个非0数为1，正下方和正上方为0）</li>
+<li>补充内容：<ul>
+<li>与线性相关的题目中，有具体向量且带参数往往会用到<strong>与秩相关的性质，行列式，初等行变换</strong>，</li>
+</ul>
+</li>
+</ul>
+<h4 id="线性相关和线性无关"><a href="#线性相关和线性无关" class="headerlink" title="线性相关和线性无关"></a>线性相关和线性无关</h4><ul>
+<li><p>定义相关：线性表示的系数不全为0则该向量组线性相关，全为0则线性无关</p>
+</li>
+<li><p>线性相关的一组充要条件</p>
+<ol>
+<li>至少有一个向量可由其余向量线性表示</li>
+<li>对应的齐次方程组有非0解</li>
+<li>r($\alpha$)&lt;s（s为向量组向量的个数）</li>
+</ol>
 <ul>
-<li>副对角线注意系数$(-1)^{mn}$</li>
-<li>注意其推广：详细见讲义上的例题</li>
+<li>补充线性相关的一个推论：n个n维向量线性相关$\Leftrightarrow$其对应的行列式为0（感觉对于具体的向量比较好用）</li>
 </ul>
 </li>
-<li>范德蒙行列式（第一行/列全为1——化简的一个方向）</li>
-</ul>
-<p>[ssssssss]</p>
-<h4 id="展开定理"><a href="#展开定理" class="headerlink" title="展开定理"></a>展开定理</h4><ul>
-<li><p>余子式$M_{ij}$和<strong>代数余子式</strong>$A_{ij}$（有一个系数$(-1)^{i+j},i行j列$）</p>
+<li><p>线性相关的充分条件</p>
+<ol>
+<li>含有0向量的向量组线性相关</li>
+<li>部分相关，整体相关</li>
+<li>高维相关，低维相关（指向量的元素数量）</li>
+<li>以少表多，多必相关（两个向量组，一个向量数多，一个少，多的可以由少的线性表示）</li>
+<li>4的逆否命题，无关被表示，则数量较少</li>
+</ol>
 <ul>
-<li>即去掉此行此列的行列式</li>
+<li>补充推论：n+1个n维向量线性相关</li>
 </ul>
 </li>
-<li><p>行（列）展开定理</p>
+<li><p>线性无关的一组充要条件</p>
+<ol>
+<li><p>任意向量均不能由其余向量表示</p>
+</li>
+<li><p>对应的齐次方程只有0解</p>
+</li>
+<li><p>$r(\alpha)=s$</p>
+</li>
+</ol>
 <ul>
-<li>一行元素和其对应的代数余子式之积的总和为$|A|$</li>
-<li>和其他行的代数余子式之积的总和为0</li>
+<li>补充推论：n个n维向量线性无关$\Leftrightarrow$其对应的行列式不为0</li>
 </ul>
 </li>
-<li><p><strong>例子1.9</strong>（代数余子式求和方法）</p>
-</li>
-</ul>
-<h4 id="行列式的公式-times7"><a href="#行列式的公式-times7" class="headerlink" title="行列式的公式($\times7$)"></a>行列式的公式($\times7$)</h4><ul>
-<li>$|kA|=k^n|A|$</li>
-<li>$|AB|=|A||B| $</li>
-<li>$|A^T|=|A|$</li>
-<li>$|A^{-1}|=|A|^{-1} $</li>
-<li>$|A^*|=|A|^{n-1}$ </li>
-<li>$|A|=$矩阵所有特征值之和</li>
-<li>两个矩阵相似，他们对应的行列式相等</li>
-</ul>
-<h4 id="Cramer法则（解方程用）"><a href="#Cramer法则（解方程用）" class="headerlink" title="Cramer法则（解方程用）"></a>Cramer法则（解方程用）</h4><ul>
-<li>几个基本定义<ul>
-<li>系数矩阵的行列式D</li>
+<li><p>线性无关的充分条件</p>
+<ul>
+<li>整体无关，则部分无关</li>
+<li>低维无关，则高维无关</li>
+<li>不含0向量的正交向量组（向量组内积为0）线性无关———看看其证明</li>
+<li>不同特征值的特征向量线性无关（综合之后章节）</li>
 </ul>
 </li>
-<li>对于齐次方程组的推论<ul>
-<li>只有0解，$D\neq0$</li>
-<li>有非0解，$D=0$</li>
+<li><p>判定相关和无关的优先策略</p>
+<ul>
+<li>考虑定义</li>
+<li>秩</li>
+<li>行列式</li>
 </ul>
 </li>
+</ul>
+<h4 id="极大无关组"><a href="#极大无关组" class="headerlink" title="极大无关组"></a>极大无关组</h4><ul>
+<li>极大无关组的定义，对于向量组中的一部分向量，在加入向量组的一个向量则相关，则这一部分为极大无关组</li>
+<li>向量组的秩：极大无关组向量个数</li>
+<li>补充说明：<ul>
+<li>矩阵的秩等于其对应列向量的秩，也等于其行向量组的秩<strong>（新的一种求矩阵的秩的方法）</strong></li>
+<li>极大无关组往往不唯一，向量的秩确定为s，则在向量组中任意s个无关向量即为极大无关组</li>
+</ul>
+</li>
+<li><strong>求极大无关组</strong>：初等行变换化简为行阶梯形矩阵，每行第一个非0元素对应的列向量构成极大无关组</li>
 </ul>
 <p>补充内容</p>
 <ul>
-<li><p>计算具体行列式的一个常用思路是先用性质化解，再用展开定理</p>
+<li><p>可以利用分块矩阵的思路转换一个复杂的向量组（按列分块的那种）</p>
 </li>
-<li><p><strong>注意形如$|2A|$的求解（A为n阶矩阵）</strong></p>
+<li><p>单位化的技巧（不受系数影响，只管向量即可，可以把不必要的系数提出来并且去掉）</p>
 </li>
-<li><p>一定要缕清楚矩阵到行列式变换中系数的变化</p>
-</li>
-<li><p>抽象行列式常用性质和公式求解，具体的常用性质和特殊形式求解</p>
-</li>
-<li></li>
 </ul>
 
       
@@ -329,7 +363,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/archives/page/16/">16</a><a class="page-number" href="/archives/page/17/">17</a><a class="extend next" rel="next" href="/archives/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/archives/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/18/">18</a><a class="extend next" rel="next" href="/archives/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

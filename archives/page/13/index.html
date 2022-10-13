@@ -135,7 +135,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/" class="post-title-link" itemprop="url">计算机网络---应用层</a>
+          <a href="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/" class="post-title-link" itemprop="url">操作系统--进程概述</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,14 +205,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-29 20:56:34" itemprop="dateCreated datePublished" datetime="2021-03-29T20:56:34+08:00">2021-03-29</time>
+      <time title="创建时间：2021-03-31 20:46:26" itemprop="dateCreated datePublished" datetime="2021-03-31T20:46:26+08:00">2021-03-31</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-09-24 23:57:09" itemprop="dateModified" datetime="2022-09-24T23:57:09+08:00">2022-09-24</time>
+        <time title="修改时间：2022-09-28 21:46:14" itemprop="dateModified" datetime="2022-09-28T21:46:14+08:00">2022-09-28</time>
       </span>
 
   
@@ -225,241 +225,176 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><h4 id="应用层协议原理概述"><a href="#应用层协议原理概述" class="headerlink" title="应用层协议原理概述"></a>应用层协议原理概述</h4><ul>
-<li>为应用程序的通信提供服务</li>
-<li><p>应用层协议定义内容概述</p>
+          <h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><h4 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h4><ul>
+<li>进程与程序对比：程序是静态的（存储在磁盘上的一个可执行文件），而进程是动态的，是程序的一次执行过程，<strong>当程序被载入内存的时候，这个程序就成了进程</strong></li>
+<li>区分进程的唯一标识：PID</li>
+<li>作业：外存中的程序</li>
+<li><p>进程（实体）的组成部分———（进程实体=进程映像，反应了进程在某一时刻的状态，一般不用太在意这个概念）</p>
 <ul>
-<li>交换的报文类型（请求还是响应）</li>
-<li>报文类型的语法（即报文格式）</li>
-<li>字段的语义（某个字段中信息表示什么）</li>
-<li>进程什么时侯发送报文，怎么发送报文</li>
-<li>进程对报文进行响应的规划</li>
+<li>PCB：用来存进程的相关信息</li>
+<li>程序段：程序代码（包括了很多的指令）</li>
+<li>数据段：运行过程中产生的数据（临时变量指令的）</li>
+<li>注：后面的两个部分是给进程用的</li>
 </ul>
 </li>
-<li><p>网络应用模型</p>
-</li>
-<li><p>C/S (客户机/服务器)</p>
-<ul>
-<li>服务器对外提供服务（<strong>不间断</strong>，一般有大量的服务器），客户机使用服务器提供的服务，<strong>不会和其他客户机直接的通信</strong></li>
-<li>服务器IP是<strong>固定不变</strong>的，而客户机是<strong>可变</strong>的，间歇性接入网络</li>
+<li><strong>进程的信息的存储</strong>：进程的相关信息存储在数据结构PCB（process control block，<strong>进程控制块</strong>）中，PCB中主要存储的如下的功能<ul>
+<li>进程描述信息：PID（进程标识符）和UID（用户标识符），让操作系统可以区分出各个进程</li>
+<li>进程控制和管理信息：CPU，磁盘等使用情况+进程的状态信息</li>
+<li>资源分配清单：使用了哪些文件，内存区域，I/O设备等信息</li>
+<li>处理机相关信息（如某些寄存器中的值）</li>
+<li>注：进程控制块是进程存在的唯一标志，当进程结束时这些资源会被回收</li>
+<li>注2：操作系统对于进程管理的所有信息都存在PCB中</li>
 </ul>
 </li>
-<li><p>P2P (点对点)</p>
-<ul>
-<li>端系统或者节点之间直接通信</li>
-<li>没用永久在线的主机，它们可以<strong>提供服务</strong>，也可以<strong>请求服务</strong></li>
-</ul>
-</li>
-<li><p>C/S+P2P（混合）</p>
-</li>
-</ul>
-<h4 id="HTTP（超文本传输协议）"><a href="#HTTP（超文本传输协议）" class="headerlink" title="HTTP（超文本传输协议）"></a>HTTP（超文本传输协议）</h4><h5 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h5><ul>
-<li><p>万维网（World Wide Web）</p>
-</li>
-<li><p>URL：统一资源定位符，给资源（音频视频图片之类的）的唯一编号，组成包括两部分，主机名+路径名</p>
-</li>
-<li>用户通过点击超链接获取资源（这些资源通过HTTP传输）</li>
-<li>万维网基于C/S架构工作</li>
-<li>万维网使用HTML，可以很方便的通过连接从一个界面跳转到另一个界面</li>
-<li>HTTP定义了客户如何<strong>请求</strong>万维网文档，以及服务器如何将文档<strong>发给用户</strong></li>
-</ul>
-<h5 id="HTTP的工作过程"><a href="#HTTP的工作过程" class="headerlink" title="HTTP的工作过程"></a>HTTP的工作过程</h5><ol>
-<li>用户输入URL/点击超链接</li>
-<li>浏览器分析链接（或者URL）</li>
-<li>浏览器向DNS请求IP解析</li>
-<li>DNS解析得到IP</li>
-<li>浏览器（客户）与服务器建立TCP连接</li>
-<li>用户发送HTTP请求</li>
-<li>服务器返回HTTP响应</li>
-<li>浏览器显示返回结果</li>
-<li>释放连接</li>
-</ol>
-<h5 id="HTTP的连结方式"><a href="#HTTP的连结方式" class="headerlink" title="HTTP的连结方式"></a>HTTP的连结方式</h5><ul>
-<li>持久连接：建立连接之后，可以在此次连接中发送多次HTTP请求获取资源<ul>
-<li>流水式：连续发送，依次响应</li>
-<li>非流水式：停等</li>
-</ul>
-</li>
-<li>非持久连接：建立一次TCP连接，客户只发送一次HTTP请求，只接收一次HTTP响应报文就关闭TCP连接</li>
-</ul>
-<h5 id="HTTP的一些特征"><a href="#HTTP的一些特征" class="headerlink" title="HTTP的一些特征"></a>HTTP的一些特征</h5><ul>
-<li><p>服务器不存储任何关于该客户的状态信息（无状态协议）</p>
-</li>
-<li><p>在实际工作中，一些站点希望能识别用户，故引入cookie技术存储用户的访问记录，同时标记出用户</p>
-</li>
-<li>HTTP本身是无连接的</li>
-</ul>
-<h5 id="报文格式"><a href="#报文格式" class="headerlink" title="报文格式"></a>报文格式</h5><ul>
-<li><p>HTTP请求报文（ASCII书写）</p>
-<ul>
-<li>请求行（方法字段+URL字段+HTTP版本）+首部行（<strong>可扩展</strong>）+消息体（Entity Body） </li>
-</ul>
-</li>
-<li><p>HTTP响应报文</p>
-<ul>
-<li>状态行（版本+状态码+短语）+首部行（<strong>可扩展</strong>）+实体<ul>
-<li><strong>状态码</strong>，与<strong>短语</strong>相对应，指示出了请求的结果<ul>
-<li>例：404 Not Found</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h4><h5 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h5><ul>
-<li>电子邮件的格式：信封+内容（首部+主体）</li>
-<li><p>组成结构</p>
-<ul>
-<li>用户代理（电子邮件的客户端软件）</li>
-<li>邮件服务器：核心部分，主要完成收发邮件功能，同时告知用户发送情况</li>
-<li>协议：包括接收协议（如POP3）和发送协议（如SMTP）</li>
-</ul>
-</li>
-<li><p>工作原理概述：</p>
-<ul>
-<li>用户通过用户代理基于SMTP协议将邮件发到邮件服务器（有一个邮件缓存）</li>
-<li>服务器通过SMTP协议将邮件发到接收方的邮件服务器</li>
-<li>接收方的邮件服务器通过POP3协议将邮件传给接收端的用户代理</li>
-</ul>
-</li>
-</ul>
-<h5 id="SMPT协议"><a href="#SMPT协议" class="headerlink" title="SMPT协议"></a>SMPT协议</h5><ul>
-<li>规定了两个相互通信的SMPT协议进程如何交换数据</li>
-<li><p><strong>基于TCP连接，端口25，使用C/S架构</strong></p>
-</li>
-<li><p>通信的3个阶段</p>
+<li><p>进程的5个特性</p>
 <ol>
-<li>连接建立</li>
-<li>邮件发送</li>
-<li>连接释放</li>
+<li><p>动态性</p>
+</li>
+<li><p>并发性</p>
+</li>
+<li>独立性：进程是系统资源分配和独立运行的一个基本单位</li>
+<li>异步性：各个并发的进程各自以独立的速度前进（具体见进程同步的部分）</li>
+<li>结构性</li>
 </ol>
 </li>
-<li>缺点：传输的内容受限</li>
-<li>改进协议：MIME（使传输内容更加丰富）</li>
 </ul>
-<h5 id="POP3协议"><a href="#POP3协议" class="headerlink" title="POP3协议"></a>POP3协议</h5><ul>
-<li><strong>基于TCP连接，端口110，使用C/S架构</strong></li>
-<li>两种工作方式：<ol>
-<li>下载并保留在服务器</li>
-<li>下载并删除</li>
+<h4 id="进程状态-times5"><a href="#进程状态-times5" class="headerlink" title="进程状态$\times5$"></a>进程状态$\times5$</h4><ul>
+<li><p>就绪态（ready）：进程已经具备运行的条件，但此时CPU忙，无法为其服务</p>
+</li>
+<li><p>运行态（running）：CPU空闲了，会选一个进程到CPU上运行</p>
+<ul>
+<li>注：单（核）CPU中同一时刻只有一个进程在运行态</li>
+</ul>
+</li>
+<li><p>阻塞态（waiting/blocked）：因为CPU执行到某条指令后可能请求某个事件的发生，而请求事件的其他设备正在忙（比如发出系统调用，请求打印机，但是打印机在为其他设备服务），CPU暂时不为其服务，将其放回内存，此时就是阻塞态</p>
+<ul>
+<li>一个进程进入阻塞态之后，CPU会出现空闲，这个时候就会去找一个就绪态的进程去运行</li>
+</ul>
+</li>
+<li><p>终止态（terminated）：一个进程执行exit()的系统调用，向操作系统请求终止这个进程，之后其相关资源和信息会被回收</p>
+</li>
+<li><p>创建态（new）：进程被创建，操作系统向其分配资源，并初始化其对应的PCB</p>
+</li>
+<li><p>注：前三种是最基本的状态</p>
+</li>
+</ul>
+<h4 id="进程的状态转换过程"><a href="#进程的状态转换过程" class="headerlink" title="进程的状态转换过程"></a>进程的状态转换过程</h4><ul>
+<li><strong>进程状态图</strong><img src="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/image-20220809210615770.png" alt="image-20220809210615770"></li>
+<li>2表示进程被调度</li>
+<li>6表示一个时间片结束，或者进程主动让出CPU</li>
+<li>4发生时，表示进程申请某种系统资源之后开始等待，是进程自己的一种主动行为</li>
+<li>5发生时，表示该进程等待的资源空闲了，是一种被动的行为</li>
+<li>进程运行时发生致命错误，会触发3过程</li>
+</ul>
+<ul>
+<li><p>进程的组织（为了便于管理同一种状态的进程，操作系统将同一类状态的进程串起来）</p>
+<ol>
+<li>链式（链式的队列）<ul>
+<li>注：一般优先级高的放前面</li>
+</ul>
+</li>
+<li>索引式</li>
 </ol>
 </li>
-<li>改进协议：IMAP协议（让用户先看到邮件首部，打开后再看到完整内容）</li>
 </ul>
-<h5 id="基于万维网的邮件"><a href="#基于万维网的邮件" class="headerlink" title="基于万维网的邮件"></a>基于万维网的邮件</h5><ul>
-<li>用户代理和服务器之间传输通过HTTP完成，服务器之间仍然用SMTP</li>
-</ul>
-<h4 id="DNS（Domain-Name-System）"><a href="#DNS（Domain-Name-System）" class="headerlink" title="DNS（Domain Name System）"></a>DNS（Domain Name System）</h4><h5 id="DNS提供的服务-解决Internet上主机或路由器的识别问题"><a href="#DNS提供的服务-解决Internet上主机或路由器的识别问题" class="headerlink" title="DNS提供的服务(解决Internet上主机或路由器的识别问题)"></a>DNS提供的服务(解决Internet上主机或路由器的识别问题)</h5><ul>
-<li><p>标识主机的两种方式</p>
+<h4 id="进程控制"><a href="#进程控制" class="headerlink" title="进程控制"></a>进程控制</h4><ul>
+<li><p>进程控制就是如何去实现进程状态的转换，说明了操作系统会做些什么</p>
 <ul>
-<li><p>主机名（域名）   如www.google.com之类的便于人记忆的名称</p>
-</li>
-<li><p>IP地址    一串数字，便于路由器处理，如192.165.153.11</p>
-</li>
+<li>进程的创建（系统使用创建原语：申请空PCB，为进程分配资源，并初始化PCB，最后将PCB放入就绪队列）<ul>
+<li>用户登录，作业调度，提供服务，应用请求这些事件会有进程创建</li>
+<li>进程是树状结构，包括一个父进程和其子线程</li>
 </ul>
 </li>
+<li>进程的终止（系统使用撤销原语：剥夺进程CPU使用权，终止其子线程，删除PCB）</li>
+<li>进程的阻塞（找到阻塞进程对应的PCB，保护进程运行现场，放入等待队列）<ul>
+<li>保护现场</li>
 </ul>
+</li>
+<li>进程的唤醒</li>
+<li><p>进程的切换</p>
 <ul>
-<li><p>DNS（域名系统）的地址转换服务</p>
+<li>将运行环境信息存入PCB：CPU执行进程的某些指令时，会将中间结果保存到寄存器中，如PC，PSW，LR等，当CPU要切换到另一个进程时，会将这些中间结果中必要的内容存储到PCB中</li>
+<li>恢复进程所需的运行环境：根据PCB中存储的中间结果，回复某个进程，之后继续向下执行</li>
+</ul>
+</li>
+<li><p>注：进程控制用原语来实现（要一口气完成，不能被中断——即原子性）</p>
+</li>
+<li><p>注2：阻塞和唤醒一般都是要成对出现的</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="进程之间的通信"><a href="#进程之间的通信" class="headerlink" title="进程之间的通信"></a>进程之间的通信</h4><ul>
+<li><p>就是进程之间的数据交互</p>
+</li>
+<li><p>各个进程拥有的内存地址空间相对独立，一个进程不能访问其他进程的空间，所有引入通信机制完成进程之间的数据交互</p>
+</li>
+<li><p>3种通信模式</p>
+<ol>
+<li><p>共享内存</p>
+<p><img src="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/image-20210527212746572.png" alt="image-20210527212746572" style="zoom:43%;"></p>
 <ul>
-<li>功能是实现主机名到IP地址转换的系统（即翻译）</li>
-</ul>
+<li><p>进程之间有一块共享的内存区域，进程通过向此区域读写数据来交换信息</p>
+</li>
+<li><p>要保证各个进程对共享区域的访问是互斥的（2.3）</p>
+</li>
+<li><p>基于存储区的共享：操作系统只划分一片存储区域，具体使用由进程自己决定，并且这种方式通信的速度很快，灵活性高</p>
+</li>
+<li><p>基于数据结构的共享：共享空间可能是一个数组，按规则读写，自由度低，速度较慢</p>
 </li>
 </ul>
+</li>
+<li><p>消息传递<br><img src="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/image-20210527212717964.png" alt="image-20210527212717964" style="zoom:43%;"></p>
 <ul>
-<li>简单过程描述<ul>
-<li>用户输入域名，DNS服务器解析域名，用户得到目的主机IP，与目的主机通信</li>
-</ul>
+<li><p>进程之间交换的数据已经格式化（消息头+消息体），通过操作系统提供的两个原语进行数据交换</p>
 </li>
-</ul>
-<h5 id="工作原理相关"><a href="#工作原理相关" class="headerlink" title="工作原理相关"></a>工作原理相关</h5><ul>
-<li><p>集中式设计的问题（不重要，了解即可）</p>
+<li><p>两种原语操作，send(message)和receive(message)，通信的时候需要先建立好通讯线路，通讯线路的逻辑实现方法如下</p>
 <ul>
-<li><p>单点失败（一旦应该服务器坏了，互联网就崩了）</p>
+<li><p>直接或间接通信</p>
 </li>
-<li><p>流量问题</p>
+<li><p>直接通信必须明确指定接收者和发送者是谁，发送者用send将信息放入内核中的消息队列，接收者通过receive从内核的消息队列中获得发送者发出的消息</p>
 </li>
-<li><p>距离问题</p>
-</li>
-<li><p>维护性问题</p>
-</li>
-</ul>
+<li><p>间接通信是通过端口或者“信箱”（内核中），来完成发送和接收消息的过程，只需要指明发到哪个“信箱”即可，例如下图（P为进程）</p>
+<p><img src="/2021/03/31/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F--%E8%BF%9B%E7%A8%8B/image-20210527223418825.png" alt="image-20210527223418825" style="zoom:50%;"></p>
 </li>
 </ul>
+</li>
+<li><p>同步或异步通信（阻塞和非阻塞)</p>
 <ul>
-<li><p>分布式，层次服务器</p>
+<li>同步发送：发送进程是阻塞态，直到消息被对方接收时解除此种状态</li>
+<li>同步接收：接收者阻塞，直到收到发送来的消息</li>
+<li>异步发送：发送进程发送消息并继续操作</li>
+<li>异步接收：接收者收到一个有效消息或空消息</li>
+</ul>
+</li>
+<li><p>自动或显式缓冲（通信缓冲）</p>
 <ul>
-<li><p>三种类型的DNS服务器（总体结构是树）                   </p>
+<li>将通信进程交换的消息都存在临时的队列中（在这里名为缓冲）</li>
+</ul>
+</li>
+<li><p>一般用来传递较少的数据</p>
+</li>
+<li><p>需要内核干涉</p>
+</li>
+</ul>
+<ol>
+<li>管道通信</li>
+</ol>
 <ul>
-<li>根域名服务器（最上层）     它知道所有的顶级域名服务器的位置（ip）</li>
-<li>顶级域名服务器（第二层）      负责com, org, net, edu等顶级域名和国家级顶级域名（cn，uk等）</li>
-<li>权威域名服务器（最底层）      组织内部的域名解析服务器</li>
+<li>一种通信机制，管道通信方式存在一个文件作为中间介质，此类文件称作管道文件，一头写数据，另一头读数据（本质上是分配了大小固定内存缓冲区，内存里面是一个循环队列）</li>
 </ul>
 </li>
-<li>按这个层次划分的域名系统（即树形结构）—与服务器的结构对应<ul>
-<li>根</li>
-<li>顶级域名</li>
-<li>二级域名</li>
-</ul>
+</ol>
 </li>
 </ul>
-</li>
-</ul>
-<ul>
-<li><p>客户要查询IP时的过程（例，www.amazon.com）</p>
-<ul>
-<li>查询根服务器，找com域名（客户端第一次查询</li>
-<li>到第二层的com域名解析服务器，找amazon.com（客户端第二次查询</li>
-<li><p>到第三层amazon.com域名解析器，获取IP地址（客户端第三次查询</p>
-</li>
-<li><p>上层包括了下层的地址，用来告诉客户端下一次查询去那里</p>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>本地DNS服务器</p>
-<ul>
-<li>一个主机会首先向其发出DNS查询请求，</li>
-<li>如果找不到则本地DNS服务器<strong>代替主机</strong>从根域名服务器开始，逐层向下找（树结构的查找）</li>
-<li>代理作用</li>
-</ul>
-</li>
-</ul>
-<h5 id="DNS的具体过程"><a href="#DNS的具体过程" class="headerlink" title="DNS的具体过程"></a>DNS的具体过程</h5><ul>
-<li>迭代查询（靠自己）</li>
-</ul>
-<p><img src="/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/image-20210506215416439.png" alt="image-20210506215416439"></p>
-<ul>
-<li><p>递归查询（靠别人）</p>
-<p><img src="/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/image-20220924105453483.png" alt="image-20220924105453483" style="zoom:80%;"></p>
-</li>
-</ul>
-<h4 id="文件传输协议（FTP）"><a href="#文件传输协议（FTP）" class="headerlink" title="文件传输协议（FTP）"></a>文件传输协议（FTP）</h4><h5 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h5><ul>
-<li>不同主机系统之间传输文件</li>
-<li>FPT基于C/S架构</li>
-<li>提供服务的是FTP服务器，客户连接该服务器按协议传输文件</li>
-</ul>
-<h5 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h5><ul>
-<li>登录：一般来说需要用户名和密码，实际中很大一部分FTP服务器是匿名登录的</li>
-<li>FTP协议基于TCP实现可靠传输</li>
-<li>服务器中的主进程（1个，负责接收新的请求）和从属进程（n个）</li>
-<li><p>具体工作过程（传输的过程）</p>
-<ul>
-<li>会有两个从属进程为用户提供服务，即建立了<strong>两条TCP连接</strong></li>
-<li>控制连接：传输控制信息，整个过程一直打开</li>
-<li>数据连接：进行文件传输</li>
-</ul>
-</li>
-<li><p>FTP的传输模式</p>
-<ul>
-<li>文本传输模式</li>
-<li>二进制模式</li>
-</ul>
-</li>
-</ul>
+<pre><code> - 半双工，只允许单向通信
 
+ - 双方互相通信的时候，要建立两个管道
+
+ - 各个进程互斥的访问管道
+
+ - 管道满了，写进程阻塞，管道空了，读进程阻塞
+</code></pre>
       
     </div>
 
@@ -478,7 +413,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/12/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/archives/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/17/">17</a><a class="extend next" rel="next" href="/archives/page/14/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/12/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/archives/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/18/">18</a><a class="extend next" rel="next" href="/archives/page/14/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

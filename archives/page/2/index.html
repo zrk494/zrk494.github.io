@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/05/01/DS/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/05/01/DS/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/01/DS/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/" class="post-title-link" itemprop="url">线性表</a>
+          <a href="/2022/05/01/DS/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" class="post-title-link" itemprop="url">栈&队列</a>
         </h2>
 
         <div class="post-meta-container">
@@ -212,7 +212,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-07-24 16:30:20" itemprop="dateModified" datetime="2022-07-24T16:30:20+08:00">2022-07-24</time>
+        <time title="修改时间：2022-08-10 18:45:32" itemprop="dateModified" datetime="2022-08-10T18:45:32+08:00">2022-08-10</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -234,77 +234,92 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h3><ul>
-<li>定义（相同数据类型的n个数据元素组成的有限序列）<ul>
-<li>补充概念：位序从1开始（注意数组从1=0开始）；</li>
-</ul>
-</li>
-<li>逻辑结构</li>
-<li>相关操作（还可以根据实际需求定义其他的操作）<ul>
-<li>初始化</li>
-<li>销毁</li>
-<li>插入</li>
-<li>删除</li>
-<li>按值查找</li>
-<li>按位查找</li>
-<li>求表长</li>
-<li>判空</li>
-</ul>
-</li>
-</ul>
-<h3 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h3><ul>
-<li><p>定义（顺序存储的线性表）</p>
-</li>
-<li><p>两种实现方式</p>
+          <h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><ul>
+<li><p>基本概念和性质</p>
 <ul>
-<li><p>静态（定义如下）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 10</span></span><br><span class="line">Typedef <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    ElemType data[MaxSize];</span><br><span class="line">    <span class="keyword">int</span> length<span class="comment">//当前存入的数据的数量</span></span><br><span class="line">&#125;SqList</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>动态（定义如下）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 10</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    ElemType *data;<span class="comment">//动态数组</span></span><br><span class="line">    <span class="keyword">int</span> MaxSize;</span><br><span class="line">    <span class="keyword">int</span> length;</span><br><span class="line">&#125;SeqList;</span><br></pre></td></tr></table></figure>
-</li>
+<li>特殊的线性表，只能在一端进行插入或者删除</li>
+<li>n个不同元素进栈，出栈的元素的不同排列个数为$\frac{1}{n+1}C_{2n}^{n}$</li>
 </ul>
 </li>
-<li><p>四个特性</p>
+<li><p>栈的基本操作</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">InitStack</span>(&amp;S);<span class="comment">//初始化栈</span></span><br><span class="line"><span class="built_in">DestoryStack</span>(&amp;S);<span class="comment">//销毁栈</span></span><br><span class="line"><span class="built_in">Push</span>(&amp;S,x);<span class="comment">//入栈</span></span><br><span class="line"><span class="built_in">Pop</span>(&amp;S,&amp;x);<span class="comment">//出栈</span></span><br><span class="line"><span class="built_in">GetTop</span>(S,&amp;x);<span class="comment">//获取栈顶元素</span></span><br><span class="line"><span class="built_in">StackEmpty</span>(S);<span class="comment">//判断栈是否为空</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>栈的两种定义方式</p>
 <ol>
-<li>随机访问</li>
-<li>存储密度高</li>
-<li>扩容不方便</li>
-<li>插入删除不方便</li>
+<li>顺序存储</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    ElemType data[MAxSize];<span class="comment">//存放栈的静态数组</span></span><br><span class="line">    <span class="keyword">int</span> top;<span class="comment">//栈顶指针，即栈顶元素所在位置</span></span><br><span class="line">&#125;Stack;</span><br><span class="line"><span class="comment">//注意一下S.data[S.top++]和S.data[++S.top]的区别</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>链式存储，做完题感觉此种方式考的频率更高</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LinkNode</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">LinkNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;LinkNode,*Stack;</span><br><span class="line"><span class="comment">//注意带头和不带头的区别</span></span><br><span class="line"><span class="comment">//一般情况下我们将链表头作为栈顶，通过在这个位置前插入元素实现入栈</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>补充内容：共享栈，即两个顺序栈共同占用一个数组的两端</p>
+</li>
+<li><p>对与栈，一种非常常见的题型就是根据入栈序列判断出栈序列，一个比较好的思考方式按照第一个出栈的元素进行划分，其中的，最初入栈的两个元素往往顺序是固定的。</p>
+</li>
+</ul>
+<h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><ul>
+<li><p>基本概念和性质</p>
+<ul>
+<li>一种操作受限的线性表，只能在表的一端插入，另一端删除</li>
+</ul>
+</li>
+<li><p>队列的基本操作</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">InitQueue</span>(&amp;Q);<span class="comment">//初始化队列</span></span><br><span class="line"><span class="built_in">EnQueue</span>(&amp;Q,x);<span class="comment">//入栈</span></span><br><span class="line"><span class="built_in">DeQueue</span>(&amp;Q,&amp;x);<span class="comment">//出栈</span></span><br><span class="line"><span class="built_in">GetHead</span>(Q,&amp;x);<span class="comment">//获取栈顶元素</span></span><br><span class="line"><span class="built_in">QueueEmpty</span>(Q);<span class="comment">//判断栈是否为空</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>队列的两种实现方式</p>
+<ol>
+<li><p>顺序存储</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    ElemType data[MaxSize];<span class="comment">//存放队列元素的静态数组</span></span><br><span class="line">    <span class="keyword">int</span> front=<span class="number">0</span>,rear=<span class="number">0</span>;<span class="comment">//分别表示队头指针和队尾指针，初始位置均为0</span></span><br><span class="line">    <span class="keyword">int</span> length=<span class="number">0</span>;<span class="comment">//存储队列当前的元素个数</span></span><br><span class="line">&#125;Queue;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">在实际使用过程中，往往用这种方式实现循环队列，</span></span><br><span class="line"><span class="comment">插入时队尾指针这样变rear=(rear+1)%MaxSize</span></span><br><span class="line"><span class="comment">删除一个元素的时候，front=(front+1)%MaxSize</span></span><br><span class="line"><span class="comment">这种情况下队列长度为，(rear+MaxSize-front)%MaxSize</span></span><br><span class="line"><span class="comment">注意在这种情况下队列会牺牲一个存储单元，以便判断队列是否已满（条件是(rear+1)%MaxSize==front）</span></span><br><span class="line"><span class="comment">为了最大化利用空间，可修改原结构体，引入变量length存储队列目前的长度</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>链式存储，做完题感觉此种方式考的频率更高</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LinkNode</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">LinkNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;LinkNode;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    LinkNode *front,*rear;<span class="comment">//队头指针和队尾指针</span></span><br><span class="line">&#125;LinkQueue;</span><br><span class="line"><span class="comment">//注意带头(队头指针和队尾指针初始指向头)和不带头(初始两个指针均为NULL)的区别</span></span><br><span class="line"><span class="comment">//一般情况下我们将链表头作为队列头，队列尾为队尾</span></span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 </li>
-<li><p><em>具体操作的实现见项目文件</em></p>
+<li><p>队列的一种特殊形式：双端队列</p>
+<ul>
+<li>在队列的两端都可以出队和入队</li>
+<li>输出受限：只能在一端出队</li>
+<li>输入受限：只能在一端如队</li>
+</ul>
 </li>
 </ul>
-<h3 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h3><ul>
-<li><p>定义</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//代码定义</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;LNode,*LinkList;<span class="comment">//备注：*LinkList这种定义的方式等价于Lnode*，这样写是为了提高代码的可读性</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">对于带头结点的链表，有head=L-&gt;next,head中只存储第一个元素的地址（存在next之中），head要占用malloc分配出来的空间</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//对于带头结点的链表，L-&gt;next即为第一个元素</span></span><br></pre></td></tr></table></figure>
+<h3 id="栈和队列的总和应用"><a href="#栈和队列的总和应用" class="headerlink" title="栈和队列的总和应用"></a>栈和队列的总和应用</h3><h5 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h5><ul>
+<li>括号匹配问题（见代码，总共3种不匹配的情况，要掌握代码）</li>
+<li><strong>表达式求值问题</strong>（掌握算法的整体思路即可）<ul>
+<li>表达式类型：中缀表达式，<strong>后缀表达式</strong>，前缀表达式</li>
+<li>如何中缀转后缀，如何中缀转前缀</li>
+<li>如何通过后（前）缀表达式求值</li>
+<li>中缀表达式求值（总和上两个问题）</li>
+<li>注：可用通过树结构实现这个过程（中缀表达式对应一个中序遍历，前缀对应前序，后缀对应后序）</li>
+</ul>
 </li>
-<li><p>备注：在这里，为了方便实现，创建的链表会带有头结点，但是要理解不带头结点的形式。</p>
-</li>
-<li><p>两种创建（操作）的思路：头插和尾插</p>
-</li>
-<li><p><em>具体操作的实现见项目文件</em></p>
+<li>栈在递归中的应用<ul>
+<li>了解一下函数调用栈</li>
+</ul>
 </li>
 </ul>
-<h3 id="单链表扩展"><a href="#单链表扩展" class="headerlink" title="单链表扩展"></a>单链表扩展</h3><ul>
-<li><p>双向链表</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">DNode</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">DNode</span> *<span class="title">next</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">DNode</span> *<span class="title">prior</span>;</span><span class="comment">//此处与单链表有区别，即多了一个指向上一个结点的指针</span></span><br><span class="line">&#125;DNode,*DLinkList;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>循环链表（定义完全同单链表，区别在于建立的时候要将最后的next指针指向头结点）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;LNode,*LinkList;</span><br><span class="line"><span class="comment">//对于最后一个元素，如果有头结点，则有p_last-&gt;next=head</span></span><br><span class="line"><span class="comment">//如果没有头结点，则有p_last-&gt;next=p_first</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>循环双链表，组合上两个即可</p>
-</li>
-<li><p>静态链表（一种借助数组来描述线性表的链式存储结构）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 10</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">	ElemType data;<span class="comment">//数据元素</span></span><br><span class="line">    <span class="keyword">int</span> next;<span class="comment">//下一个元素的数组下标</span></span><br><span class="line">&#125;SlinkList[MaxSize];</span><br></pre></td></tr></table></figure>
-</li>
+<h5 id="队列的应用"><a href="#队列的应用" class="headerlink" title="队列的应用"></a>队列的应用</h5><ul>
+<li>树的层次遍历</li>
+<li>图的广度优先遍历</li>
 </ul>
-<h4 id="链表和顺序表对比"><a href="#链表和顺序表对比" class="headerlink" title="链表和顺序表对比"></a>链表和顺序表对比</h4><ul>
-<li>存取方式上的差异</li>
-<li>结构（逻辑结构和物理结构）</li>
-<li>增删改查操作（主要对比这些操作的时间复杂度）</li>
-<li>空间分配上的差异性</li>
+<p>补充内容：</p>
+<h5 id="矩阵压缩"><a href="#矩阵压缩" class="headerlink" title="矩阵压缩"></a>矩阵压缩</h5><ul>
+<li>用一维数组存储二维特殊的矩阵</li>
+<li>上（下）三角矩阵</li>
+<li>对称矩阵</li>
+<li>三对角矩阵</li>
+<li>稀疏矩阵（可以用三元组顺序存，也可以用十字链表存）</li>
+<li>注意要求是行优先还是列优先原则，数组或者矩阵的下标是从1还是从0开始</li>
+</ul>
+<ul>
+<li>补充内容<ul>
+<li>malloc(不会初始化)和calloc的区别(会初始化)</li>
+</ul>
+</li>
 </ul>
 
       

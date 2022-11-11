@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/05/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/11/11/DS/%E5%9B%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/05/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" class="post-title-link" itemprop="url">计算机网络---数据链路层</a>
+          <a href="/2022/11/11/DS/%E5%9B%BE/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,14 +205,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-05-11 22:09:34" itemprop="dateCreated datePublished" datetime="2021-05-11T22:09:34+08:00">2021-05-11</time>
+      <time title="创建时间：2022-11-11 13:59:45" itemprop="dateCreated datePublished" datetime="2022-11-11T13:59:45+08:00">2022-11-11</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-09-24 23:59:28" itemprop="dateModified" datetime="2022-09-24T23:59:28+08:00">2022-09-24</time>
+        <time title="修改时间：2022-08-18 20:38:47" itemprop="dateModified" datetime="2022-08-18T20:38:47+08:00">2022-08-18</time>
       </span>
 
   
@@ -225,247 +225,207 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><ul>
-<li><p>基本概念</p>
-<ul>
-<li>两种类型的网络链路<ul>
-<li>点对点链路    一对一</li>
-<li>广播链路    链路被多个设备共享</li>
+          <h3 id="图"><a href="#图" class="headerlink" title="图"></a>图</h3><h4 id="基本概念相关"><a href="#基本概念相关" class="headerlink" title="基本概念相关"></a>基本概念相关</h4><ul>
+<li>图，点的集合（V）+边的集合（E）组成，顶点个数叫图的阶数，图的顶点集合不能为空，边的集合可以为空，可以用二元组表示图</li>
+<li>无向图和有向图</li>
+<li>简单图（不存在重复的边）</li>
+<li>顶点的度<ul>
+<li>对于无向图，指有多少条边与这个顶点相连</li>
+<li>对于有向图，分为入度和初度，两者之和为有向图的度</li>
 </ul>
 </li>
-<li>结点：指主机和路由器等设备</li>
-<li>链路：连接相邻节点之间的<strong>物理</strong>信道</li>
-<li>数据链路：连接相邻节点之间的<strong>逻辑</strong>信道</li>
-<li>帧：链路层的协议数据单元，封装网络层的数据报得到</li>
+<li>无向完全图（任何两个顶点之间都有一条边）</li>
+<li>有向完全图（有两条方向相反的弧）</li>
+<li>稀疏图，稠密图，注意其阈值的划分即可</li>
+<li>路径：顶点序列（注意在有向图中的方向性）</li>
+<li>回路（环）：起点和终点都相同的路径</li>
+<li>简单路径：不重复的顶点序列</li>
+<li>简单回路：除了起点和终点外其他的均不重复</li>
+<li>路径长度：路径上边的数目</li>
+<li>点到点的距离：两个顶点之间的最短的路径的长度，<strong>若这两点之间不存在路径，则距离记为无穷</strong></li>
+<li>强连通：对于有向图，只有当两个顶点正向路径和逆向路径都存在，这两个顶点为强连通（距离不为无穷）</li>
+<li>连通：对于无向图，两个顶点之间有一条路径</li>
+<li>连通图：任何两个顶都是连通的（指无向图）<ul>
+<li>连通图最少有n-1条边（顶点数为n）</li>
+<li>非连通图最多有$C_{n-1}^2$条边 </li>
 </ul>
 </li>
-<li><p>数据链路层的工作就是通过<strong>一条数据链路</strong>，从一个节点向另一个<strong>与其直接相连的节点</strong>传送数据报（传输之前将数据表封装成帧）</p>
-</li>
-<li><p>透明传输：保证传输数据的比特组合能被识别出来，不会接收方误认为是控制信息</p>
-<ul>
-<li>实现透明传输靠4种不同的组帧方法</li>
+<li>强连通图：任何两个顶都是强连通的（指有向图）<ul>
+<li>强连通图最少有n条边（即形成一条回路）</li>
 </ul>
 </li>
-<li><p>数据链路层的功能</p>
-<ul>
-<li><p>成帧（组帧）：即将数据报封入数据帧（添加了头和尾）</p>
-<ul>
-<li>帧同步：接收方从收到的二进制比特流中区分处帧的起始和终止（头和尾）</li>
-<li>组帧的4种方法</li>
+<li>子图</li>
+<li>生成子图：子图包括原图的所有顶点</li>
+<li>连通分量：无向图中的<strong>极大</strong>连通子图（包括尽可能多的顶点和边）</li>
+<li>强连通分量：有向图中的<strong>极大</strong>强连通子图</li>
+<li>生成树：包含图中所有顶点的一个<strong>极小连通</strong>子图（n-1条边）</li>
+<li>生成森林：连通分量的生成树构成了非连通图的生成森林</li>
+<li>边的权，带权图，带权路径长度（所有边权之和）</li>
+<li>n个顶点的图，如果边数大于n-1则必有回路</li>
+<li><strong>注：度和顶点和边之间的数量关系</strong></li>
 </ul>
+<p>补充：常见考点（主要围绕求度数，边数展开）</p>
+<h4 id="图的存储结构"><a href="#图的存储结构" class="headerlink" title="图的存储结构"></a>图的存储结构</h4><ul>
+<li><p>邻接矩阵</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//主要的思路就是用一个一维数组存储顶点集合，再用一个二维数组存储边及其连接的顶点信息</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Mgraph</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> Vex[MAX];<span class="comment">//顶点集合</span></span><br><span class="line">    <span class="keyword">int</span> Edge[MAX][MAX];<span class="comment">//边表，有边填1，没变填0（如果是带权图，则填权值，没边则为无穷）</span></span><br><span class="line">    <span class="keyword">int</span> vexnum;<span class="comment">//顶点数</span></span><br><span class="line">    <span class="keyword">int</span> arcnum;<span class="comment">//边数</span></span><br><span class="line">&#125;MGraph;<span class="comment">//适合存储稠密的图，无向图对应的一定是个对称矩阵，可以通过之前章节的方法压缩</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>如何求顶点i到顶点j之间的长度为n的路径有几条</strong>（第i行*第j列，乘n次）</li>
+</ul>
+</li>
+<li><p>邻接表</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数组+链表</span></span><br><span class="line"><span class="keyword">typedef</span> VertexType <span class="keyword">char</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span>&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span>* <span class="title">next</span>;</span></span><br><span class="line">    <span class="keyword">int</span> adjvex;<span class="comment">//指此结点上的边所指向的结点的位置（数组下标，有向图只存出边）</span></span><br><span class="line">&#125;ArcNode;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">VNode</span>&#123;</span></span><br><span class="line">	VertexType data;</span><br><span class="line">    ArcNode *first<span class="comment">//第一条边</span></span><br><span class="line">&#125;VNode,AdjList[MAX];<span class="comment">//第一个定义表示一个顶点，第二个定义表示顶点集合</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ALGraph</span>&#123;</span></span><br><span class="line">    AdjList vertices;</span><br><span class="line">    <span class="keyword">int</span> vexnum;<span class="comment">//顶点数</span></span><br><span class="line">    <span class="keyword">int</span> arcnum;<span class="comment">//边数</span></span><br><span class="line">&#125;ALGraph;</span><br><span class="line"><span class="comment">//对于无向图空间有冗余，通过邻接多重表优化</span></span><br><span class="line"><span class="comment">//对于有向图，找入边不方便，通过十字链表优化</span></span><br><span class="line"><span class="comment">//邻接表表示并不唯一，链表部分的顺序可变</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>十字链表（只用于存储有向图）</p>
+<ul>
+<li>注：可以理解为在邻接表上做出改进，结点有两个指针，一个指向出边的链表，一个指向入边的链表</li>
+<li>后续补充</li>
+</ul>
+</li>
+<li><p>邻接多重表（存储无向图）</p>
+<ul>
+<li>注：可以理解为在邻接表上做出改进</li>
+<li>后续补充</li>
+</ul>
+</li>
+<li><p>图的基本操作（根据实际情况来考虑，这里只大概列举了一些较为常用的，主要是在邻接表，邻接矩阵这两种存储结构下的实现）———考研可以直接调用接口</p>
+<ul>
+<li>找到一个顶点的第一个邻接点</li>
+<li>找到x结点除了y结点之外的其他邻接点</li>
+<li>遍历（重点）</li>
+</ul>
+</li>
+</ul>
+<h4 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h4><ul>
+<li><p>BFS（广度优先遍历，可以参考树的层序遍历来理解，不要太纠结于代码，通过核心的几个操作分析时间复杂度）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> visited[MAX];<span class="comment">//这个数组用来标记一个结点是否已经访问过</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFSTraverse</span><span class="params">(Graph G)</span></span>&#123;</span><br><span class="line">    <span class="built_in">InitVisit</span>(visited);<span class="comment">//初始化为false</span></span><br><span class="line">    <span class="built_in">InitQueue</span>(Q);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G.vexnum;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!visit[i])&#123;</span><br><span class="line">            <span class="built_in">BFS</span>(G,i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="comment">//通过这个函数完善遍历算法，保证非连通图也可以完成广度优先遍历</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">(Graph G,<span class="keyword">int</span> v)</span></span>&#123;<span class="comment">//v表示出发顶点</span></span><br><span class="line"> 	<span class="built_in">visit</span>(v);<span class="comment">//访问结点v</span></span><br><span class="line">    visit[v]=<span class="literal">true</span>;</span><br><span class="line">    Q.<span class="built_in">EnQueue</span>(v);<span class="comment">//将结点v入队</span></span><br><span class="line">    <span class="keyword">while</span>(!Q.<span class="built_in">isEmpty</span>())&#123;</span><br><span class="line">		v=Q.<span class="built_in">DeQueue</span>();<span class="comment">//出队，并保存这个结点</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> w=<span class="built_in">FirstNeighbor</span>(G,v);w&gt;=<span class="number">0</span>;w=<span class="built_in">NextNeighbor</span>(G,v,w))&#123;<span class="comment">//访问与temp结点之间相邻有路径的每一个结点</span></span><br><span class="line">			<span class="keyword">if</span>(!visit[v])<span class="comment">//访问未曾访问过的结点</span></span><br><span class="line">            &#123;  </span><br><span class="line">                visit[v];</span><br><span class="line">                vivisted[v]=<span class="literal">true</span>;</span><br><span class="line">            	Q.<span class="built_in">EnQueue</span>(v);            </span><br><span class="line">            &#125;    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<ul>
+<li><p>对于广度优先遍历的序列，通过邻接矩阵存储得到的结果唯一，为升序排列，通过邻接表存储得到的结果不唯一</p>
+</li>
+<li><p>广度优先生成树，保留广度优先遍历访问的n-1条边，得到这棵树</p>
+</li>
+</ul>
+</li>
+<li><p>DFS（深度优先遍历）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> visited[MAX];<span class="comment">//这个数组用来标记一个结点是否已经访问过</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFSTraverse</span><span class="params">(Graph G)</span></span>&#123;</span><br><span class="line">    <span class="built_in">InitVisit</span>(visited);<span class="comment">//初始化为false</span></span><br><span class="line">    <span class="built_in">InitQueue</span>(Q);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G.vexnum;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!visit[i])&#123;</span><br><span class="line">            <span class="built_in">DFS</span>(G,i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="comment">//通过这个函数完善遍历算法，保证非连通图也可以完成深度优先遍历</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(Graph G,<span class="keyword">int</span> v)</span></span>&#123;<span class="comment">//v表示出发顶点</span></span><br><span class="line">    <span class="built_in">visit</span>(v);<span class="comment">//访问结点v</span></span><br><span class="line">    visited[v]=<span class="literal">true</span>;</span><br><span class="line">   	<span class="keyword">for</span>(<span class="keyword">int</span> w=<span class="built_in">FirstNeighbor</span>(G,v);w&gt;=<span class="number">0</span>;w=<span class="built_in">NextNeighbor</span>(G,v,w))&#123;<span class="comment">//访问与temp结点之间相邻</span></span><br><span class="line">    	<span class="keyword">if</span>(!visited[v])</span><br><span class="line">    		<span class="built_in">DFS</span>(G,w);  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="图的应用"><a href="#图的应用" class="headerlink" title="图的应用"></a>图的应用</h4><h5 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h5><ul>
+<li>概念：边权值最小的生成树</li>
+<li>prim算法（选顶点）<ul>
+<li>思路：从某一个顶点开始，每次将代价最小的<strong>新顶点</strong>加入到生成树之中，直到生成树包括了图的所有顶点</li>
+<li>简单的代码逻辑：</li>
+</ul>
+</li>
+<li>Kruskal算法（选边）<ul>
+<li>思路：每次挑选一条权值最小的边，使这条边连着的两部分连通（若已经连通则不选），直到所有的点都连通</li>
+<li>代码实现的逻辑<ol>
+<li>预处理，即将个条边按权值先排序</li>
+<li>扫描排序得到的结果，判断两个结点是否连通（判断会用到并查集）</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="求最短路径"><a href="#求最短路径" class="headerlink" title="求最短路径"></a>求最短路径</h5><ul>
+<li><p>单源最短路径（某个结点到其他顶点之间最短的路径）</p>
 <ol>
-<li>字符计数法：帧头部有一个字节的字段，记录帧内的字符数</li>
-<li>字符填充法</li>
-<li>零比特填充法：先在帧的头部和尾部都放一个字节（即01111110），在发送端，会扫描整个信息字段，如果扫描到连续的5个1，则在这之后立即填入一个0，在接收端，先找到边界，再扫描比特流，如果出现连续的5个1，则删除这之后的0</li>
-<li>违规编码法：举个栗子，对于曼彻斯特编码，用“高-高”和“低低”这样的信号来界定帧的起始和终止</li>
-</ol>
+<li><p>BFS算法（求无权图———将边权值认为1即可）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在原本的BFS算法上进行修改即可</span></span><br><span class="line"><span class="keyword">bool</span> visited[MAX];</span><br><span class="line"><span class="keyword">int</span> d[];<span class="comment">//存储路径长度，初始化为无穷</span></span><br><span class="line"><span class="keyword">int</span> path[];<span class="comment">//存储最短路径中，节点的上一个连接的结点，初始化为-1</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">void BFS(Graph G,int v)&#123;</span></span><br><span class="line"><span class="comment"> 	visit(v);</span></span><br><span class="line"><span class="comment">    visit[v]=true;</span></span><br><span class="line"><span class="comment">    Q.EnQueue(v);</span></span><br><span class="line"><span class="comment">    while(!Q.isEmpty())&#123;</span></span><br><span class="line"><span class="comment">		v=Q.DeQueue();</span></span><br><span class="line"><span class="comment">        for(int w=FirstNeighbor(G,v);w&gt;=0;w=NextNeighbor(G,v,w))&#123;</span></span><br><span class="line"><span class="comment">			if(!visit[v])</span></span><br><span class="line"><span class="comment">            &#123;  </span></span><br><span class="line"><span class="comment">                visit[v];</span></span><br><span class="line"><span class="comment">                vivisted[v]=true;</span></span><br><span class="line"><span class="comment">            	Q.EnQueue(v);            </span></span><br><span class="line"><span class="comment">            &#125;    </span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br><span class="line"><span class="comment">//核心部分未完成</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Dijkstra算法（求带权图，权值不能为负）</p>
 <ul>
-<li>注：前两种方法存在比较明显的问题，实际上并不常用，3和4都实现了透明传输，不会误判帧的边界</li>
+<li>思路<ol>
+<li>设置三个数组，详细见代码实现</li>
+<li>初始化，将起点的dist设置为0，final设置为true，path设置为自己，如果起点到其他顶点只有一条出边，则将这条路径的值作为该顶点对应的dist值，如果到其他顶点的不止一条出边，则对应的dist设置为无穷</li>
+<li>遍历dist数组，将对应dist值最小的顶点的final设置为true，之后根据这个顶点的出边所连接的顶点更新dist数组的值（用更小的距离替换）以及path数组，此后不断重复这个过程</li>
+</ol>
+</li>
+<li>代码实现：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> <span class="keyword">final</span>[MAX_VEX];<span class="comment">//标记各个顶点是否已经找到最短路径</span></span><br><span class="line"><span class="keyword">int</span> dist[MAX_VEX];<span class="comment">//到其他顶点的最短路径长度，下标表示目标顶点</span></span><br><span class="line"><span class="keyword">int</span> path[MAX_VEX];<span class="comment">//路径上的直接前驱</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>有向图各个顶点之间的最短路径/求出每个顶点对之间的最短路径（Floyd算法）//重点理解一下</p>
+<ul>
+<li>动态规划的思想</li>
+<li>思路<ol>
+<li>设置两个矩阵（n<em>n），路径矩阵（初始时各个顶点之间的最短路径长度，<em>*初始不允许在其他顶点中转</em></em>）以及path矩阵（两个顶点之间的中转点）</li>
+<li>之后不断增加中转点，遍历上面两个矩阵，修改更新之后的信息（更新时要根据上一个状态的两个矩阵来判断）</li>
+</ol>
+</li>
 </ul>
 </li>
-<li><p>链路管理，即连接的建立、维持和释放</p>
-</li>
-<li><p>为网络层提供服务（包括无确认无连接服务/有确认无连接服务/有确认面向连接服务）</p>
-</li>
-<li><p>流量控制</p>
-</li>
-<li><p>差错检测和纠正（差错包括帧错和位错误）</p>
-</li>
 </ul>
+<h5 id="有向无环图（DAG）"><a href="#有向无环图（DAG）" class="headerlink" title="有向无环图（DAG）"></a>有向无环图（DAG）</h5><ul>
+<li><p>定义：不存在环路的有向图</p>
 </li>
-</ul>
-<h4 id="差错检测和纠正"><a href="#差错检测和纠正" class="headerlink" title="差错检测和纠正"></a>差错检测和纠正</h4><ul>
-<li><p>差错产生的原因：有噪声引起</p>
+<li><p>应用1：描述表达式</p>
 </li>
-<li><p>两类差错</p>
+<li><p>应用2：拓扑排序</p>
+<ul>
+<li><p>AOV网：（顶点表示活动的网），具体用DAG图表示一个工程，有向边表明了活动的先后顺序，对于AOV网不能有环路</p>
+</li>
+<li><p>拓扑排序定义：顶点出现一次，A在序列中在B之前，则不存在从B到A的路径</p>
+</li>
+<li><p>求拓扑序列的算法描述</p>
 <ol>
-<li>位错误：比特流的某一位错误，1变成0或者0变成1</li>
-<li>帧错误：帧丢失/帧重复/帧失序（一般解决方法就是丢弃+重传）</li>
+<li>在AOV网中找到没有前驱的顶点并输出</li>
+<li>在网中“删除“这些没有前驱的顶点，以及其对应的出边</li>
+<li>重复前两步直到当前的网为空（成功得到拓扑序列）或者中不存在无前驱的顶点（有回路，无法找到拓扑排序）</li>
 </ol>
 </li>
-<li><p>检错编码1——奇偶校验码</p>
+<li><p>求拓扑排序的代码描述（这里描述基于邻接表存储的图）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> indegree[];<span class="comment">//存储所有顶点的入度</span></span><br><span class="line"><span class="keyword">int</span> print[];<span class="comment">//记录拓扑序列</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">TopologicalSort</span><span class="params">(Graph G)</span></span>&#123;</span><br><span class="line">	<span class="built_in">InitIndegree</span>(indegree);</span><br><span class="line">    <span class="built_in">InitStack</span>(S);<span class="comment">//存储入度为0的顶点的编号，实现在逻辑上的“删除”</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G.vexnum;i++)</span><br><span class="line">        <span class="keyword">if</span>(indegree[i]==<span class="number">0</span>)</span><br><span class="line">            S.<span class="built_in">push</span>(i);</span><br><span class="line">    <span class="keyword">int</span> count=<span class="number">0</span>;<span class="comment">//计数，通过这个计数判断是否有环路</span></span><br><span class="line">    <span class="keyword">while</span>(!S.<span class="built_in">isEmpty</span>())&#123;</span><br><span class="line">        <span class="keyword">int</span> temp=S.<span class="built_in">top</span>();</span><br><span class="line">        cout&lt;&lt;temp;</span><br><span class="line">        S.<span class="built_in">pop</span>();</span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">for</span>(ArcNode* v=G.vertices[temp].first;v!=<span class="literal">NULL</span>;v=v-&gt;nextarc)&#123;</span><br><span class="line">            <span class="keyword">int</span> p=v.adjvex;</span><br><span class="line">            indegree[p]--;</span><br><span class="line">            <span class="keyword">if</span>(indegree[p]!=<span class="number">0</span>)</span><br><span class="line">                S.<span class="built_in">push</span>(p);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(count&lt;G.vexnum)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        returm <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注：之后为额外扩充内容，尽量掌握</p>
+</li>
+<li><p>逆拓扑排序</p>
+</li>
+<li><p>通过DFS求逆拓扑排序</p>
+</li>
+<li><p>通过DFS求拓扑排序</p>
+</li>
+</ul>
+<h5 id="关键路径"><a href="#关键路径" class="headerlink" title="关键路径"></a>关键路径</h5><ul>
+<li><p>基本概念性质解释</p>
 <ul>
-<li>奇校验码：在附加一个校验元（即在信息编码的尾部加一个比特），保证1的个数为奇数</li>
-<li>偶校验码：在附加一个校验元，保证1的个数为偶数</li>
+<li>AOE网（顶点表示事件，有向边表示活动，边权值表示活动的时间开销）</li>
+<li>只有当顶点事件发生，出边代表的活动才开始</li>
+<li>只有入边的活动全部结束，顶点事件才能发生</li>
+<li>仅有一个入度为0（源点）和一个初度为0的顶点（汇点）</li>
+<li>源点到汇点的所有路径中，具有<strong>最大</strong>路径长度的路径为关键路径</li>
+<li><strong>事件v的最早发生时间</strong>：所有从v开始的活动的最早开始时间———V1</li>
+<li><strong>活动a的最早开始时间</strong>：该活动弧的起点所表示的事件的最早发生时间——-A1</li>
+<li><strong>事件v的最迟发生时间</strong>：在不推迟整个工期的前提之下，某个事件最迟必须发生的时间——-V2</li>
+<li><strong>活动a的最迟开始时间</strong>：该活动弧的终点所表示事件的最迟发生时间与<strong>该活动a所需时间</strong>之差———A2</li>
+<li>当活动a的最早开始时间和最迟开始时间相等，连接的两个顶点为关键活动，经过所有这些活动的路径即为关键路径</li>
 </ul>
 </li>
-<li><p>检错编码2——循环冗余码</p>
-<ul>
-<li>生成多项式：双方约定好的一串序列（一般题目中有），用于辅助计算是否出错，这个多项式有<strong>r位</strong></li>
-<li>对于发送端：求出要传输的数据（数据有d位，还会在<strong>尾部补r个0</strong>，这个最终结果用于计算）和生成多项式作商的结果和余数，将最后的r位换成余数，发给接收端</li>
-<li>对于接收端：接收到的数据与生成多项式作商，余数为0，则判断为未发生错误</li>
-<li>这个过程中，如果判断某个帧有错误，则将这一帧丢弃</li>
-</ul>
-</li>
-<li><p>纠错编码——海明码（可以发现错误，找到其位置，并纠正—-0换为1，1换为0）</p>
-<ul>
-<li>海明距离（码距）：两个合法编码的对应位比特取值不同的比特数<ul>
-<li>举个栗子：000,100他们俩的海明距离为1（只有第1位不同）</li>
-</ul>
-</li>
-<li>流程如下</li>
-</ul>
+<li><p>如何求关键路径</p>
 <ol>
-<li>确定校验码位数r<ul>
-<li>满足不等式$2^r\ge m+r+1$，m表示数据的位数，根据不等式找r的最小值</li>
-</ul>
+<li><p>求所有事件的V1</p>
+<p>1.1先求出拓扑排序</p>
+<p>1.2按这个序列求出每一个事件的V1（前驱顶点+入边）</p>
+<p>注：对于1.2，如果有多个前驱顶点，找所有结果的最大值</p>
 </li>
-<li><p>确认校验码和数据的位置</p>
-<ul>
-<li>校验码放在$2^n$的位置（n为位数，最右边为1）</li>
-<li>数据依次放入空位即可</li>
-</ul>
+<li><p>求所有事件的V2</p>
+<p>2.1求逆拓扑序列</p>
+<p>2.2按这个序列求每个事件的v2（后继顶点-出边）</p>
+<p>注：对于2.2，如果有多个后继顶点，找所有结果的最小值</p>
 </li>
-<li><p>求出校验码的值</p>
-<ul>
-<li>根据序号的二进制形式判断每一位校验码对应的检验位置</li>
-</ul>
+<li><p>求所有活动的A1</p>
 </li>
-<li><p>检错并纠错</p>
-<ul>
-<li>根据每一位校验码对负责的比特位得到一个序列，根据偶校验的方式判断这个序列是否有误</li>
-<li>满足偶校验则记为1，不满足则记为0，有高位向低位排列每一位校验码对应的结果，序列表明了第几位有错</li>
-</ul>
+<li><p>求所有活动的A2</p>
+<p>注：对应3和4按定义来即可</p>
+</li>
+<li><p>求所有A1-A2的结果，为0的即为关键路径的一部分</p>
 </li>
 </ol>
 </li>
 </ul>
-<h4 id="可靠传输机制-流量控制"><a href="#可靠传输机制-流量控制" class="headerlink" title="可靠传输机制+流量控制"></a>可靠传输机制+流量控制</h4><ul>
-<li>可靠传输：保证发送方发出的内容与接收方收到的内容一致</li>
-<li>流量控制：在接收方的缓存空间有限，通过控制发送的速率保证接收方有足够的空间接收传来的帧（传输层和数据链路层都有这个机制）</li>
-<li>3种流量控制的协议（也同时保证了可靠传输）</li>
-</ul>
-<ol>
-<li><p>停止等待协议</p>
-<ul>
-<li><p>目的是解决丢包（由多种原因导致数据包丢失）问题</p>
 </li>
-<li><p>为了讨论方便，仅考虑一方发生一方接收，并且更多关注传输的机制不用考虑数据在哪一个层次上传输</p>
-</li>
-<li><p>停止等待：发送方发送完一个分组之后就停止发送，直到收到接收方的确认信息再发送下一个分组</p>
-</li>
-<li><p>在这个协议中的几种传输情况</p>
-<ul>
-<li><p>无差错：发送一个分组，等接收方传回一个ACK（确认帧）之后开始传下一个分组</p>
-</li>
-<li><p>有差错情况A：分组丢失或者检测到分组出错：会设置定时器，发生一个分组就启动一个定时器，如果分组丢失则等到超时就再次发送该数据分组</p>
-<p>注1：发送完一个数据分组，会保留其副本</p>
-<p>注2：数据分组和ACK都有编号</p>
-</li>
-<li><p>有差错情况B：ACK丢失</p>
-</li>
-<li><p>有差错情况C：ACK迟到</p>
-</li>
-</ul>
-</li>
-<li><p>性能分析：信道利用率太低</p>
-</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>注1：对于这3种协议，重点在具体控制的模式，属于哪一层的不必在意</li>
-</ul>
-<ol>
-<li>后退N帧协议（GBN）：在停止等待协议之上就行改进<ul>
-<li>通过流水线技术改进（连续发送多个数据分组）</li>
-<li>发送窗口：规定了<strong>发送方</strong>一组<strong>连续</strong>发送的数据分组的序号范围（比如从第0个数据分组到第5个数据分组）</li>
-<li>接收窗口：规定了接收方一组<strong>连续</strong>接收的数据分组的序号范围</li>
-<li>接收ACK：收到ACK之后，会将该ACK对应的数据分组标记为已接收，并且会将发送窗口移动到这个分组之后</li>
-<li>累计确认：如果发送方收到n号的ACK分组，则表明n号之前的分组已经全部被接收</li>
-<li>超时处理：发送方重传丢失分组以及之后的已发送但是未被确认的分组（某一个分组出错也类似于这个过程）</li>
-<li>发送窗口最大为$2^n-1$，接收窗口大小为1</li>
-<li>存在的问题，累计确认的模式可能会丢失大量的分组，导致传输效率降低</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>注2：这个过程结合图理解</li>
-</ul>
-<ol>
-<li>选择重传协议<ul>
-<li>在GBN协议上进行改进，设置单个确认+增大接收窗口+设置接收缓存（缓存乱序到达的帧）</li>
-<li>收到ACK：开始同GBN，但是发送窗口移动到此时<strong>最小序号</strong>的未确认的分组处</li>
-<li>超时事件：对应发送方，超时发生的时候只会重传一个数据分组</li>
-<li>对于接收方，接受窗口的范围内的分组“来者不拒”（失序的帧会被缓存），窗口会移到最小序号的未收到的分组处</li>
-<li>对应接收方，发送来的分组序号在窗口左边或者右边，则直接丢弃，左边的则还会发送一个ACK给发送方</li>
-<li>两边窗口最大为$2^{n-1}$</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>注3：这个过程同样结合图理解</li>
-</ul>
-<h4 id="信道划分介质控制"><a href="#信道划分介质控制" class="headerlink" title="信道划分介质控制"></a>信道划分介质控制</h4><h5 id="3-1-概述"><a href="#3-1-概述" class="headerlink" title="3.1 概述"></a>3.1 概述</h5><ul>
-<li>两种链路：<ol>
-<li>点对点链路</li>
-<li>广播式链路</li>
-</ol>
-</li>
-<li>存在的问题：在共享信道上，两个结点之间的通信可能受到其他节点的干扰，导致冲突（冲突指结点同时收到两个或者多个来自其他结点的信号，无法从信号中得到有效的信息）</li>
-<li><p>解决方法：（介质访问控制）解决了哪个设备使用共享链路的问题，尽可能的避免干扰（如何协调多个发送和接收节点对一个共享信道的访问）</p>
-</li>
-<li><p>信道划分方式包括动态的和静态的方式（详细内容在下一点）</p>
-</li>
-<li><p>节点通过多路访问协议规范它们在共享信道上的传输</p>
-</li>
-<li>基于原本的信道进行协调</li>
-<li>多路复用技术：多个计算机或者终端设备<strong>共享信道</strong>资源</li>
-</ul>
-<h4 id="介质访问控制"><a href="#介质访问控制" class="headerlink" title="介质访问控制"></a>介质访问控制</h4><ul>
-<li><p>信道划分介质访问控制（多路复用）——-静态分配信道的方式，提前给用户分好的信道</p>
-<ul>
-<li><p>TDM（时分多路复用）：用户交替使用信道（类似操作系统的并发过程）</p>
-<ul>
-<li>STDM（时分多路复用改进）：提高信道利用率，通过集中器收集多个用户通信的信息，动态分配时隙，在一条线路上将信息发出</li>
-</ul>
-</li>
-<li><p>FDM（频分多路复用）：划分出多个不同频率给不同用户（用户占用不同带宽）</p>
-</li>
-<li><p>CDMA（码分多路复用）</p>
-</li>
-<li><p>WDM（波分多路复用）：按照光的波长划分</p>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>随机接入协议（一种动态分配信道的方式）——-用户可以随机发信息，发送信息时占用全部带宽</p>
-<ul>
-<li>时隙ALOHA（最简单的）<ul>
-<li>所有帧大小相同</li>
-<li>时间被划分成等长的时隙（一个时隙传一个帧）</li>
-<li>只能在时隙开始发送帧</li>
-<li>结点之间时钟同步</li>
-</ul>
-</li>
-<li>过程<ol>
-<li>结点有一个新的帧就在下一个时隙发送</li>
-<li>无冲突就继续发</li>
-<li>有冲突就在下一个时隙按概率p发送没发送成功的帧，直到成功发送</li>
-</ol>
-</li>
-<li><p>效率太低</p>
-</li>
-<li><p>ALOHA（想发就发）</p>
-<ul>
-<li>不监听信道，不划分时隙，不需要同步，有帧生成就立刻发送</li>
-<li>效率更低</li>
-</ul>
-</li>
-<li>CSMA（载波侦听多路访问协议）<ul>
-<li>特征<ul>
-<li>要监听信道</li>
-<li>当监测到信道空闲时发送帧，信道忙就等待（推迟发送也存在多种方式）</li>
-<li>冲突仍然可能发生</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>CSMA/CD（具有碰撞检测的载波侦听多路访问协议）</li>
-</ul>
-</li>
-<li>轮流协议（了解即可）</li>
 </ul>
 
       
@@ -486,7 +446,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/archives/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/18/">18</a><a class="extend next" rel="next" href="/archives/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/archives/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/28/">28</a><a class="extend next" rel="next" href="/archives/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

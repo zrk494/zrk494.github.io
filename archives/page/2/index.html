@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/05/01/DS/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/11/11/DS/%E6%95%A3%E5%88%97%E8%A1%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/01/DS/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/" class="post-title-link" itemprop="url">线性表</a>
+          <a href="/2022/11/11/DS/%E6%95%A3%E5%88%97%E8%A1%A8/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,24 +205,15 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-05-01 19:42:04" itemprop="dateCreated datePublished" datetime="2022-05-01T19:42:04+08:00">2022-05-01</time>
+      <time title="创建时间：2022-11-11 13:59:51" itemprop="dateCreated datePublished" datetime="2022-11-11T13:59:51+08:00">2022-11-11</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-07-24 16:30:20" itemprop="dateModified" datetime="2022-07-24T16:30:20+08:00">2022-07-24</time>
+        <time title="修改时间：2022-07-28 21:53:50" itemprop="dateModified" datetime="2022-07-28T21:53:50+08:00">2022-07-28</time>
       </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/algorithm-and-data-structure/" itemprop="url" rel="index"><span itemprop="name">algorithm and data_structure</span></a>
-        </span>
-    </span>
 
   
 </div>
@@ -234,78 +225,59 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h3><ul>
-<li>定义（相同数据类型的n个数据元素组成的有限序列）<ul>
-<li>补充概念：位序从1开始（注意数组从1=0开始）；</li>
+          <h3 id="散列表（hash-map）"><a href="#散列表（hash-map）" class="headerlink" title="散列表（hash map）"></a>散列表（hash map）</h3><ul>
+<li>注：在实际开发过程中，拉链法是更常用的冲突处理方式，但考试更常考开放地址法（乐）</li>
+<li><em>后续补充</em></li>
 </ul>
-</li>
-<li>逻辑结构</li>
-<li>相关操作（还可以根据实际需求定义其他的操作）<ul>
-<li>初始化</li>
-<li>销毁</li>
-<li>插入</li>
-<li>删除</li>
-<li>按值查找</li>
-<li>按位查找</li>
-<li>求表长</li>
-<li>判空</li>
+<h4 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h4><ul>
+<li>散列表：一种特殊的数据结构，特征为数据元素的关键字和存储地址存在一个特定的关系（直接相关）。</li>
+<li>同义词：不同的关键字，通过散列函数得到的值相同</li>
+<li>冲突：通过散列函数得到的位置已经被占用</li>
+<li>散列函数：一个反应“特定关系“的函数，计算的值即为关键字的位置</li>
+<li><strong>装填因子（常考）</strong>：表的记录数/散列表长度<ul>
+<li>装填因子直接影响散列表的查找效率</li>
 </ul>
 </li>
 </ul>
-<h3 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h3><ul>
-<li><p>定义（顺序存储的线性表）</p>
-</li>
-<li><p>两种实现方式</p>
-<ul>
-<li><p>静态（定义如下）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 10</span></span><br><span class="line">Typedef <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    ElemType data[MaxSize];</span><br><span class="line">    <span class="keyword">int</span> length<span class="comment">//当前存入的数据的数量</span></span><br><span class="line">&#125;SqList</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>动态（定义如下）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 10</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    ElemType *data;<span class="comment">//动态数组</span></span><br><span class="line">    <span class="keyword">int</span> MaxSize;</span><br><span class="line">    <span class="keyword">int</span> length;</span><br><span class="line">&#125;SeqList;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>四个特性</p>
-<ol>
-<li>随机访问</li>
-<li>存储密度高</li>
-<li>扩容不方便</li>
-<li>插入删除不方便</li>
+<h4 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h4><ul>
+<li>设计散列函数，主要的目标是让不同关键字的冲突尽可能少</li>
+<li>散列函数的常见设计方法<ol>
+<li>除留余数法：即H(key)=key%p（一般p取不大于表长m的，且最接近于m的质数p）</li>
+<li>直接地址法：即H(key)=key，H(key)=a*key+b</li>
+<li>选关键字分布均匀的若干位作为散列地址</li>
+<li>平方取中法</li>
 </ol>
 </li>
-<li><p><em>具体操作的实现见项目文件</em></p>
+<li>散列查找的核心思路依靠“用空间换时间”，所以要尽可能设计一个时间效率高的算法，但同时也不要去浪费过多的空间</li>
+</ul>
+<h4 id="处理冲突"><a href="#处理冲突" class="headerlink" title="处理冲突"></a>处理冲突</h4><ol>
+<li><p>拉链法（链地址法）</p>
+<ul>
+<li><p>将“同义词“存储在同一位置的一个链表上，如下图</p>
+<p><img src="/2022/11/11/DS/%E6%95%A3%E5%88%97%E8%A1%A8/image-20220728212021783.png" alt="image-20220728212021783"></p>
+</li>
+<li><p>效率分析</p>
+<ul>
+<li>查找长度：对比关键字的次数，如果该位置没有连着链表，则为0</li>
+<li>根据ASL的分析可得，冲突越多，效率越低</li>
+<li>可以通过一些方式，改善装填因子来提高效率</li>
+</ul>
 </li>
 </ul>
-<h3 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h3><ul>
-<li><p>定义</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//代码定义</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;LNode,*LinkList;<span class="comment">//备注：*LinkList这种定义的方式等价于Lnode*，这样写是为了提高代码的可读性</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">对于带头结点的链表，有head=L-&gt;next,head中只存储第一个元素的地址（存在next之中），head要占用malloc分配出来的空间</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//对于带头结点的链表，L-&gt;next即为第一个元素</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>备注：在这里，为了方便实现，创建的链表会带有头结点，但是要理解不带头结点的形式。</p>
+<li><p>开放地址法</p>
+<ul>
+<li>就是根据一个序列$d_i$ ，将关键字的同义词按这个序列插入到表的新的位置（其中i表示第i次发生冲突）</li>
+<li>根据不同的$d_i$，可以具体分成3种方法<ol>
+<li>线性探测法$d_i=d_{i-1}+1,d_0=0$，即一次往后移动一格，直到用空位将这个关键字插入</li>
+<li>平方探测法，$d_i=0,-1,1,-2^2,2^2……-k^2,k^2$</li>
+<li>伪随机序列法，不是很重要</li>
+</ol>
 </li>
-<li><p>两种创建（操作）的思路：头插和尾插</p>
-</li>
-<li><p><em>具体操作的实现见项目文件</em></p>
-</li>
+<li>在这个处理冲突的方法中，如果删除某个元素，不能简单的将其所在位置设置为空，而是要将此位置标记为已删除，因为失败查找的结束条件是此位置为空</li>
 </ul>
-<h3 id="单链表扩展"><a href="#单链表扩展" class="headerlink" title="单链表扩展"></a>单链表扩展</h3><ul>
-<li><p>双向链表</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">DNode</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">DNode</span> *<span class="title">next</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">DNode</span> *<span class="title">prior</span>;</span><span class="comment">//此处与单链表有区别，即多了一个指向上一个结点的指针</span></span><br><span class="line">&#125;DNode,*DLinkList;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>循环链表（定义完全同单链表，区别在于建立的时候要将最后的next指针指向头结点）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;LNode,*LinkList;</span><br><span class="line"><span class="comment">//对于最后一个元素，如果有头结点，则有p_last-&gt;next=head</span></span><br><span class="line"><span class="comment">//如果没有头结点，则有p_last-&gt;next=p_first</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>循环双链表，组合上两个即可</p>
-</li>
-<li><p>静态链表（一种借助数组来描述线性表的链式存储结构）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 10</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">	ElemType data;<span class="comment">//数据元素</span></span><br><span class="line">    <span class="keyword">int</span> next;<span class="comment">//下一个元素的数组下标</span></span><br><span class="line">&#125;SlinkList[MaxSize];</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="链表和顺序表对比"><a href="#链表和顺序表对比" class="headerlink" title="链表和顺序表对比"></a>链表和顺序表对比</h4><ul>
-<li>存取方式上的差异</li>
-<li>结构（逻辑结构和物理结构）</li>
-<li>增删改查操作（主要对比这些操作的时间复杂度）</li>
-<li>空间分配上的差异性</li>
-</ul>
+</ol>
 
       
     </div>
@@ -325,7 +297,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/18/">18</a><a class="extend next" rel="next" href="/archives/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/28/">28</a><a class="extend next" rel="next" href="/archives/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

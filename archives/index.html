@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/05/01/DS/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/11/11/DS/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/01/DS/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" class="post-title-link" itemprop="url">栈&队列</a>
+          <a href="/2022/11/11/DS/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%91/" class="post-title-link" itemprop="url">[object Object]</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,24 +205,15 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-05-01 19:42:04" itemprop="dateCreated datePublished" datetime="2022-05-01T19:42:04+08:00">2022-05-01</time>
+      <time title="创建时间：2022-11-11 13:59:51" itemprop="dateCreated datePublished" datetime="2022-11-11T13:59:51+08:00">2022-11-11</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-08-10 18:45:32" itemprop="dateModified" datetime="2022-08-10T18:45:32+08:00">2022-08-10</time>
+        <time title="修改时间：2022-07-24 16:31:16" itemprop="dateModified" datetime="2022-07-24T16:31:16+08:00">2022-07-24</time>
       </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/algorithm-and-data-structure/" itemprop="url" rel="index"><span itemprop="name">algorithm and data_structure</span></a>
-        </span>
-    </span>
 
   
 </div>
@@ -234,93 +225,189 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><ul>
-<li><p>基本概念和性质</p>
+          <h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><h4 id="树"><a href="#树" class="headerlink" title="树"></a>树</h4><ul>
+<li><p>树的定义（根结点，子树）</p>
+</li>
+<li><p>父结点，子结点，兄弟结点</p>
+</li>
+<li><p>结点的层次，结点的高度，树的高度（总共多少层）</p>
+</li>
+<li><p><strong>结点的度</strong>：结点有几个孩子（分支）</p>
+</li>
+<li><p><strong>树的度</strong>：结点度的最大值</p>
+</li>
+<li><p>有序树和无序树（区别在于树中的结点能否交换）</p>
+</li>
+<li><p>树的一些性质</p>
 <ul>
-<li>特殊的线性表，只能在一端进行插入或者删除</li>
-<li>n个不同元素进栈，出栈的元素的不同排列个数为$\frac{1}{n+1}C_{2n}^{n}$</li>
+<li><strong>结点树=总度数+1</strong></li>
+<li>度数为m的树第i层有至多$m^{i-1}$个结点</li>
+<li>高度为h的m叉树至多有多少结点（这个通过等比数列的求和方式来计算）</li>
+<li>高度为h的m叉树至少有h个结点</li>
+<li>具有n个结点的m叉树的最小高度（根据之前的结论列出不等式求解）</li>
 </ul>
 </li>
-<li><p>栈的基本操作</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">InitStack</span>(&amp;S);<span class="comment">//初始化栈</span></span><br><span class="line"><span class="built_in">DestoryStack</span>(&amp;S);<span class="comment">//销毁栈</span></span><br><span class="line"><span class="built_in">Push</span>(&amp;S,x);<span class="comment">//入栈</span></span><br><span class="line"><span class="built_in">Pop</span>(&amp;S,&amp;x);<span class="comment">//出栈</span></span><br><span class="line"><span class="built_in">GetTop</span>(S,&amp;x);<span class="comment">//获取栈顶元素</span></span><br><span class="line"><span class="built_in">StackEmpty</span>(S);<span class="comment">//判断栈是否为空</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>栈的两种定义方式</p>
+<li><p>树的存储结构（存储方式）</p>
 <ol>
-<li>顺序存储</li>
+<li><p>双亲表示法（一种顺序存储方式，存储结点的同时还存储了指向父结点的指针（地址））</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="keyword">int</span> parent;<span class="comment">//父结点的位置，对于根结点，这个值可以设为-1</span></span><br><span class="line">&#125;PTNode;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    PTNode nodes[MAX_TREE_SIZE];</span><br><span class="line">    <span class="keyword">int</span> num;<span class="comment">//表示结点的数量    </span></span><br><span class="line">&#125;PTree;</span><br><span class="line"><span class="comment">//在这种模式下，进行增删改查的操作</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>孩子表示法（顺序+链式存储，数组连着链表，链表中有孩子的信息，具体如下图）</p>
+<p><img src="/2022/11/11/DS/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%91/image-20220711162323850.png" alt="image-20220711162323850" style="zoom:80%;"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">CTNode</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> child;<span class="comment">//存储了孩子结点在数组中的位置</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">CTNode</span>* <span class="title">next</span>;</span> </span><br><span class="line">&#125;CTNode;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">  	ElemType data;</span><br><span class="line">    CTNode *first_child;<span class="comment">//存储树的第一个孩子的指针</span></span><br><span class="line">&#125;CTBox;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">  	CTBox nodes[MAX_TREE_SIZE];</span><br><span class="line">    <span class="keyword">int</span> num;<span class="comment">//当前存储结点的数量</span></span><br><span class="line">    <span class="keyword">int</span> r;<span class="comment">//存储根的位置</span></span><br><span class="line">&#125;CTree;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>孩子兄弟表示法</strong>（链式存储，最重要）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">CSNode</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">CSNode</span> *<span class="title">firstchild</span>/*指向结点的第一个孩子*/,*<span class="title">next_sibling</span>//指向这个结点的兄弟结点</span></span><br><span class="line"><span class="class">&#125;<span class="title">CSNode</span>,*<span class="title">CSTree</span>;</span></span><br><span class="line"><span class="comment">//可以完成树向二叉树转换的过程，要理解这个过程</span></span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    ElemType data[MAxSize];<span class="comment">//存放栈的静态数组</span></span><br><span class="line">    <span class="keyword">int</span> top;<span class="comment">//栈顶指针，即栈顶元素所在位置</span></span><br><span class="line">&#125;Stack;</span><br><span class="line"><span class="comment">//注意一下S.data[S.top++]和S.data[++S.top]的区别</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>树的遍历</p>
 <ol>
-<li>链式存储，做完题感觉此种方式考的频率更高</li>
+<li>先根遍历（先访问根结点，在遍历各个子树，类似先序遍历，用孩子兄弟表示法存储则按二叉树的先序遍历即可）</li>
+<li>后根遍历（先遍历各个子树，最后再访问根结点，用孩子兄弟表示法存储则按二叉树的中序遍历即可）</li>
+<li>层次遍历（要用辅助队列，流程大概可以简单描述为，结点入队，访问队头结点，将此结点的孩子都入队，最后将此结点出队）</li>
 </ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LinkNode</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">LinkNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;LinkNode,*Stack;</span><br><span class="line"><span class="comment">//注意带头和不带头的区别</span></span><br><span class="line"><span class="comment">//一般情况下我们将链表头作为栈顶，通过在这个位置前插入元素实现入栈</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>补充内容：共享栈，即两个顺序栈共同占用一个数组的两端</p>
-</li>
-<li><p>对与栈，一种非常常见的题型就是根据入栈序列判断出栈序列，一个比较好的思考方式按照第一个出栈的元素进行划分，其中的，最初入栈的两个元素往往顺序是固定的。</p>
-</li>
-</ul>
-<h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><ul>
-<li><p>基本概念和性质</p>
 <ul>
-<li>一种操作受限的线性表，只能在表的一端插入，另一端删除</li>
+<li>注：1和2可以统称为深度优先遍历，3可以称为广度优先遍历</li>
 </ul>
 </li>
-<li><p>队列的基本操作</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">InitQueue</span>(&amp;Q);<span class="comment">//初始化队列</span></span><br><span class="line"><span class="built_in">EnQueue</span>(&amp;Q,x);<span class="comment">//入栈</span></span><br><span class="line"><span class="built_in">DeQueue</span>(&amp;Q,&amp;x);<span class="comment">//出栈</span></span><br><span class="line"><span class="built_in">GetHead</span>(Q,&amp;x);<span class="comment">//获取栈顶元素</span></span><br><span class="line"><span class="built_in">QueueEmpty</span>(Q);<span class="comment">//判断栈是否为空</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>队列的两种实现方式</p>
-<ol>
-<li><p>顺序存储</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    ElemType data[MaxSize];<span class="comment">//存放队列元素的静态数组</span></span><br><span class="line">    <span class="keyword">int</span> front=<span class="number">0</span>,rear=<span class="number">0</span>;<span class="comment">//分别表示队头指针和队尾指针，初始位置均为0</span></span><br><span class="line">    <span class="keyword">int</span> length=<span class="number">0</span>;<span class="comment">//存储队列当前的元素个数</span></span><br><span class="line">&#125;Queue;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">在实际使用过程中，往往用这种方式实现循环队列，</span></span><br><span class="line"><span class="comment">插入时队尾指针这样变rear=(rear+1)%MaxSize</span></span><br><span class="line"><span class="comment">删除一个元素的时候，front=(front+1)%MaxSize</span></span><br><span class="line"><span class="comment">这种情况下队列长度为，(rear+MaxSize-front)%MaxSize</span></span><br><span class="line"><span class="comment">注意在这种情况下队列会牺牲一个存储单元，以便判断队列是否已满（条件是(rear+1)%MaxSize==front）</span></span><br><span class="line"><span class="comment">为了最大化利用空间，可修改原结构体，引入变量length存储队列目前的长度</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>链式存储，做完题感觉此种方式考的频率更高</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LinkNode</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">LinkNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;LinkNode;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    LinkNode *front,*rear;<span class="comment">//队头指针和队尾指针</span></span><br><span class="line">&#125;LinkQueue;</span><br><span class="line"><span class="comment">//注意带头(队头指针和队尾指针初始指向头)和不带头(初始两个指针均为NULL)的区别</span></span><br><span class="line"><span class="comment">//一般情况下我们将链表头作为队列头，队列尾为队尾</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>队列的一种特殊形式：双端队列</p>
+</ul>
+<h4 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h4><ul>
+<li><p>定义相关</p>
 <ul>
-<li>在队列的两端都可以出队和入队</li>
-<li>输出受限：只能在一端出队</li>
-<li>输入受限：只能在一端如队</li>
+<li>满二叉树</li>
+<li>完全二叉树（除了最后一层其他层必须满）</li>
+<li><strong>二叉树是有序树</strong></li>
+<li>平衡二叉树</li>
+<li>二叉排序树</li>
+</ul>
+</li>
+<li><p>性质</p>
+<ul>
+<li>大部分同树的性质</li>
+<li>额外内容：完全二叉树最多只有一个度数为1的结点（根据这个来通过总结点数求出0度和2度结点的个数）</li>
+<li>已知完全二叉树某一层的叶子结点数量，要考虑两种情况，选择满足题目要求的求解（例，王道书5.2.3-14,20）</li>
+</ul>
+</li>
+<li><p>二叉树的存储结构</p>
+<ul>
+<li><p>顺序存储（一般不用）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> data;</span><br><span class="line">    <span class="keyword">bool</span> isEmpty;</span><br><span class="line">&#125;;</span><br><span class="line">TreeNode t[MaxSize];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>链式存储</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span>&#123;</span></span><br><span class="line">  	ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> *<span class="title">lchild</span>,*<span class="title">rchild</span>;</span></span><br><span class="line">&#125;BiTNode,*BiTree;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>二叉树的建立（层次建树，建立的必为完全二叉树，代码见项目文件）</p>
+<ul>
+<li>注意：建立二叉树的时候记得将叶子结点或者度数为1的结点的空的子结点指针设为NULL</li>
+</ul>
+</li>
+<li><p>二叉树的遍历（代码见项目文件）</p>
+<ul>
+<li>先序遍历（根-&gt;左-&gt;右）———可以对应一个前缀表达式</li>
+<li>中序遍历（左-&gt;根-&gt;右）———可以对应一个中缀表达式（需要加上界限符）</li>
+<li>后序遍历（左-&gt;右-&gt;根）———可以对应一个后缀表达式</li>
+<li>上面3种遍历本质上是一种递归，可以用逐层展开的方法手写得到结果</li>
+<li>层次遍历（实现过程中，要使用到一个辅助队列）</li>
+<li>注：这种遍历必须要从根结点开始</li>
+<li>注：注意中序前驱，中序后继指哪个结点（根据中序序列来）</li>
+</ul>
+</li>
+<li><p>遍历的应用（变种）</p>
+<ul>
+<li>求树的深度</li>
+</ul>
+</li>
+<li><p>由遍历序列得到二叉树</p>
+<ul>
+<li>一个遍历序列一般会对应多个不同形态的二叉树</li>
+<li>一下3种组合可以由遍历序列得到唯一的一棵二叉树（核心是找根节点）<ul>
+<li>前序+中序（先通过前序序列根结点（第一个），一个结点的左右子树包括的结点会在中序遍历的序列之中得到）</li>
+<li>后序+中序（和上一个类似，只不过根节点在后序序列最后）</li>
+<li>层序+中序（先通过层序遍历找到根结点，再根据中序序列划分左右子树）</li>
+<li>其他的两种组合无法确定唯一的二叉树</li>
 </ul>
 </li>
 </ul>
-<h3 id="栈和队列的总和应用"><a href="#栈和队列的总和应用" class="headerlink" title="栈和队列的总和应用"></a>栈和队列的总和应用</h3><h5 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h5><ul>
-<li>括号匹配问题（见代码，总共3种不匹配的情况，要掌握代码）</li>
-<li><strong>表达式求值问题</strong>（掌握算法的整体思路即可）<ul>
-<li>表达式类型：中缀表达式，<strong>后缀表达式</strong>，前缀表达式</li>
-<li>如何中缀转后缀，如何中缀转前缀</li>
-<li>如何通过后（前）缀表达式求值</li>
-<li>中缀表达式求值（总和上两个问题）</li>
-<li>注：可用通过树结构实现这个过程（中缀表达式对应一个中序遍历，前缀对应前序，后缀对应后序）</li>
+</li>
+<li><p>线索二叉树</p>
+<ul>
+<li><p>左孩子（没有子节点时）指针指向前驱，右孩子（没有子节点时）指针指向后继（前驱后继取决于遍历序列），也就是将之前的空链域再利用起来</p>
+</li>
+<li><p>建立线索是为了更方便的遍历二叉树</p>
+</li>
+<li><p>手算得到线索二叉树</p>
+</li>
+<li><p>存储结构</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ThreadNode</span>&#123;</span></span><br><span class="line">  	ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ThreadNode</span> *<span class="title">lchild</span>,*<span class="title">rchild</span>;</span></span><br><span class="line">    <span class="keyword">bool</span> ltag,rtag;<span class="comment">//标识是否是左右线索，false表示其指向一个孩子</span></span><br><span class="line">&#125;ThreadNode,*ThreadTree;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>二叉树线索化的算法流程（会对二叉树再进行一次遍历，使用一个结点指针指向遍历到的结点的前驱）</p>
+<ul>
+<li><p>注意对最后一个结点的处理</p>
+</li>
+<li><p>注意先序线索化的一个小问题（要根据tag判断是否为真正的左孩子）</p>
+</li>
 </ul>
 </li>
-<li>栈在递归中的应用<ul>
-<li>了解一下函数调用栈</li>
+<li><p>如何根据已有的线索二叉树找前驱和后继</p>
+<ul>
+<li>对于中序线索，后继是最左下角的结点或者为右子节点（此时此结点的rtag为0），前驱是</li>
+<li>对于先序线索，前驱需要引入指向父结点的指针才能直接找到，</li>
+<li>对于后序线索，后继需要引入指向父结点的指针才能直接找到，</li>
 </ul>
 </li>
 </ul>
-<h5 id="队列的应用"><a href="#队列的应用" class="headerlink" title="队列的应用"></a>队列的应用</h5><ul>
-<li>树的层次遍历</li>
-<li>图的广度优先遍历</li>
+</li>
+</ul>
+<h4 id="森林"><a href="#森林" class="headerlink" title="森林"></a>森林</h4><ul>
+<li>定义：互不相交的树的集合</li>
+<li>森林和二叉树的转换（思路仍然是通过孩子兄弟表示法——<strong>对所有的子树采用这种表示方法</strong>——，再将森林中不同的树，将他们的根结点视为兄弟，用*next_sibling指针连上即可）</li>
+<li><p>森林的遍历（森林的本质上也是一种递归，一颗子树去掉根结点后就会得到一个森林）</p>
+<ul>
+<li>先序遍历（对子树进行先根遍历）</li>
+<li>后序遍历（对子树进行后根遍历）</li>
+</ul>
+</li>
+<li><p>注：如果涉及到森林的算法题，将森林用转换成二叉树的存储形式在遍历即可</p>
+</li>
+</ul>
+<h4 id="树的相关应用"><a href="#树的相关应用" class="headerlink" title="树的相关应用"></a>树的相关应用</h4><h5 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h5><ul>
+<li><p>概念解释</p>
+<ul>
+<li><p>结点的权重</p>
+</li>
+<li><p>结点的带权路径长度（路径长度*该结点权值）</p>
+</li>
+<li>树的带权路径长度（树的所有叶子结点的带权路径长度和）</li>
+<li>带权路径最小的二叉树即为哈夫曼树</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>构造的算法过程（根据算法掌握通过已有结点—-n个—绘制哈夫曼树的过程）</li>
+</ul>
+<ul>
+<li><p>性质</p>
+<ul>
+<li>每个初始结点都会称为叶子结点</li>
+<li>不存在度为1的结点</li>
+<li>结点总数为2n-1</li>
+</ul>
+</li>
+<li><p>应用：哈夫曼编码（<strong>对于一个给定的字符集如何设计一个哈夫曼编码</strong>）</p>
+<ul>
+<li>叶子结点表示这个字符</li>
+<li>叶子结点的权重表示字符出现的次数</li>
+<li>前缀码：即没有任何一个字符的编码是另一个字符编码的前缀</li>
+<li>可变长度编码：可以用不同长度的二进制数表示字符</li>
+<li>哈夫曼编码是前缀码也是可变长度编码</li>
+</ul>
+</li>
 </ul>
 <p>补充内容：</p>
-<h5 id="矩阵压缩"><a href="#矩阵压缩" class="headerlink" title="矩阵压缩"></a>矩阵压缩</h5><ul>
-<li>用一维数组存储二维特殊的矩阵</li>
-<li>上（下）三角矩阵</li>
-<li>对称矩阵</li>
-<li>三对角矩阵</li>
-<li>稀疏矩阵（可以用三元组顺序存，也可以用十字链表存）</li>
-<li>注意要求是行优先还是列优先原则，数组或者矩阵的下标是从1还是从0开始</li>
-</ul>
-<ul>
-<li>补充内容<ul>
-<li>malloc(不会初始化)和calloc的区别(会初始化)</li>
-</ul>
-</li>
-</ul>
+<p><a target="_blank" rel="noopener" href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html（常见数据结构和算法的动画过程）">https://www.cs.usfca.edu/~galles/visualization/Algorithms.html（常见数据结构和算法的动画过程）</a></p>
 
       
     </div>
@@ -340,7 +427,7 @@
 
 
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/18/">18</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/28/">28</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

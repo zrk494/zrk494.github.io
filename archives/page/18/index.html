@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/07/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%9F%A9%E9%98%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/07/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">计算机网络概述</a>
+          <a href="/2022/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%9F%A9%E9%98%B5/" class="post-title-link" itemprop="url">线性代数_矩阵</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,15 +205,24 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-07 16:00:48" itemprop="dateCreated datePublished" datetime="2021-03-07T16:00:48+08:00">2021-03-07</time>
+      <time title="创建时间：2022-03-16 21:02:24" itemprop="dateCreated datePublished" datetime="2022-03-16T21:02:24+08:00">2022-03-16</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-08-24 20:05:37" itemprop="dateModified" datetime="2022-08-24T20:05:37+08:00">2022-08-24</time>
+        <time title="修改时间：2022-07-19 19:03:48" itemprop="dateModified" datetime="2022-07-19T19:03:48+08:00">2022-07-19</time>
       </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+        </span>
+    </span>
 
   
 </div>
@@ -225,173 +234,266 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="计算机网络概述"><a href="#计算机网络概述" class="headerlink" title="计算机网络概述"></a>计算机网络概述</h3><ul>
-<li><p>（RFC是一个重要的参考资料有空可以看看）</p>
-</li>
-<li><p>概述部分可以简单了解一下历史背景</p>
-</li>
-</ul>
-<h4 id="计算机网络的概述"><a href="#计算机网络的概述" class="headerlink" title="计算机网络的概述"></a>计算机网络的概述</h4><ul>
-<li><p>计算机网络</p>
+          <h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><h4 id="基本定义"><a href="#基本定义" class="headerlink" title="基本定义"></a>基本定义</h4><ul>
+<li><p>定义</p>
 <ul>
-<li>定义1：  简单来说就是互连的自治的计算机集合。（由通信链路连接，没有主从关系）</li>
-<li>定义2：一个将很多分散的、具有独立系统的<strong>计算机系统</strong>，通过<strong>线路</strong>（一般可以是逻辑上的线路）和通信设备（比如路由器）连接的，有软件实现资源共享和信息传递的系统</li>
+<li><p>零矩阵</p>
+</li>
+<li><p>单位矩阵E，如4阶单位矩阵如下图</p>
+<script type="math/tex; mode=display">\begin{pmatrix}1&0&0&0 \\ 0&1&0&0\\ 0&0&1&0\\ 0&0&0&1\end{pmatrix}</script></li>
 </ul>
 </li>
-<li><p>计网的功能</p>
+<li><p>矩阵加法</p>
+</li>
+<li><p>矩阵数乘（每个元素都和系数相乘）</p>
+</li>
+<li><p>矩阵的乘法（$A\times B$）</p>
 <ul>
-<li>数据通信</li>
-<li>资源共享（硬件，软件，数据）</li>
-<li>分布式处理</li>
-<li>与因特网相连的接口（套接字接口）</li>
+<li><p>前提条件：矩阵A的列数=矩阵B的行数</p>
+</li>
+<li><p>A的一行和B的一列的所有元素，对应求积，再求出积的总和放到新的矩阵的对应行和列</p>
+</li>
+<li><p>矩阵乘法的一些相关性质</p>
+<ul>
+<li>矩阵乘法满足结合律和分配率</li>
+<li>矩阵乘法不满足交换律和消去律</li>
+</ul>
+<p>​    （例$(AB)^2=ABAB\neq A^2B^2 ,(A+B)(A-B)=A^2-AB+BA-B^2$）</p>
+<ul>
+<li>一般情况矩阵乘法不能因式分解，但是如果是A和E可以因式分解</li>
+<li>一些特殊情况，矩阵乘法满足消去律（A可逆/A为列满秩/A为行满秩）</li>
 </ul>
 </li>
-<li><p>计算机网络的三个发展阶段</p>
+</ul>
+</li>
+</ul>
+<h4 id="矩阵的其他运算"><a href="#矩阵的其他运算" class="headerlink" title="矩阵的其他运算"></a>矩阵的其他运算</h4><ul>
+<li>矩阵的转置（$A^T$）<ul>
+<li>定义：转置即交换矩阵的行和列得到矩阵</li>
+<li>性质相关<ul>
+<li>$(A+B)^T=A^T+B^T$</li>
+<li>$(kA)^T=kA^T$</li>
+<li>$(AB)^T=B^TA^T$</li>
+<li>$(A^T)^T=A$</li>
+<li>$|A^T|=|A|$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>对称矩阵<ul>
+<li>定义：满足$A^T=A$</li>
+</ul>
+</li>
+<li>反对称矩阵<ul>
+<li>定义：满足$A^T=-A$</li>
+<li><strong>补充结论：任意n阶矩阵均可分解为对称矩阵与反对称矩阵的和，详细见讲义</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="矩阵的逆"><a href="#矩阵的逆" class="headerlink" title="矩阵的逆"></a>矩阵的逆</h4><ul>
+<li>定义：$AB=E,B=A^{-1}$，则B为A的可逆矩阵</li>
+<li><p>性质相关</p>
+<ul>
+<li>$(kA)^{-1}= \frac{1}{k}A^{-1}$</li>
+<li>$(AB)^{-1}=B^{-1}A^{-1}$</li>
+<li>$|A^{-1}|=\frac{1}{|A|}$</li>
+<li>$(A^T)^{-1}=(A^{-1})^T$</li>
+<li>$(A^{-1})^{-1}=A$</li>
+</ul>
+</li>
+<li><p>矩阵是否可逆的充要条件</p>
 <ol>
-<li>ARPAnet产生<ul>
-<li>注：互联网就是把多个计算机网络连接起来的一个更大的系统</li>
-</ul>
+<li><p>$|A|\neq0$</p>
 </li>
-<li>三级结构</li>
-<li>多层次ISP结构<ul>
-<li>ISP：因特网服务提供者，向用户提供互联网接入业务，信息业务等（分为主干ISP，地区ISP和本地ISP）</li>
-</ul>
+<li><p>$r(A)=n$</p>
+</li>
+<li><p>A的列（行）向量组线性无关</p>
+</li>
+<li><p>齐次线性方程组$Ax=0$只有0解</p>
+</li>
+<li><p>非齐次线性方程组$Ax=b$有唯一解</p>
+</li>
+<li><p>A的特征值不为0</p>
+<p>注：上面6个条件互相为充要条件</p>
 </li>
 </ol>
 </li>
-<li><p>计网的组成</p>
-<ul>
-<li>总体来看，计算机网络包括三个部分，即：硬件+软件+协议（规则集合，规定了不同设备在模型的同一层如何通信）</li>
-<li>按功能划分，包括资源子网和通信子网</li>
-<li>按工作方式划分，包括如下的两个部分<ul>
-<li>计网的边缘部分（即端系统，两个端系统之间一般进行通信的是每个系统中的一个进程）</li>
-<li>计网的核心部分</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>计算机网络的分类</p>
-</li>
-<li><p>相关性能指标</p>
-<ul>
-<li><p>数据传输速率（比特率）：主机在数字信道上传输位数的速率</p>
-<ul>
-<li>补充：注意速率单位和存储容量单位的区别</li>
-</ul>
-</li>
-<li><p>带宽：描述网络通道传输数据的能力</p>
-<ul>
-<li>补充：是理想值，一般不能达到</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>吞吐量：单位时间内通过信道的数据量</p>
-</li>
-<li><p>时延$\times4$</p>
-<ul>
-<li>传输（发送）时延：数据从路由之中全部进入到信道这一过程需要的时间</li>
-<li>传播时延：在信道之中传输花费的时间</li>
-<li><p>排队时延：等待的时间，一般在拥塞的时候出现</p>
-</li>
-<li><p>处理时延：检错+找出口的时间</p>
-</li>
-</ul>
-</li>
-<li><p>RTT（往返时延）：包括一来一回的传播时延+末端处理时间</p>
-</li>
-<li>时延带宽积</li>
-<li>利用率<ul>
-<li>信道利用率</li>
-<li>网络利用率</li>
-</ul>
-</li>
-</ul>
-<h4 id="计算机网络的体系结构-参考模型"><a href="#计算机网络的体系结构-参考模型" class="headerlink" title="计算机网络的体系结构+参考模型"></a>计算机网络的体系结构+参考模型</h4><h5 id="计算机网络的分层"><a href="#计算机网络的分层" class="headerlink" title="计算机网络的分层"></a>计算机网络的分层</h5><ul>
-<li><p>按照计算机网络各个相对独立的功能划分、抽象，得到<strong>分层的</strong>计网体系结构，更直观的来研究计网，促进标准化工作</p>
-<ul>
-<li>注：这种分层的结构各层之间的功能相对独立，分界自然清晰，相互间的交流尽可能少</li>
-</ul>
-</li>
-<li><p>相关的一些概念：</p>
-<ul>
-<li>实体：即分层结构中的某一层的活动元素，不同端系统之间的同一层实体为对等实体</li>
-<li>协议：<strong>对等实体之间</strong>在数据交换时必须遵守的规则，包括三要素：<ol>
-<li>语法：传输数据的格式</li>
-<li>语义：规定要完成的功能</li>
-<li>同步：各种操作的先后顺序</li>
-</ol>
-</li>
-<li>接口：上层通过这个入口使用下层提供的服务<ul>
-<li>注：接口只在相邻层之间，提供的服务是已经封装好的</li>
-</ul>
-</li>
-<li>服务：下层为上层提供的功能调用（是单向的，只能上层用下层的服务）</li>
-<li>数据单元：SDU，PCI，PDU</li>
-</ul>
-</li>
-<li><p>计算机网络体系结构包括各个层次及同层直接的协议</p>
-</li>
-<li><p>体系结构是一种抽象的概念，具体实现这些功能的是计网中的软件和硬件</p>
-</li>
-</ul>
-<h5 id="2种参考模型"><a href="#2种参考模型" class="headerlink" title="2种参考模型"></a>2种参考模型</h5><ul>
-<li><p>封装：对于要发送的信息，在向下层传递的过程中，没经过一次就会将已有信息和此层附加的信息进行一次打包（封装）</p>
-</li>
-<li><p>7层OSI参考模型（一种理想的标准）</p>
+<li><p>矩阵不可逆的充要条件</p>
 <ol>
-<li>应用层（用户使用的应用程序所在的那一层，比如HTTP，SMTP等）</li>
-<li>表示层（包括数据格式转换，数据加密解密，数据压缩和回复的功能）</li>
-<li>会话层<ul>
-<li>建立同步，即在建立连接的基础上有序的传输数据</li>
-<li>通过校验点/同步点恢复通信</li>
-</ul>
-</li>
-<li>传输层（主机之间两个进程之间的通信，即端到端），可实现4个功能<ul>
-<li>可靠传输和不可靠传输</li>
-<li>差错控制</li>
-<li>流量控制</li>
-<li>复用和分用</li>
-</ul>
-</li>
-<li>网络层（把各个分组向目的地传输），可以实现4个功能<ul>
-<li>路由选择</li>
-<li>流量控制</li>
-<li>差错控制</li>
-<li>拥塞控制</li>
-</ul>
-</li>
-<li>数据链路层（将网络层传来的数据组装成帧，就是一串0和1的数字序列），可以实现4个功能<ul>
-<li>成帧（要定义帧的开始和结束）</li>
-<li>差错控制</li>
-<li>流量控制</li>
-<li>访问（接入）控制（指控制对信道的访问）</li>
-</ul>
-</li>
-<li>物理层，5个功能<ul>
-<li>定义接口特性</li>
-<li>定义传输模式</li>
-<li>定义传输速率</li>
-<li>比特同步</li>
-<li>比特编码</li>
-</ul>
-</li>
+<li>$|A|=0$</li>
 </ol>
 </li>
-<li><p>4层TCP/IP参考模型（事实标准）</p>
+</ul>
 <ol>
-<li>应用层（HTTP，FTP，DNS）</li>
-<li>传输层（TCP，UDP）</li>
-<li>网际层（IP）</li>
-<li>网络接口层</li>
+<li>$r(A)\lt n$<ol>
+<li>$Ax=0$有非0解</li>
 </ol>
 </li>
-<li><p>补充：通信的过程：信息从应用层开始，在每一层都被添加一个末端信息（除了链路层在首位都添加了信息），直到到达物理层之后被转换为二进制比特流在信道上传输，到达另一终端后信息被一层层解包</p>
+<li>A的一个特征值为0<ol>
+<li>A的列（行）向量组线性相关</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><p>矩阵的逆的4种求法</p>
+<ul>
+<li>逆的定义</li>
+<li><strong>初等变换法（具体的矩阵最常用）</strong>$(A|E)$通过初等行变换变为$(E|A^{-1})$</li>
+<li>伴随矩阵法（抽象的矩阵常用）</li>
+<li>分块矩阵法</li>
+</ul>
 </li>
 </ul>
-<p>​        </p>
+<h4 id="矩阵的初等变换"><a href="#矩阵的初等变换" class="headerlink" title="矩阵的初等变换"></a>矩阵的初等变换</h4><ul>
+<li>初等行变换的定义：包括三种变换方式<ol>
+<li>两行（列）互换</li>
+<li>一行（列）乘非0常数k</li>
+<li>一行（列）乘k加到另一行（列）</li>
+</ol>
+</li>
+<li>初等矩阵定义：单位矩阵E，只经过一次初等变换得到的矩阵</li>
+<li>初等变换和初等矩阵（记为$E_1$）的一些性质（熟练掌握，可以大幅度提升做题速度）<ul>
+<li>$|E_1|=-1$此时只经过一次两行互换，$|E_1|=k$此时矩阵的某一行乘了k，$|E_1|=1$此时矩阵的某一行乘k加到了另一行</li>
+<li>$E_1^T=E_1$此时只经过一次两行互换，或者此时矩阵的某一行乘了k，或者此时矩阵的某一行乘k加到了另一行</li>
+<li>$E_1^{-1}=E_1$此时只经过一次两行互换</li>
+<li>$E_1$为E在某一行乘了k得到，$E_1^{-1}$由E在该行乘$\frac{1}{k}$得到</li>
+<li>$E_1$为E在某一行乘k加到了另一行得到</li>
+<li>初等行（列）变换相当于左（右）乘相应的初等矩阵（做题很常用）<ul>
+<li>注：原矩阵乘一个初等矩阵得到新的矩阵，原矩阵到新矩阵初等变换的过程和得到初等矩阵变换的过程是一样的</li>
+</ul>
+</li>
+<li>可逆矩阵可以写成有限个初等矩阵的乘积</li>
+</ul>
+</li>
+<li><strong>初等变换的应用</strong>（综合性很强，很重要）<ul>
+<li><strong>初等变换可以求矩阵的逆</strong>（例如660-296）</li>
+<li>初等变换不会改变矩阵的秩，可以求矩阵的秩</li>
+<li>初等行变换不改变向量组的线性关系，可以用于求向量组的极大无关组</li>
+<li>初等行变换不改变线性方程组的解，可用于求线性方程组的解</li>
+</ul>
+</li>
+<li>矩阵等价<ul>
+<li>定义：矩阵A可以经过有限次的初等变换得到矩阵B，则A和B等价</li>
+<li>一组和等价相关的充要条件<ul>
+<li>r(A)=r(B)（更常用）</li>
+<li>存在m阶可逆矩阵P和n阶可逆矩阵Q，使得B=PAQ</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="矩阵的秩"><a href="#矩阵的秩" class="headerlink" title="矩阵的秩"></a>矩阵的秩</h4><ul>
+<li>基本定义相关<ul>
+<li>k阶子式：在一个m行n列的矩阵中任取k行k列，得到的这个k阶行列式即为k阶子式</li>
+<li>矩阵的秩：若矩阵A有一个r阶的子式不为0，而所有的r+1阶子式均为0，则矩阵的秩为r（记为r(A)）</li>
+<li>补充：<ul>
+<li>若矩阵A有一个r阶的子式，则$r(A)\ge r$</li>
+<li>若矩阵A所有r阶的子式均为0，则$r(A)\lt r+1$</li>
+<li>矩阵$A\neq 0$等价于$r(A)\ge 1$</li>
+</ul>
+</li>
+<li>满秩：矩阵A有m行n列，若r(A)=m的行满秩，若r(A)=n的列满秩</li>
+</ul>
+</li>
+<li>秩的性质（矩阵A有m行n列，矩阵B有n行s列）<ul>
+<li>$r(A)\le min\{m,n\}$</li>
+<li>$r(A+B)\le r(A)+r(B)$</li>
+<li>$r(AB)\le min\{r(A),r(B)\}$，实际使用时，可按需要写做$r(AB)\le r(A)$，并结合性质1</li>
+<li>$max\{r(A),r(B)\}\le r(A|B)\le r(A)+r(B)$—————————此处的|是分隔符号</li>
+<li>$r(A)=r(kA)$</li>
+<li>P为m阶可逆矩阵，Q为n阶可逆矩阵，则$r(A)=r(PA)=R(AQ)=R(PAQ)$</li>
+<li>若$r(A)=n$，则$r(A)=r(AB)$———右乘行满秩，秩不变———-$r(A)=m$，则$r(A)=r(CA)$———左乘列满秩，秩不变</li>
+<li>$r(A)=r(A^T)=r(AA^T)=r(A^TA)$</li>
+<li>若AB=0，则$r(A)+r(B)\le n$</li>
+</ul>
+</li>
+<li>矩阵的秩的求解方法<ul>
+<li>定义</li>
+<li>对于具体的矩阵A，对A初等行变换，化简为行阶梯形矩阵（每一行第一个非0的数的下方元素均为0），r(A)即为非0行行数</li>
+<li>对应抽象的矩阵A，使用之前的9条性质</li>
+</ul>
+</li>
+</ul>
+<h4 id="伴随矩阵"><a href="#伴随矩阵" class="headerlink" title="伴随矩阵"></a>伴随矩阵</h4><ul>
+<li><p>定义：由$a_{ij}$的代数余子式$A_{ij}$组成的矩阵，记作$A^\ast$（<strong>注意其形式，一行的代数余子式放在矩阵的一列上</strong>）</p>
+</li>
+<li><p>性质：</p>
+<ul>
+<li><p>$A^\ast A=A^\ast A=|A|E$           $A^{-1}|A|=A^\ast $(很常用)</p>
+</li>
+<li><p>$(kA)^\ast =k^{n-1}A^\ast $(有上一条结论推出)</p>
+</li>
+<li><p>$(AB)^\ast =B^\ast A^\ast $</p>
+</li>
+<li><p>$|A^\ast |=|A|^{n-1}$</p>
+</li>
+<li><p>$(A^T)^\ast =(A^\ast )^T$</p>
+</li>
+<li><p>$(A^{-1})^\ast =(A^\ast )^{-1}=\frac{A}{|A|}$</p>
+</li>
+<li><p>$(A^\ast )^\ast =|A|^{n-2}A$</p>
+</li>
+<li><p>$r(A^\ast)=\begin{cases} n &amp; r(A)=n \\1 &amp; r(A)=n-1 \\0 &amp;  r(A)&lt;n-1\\ \end{cases}$</p>
+</li>
+</ul>
+</li>
+<li>补充：对于列数较少的情况，用定义快，复杂的情况用性质根据A的逆求其伴随</li>
+</ul>
+<h4 id="分块矩阵"><a href="#分块矩阵" class="headerlink" title="分块矩阵"></a>分块矩阵</h4><ul>
+<li><p>运算</p>
+<ul>
+<li><p>加法</p>
+</li>
+<li><p>数乘</p>
+</li>
+<li><p><strong>乘法</strong>（很重要，有两种方式，A为$m\times n$的矩阵，B为$n\times s$的矩阵）</p>
+<ul>
+<li>A按列分块</li>
+<li>B按行分块</li>
+</ul>
+</li>
+<li><p>分块矩阵转置</p>
+</li>
+<li>分块矩阵的逆</li>
+<li>分块矩阵的高次幂</li>
+<li>注：上面2种运算对应的矩阵除了主对角线都为0</li>
+</ul>
+</li>
+</ul>
+<h4 id="几种特殊矩阵的总结"><a href="#几种特殊矩阵的总结" class="headerlink" title="几种特殊矩阵的总结"></a>几种特殊矩阵的总结</h4><ul>
+<li>单位矩阵，E</li>
+<li>数量矩阵</li>
+<li>对角阵</li>
+<li>上（下）三角矩阵</li>
+<li>对称矩阵和反对称矩阵</li>
+<li>正交矩阵（与其转置相乘结果为E，列向量和行向量的内积为0，且这些向量均单位化）</li>
+<li>初等矩阵</li>
+<li>行阶梯矩阵<ul>
+<li>每一行第一个非0的数的下方元素均为0</li>
+<li>全为0的行都在最下方</li>
+</ul>
+</li>
+<li>行最简矩阵<ul>
+<li>在行阶梯矩阵的基础上，让每一行第一个非0的数化简为1，且其正下方和正上方为0</li>
+</ul>
+</li>
+</ul>
+<p>补充内容</p>
+<ul>
+<li>对角矩阵（矩阵除了主对角线其余元素全为0），其求逆矩阵的公式</li>
+<li><strong>对于两个n维列向量$\alpha$和$\beta$，则矩阵$\alpha\beta^T$秩为1，且$\alpha^T\beta=\beta^T\alpha$为一个数，也是矩阵$\alpha\beta^T$的迹，$(\alpha\beta^T)^n=tr(A)^{n-1}\alpha\beta^T$，这个矩阵的一个特征值为tr(A)，其余特征值为0</strong></li>
+<li>题目中没有矩阵可逆相关的依据就不要考虑可逆，尝试考虑其他的方式化简（对于一个等式，可以考虑凑因式分解）</li>
+<li>矩阵的迹：即矩阵的主对角线之和，保持矩阵最原始的形式，</li>
+<li>矩阵中含参数，初等行变换过程中尽量不要将这个参数放在分母的位置</li>
+<li>矩阵的秩相等不要想当然的直接认为它们的行列式相等（行列式不为0的情况）</li>
+<li>矩阵的高次幂的求法（详细见660-258）<ol>
+<li>上面加粗的性质</li>
+<li>分解得A=B+E</li>
+<li>分块</li>
+<li>相似对角化的方式</li>
+</ol>
+</li>
+</ul>
 
       
     </div>
@@ -411,7 +513,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/17/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/17/">17</a><span class="page-number current">18</span>
+    <a class="extend prev" rel="prev" href="/archives/page/17/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/archives/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/28/">28</a><a class="extend next" rel="next" href="/archives/page/19/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

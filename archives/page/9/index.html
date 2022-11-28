@@ -135,7 +135,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/11/11/DS/AVL%E6%A0%91/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/03/07/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%89%A9%E7%90%86%E5%B1%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/11/DS/AVL%E6%A0%91/" class="post-title-link" itemprop="url">未命名</a>
+          <a href="/2022/03/07/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%89%A9%E7%90%86%E5%B1%82/" class="post-title-link" itemprop="url">计算机网络-物理层</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,14 +205,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-11-11 13:59:50" itemprop="dateCreated datePublished" datetime="2022-11-11T13:59:50+08:00">2022-11-11</time>
+      <time title="创建时间：2022-03-07 18:00:48" itemprop="dateCreated datePublished" datetime="2022-03-07T18:00:48+08:00">2022-03-07</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-08-18 20:37:55" itemprop="dateModified" datetime="2022-08-18T20:37:55+08:00">2022-08-18</time>
+        <time title="修改时间：2022-08-25 21:58:54" itemprop="dateModified" datetime="2022-08-25T21:58:54+08:00">2022-08-25</time>
       </span>
 
   
@@ -225,87 +225,190 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h3><p>注：</p>
-<ul>
-<li>先重点掌握这些过程的手画过程，真的有时间再去研究研究代码（然而大概没时间）</li>
-<li>大部分操作基于二叉排序树，目的是在对二叉排序树进行一些操作之后让其保持平衡（效率高）</li>
-</ul>
-<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ul>
-<li>AVL树，即树上任何结点的左子树和右子树的高度差不超过1</li>
-<li><strong>结点的平衡因子</strong>：结点左子树的高度-右子树的高度</li>
-</ul>
-<h4 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h4><ul>
-<li><p>对于平衡二叉树的插入操作，先插入再调整平衡</p>
+          <h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li><p>物理层的主要解决的问题就是如何传输数据比特流。</p>
 </li>
-<li><p>如何保持平衡</p>
+<li><p>定义标准：物理层主要定义了与传输媒体接口的特性</p>
+</li>
+<li><p>信号：数据的电器表现，就是数据在传输过程中的存在形式，可以与计算机中的二进制1和0对应</p>
+</li>
+<li><p>数字信号：代表消息的参数的取值是离散的</p>
+<p><img src="/2022/03/07/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%89%A9%E7%90%86%E5%B1%82/image-20220824220624121.png" alt="image-20220824220624121"></p>
+</li>
+<li><p>模拟信号：代表消息的参数的取值是连续的</p>
+<p><img src="/2022/03/07/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%89%A9%E7%90%86%E5%B1%82/image-20220824220642009.png" alt="image-20220824220642009"></p>
+</li>
+<li><p>定义的特性</p>
 <ul>
-<li>在二叉排序树插入一个新的结点之后，查找路径上所有结点都可能受影响，平衡因子发生改变</li>
-<li>最小不平衡子树：从插入的新结点回溯，找到第一个不平衡的结点（平衡因子绝对值大于0），以整个为根的树即为最小不平衡二叉树</li>
-<li>在插入过程中，将最小不平衡二叉树调整平衡，则整个二叉树都恢复平衡（具体原因分别分析之后划分的4种情况可得出）</li>
+<li>机械特性</li>
+<li>电气特性</li>
+<li>功能特性</li>
+<li>过程特性</li>
 </ul>
 </li>
-<li><p><strong>调整最小不平衡子树</strong>（4种情况）</p>
+<li><p>数据通信模型</p>
+</li>
+<li><p>三种通信方式</p>
+<ul>
+<li>全双工通信：通信双方可同时发送和接收，需要两条信道</li>
+<li>半双工通信：双方可以发送和接收，但是任何一方不能同时发送和接收，需要两条信道</li>
+<li>单工通信：只能单方向通信，即一方只能发，另一方只能收，一条信道即可</li>
+</ul>
+</li>
+<li><p>两种传输方式A</p>
+<ul>
+<li>串行：8位二进制数依次按顺序发送</li>
+<li>并行：8位二进制数通过8条信道同时发送</li>
+</ul>
+</li>
+<li><p>两种传输方式B</p>
+<ul>
+<li>同步传输：以数据块为单位发送，数据块头部有<strong>同步字符</strong></li>
+<li>异步传输：将一个比特分成多个小组传输</li>
+</ul>
+</li>
+<li><p>码元：用一个<strong>固定时长</strong>的<strong>信号波形</strong>来代表不同离散数值的基本波形，它是数字信号的计量单位</p>
+<ul>
+<li>k进制码元，即k种离散的状态，即k种不同的信号波形</li>
+<li>例如，二进制码元有0和1两种状态，对应两种不同的波形，携带了1比特的信息量</li>
+</ul>
+</li>
+<li><p>速率：数据的传输速率，即单位时间内传输的数据量，有两种表示形式</p>
 <ol>
-<li><p>LL（A的左孩子的左子树中插入新结点，导致不平衡）</p>
+<li>码元传输速率：单位时间内传输的码元数量，单位为波特（Baud）</li>
+<li>信息传输速率：单位时间内传输的比特数（二进制码元数），单位为比特/秒（b/s）</li>
+</ol>
 <ul>
-<li><p>A的左孩子记作B，右子树记为AR，B的左子树记为BL，右子树记为BR，在BL插入新结点导致树不平衡（假定这些有标记的子树高度均为H，注意分析为何如此假定）————————————————————注1</p>
-<p><img src="/2022/11/11/DS/AVL%E6%A0%91/image-20220723165349371.png" alt="image-20220723165349371"></p>
-</li>
-<li><p>调整的方法为：将A的左孩子B向右上旋转，代替A成为最小不平衡子树的跟，将A向右下旋转成为B的右子树的根，而B的原右子树BR变为A的左子树，BL和AR不会变（结合二叉排序树性质分析并记忆这个过程——BL&lt;B&lt;BR&lt;A&lt;AR）</p>
-</li>
-<li><p>旋转过程代码实现</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//f是指向A结点的指针，p是指向B结点的指针,gf是指向A的父结点的指针</span></span><br><span class="line">f-&gt;left_child=p-&gt;right_child;</span><br><span class="line">p-&gt;right_child=f;</span><br><span class="line">gf-&gt;left_child=p;<span class="comment">//这一句根据父结点的具体情况来决定，也可以写为gf-&gt;right_child=B;</span></span><br></pre></td></tr></table></figure>
-</li>
+<li>注：一个码元带有n bit的信息量，则M Baud的<strong>码元传输速率</strong>对应的<strong>信息传输速率</strong>为$M\times n \ \ b/s$</li>
 </ul>
 </li>
-<li><p>RR（A的右孩子的右子树中插入新结点，导致不平衡）</p>
+<li><p>波特，即码元传输速率的单位</p>
+</li>
+<li><p>带宽</p>
 <ul>
-<li><p>类似于LL，A的右孩子记作B，左子树记为AL，B的左子树记为BL，右子树记为BR，在BR插入新结点导致树不平衡</p>
-<p><img src="/2022/11/11/DS/AVL%E6%A0%91/image-20220724142240114.png" alt="image-20220724142240114"></p>
-</li>
-<li><p>调整的方法为：将A的左孩子B向左上旋转，代替A成为最小不平衡子树的跟，将A向左下旋转成为B的左子树的根，而B的原左子树BL变为A的右子树，BR和AL不会变</p>
-</li>
+<li>在模拟信号系统中，为最高频率和最低频率之差，单位为Hz</li>
+<li>在数字设备中，为最高能通过的数据率，单位为bps（比特每秒）</li>
 </ul>
 </li>
-<li><p>LR（A的左孩子的右子树中插入新结点，导致不平衡）</p>
+</ul>
+<h4 id="相关数据计算"><a href="#相关数据计算" class="headerlink" title="相关数据计算"></a>相关数据计算</h4><h5 id="补充概念"><a href="#补充概念" class="headerlink" title="补充概念"></a>补充概念</h5><ul>
+<li>失真：信号波在现实的信道中传播后，波形发生改变</li>
+<li>码间串扰：一种失真现象，即在接收端收到的信号波形失去了码元直接的界限</li>
+</ul>
+<h5 id="奈氏准则"><a href="#奈氏准则" class="headerlink" title="奈氏准则"></a>奈氏准则</h5><ul>
+<li>在<strong>理想低通</strong>（无噪声且带宽受限制）的状态下，为了避免码间串扰，极限码元传输速率为2W Baud，其中W是带宽，单位为Hz</li>
+<li>这个准则说明了码元传输速率的上限（但是并未对信息速率做出限制，所以可以通过提高码元携带的比特数来提高数据传输速率）</li>
+<li><strong>理想情况</strong>下的<strong>极限</strong>数据传输率：$2Wlog_2V,\text{V表示有几种码元，即码元状态数}$</li>
+</ul>
+<h5 id="香农定理"><a href="#香农定理" class="headerlink" title="香农定理"></a>香农定理</h5><ul>
+<li><p>信噪比（S/N），这个值一般在题目中直接给出，</p>
 <ul>
-<li>图同1，区别在于是在BR处插入新结点导致树不平衡</li>
-<li>调整的方法为（要进行两次旋转的操作）：先将A的左孩子B的右子树的根结点C向左上旋转到B的位置，再将C右上旋转到A的位置</li>
+<li>用S/N表示则无单位</li>
+<li>若用dB（度量单位）表示，则存在如下的转换关系$\text{信噪比}(dB)=10log_{10}(S/N)$</li>
 </ul>
 </li>
-<li><p>RL（A的右孩子的左子树中插入新结点，导致不平衡）</p>
-<ul>
-<li>图同2，区别在于是在BL处插入新结点导致树不平衡</li>
-<li>调整的方法为（要进行两次旋转的操作）：先将A的右孩子B的左子树的根结点C向右上旋转到B的位置，再将C左上旋转到A的位置</li>
+<li><p>在带宽受限且有噪声的信道中，为了不产生误差，信息的数据传输速率有一个上限值，这个值为$Wlog_2(1+S/N)\ \text{S/N表示信噪比}$</p>
+</li>
+<li>计算时注意信噪比的单位</li>
 </ul>
+<h5 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h5><ul>
+<li>注1：在计算机网络中，只有在这两个处带宽的单位为Hz</li>
+<li><p>注2：奈氏准则用于求<strong>码元传输速率</strong>，香农定理用于求<strong>比特传输速率</strong></p>
+</li>
+<li><p>注3：题目给定的条件可以同时满足这两种方法求解的前提条件，则求出两个结果，取最小值</p>
+</li>
+</ul>
+<h4 id="编码和调制"><a href="#编码和调制" class="headerlink" title="编码和调制"></a>编码和调制</h4><h5 id="补充概念-1"><a href="#补充概念-1" class="headerlink" title="补充概念"></a>补充概念</h5><ul>
+<li><p>信道的两种分类方式</p>
+<ol>
+<li><p>按传输信号：模拟信道/数字信道</p>
+</li>
+<li><p>按传输介质：无线信道/有线信道</p>
 </li>
 </ol>
 </li>
-<li><p>查找效率分析</p>
-<ul>
-<li>时间复杂度不会超过O(n)</li>
-<li>高为h的平衡二叉树最少有几个结点（根据递推公式求解）<ul>
-<li>递推公式由性质得到：设$n_h$表示深度为h的平衡二叉树中含有的最少结点数（$n_h=n_{h-1}+n_{h-2}+1$）</li>
-</ul>
+<li><p>基带信号：数字信号0和1直接用两种不同的电压表示，再送到<strong>数字信道</strong>上传输</p>
 </li>
-<li></li>
-</ul>
+<li><p>宽带信号：将基带信号进行调制之后形成频分复用模拟信号，再送到<strong>模拟信道</strong>上传输</p>
 </li>
 </ul>
-<h4 id="删除操作（大概不会作为考察的重点）"><a href="#删除操作（大概不会作为考察的重点）" class="headerlink" title="删除操作（大概不会作为考察的重点）"></a>删除操作（大概不会作为考察的重点）</h4><ul>
-<li>对于AVL树的删除，要先删除再调整平衡</li>
-<li>删除一个结点的方式参考二叉排序树的删除操作（有3种情况）</li>
-<li>如何调整平衡<ol>
-<li>向上找父结点，找到最小的不平衡子树，如果找不到就结束调整平衡操作</li>
-<li>在最小不平衡子树之下找到高度更高的儿子，孙子</li>
-<li>根据孙子的位置，判断属于那种类型（即LL，RR，RL，LR）</li>
-<li>按照前文调整平衡的方式完成平衡调整</li>
-<li>如果存在不平衡向上传导得到现象，则继续从1步骤开始</li>
+<h5 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h5><ul>
+<li>数字数据编码成数字信号<ul>
+<li>非归零编码：高1低0</li>
+<li>曼彻斯特编码：一个码元分成两个相等的间隔，一半高一半低，这两种哪种代表0哪种代表1看具体情况<ul>
+<li>注：位中间的跳变既为时钟信号有为数据信号</li>
+</ul>
+</li>
+<li>差分曼彻斯特编码：同1异0，即中间有跳变，和上一个码元电平用于为1不一样为0</li>
+</ul>
+</li>
+<li>模拟信号编码成数字信号<ul>
+<li>PCM（3个步骤，抽样+量化+编码）</li>
+</ul>
+</li>
+</ul>
+<h5 id="调制"><a href="#调制" class="headerlink" title="调制"></a>调制</h5><ul>
+<li>数字信号到模拟信号<ul>
+<li>调幅</li>
+<li>调频</li>
+<li>调相</li>
+<li>调幅+调相</li>
+</ul>
+</li>
+<li>模拟信号到模拟信号</li>
+</ul>
+<h4 id="数据交换方式"><a href="#数据交换方式" class="headerlink" title="数据交换方式"></a>数据交换方式</h4><h5 id="电路交换"><a href="#电路交换" class="headerlink" title="电路交换"></a>电路交换</h5><ul>
+<li>源结点和目的结点之间有中间结点的构成的专用<strong>物理</strong>线路（物理连接）</li>
+<li>具体过程，包括3个步骤<ol>
+<li>建立连接</li>
+<li>数据传输</li>
+<li>释放连接</li>
 </ol>
 </li>
+<li>通信期间会独占端到端的传输带宽，适合大规模的数据传输</li>
 </ul>
+<h5 id="报文交换"><a href="#报文交换" class="headerlink" title="报文交换"></a>报文交换</h5><ul>
+<li>报文：站点一次性发送出去的<strong>数据块</strong>，一般包括了要发送的完整数据信息和控制信息（地址等），长度可变</li>
+<li>通过<strong>存储转发</strong>的方式完成报文交换，即：<ul>
+<li>结点暂存报文并查错（存放在交换设备的缓冲区之中）</li>
+<li>等输出电路<strong>空闲时</strong>根据路由信息将报文发送到下一个结点</li>
+</ul>
+</li>
+</ul>
+<h5 id="分组交换（packet-exchanging）"><a href="#分组交换（packet-exchanging）" class="headerlink" title="分组交换（packet exchanging）"></a>分组交换（packet exchanging）</h5><ul>
+<li><p>分组：把要传输的数据分成多个小块，让后逐块的发送（可以理解为将报文划分得到，每一个小的数据块都有控制信息（地址，编号等））</p>
+</li>
+<li><p>分组交换的方式与报文基本相同，只不过是存储转发分组（会限制数据单位长度）</p>
+</li>
+<li><p>两种方式</p>
+<ol>
+<li><p>数据报方式：无连接服务（不事先规定好传输路径）</p>
+</li>
+<li><p>虚电路方式：存在一条逻辑上的路径连接源主机和目的主机，即确定了传输的路径（类似电路交换，但是建立<strong>逻辑连接</strong>）</p>
+</li>
+</ol>
 <ul>
-<li>注：尽管AVL树的查找操作时间复杂度很优秀，但是计算平衡因子，以及调整平衡的操作这类调整的操作是很复杂，且时间复杂度较高，在这个方面性能不如红黑树</li>
+<li>注：注意二者的区别和联系</li>
+</ul>
+</li>
+</ul>
+<h4 id="传输介质"><a href="#传输介质" class="headerlink" title="传输介质"></a>传输介质</h4><ul>
+<li>导向性传输介质<ul>
+<li>双绞线</li>
+<li>同轴电缆</li>
+<li>光纤</li>
+</ul>
+</li>
+<li>非导向性传输介质<ul>
+<li>无线电波</li>
+<li>微波</li>
+<li>红外线/激光</li>
+</ul>
+</li>
+</ul>
+<h4 id="物理层设备"><a href="#物理层设备" class="headerlink" title="物理层设备"></a>物理层设备</h4><ul>
+<li>中继器：对信号再生和还原</li>
+<li>集线器：对信号放大转发</li>
 </ul>
 
       
@@ -326,7 +429,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/archives/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/28/">28</a><a class="extend next" rel="next" href="/archives/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/archives/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/42/">42</a><a class="extend next" rel="next" href="/archives/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

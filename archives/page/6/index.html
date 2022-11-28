@@ -135,7 +135,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/11/11/DS/%E6%9F%A5%E6%89%BE/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%89%B9%E5%BE%81%E5%80%BC&%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/11/DS/%E6%9F%A5%E6%89%BE/" class="post-title-link" itemprop="url">未命名</a>
+          <a href="/2022/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%89%B9%E5%BE%81%E5%80%BC&%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F/" class="post-title-link" itemprop="url">线性代数_特征值&特征向量等</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,15 +205,24 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-11-11 13:59:50" itemprop="dateCreated datePublished" datetime="2022-11-11T13:59:50+08:00">2022-11-11</time>
+      <time title="创建时间：2022-03-16 21:02:24" itemprop="dateCreated datePublished" datetime="2022-03-16T21:02:24+08:00">2022-03-16</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-08-18 20:37:16" itemprop="dateModified" datetime="2022-08-18T20:37:16+08:00">2022-08-18</time>
+        <time title="修改时间：2022-07-19 19:20:01" itemprop="dateModified" datetime="2022-07-19T19:20:01+08:00">2022-07-19</time>
       </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+        </span>
+    </span>
 
   
 </div>
@@ -225,111 +234,113 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
-<li>关键字</li>
-<li>静态查找</li>
-<li>动态查找（会有增删改操作）</li>
-<li><strong>平均查找长度（ASL）</strong>：所有查找过程中，进行关键字比较的此时<ul>
-<li>注：要区分查找失败的ASL和查找成功的ASL</li>
-</ul>
-</li>
-</ul>
-<h4 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h4><ul>
-<li>在顺序表中查找某个元素，一般从头到尾依次寻找即可</li>
-<li>顺序查找的优化<ul>
-<li>对于有序表（以升序为例，主要对查找失败的情况进行优化）<ul>
-<li>对于这种情况，如果要查找的元素第一次小于当前表中的元素，则停止查找</li>
-<li>可以用查找判定树来分析ASL</li>
-</ul>
-</li>
-<li>对于查找概率不相同的顺序表（将查找概率大小降序排列即可）</li>
-</ul>
-</li>
-</ul>
-<h4 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h4><ul>
-<li><p>前提条件：<strong>有序</strong>的<strong>顺序表</strong>（不适用于链表）</p>
-</li>
-<li><p>算法思路（以升序为例）：</p>
+          <h4 id="特征值-amp-特征向量"><a href="#特征值-amp-特征向量" class="headerlink" title="特征值&amp;特征向量"></a>特征值&amp;特征向量</h4><p>$    A\alpha=\lambda\alpha\\<br>其中A为n阶矩阵，\lambda为一个常数，\alpha为n维非0列向量$</p>
 <ul>
-<li>设置两个指针，low指向表头，high指向表尾</li>
-<li>比较表中最中间的值（(low+high)/2处）和待查找的元素的值<ol>
-<li>如果相等，则结束查找</li>
-<li>如果大于中间值，则将low设置为中间值+1</li>
-<li>如果小于中间值，则将high设置为中间值-1</li>
+<li>特征值$\lambda$</li>
+<li><p>特征向量$\alpha$</p>
+</li>
+<li><p>补充说明</p>
+<ul>
+<li>A各行元素之和均为$\lambda$，则特征向量元素全为1</li>
+</ul>
+</li>
+</ul>
+<p>​                                                 $|A-\lambda E|=0$</p>
+<ul>
+<li>特征多项式（等号左边的部分）</li>
+<li><p>特征方程（整个方程）</p>
+</li>
+<li><p>特征方程法求特征值+特征向量</p>
+<ul>
+<li>解出特征方程，可以得到A的n个特征值（转圈化简法）</li>
+<li>解方程组$(A-\lambda_iE)x=0$，得到基础解系即为特征值$\lambda_i$的$n-r(A-\lambda_iE)$个线性无关的特征向量</li>
+</ul>
+</li>
+<li><p>两个推论</p>
+<ol>
+<li>上（下）三角矩阵，主对角矩阵的特征值为主对角线的元素</li>
+<li>$aA+bB$不可逆（$|aA+bB|=0$），则$\lambda=-\frac{b}a{}$</li>
 </ol>
 </li>
-<li>不断重复一步，直到low大于等于high</li>
-</ul>
-</li>
-<li><p>算法代码实现</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> *data;</span><br><span class="line">    <span class="keyword">int</span> length;</span><br><span class="line">&#125;SSTable;</span><br><span class="line"><span class="comment">//num表示线性表，key表示待查找的关键字，type为1表示升序，为0表示降序，返回值为关键字的位置</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Binary_Search</span><span class="params">(SSTable list,<span class="keyword">int</span> key,<span class="keyword">int</span> type)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> low=<span class="number">0</span>,high=list.length<span class="number">-1</span>,mid;</span><br><span class="line">    <span class="keyword">if</span>(type)&#123;</span><br><span class="line">    	<span class="keyword">while</span>(low&lt;=high)</span><br><span class="line">    	&#123;</span><br><span class="line">            mid=(low+hight)/<span class="number">2</span></span><br><span class="line">        	<span class="keyword">if</span>(list.data[mid]==key)</span><br><span class="line">            	<span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(list.data[mid]&lt;key)</span><br><span class="line">            	low=mid+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                high=mid<span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(low&lt;=high)</span><br><span class="line">    	&#123;</span><br><span class="line">            mid=(low+hight)/<span class="number">2</span></span><br><span class="line">        	<span class="keyword">if</span>(list.data[mid]==key)</span><br><span class="line">            	<span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(list.data[mid]&gt;key)</span><br><span class="line">            	low=mid+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                high=mid<span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>构造折半查找的判定树（用于分析ASL）</p>
+<li><p>特征值和特征向量的一些性质</p>
 <ul>
-<li>关键点即：右子树结点数-左子树结点数=0或1</li>
-<li>注意查找失败的查找次数分析（易错）</li>
+<li>不同特征值的特征向量线性无关</li>
+<li>不同特征值的特征向量之和不是特征向量</li>
+<li>k重特征值最多有k个线性无关的特征向量（<strong>线性无关的特征向量数表明了特征值的重数</strong>）</li>
+<li>|A|的值为A的特征向量之和</li>
+<li>一些基本运算对特征值的影响</li>
+<li>矩阵运算对特征值的影响</li>
 </ul>
 </li>
+<li>抽象矩阵通过性质得到特征值，数字矩阵则用特征方程</li>
 </ul>
-<h4 id="分块查找"><a href="#分块查找" class="headerlink" title="分块查找"></a>分块查找</h4><ul>
-<li>建立索引表，保存每个分块的最大关键字和分块的存储区间（先在索引表中确定大致范围，再进入分块查找）</li>
-<li>对于索引表进行折半查找，若索引表不包含目标关键字，不代表没有结果，此情况下，最后low的值刚好大于high，然后进入low所指的块进行下一步查找</li>
-<li>ASL分析<ul>
-<li>对于分块查找，一般考虑被均分的表（均匀的分为b块，每块s个元素）的ASL</li>
-<li>ASL=查找索引表的平均查找长度+查分块的平均查找长度</li>
-<li>如果查找索引表和查找块均为顺序查找，则当块长s为$\sqrt{n}$时，ASL最小</li>
+<h4 id="相似矩阵"><a href="#相似矩阵" class="headerlink" title="相似矩阵"></a>相似矩阵</h4><ul>
+<li>定义：$B=P^{-1}AP$</li>
+<li>性质<ul>
+<li>相似的矩阵行列式，秩，特征方程，特征值，迹相同</li>
+<li>A与B相似，则AB与BA相似，A和B的多项式相似，他俩的转置相似，他俩的逆相似，他俩的伴随相似</li>
+<li>传递性</li>
 </ul>
 </li>
+<li>判断矩阵是否相似还要用到用相似对角化的相关性质</li>
 </ul>
-<h4 id="二叉排序树（记为BST——题目可能这样描述）"><a href="#二叉排序树（记为BST——题目可能这样描述）" class="headerlink" title="二叉排序树（记为BST——题目可能这样描述）"></a>二叉排序树（记为BST——题目可能这样描述）</h4><ul>
+<h4 id="相似对角化"><a href="#相似对角化" class="headerlink" title="相似对角化"></a>相似对角化</h4><ul>
+<li>定义：矩阵A相似于对角矩阵（对角矩阵的元素即为A的特征值）</li>
+<li>推论<ul>
+<li>P的第i列为矩阵A的特征值$\lambda_i$对应的特征向量</li>
+<li>P是有A的n个详细无关的特征向量构成的可逆矩阵</li>
+<li>A和B均可以相似对角化，则有一个等价结论：A与B相似等价于A，B有相同的特征值</li>
+</ul>
+</li>
+<li>相似对角化的一组充要条件<ul>
+<li>A有n个线性无关的特征向量</li>
+<li>k重特征值有k个线性无关的特征向量</li>
+</ul>
+</li>
+<li>相似对角化的充分条件<ul>
+<li>A有n个不同的特征值</li>
+<li>A为实对称矩阵</li>
+</ul>
+</li>
+<li>备注：若A可以相似对角化（特别地，A为实对称矩阵），则r(A)=非0特征值的个数</li>
+</ul>
+<h4 id="实对称矩阵（A）"><a href="#实对称矩阵（A）" class="headerlink" title="实对称矩阵（A）"></a>实对称矩阵（A）</h4><ul>
 <li><p>性质</p>
 <ol>
-<li>左子树所有结点关键字均小于根结点，右子树所有结点关键字均大于根结点</li>
-<li>进行中序遍历，可以得到一个递增的有序序列</li>
+<li><p>特征值均为实数（不重要，知道即可）</p>
+</li>
+<li><p>不同特征值的特征向量正交</p>
+</li>
+<li><p>k重特征值有k个线性无关的特征向量，即可以相似对角化，即存在可逆矩阵P，使得$P^{-1}AP=\Lambda$，P是有A的n个线性无关的特征向量构成的可逆矩阵</p>
+</li>
+<li><p>A可以正交相似对角化，即存在正交矩阵Q，使得$Q^{-1}AQ=Q^TAQ=\Lambda$，</p>
+</li>
 </ol>
 </li>
-<li><p>查找操作</p>
-<ul>
-<li><p>思路：与根结点比较，若小于根结点则在左子树上查找，若大于根结点则在右边子树上查找，若相等则完成查找，并返回结点指针（查找失败就返回NULL）</p>
-</li>
-<li><p>代码实现</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归</span></span><br><span class="line"><span class="function">BSTNode *<span class="title">BSTSearch</span><span class="params">(BSTree T,<span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//非递归</span></span><br><span class="line"><span class="function">BSTNode *<span class="title">BSTSearch</span><span class="params">(BSTree T,<span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>插入操作</p>
-<ul>
-<li><p>思路：与根结点比较，若小于根结点则插入到左子树，若大于根结点则插入到右边子树（新插入的必为叶子结点）</p>
-</li>
-<li><p>注：二叉排序树中不存在关键字相同的结点</p>
-</li>
-<li><p>代码实现</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BST_Insert</span><span class="params">(BSTree &amp;T,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">  </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>构造（根据输入的序列，一个个执行插入操作即可）</p>
-<ul>
-<li><p>代码实现</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Create</span><span class="params">(BSTree &amp;T,<span class="keyword">int</span> input_str[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    T=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">BST_Insert</span>(T,input_str[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>删除操作（分成三种情况）</p>
+<li><p>Q的求法</p>
 <ol>
-<li>若删除的结点是叶子结点，则直接删除</li>
-<li>若删除的结点只有右子树或者只有左子树，则让子树的根结点替代删除的结点的位置</li>
-<li>若删除的结点有左右两棵子树，则可以用左子树的最大结点，或者用右子树的最小结点的关键字代替此结点，并且删去这个最大（或者最小）的结点</li>
+<li><p>求A的n个特征值</p>
+</li>
+<li><p>求A的n个线性无关的特征向量</p>
+</li>
+<li><p>将不同特征值的特征向量分别正交化（Schmidt或者其他方法），再单位化，组合到一起即为正交矩阵Q（如果2求出的向量已经正交的向量直接单位化即可）</p>
+</li>
 </ol>
+</li>
+<li><p>实对称矩阵分解定理</p>
 <ul>
-<li>注：对于第三种情况，最小值在右子树最左下结点，最大值在左子树最右下结点（依据见二叉树线索化的相关内容）</li>
+<li>A=特征值$\times$单位正交的特征向量$\times$单位正交的特征向量的转置</li>
+<li>特别的，若r(A)=1，则A=tr(A)$\times$单位正交的特征向量1$\times$单位正交的特征向量1的转置</li>
 </ul>
 </li>
-<li><p>查找效率分析</p>
-<ul>
-<li>查找成功和查找失败的情况</li>
-<li>优化（将其化为平衡的二叉排序树即可）</li>
 </ul>
+<p>补充内容：</p>
+<ul>
+<li><p>通过特征值可以求出A+kE这类行列式的值</p>
+</li>
+<li><p>可以得到特征值有哪些，但不确定某个特征值有几重，可以先通过秩得到特征向量的数量，再通过特征向量的数量反推特征值的重数，以此得到矩阵的特征值的具体分布（特征值的个数即为A的阶数） </p>
+</li>
+<li><p>根据已知特征值的特征，如果这个矩阵可以相似对角化，则可以通过得到的对角矩阵求出原矩阵的秩（将特征值和矩阵的秩联系起来）———17年真题</p>
 </li>
 </ul>
 
@@ -351,7 +362,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/archives/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/28/">28</a><a class="extend next" rel="next" href="/archives/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/archives/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/42/">42</a><a class="extend next" rel="next" href="/archives/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

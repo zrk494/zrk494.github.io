@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;zrk494.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Pisces&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
+<meta name="description" content="进位计数制r进制计数法 基数：每个数码位所用到的不同符号的个数，r进制即r位基数  进制的互相转换 任意进制如何转十进制（计算时注意按进制的具体情况进位） 二进制最适合计算机，原因有： 可使用两个具有稳定状态的物理器件表示 0,1对应逻辑值的真假（方便实现逻辑运算） 可以通过逻辑门电路实现算数运算   二进制和八进制，十六进制的互相转换 二———&gt;八，3位一组 二———&gt;十六，4为一组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据的表示和运算">
+<meta property="og:url" content="http://zrk494.github.io/2021/03/07/jizu/%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%BF%90%E7%AE%97/index.html">
+<meta property="og:site_name" content="post">
+<meta property="og:description" content="进位计数制r进制计数法 基数：每个数码位所用到的不同符号的个数，r进制即r位基数  进制的互相转换 任意进制如何转十进制（计算时注意按进制的具体情况进位） 二进制最适合计算机，原因有： 可使用两个具有稳定状态的物理器件表示 0,1对应逻辑值的真假（方便实现逻辑运算） 可以通过逻辑门电路实现算数运算   二进制和八进制，十六进制的互相转换 二———&gt;八，3位一组 二———&gt;十六，4为一组">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zrk494.github.io/2021/03/07/jizu/%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%BF%90%E7%AE%97/image-20221010210622417.png">
+<meta property="article:published_time" content="2021-03-07T08:00:48.000Z">
+<meta property="article:modified_time" content="2022-11-28T02:41:52.903Z">
+<meta property="article:author" content="zrk">
+<meta property="article:tag" content="计组">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zrk494.github.io/2021/03/07/jizu/%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%BF%90%E7%AE%97/image-20221010210622417.png">
+
+
+<link rel="canonical" href="http://zrk494.github.io/2021/03/07/jizu/%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%BF%90%E7%AE%97/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;http:&#x2F;&#x2F;zrk494.github.io&#x2F;2021&#x2F;03&#x2F;07&#x2F;jizu&#x2F;%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%BF%90%E7%AE%97&#x2F;&quot;,&quot;path&quot;:&quot;2021&#x2F;03&#x2F;07&#x2F;jizu&#x2F;数据的表示和运算&#x2F;&quot;,&quot;title&quot;:&quot;数据的表示和运算&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>数据的表示和运算 | post</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">post</h1>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="/uploads/233.jpg" alt="post">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9B%E4%BD%8D%E8%AE%A1%E6%95%B0%E5%88%B6"><span class="nav-number">1.</span> <span class="nav-text">进位计数制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#r%E8%BF%9B%E5%88%B6%E8%AE%A1%E6%95%B0%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">r进制计数法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%9B%E5%88%B6%E7%9A%84%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.2.</span> <span class="nav-text">进制的互相转换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9C%9F%E5%80%BC%E5%92%8C%E6%9C%BA%E5%99%A8%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text">真值和机器数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E7%AC%A6%E5%8F%B7%E7%9A%84%E6%95%B4%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">无符号的整数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">2.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A1%A8%E7%A4%BA%EF%BC%88%E4%BB%A5%E6%9C%BA%E5%99%A8%E5%AD%97%E9%95%BF8%E4%BD%8D%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">表示（以机器字长8位为例）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%EF%BC%88%E5%8A%A0%E5%87%8F%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">运算（加减）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">带符号整数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0-1"><span class="nav-number">3.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A1%A8%E7%A4%BA%EF%BC%88%E8%BF%98%E6%98%AF%E4%BB%A58%E4%BD%8D%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">表示（还是以8位为例）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%90%E7%AE%97"><span class="nav-number">3.3.</span> <span class="nav-text">运算</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A7%BB%E7%A0%81"><span class="nav-number">3.4.</span> <span class="nav-text">移码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%84%E7%A7%8D%E7%A0%81%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="nav-number">3.5.</span> <span class="nav-text">各种码的对比</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E5%B0%8F%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">定点小数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E7%A7%8D%E8%A1%A8%E7%A4%BA%E5%BD%A2%E5%BC%8F"><span class="nav-number">4.1.</span> <span class="nav-text">3种表示形式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%90%E7%AE%97-1"><span class="nav-number">4.2.</span> <span class="nav-text">运算</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8E%E5%AE%9A%E7%82%B9%E6%95%B4%E6%95%B0%E7%9A%84%E4%B8%8D%E5%90%8C"><span class="nav-number">4.3.</span> <span class="nav-text">与定点整数的不同</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C%E7%A0%81"><span class="nav-number">5.</span> <span class="nav-text">奇偶校验码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E5%8D%95%E5%85%83%EF%BC%88ALU%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">算数逻辑单元（ALU）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%B5%E8%B7%AF%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">6.1.</span> <span class="nav-text">电路的基本原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8A%A0%E6%B3%95%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">6.2.</span> <span class="nav-text">加法器的实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A1%A5%E7%A0%81%E5%8A%A0%E5%87%8F%E8%BF%90%E7%AE%97%E5%99%A8"><span class="nav-number">6.3.</span> <span class="nav-text">补码加减运算器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="nav-number">6.4.</span> <span class="nav-text">定点数的移位运算</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97"><span class="nav-number">6.5.</span> <span class="nav-text">乘法运算</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%99%A4%E6%B3%95%E8%BF%90%E7%AE%97"><span class="nav-number">6.6.</span> <span class="nav-text">除法运算</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C%E8%AF%AD%E8%A8%80%E4%B8%AD%E5%AE%9A%E7%82%B9%E6%95%B4%E6%95%B0%E7%9A%84%E5%BC%BA%E8%BD%AC"><span class="nav-number">7.</span> <span class="nav-text">C语言中定点整数的强转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E5%82%A8%E5%92%8C%E6%8E%92%E5%88%97"><span class="nav-number">8.</span> <span class="nav-text">数据的存储和排列</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%A7%E7%AB%AF%E6%96%B9%E5%BC%8F"><span class="nav-number">8.1.</span> <span class="nav-text">大端方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%8F%E7%AB%AF%E6%96%B9%E5%BC%8F"><span class="nav-number">8.2.</span> <span class="nav-text">小端方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BE%B9%E7%95%8C%E5%AF%B9%E9%BD%90"><span class="nav-number">8.3.</span> <span class="nav-text">边界对齐</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="nav-number">9.</span> <span class="nav-text">浮点数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95"><span class="nav-number">9.1.</span> <span class="nav-text">表示方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IEEE-754%E6%A0%87%E5%87%86"><span class="nav-number">9.2.</span> <span class="nav-text">IEEE 754标准</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zrk</p>
+  <div class="site-description" itemprop="description">包括专业课学习的相关笔记，以及其他</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/yourname" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/07/jizu/%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%BF%90%E7%AE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zrk">
+      <meta itemprop="description" content="包括专业课学习的相关笔记，以及其他">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="post">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据的表示和运算
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-07 16:00:48" itemprop="dateCreated datePublished" datetime="2021-03-07T16:00:48+08:00">2021-03-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-11-28 10:41:52" itemprop="dateModified" datetime="2022-11-28T10:41:52+08:00">2022-11-28</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h4 id="进位计数制"><a href="#进位计数制" class="headerlink" title="进位计数制"></a>进位计数制</h4><h5 id="r进制计数法"><a href="#r进制计数法" class="headerlink" title="r进制计数法"></a>r进制计数法</h5><ul>
+<li>基数：每个数码位所用到的不同符号的个数，r进制即r位基数</li>
+</ul>
+<h5 id="进制的互相转换"><a href="#进制的互相转换" class="headerlink" title="进制的互相转换"></a>进制的互相转换</h5><ul>
+<li>任意进制如何转十进制（计算时注意按进制的具体情况进位）</li>
+<li>二进制最适合计算机，原因有：<ul>
+<li>可使用两个具有稳定状态的物理器件表示</li>
+<li>0,1对应逻辑值的真假（方便实现逻辑运算）</li>
+<li>可以通过逻辑门电路实现算数运算</li>
+</ul>
+</li>
+<li>二进制和八进制，十六进制的互相转换<ul>
+<li>二———&gt;八，3位一组</li>
+<li>二———&gt;十六，4为一组</li>
+<li>八———&gt;二，还是按位置对应，1位8对应3位2</li>
+<li>十六———&gt;二</li>
+<li>注意补位的情况，小数部分怎么补，整数部分怎么补</li>
+</ul>
+</li>
+<li>十进制转其它进制：<ul>
+<li>处理整数部分：短除法（除基取余法）</li>
+<li>处理小数部分：<strong>乘基取整法</strong>（注意不能精确表示的情况）</li>
+<li>注：也可以用拼凑法（能精确表示的可用）</li>
+</ul>
+</li>
+</ul>
+<h5 id="真值和机器数"><a href="#真值和机器数" class="headerlink" title="真值和机器数"></a>真值和机器数</h5><ul>
+<li>真值：人们习惯的数的形式</li>
+<li>机器数：数存到机器中的形式</li>
+</ul>
+<h4 id="无符号的整数"><a href="#无符号的整数" class="headerlink" title="无符号的整数"></a>无符号的整数</h4><h5 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h5><ul>
+<li>无符号整数，即自然数</li>
+</ul>
+<h5 id="表示（以机器字长8位为例）"><a href="#表示（以机器字长8位为例）" class="headerlink" title="表示（以机器字长8位为例）"></a>表示（以机器字长8位为例）</h5><ul>
+<li>最多存到255（$2^n-1$）</li>
+<li>没有符号位，最小全0最大全1</li>
+</ul>
+<h5 id="运算（加减）"><a href="#运算（加减）" class="headerlink" title="运算（加减）"></a>运算（加减）</h5><ul>
+<li>按位加减即可（记得进位，借位）</li>
+<li>计算硬件如何实现减法：<ul>
+<li>被减数不变</li>
+<li>减数全部按位取反，且<strong>末位+1</strong></li>
+<li>减法计算变加法计算</li>
+<li>注：超过8位（如第9位）的被丢弃，但不影响结果</li>
+</ul>
+</li>
+</ul>
+<h4 id="带符号整数"><a href="#带符号整数" class="headerlink" title="带符号整数"></a>带符号整数</h4><h5 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h5><ul>
+<li>带符号整数，即所有整数</li>
+</ul>
+<h5 id="表示（还是以8位为例）"><a href="#表示（还是以8位为例）" class="headerlink" title="表示（还是以8位为例）"></a>表示（还是以8位为例）</h5><ul>
+<li><p>三种形式（同一个含义，不同的表示形式）</p>
+<ol>
+<li>原码<ul>
+<li>最高位是符号（0正1负），其余的是数值位</li>
+<li>最高表示$2^{n-1}-1$</li>
+<li>真值0有两种形式</li>
+<li>缺点，符号位不能参与运算，要设计负责的电路才能处理</li>
+</ul>
+</li>
+<li>补码（根方便计算机计算）<ul>
+<li>解决原码的缺点而诞生</li>
+<li>转换的方式：<ol>
+<li>对于正数，原码=反码=补码</li>
+<li>对于负数，原码先<strong>数值位按位取反（符号位不变）</strong>，得到反码，<strong>末位再+1</strong>得到补码</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>反码</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>补充一种快速转换原码补码的方式（只针对负数）：从右到左找第一个1，这个1左边所有的<strong>数值位</strong>按位取反（原转补和补转原都这样）</li>
+</ul>
+<h5 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h5><ul>
+<li>加法：以<strong>补码的形式</strong>，按位相加（符号位参与，注意进位）<ul>
+<li>注：超过8位的舍去</li>
+</ul>
+</li>
+<li>减法：$A-B=A+(-B)$，完成减法转变为加法<ul>
+<li>补码负值的求法：全部位（包括符号位）按位取反，末位再+1</li>
+<li>补充快速手算的方式：从右到左找第一个1，这个1<strong>左</strong>边<strong>所有位（包括符号位）</strong>按位取反</li>
+</ul>
+</li>
+</ul>
+<h5 id="移码"><a href="#移码" class="headerlink" title="移码"></a>移码</h5><ul>
+<li>只能表示整数</li>
+<li>补码<strong>符号位</strong>取反即可得到</li>
+<li>表示范围同补码</li>
+<li>真值0只有一种移码</li>
+</ul>
+<h5 id="各种码的对比"><a href="#各种码的对比" class="headerlink" title="各种码的对比"></a>各种码的对比</h5><ul>
+<li>合法表示范围<ul>
+<li>注意补码范围的下限</li>
+</ul>
+</li>
+<li>最大数</li>
+<li>最小数<ul>
+<li>补码能表示真值<strong>-128</strong></li>
+</ul>
+</li>
+<li><p>真值0的表示</p>
+<ul>
+<li><strong>真值0只有一种补码</strong></li>
+</ul>
+</li>
+<li><p>补充，判断是否<strong>溢出</strong>：手算做题可以代入十进制验证（判断依据是前面的合法表示范围）</p>
+</li>
+</ul>
+<h4 id="定点小数"><a href="#定点小数" class="headerlink" title="定点小数"></a>定点小数</h4><ul>
+<li>带符号整数可以被认为是定点整数</li>
+</ul>
+<h5 id="3种表示形式"><a href="#3种表示形式" class="headerlink" title="3种表示形式"></a>3种表示形式</h5><ol>
+<li>原码<ul>
+<li>最高位是符号位，小数点位置在符号位之后（<strong>隐含，不占用位数</strong>）</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>注：3种形式的转换同带符号整数</li>
+</ul>
+<h5 id="运算-1"><a href="#运算-1" class="headerlink" title="运算"></a>运算</h5><ul>
+<li>定点小数运算方式也和带符号整数一样</li>
+</ul>
+<h5 id="与定点整数的不同"><a href="#与定点整数的不同" class="headerlink" title="与定点整数的不同"></a>与定点整数的不同</h5><ul>
+<li>定点小数原码的范围（n+1 bit）：$1-2^{-n}$~$1+2^{-n}$</li>
+<li>定点小数补码的下限：-1</li>
+<li>在进行位数扩展的时候，扩展的位置不一样<ul>
+<li>整数在高位</li>
+<li>小数在低位</li>
+</ul>
+</li>
+</ul>
+<h4 id="奇偶校验码"><a href="#奇偶校验码" class="headerlink" title="奇偶校验码"></a>奇偶校验码</h4><ul>
+<li>增加冗余的校验位（加在最高位）</li>
+<li>奇校验：得到的校验码的1的个数为奇数</li>
+<li>偶校验：得到的校验码的1的个数为偶数</li>
+<li>计算机如何实现偶校验：各个信息进行异或运算，得到的结果为偶校验位</li>
+<li>计算机如何进行偶校验：各个信息进行异或运算，结果为1则有问题</li>
+<li>缺点，判断不出偶数个bit发生错误的情况</li>
+</ul>
+<h4 id="算数逻辑单元（ALU）"><a href="#算数逻辑单元（ALU）" class="headerlink" title="算数逻辑单元（ALU）"></a>算数逻辑单元（ALU）</h4><ul>
+<li><p>它完成了计算机中的算数运算和逻辑运算</p>
+</li>
+<li><p>机器字长就是ALU支持同时输入多少个bit的信息</p>
+</li>
+</ul>
+<h5 id="电路的基本原理"><a href="#电路的基本原理" class="headerlink" title="电路的基本原理"></a>电路的基本原理</h5><ul>
+<li><p>最基本的逻辑运算</p>
+<ul>
+<li><p>与</p>
+</li>
+<li><p>或</p>
+</li>
+<li><p>非</p>
+</li>
+<li><p>注：与的优先级高于或</p>
+</li>
+<li><p>注：与和或之间的运算满足分配率，交换律，结合律</p>
+</li>
+</ul>
+</li>
+<li><p>复合逻辑运算</p>
+<ul>
+<li><p>与非</p>
+</li>
+<li><p>或非</p>
+</li>
+<li><p>异或（可以用与或非组合实现）</p>
+</li>
+</ul>
+</li>
+<li><p><strong>逻辑表达式是对电路的数学化描述</strong></p>
+</li>
+</ul>
+<h5 id="加法器的实现"><a href="#加法器的实现" class="headerlink" title="加法器的实现"></a>加法器的实现</h5><ul>
+<li>一位全加器：输入的数是一位<ul>
+<li>输入：2个要运算的数+来自低位的进位</li>
+<li>输出：运算结果+小高位的进位</li>
+</ul>
+</li>
+<li>串行加法器<ul>
+<li>只有一个全加器</li>
+<li>数据逐位串行送入加法器进行运算</li>
+<li>引入进位触发器，用来寄存（暂存）进位信号，以便参与下一次运算</li>
+<li>n位操作数，加法要分成n次进行，每次产生一位的和，且串行的逐位送回CPU寄存器</li>
+</ul>
+</li>
+<li><p>串行进位的并行加法器</p>
+<ul>
+<li>串接n个全加器，以此进行两个n位数的相加（受进位速度影响）</li>
+</ul>
+</li>
+<li><p><strong>并行进位加法器</strong>（非重点）</p>
+<ul>
+<li>前一种加法器的优化，让计算速度不再依赖于进位</li>
+<li>一般计算4位就行</li>
+</ul>
+</li>
+</ul>
+<h5 id="补码加减运算器"><a href="#补码加减运算器" class="headerlink" title="补码加减运算器"></a>补码加减运算器</h5><ul>
+<li><img src="/2021/03/07/jizu/%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%BF%90%E7%AE%97/image-20221010210622417.png" alt="image-20221010210622417" style="zoom:67%;"></li>
+</ul>
+<p>注：</p>
+<ul>
+<li>多路选择器控制是+还是-</li>
+<li>MUX左边的那一路进行一次非操作（等价于取反）再输出</li>
+<li><p>Sub作为cin的输入，实现末位+1</p>
+</li>
+<li><p>还可以实现无符号数的加减运算，但是二者判断溢出的方式不同</p>
+</li>
+<li><p>标志位的生成</p>
+<ul>
+<li>OF（溢出标志，<strong>仅在有符号数的加减中有含义</strong>）：最高位的进位和次高位的进位<strong>异或</strong>得到</li>
+<li>SF（符号标志，<strong>仅在有符号数的加减中有含义</strong>）：运算结果的最高位，结果为0表示正数，结果为1表示负数</li>
+<li>ZF（零标志）：运算结果为0则为1，否则为0</li>
+<li>CF（进位/借位标志）：最高位产生的进位与Sub异或得到</li>
+</ul>
+</li>
+</ul>
+<h5 id="定点数的移位运算"><a href="#定点数的移位运算" class="headerlink" title="定点数的移位运算"></a>定点数的移位运算</h5><ul>
+<li><p>通过改变各个数码位和小数点的相对位置，改变各数码的位权（可以用来实现乘法或除法）</p>
+</li>
+<li><p>原码的算数移位：符号位不变，仅对数值位进行移位</p>
+<ul>
+<li>右移：高位补0，低位舍弃，相当于$\div$2</li>
+<li>左移：低位补0，高位舍弃，相当于$\times$2</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>反码的算数移位</p>
+<ul>
+<li><p>正数的流程同原码</p>
+</li>
+<li><p>负数的情况</p>
+<ol>
+<li><p>右移：高位补1，低位舍弃</p>
+</li>
+<li><p>左移：低位补1，高位舍弃</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>补码的算数移位</p>
+<ul>
+<li>正数的流程同原码</li>
+</ul>
+</li>
+</ul>
+<pre><code>- 负数的情况
+
+  1. 右移：高位补1，低位舍弃
+
+  2. 左移：低位补0，高位舍弃
+</code></pre><ul>
+<li><p>注：移位的操作在某些时候并不能精确等于除法乘法</p>
+</li>
+<li><p>逻辑移位</p>
+<ul>
+<li><p>右移：高位补0，低位舍弃</p>
+</li>
+<li><p>左移：低位补0，高位舍弃</p>
+</li>
+</ul>
+</li>
+<li><p>循环移位</p>
+<ul>
+<li>带进位位：用移出的位补上空缺</li>
+<li>不带进位位：移出的位放到进位位，原来的进位位补上空缺</li>
+</ul>
+</li>
+</ul>
+<p>补充：双符号位判断溢出</p>
+<h5 id="乘法运算"><a href="#乘法运算" class="headerlink" title="乘法运算"></a>乘法运算</h5><ul>
+<li><p>原码的乘法</p>
+<ul>
+<li><p>手算同普通的乘法</p>
+</li>
+<li><p>一位乘法：（每次参与一个位）</p>
+<ul>
+<li>符号位单独异或，然后修改</li>
+<li>数值位取绝对值进行乘法计算（简单来说要经历n轮加法和移位得到结果）</li>
+<li>详细过程：</li>
+</ul>
+<ol>
+<li>X放被乘数，MQ最开始放乘数，ACC一开始为0</li>
+<li>检查MQ的最低位（最右边），如果为0，则ACC和MQ右移一位，MQ最右边的舍弃，最左边的填上ACC最右边的那位</li>
+<li>检查MQ的最低位（最右边），如果为1，则先将ACC+X的值赋给ACC，再将ACC和MQ右移一位（操作同2）</li>
+<li>不断重复n次（n位数值位的位数）</li>
+<li>最后计算符号位，填入ACC最左边</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>补码的一位乘法（主要描述与原码不同的地方）</p>
+<ul>
+<li>在n轮加法和移位之后，再进行一次加法</li>
+<li>加法的内容由MQ的原最低位a1、辅助位a2确定<ul>
+<li>a2-a1=1，则ACC+[x]补</li>
+<li>a2-a1=0，则ACC+0</li>
+<li>a2-a1=-1，则ACC+[-x]补</li>
+<li>在MQ最右边扩展一位得到辅助位，初始值为0，原最低位在其右边</li>
+<li>X和ACC在最左边都补一位，用和符号位相同的数填补（双符号位补码）</li>
+</ul>
+</li>
+<li>右移按照补码的规则来</li>
+<li>符号位参与运算</li>
+</ul>
+</li>
+</ul>
+<h5 id="除法运算"><a href="#除法运算" class="headerlink" title="除法运算"></a>除法运算</h5><ul>
+<li>除法的思路</li>
+<li>原码除法——-恢复余数法</li>
+<li>原码除法——-加减交替法</li>
+<li>补码除法——-加减交替法</li>
+</ul>
+<h4 id="C语言中定点整数的强转"><a href="#C语言中定点整数的强转" class="headerlink" title="C语言中定点整数的强转"></a>C语言中定点整数的强转</h4><ul>
+<li>c语言中定点整数用补码存储</li>
+<li><p>短（short）转长（int）</p>
+<ul>
+<li>有符号：符号扩展，即符号位不变，在数据部分左边补1（负数按这种方法，正数直接补0）</li>
+<li>无符号</li>
+</ul>
+</li>
+<li><p>长转短</p>
+<ul>
+<li>有符号</li>
+<li>无符号</li>
+</ul>
+</li>
+<li><p>有符号和无符号的相互转</p>
+</li>
+</ul>
+<h4 id="数据的存储和排列"><a href="#数据的存储和排列" class="headerlink" title="数据的存储和排列"></a>数据的存储和排列</h4><h5 id="大端方式"><a href="#大端方式" class="headerlink" title="大端方式"></a>大端方式</h5><h5 id="小端方式"><a href="#小端方式" class="headerlink" title="小端方式"></a>小端方式</h5><h5 id="边界对齐"><a href="#边界对齐" class="headerlink" title="边界对齐"></a>边界对齐</h5><h4 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h4><ul>
+<li>在位数不变的情况下增加数据的表示范围（有点类似科学计数法）</li>
+</ul>
+<h5 id="表示方法"><a href="#表示方法" class="headerlink" title="表示方法"></a>表示方法</h5><ul>
+<li><p>两个部分：阶码（有两部分，第一位是符号位，补码或者移码表示的定点整数，反映了浮点数的表示范围）+尾数（有两部分，第一位是符号位，原码或者补码表示的定点小数，其数值部分的位数反映浮点数的精度）</p>
+</li>
+<li><p>阶码为E，尾数为M，则该浮点数的真值为：$N=r^E\times M$，r一般为2</p>
+</li>
+<li><p>浮点数数尾的规格化</p>
+<ul>
+<li>保证尾数的最高<strong>数值位</strong>为一个有效值（即不为0）</li>
+<li>两种方式：<ul>
+<li>右规：当浮点数运算结果的<strong>尾数溢出</strong>时（尾数的双符号位为01或者10），将位数算数右移一位，阶码+1</li>
+<li>左规：结果非规格化时，将尾数左移一位，阶码-1</li>
+</ul>
+</li>
+<li>对于尾数用原码表示的规格化：</li>
+<li>对于尾数用补码表示的规格化：</li>
+</ul>
+</li>
+<li>注：双符号位常常用于判断溢出</li>
+</ul>
+<h5 id="IEEE-754标准"><a href="#IEEE-754标准" class="headerlink" title="IEEE 754标准"></a>IEEE 754标准</h5><ul>
+<li>包括短浮点数和长浮点数，具体格式如下：<ul>
+<li>短浮点数（float）：</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%BB%84/" rel="tag"># 计组</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/07/jizu/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" rel="prev" title="指令系统">
+                  <i class="fa fa-chevron-left"></i> 指令系统
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/03/07/jizu/%E6%80%BB%E7%BA%BF/" rel="next" title="总线">
+                  总线 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zrk</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;per_page&quot;:true,&quot;cdn&quot;:&quot;&#x2F;&#x2F;cdn.bootcss.com&#x2F;mathjax&#x2F;2.7.1&#x2F;latest.js?config&#x3D;TeX-AMS-MML_HTMLorMML&quot;,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.2&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

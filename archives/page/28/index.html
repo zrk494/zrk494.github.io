@@ -135,7 +135,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/07/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/31/DS/%E6%9F%A5%E6%89%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/07/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">计算机网络概述</a>
+          <a href="/2021/03/31/DS/%E6%9F%A5%E6%89%BE/" class="post-title-link" itemprop="url">数据结构--查找</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,14 +205,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-07 16:00:48" itemprop="dateCreated datePublished" datetime="2021-03-07T16:00:48+08:00">2021-03-07</time>
+      <time title="创建时间：2021-03-31 20:46:26" itemprop="dateCreated datePublished" datetime="2021-03-31T20:46:26+08:00">2021-03-31</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-08-24 20:05:37" itemprop="dateModified" datetime="2022-08-24T20:05:37+08:00">2022-08-24</time>
+        <time title="修改时间：2022-11-28 10:28:56" itemprop="dateModified" datetime="2022-11-28T10:28:56+08:00">2022-11-28</time>
       </span>
 
   
@@ -225,173 +225,113 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="计算机网络概述"><a href="#计算机网络概述" class="headerlink" title="计算机网络概述"></a>计算机网络概述</h3><ul>
-<li><p>（RFC是一个重要的参考资料有空可以看看）</p>
-</li>
-<li><p>概述部分可以简单了解一下历史背景</p>
+          <h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li>关键字</li>
+<li>静态查找</li>
+<li>动态查找（会有增删改操作）</li>
+<li><strong>平均查找长度（ASL）</strong>：所有查找过程中，进行关键字比较的此时<ul>
+<li>注：要区分查找失败的ASL和查找成功的ASL</li>
+</ul>
 </li>
 </ul>
-<h4 id="计算机网络的概述"><a href="#计算机网络的概述" class="headerlink" title="计算机网络的概述"></a>计算机网络的概述</h4><ul>
-<li><p>计算机网络</p>
+<h4 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h4><ul>
+<li>在顺序表中查找某个元素，一般从头到尾依次寻找即可</li>
+<li>顺序查找的优化<ul>
+<li>对于有序表（以升序为例，主要对查找失败的情况进行优化）<ul>
+<li>对于这种情况，如果要查找的元素第一次小于当前表中的元素，则停止查找</li>
+<li>可以用查找判定树来分析ASL</li>
+</ul>
+</li>
+<li>对于查找概率不相同的顺序表（将查找概率大小降序排列即可）</li>
+</ul>
+</li>
+</ul>
+<h4 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h4><ul>
+<li><p>前提条件：<strong>有序</strong>的<strong>顺序表</strong>（不适用于链表）</p>
+</li>
+<li><p>算法思路（以升序为例）：</p>
 <ul>
-<li>定义1：  简单来说就是互连的自治的计算机集合。（由通信链路连接，没有主从关系）</li>
-<li>定义2：一个将很多分散的、具有独立系统的<strong>计算机系统</strong>，通过<strong>线路</strong>（一般可以是逻辑上的线路）和通信设备（比如路由器）连接的，有软件实现资源共享和信息传递的系统</li>
+<li>设置两个指针，low指向表头，high指向表尾</li>
+<li>比较表中最中间的值（(low+high)/2处）和待查找的元素的值<ol>
+<li>如果相等，则结束查找</li>
+<li>如果大于中间值，则将low设置为中间值+1</li>
+<li>如果小于中间值，则将high设置为中间值-1</li>
+</ol>
+</li>
+<li>不断重复一步，直到low大于等于high</li>
 </ul>
 </li>
-<li><p>计网的功能</p>
+<li><p>算法代码实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> *data;</span><br><span class="line">    <span class="keyword">int</span> length;</span><br><span class="line">&#125;SSTable;</span><br><span class="line"><span class="comment">//num表示线性表，key表示待查找的关键字，type为1表示升序，为0表示降序，返回值为关键字的位置</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Binary_Search</span><span class="params">(SSTable list,<span class="keyword">int</span> key,<span class="keyword">int</span> type)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> low=<span class="number">0</span>,high=list.length<span class="number">-1</span>,mid;</span><br><span class="line">    <span class="keyword">if</span>(type)&#123;</span><br><span class="line">    	<span class="keyword">while</span>(low&lt;=high)</span><br><span class="line">    	&#123;</span><br><span class="line">            mid=(low+hight)/<span class="number">2</span></span><br><span class="line">        	<span class="keyword">if</span>(list.data[mid]==key)</span><br><span class="line">            	<span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(list.data[mid]&lt;key)</span><br><span class="line">            	low=mid+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                high=mid<span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(low&lt;=high)</span><br><span class="line">    	&#123;</span><br><span class="line">            mid=(low+hight)/<span class="number">2</span></span><br><span class="line">        	<span class="keyword">if</span>(list.data[mid]==key)</span><br><span class="line">            	<span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(list.data[mid]&gt;key)</span><br><span class="line">            	low=mid+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                high=mid<span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构造折半查找的判定树（用于分析ASL）</p>
 <ul>
-<li>数据通信</li>
-<li>资源共享（硬件，软件，数据）</li>
-<li>分布式处理</li>
-<li>与因特网相连的接口（套接字接口）</li>
+<li>关键点即：右子树结点数-左子树结点数=0或1</li>
+<li>注意查找失败的查找次数分析（易错）</li>
 </ul>
 </li>
-<li><p>计算机网络的三个发展阶段</p>
+</ul>
+<h4 id="分块查找"><a href="#分块查找" class="headerlink" title="分块查找"></a>分块查找</h4><ul>
+<li>建立索引表，保存每个分块的最大关键字和分块的存储区间（先在索引表中确定大致范围，再进入分块查找）</li>
+<li>对于索引表进行折半查找，若索引表不包含目标关键字，不代表没有结果，此情况下，最后low的值刚好大于high，然后进入low所指的块进行下一步查找</li>
+<li>ASL分析<ul>
+<li>对于分块查找，一般考虑被均分的表（均匀的分为b块，每块s个元素）的ASL</li>
+<li>ASL=查找索引表的平均查找长度+查分块的平均查找长度</li>
+<li>如果查找索引表和查找块均为顺序查找，则当块长s为$\sqrt{n}$时，ASL最小</li>
+</ul>
+</li>
+</ul>
+<h4 id="二叉排序树（记为BST——题目可能这样描述）"><a href="#二叉排序树（记为BST——题目可能这样描述）" class="headerlink" title="二叉排序树（记为BST——题目可能这样描述）"></a>二叉排序树（记为BST——题目可能这样描述）</h4><ul>
+<li><p>性质</p>
 <ol>
-<li>ARPAnet产生<ul>
-<li>注：互联网就是把多个计算机网络连接起来的一个更大的系统</li>
-</ul>
-</li>
-<li>三级结构</li>
-<li>多层次ISP结构<ul>
-<li>ISP：因特网服务提供者，向用户提供互联网接入业务，信息业务等（分为主干ISP，地区ISP和本地ISP）</li>
-</ul>
-</li>
+<li>左子树所有结点关键字均小于根结点，右子树所有结点关键字均大于根结点</li>
+<li>进行中序遍历，可以得到一个递增的有序序列</li>
 </ol>
 </li>
-<li><p>计网的组成</p>
+<li><p>查找操作</p>
 <ul>
-<li>总体来看，计算机网络包括三个部分，即：硬件+软件+协议（规则集合，规定了不同设备在模型的同一层如何通信）</li>
-<li>按功能划分，包括资源子网和通信子网</li>
-<li>按工作方式划分，包括如下的两个部分<ul>
-<li>计网的边缘部分（即端系统，两个端系统之间一般进行通信的是每个系统中的一个进程）</li>
-<li>计网的核心部分</li>
-</ul>
+<li><p>思路：与根结点比较，若小于根结点则在左子树上查找，若大于根结点则在右边子树上查找，若相等则完成查找，并返回结点指针（查找失败就返回NULL）</p>
+</li>
+<li><p>代码实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归</span></span><br><span class="line"><span class="function">BSTNode *<span class="title">BSTSearch</span><span class="params">(BSTree T,<span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//非递归</span></span><br><span class="line"><span class="function">BSTNode *<span class="title">BSTSearch</span><span class="params">(BSTree T,<span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
-<li><p>计算机网络的分类</p>
-</li>
-<li><p>相关性能指标</p>
+<li><p>插入操作</p>
 <ul>
-<li><p>数据传输速率（比特率）：主机在数字信道上传输位数的速率</p>
+<li><p>思路：与根结点比较，若小于根结点则插入到左子树，若大于根结点则插入到右边子树（新插入的必为叶子结点）</p>
+</li>
+<li><p>注：二叉排序树中不存在关键字相同的结点</p>
+</li>
+<li><p>代码实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BST_Insert</span><span class="params">(BSTree &amp;T,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">  </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>构造（根据输入的序列，一个个执行插入操作即可）</p>
 <ul>
-<li>补充：注意速率单位和存储容量单位的区别</li>
-</ul>
-</li>
-<li><p>带宽：描述网络通道传输数据的能力</p>
-<ul>
-<li>补充：是理想值，一般不能达到</li>
-</ul>
+<li><p>代码实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Create</span><span class="params">(BSTree &amp;T,<span class="keyword">int</span> input_str[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    T=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">BST_Insert</span>(T,input_str[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
-</ul>
-<ul>
-<li><p>吞吐量：单位时间内通过信道的数据量</p>
-</li>
-<li><p>时延$\times4$</p>
-<ul>
-<li>传输（发送）时延：数据从路由之中全部进入到信道这一过程需要的时间</li>
-<li>传播时延：在信道之中传输花费的时间</li>
-<li><p>排队时延：等待的时间，一般在拥塞的时候出现</p>
-</li>
-<li><p>处理时延：检错+找出口的时间</p>
-</li>
-</ul>
-</li>
-<li><p>RTT（往返时延）：包括一来一回的传播时延+末端处理时间</p>
-</li>
-<li>时延带宽积</li>
-<li>利用率<ul>
-<li>信道利用率</li>
-<li>网络利用率</li>
-</ul>
-</li>
-</ul>
-<h4 id="计算机网络的体系结构-参考模型"><a href="#计算机网络的体系结构-参考模型" class="headerlink" title="计算机网络的体系结构+参考模型"></a>计算机网络的体系结构+参考模型</h4><h5 id="计算机网络的分层"><a href="#计算机网络的分层" class="headerlink" title="计算机网络的分层"></a>计算机网络的分层</h5><ul>
-<li><p>按照计算机网络各个相对独立的功能划分、抽象，得到<strong>分层的</strong>计网体系结构，更直观的来研究计网，促进标准化工作</p>
-<ul>
-<li>注：这种分层的结构各层之间的功能相对独立，分界自然清晰，相互间的交流尽可能少</li>
-</ul>
-</li>
-<li><p>相关的一些概念：</p>
-<ul>
-<li>实体：即分层结构中的某一层的活动元素，不同端系统之间的同一层实体为对等实体</li>
-<li>协议：<strong>对等实体之间</strong>在数据交换时必须遵守的规则，包括三要素：<ol>
-<li>语法：传输数据的格式</li>
-<li>语义：规定要完成的功能</li>
-<li>同步：各种操作的先后顺序</li>
-</ol>
-</li>
-<li>接口：上层通过这个入口使用下层提供的服务<ul>
-<li>注：接口只在相邻层之间，提供的服务是已经封装好的</li>
-</ul>
-</li>
-<li>服务：下层为上层提供的功能调用（是单向的，只能上层用下层的服务）</li>
-<li>数据单元：SDU，PCI，PDU</li>
-</ul>
-</li>
-<li><p>计算机网络体系结构包括各个层次及同层直接的协议</p>
-</li>
-<li><p>体系结构是一种抽象的概念，具体实现这些功能的是计网中的软件和硬件</p>
-</li>
-</ul>
-<h5 id="2种参考模型"><a href="#2种参考模型" class="headerlink" title="2种参考模型"></a>2种参考模型</h5><ul>
-<li><p>封装：对于要发送的信息，在向下层传递的过程中，没经过一次就会将已有信息和此层附加的信息进行一次打包（封装）</p>
-</li>
-<li><p>7层OSI参考模型（一种理想的标准）</p>
+<li><p>删除操作（分成三种情况）</p>
 <ol>
-<li>应用层（用户使用的应用程序所在的那一层，比如HTTP，SMTP等）</li>
-<li>表示层（包括数据格式转换，数据加密解密，数据压缩和回复的功能）</li>
-<li>会话层<ul>
-<li>建立同步，即在建立连接的基础上有序的传输数据</li>
-<li>通过校验点/同步点恢复通信</li>
-</ul>
-</li>
-<li>传输层（主机之间两个进程之间的通信，即端到端），可实现4个功能<ul>
-<li>可靠传输和不可靠传输</li>
-<li>差错控制</li>
-<li>流量控制</li>
-<li>复用和分用</li>
-</ul>
-</li>
-<li>网络层（把各个分组向目的地传输），可以实现4个功能<ul>
-<li>路由选择</li>
-<li>流量控制</li>
-<li>差错控制</li>
-<li>拥塞控制</li>
-</ul>
-</li>
-<li>数据链路层（将网络层传来的数据组装成帧，就是一串0和1的数字序列），可以实现4个功能<ul>
-<li>成帧（要定义帧的开始和结束）</li>
-<li>差错控制</li>
-<li>流量控制</li>
-<li>访问（接入）控制（指控制对信道的访问）</li>
-</ul>
-</li>
-<li>物理层，5个功能<ul>
-<li>定义接口特性</li>
-<li>定义传输模式</li>
-<li>定义传输速率</li>
-<li>比特同步</li>
-<li>比特编码</li>
-</ul>
-</li>
+<li>若删除的结点是叶子结点，则直接删除</li>
+<li>若删除的结点只有右子树或者只有左子树，则让子树的根结点替代删除的结点的位置</li>
+<li>若删除的结点有左右两棵子树，则可以用左子树的最大结点，或者用右子树的最小结点的关键字代替此结点，并且删去这个最大（或者最小）的结点</li>
 </ol>
+<ul>
+<li>注：对于第三种情况，最小值在右子树最左下结点，最大值在左子树最右下结点（依据见二叉树线索化的相关内容）</li>
+</ul>
 </li>
-<li><p>4层TCP/IP参考模型（事实标准）</p>
-<ol>
-<li>应用层（HTTP，FTP，DNS）</li>
-<li>传输层（TCP，UDP）</li>
-<li>网际层（IP）</li>
-<li>网络接口层</li>
-</ol>
-</li>
-<li><p>补充：通信的过程：信息从应用层开始，在每一层都被添加一个末端信息（除了链路层在首位都添加了信息），直到到达物理层之后被转换为二进制比特流在信道上传输，到达另一终端后信息被一层层解包</p>
+<li><p>查找效率分析</p>
+<ul>
+<li>查找成功和查找失败的情况</li>
+<li>优化（将其化为平衡的二叉排序树即可）</li>
+</ul>
 </li>
 </ul>
-<p>​        </p>
 
       
     </div>
@@ -411,7 +351,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/27/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/27/">27</a><span class="page-number current">28</span>
+    <a class="extend prev" rel="prev" href="/archives/page/27/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/27/">27</a><span class="page-number current">28</span><a class="page-number" href="/archives/page/29/">29</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/42/">42</a><a class="extend next" rel="next" href="/archives/page/29/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

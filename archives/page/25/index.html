@@ -135,7 +135,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E5%90%91%E9%87%8F/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/31/DS/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E5%90%91%E9%87%8F/" class="post-title-link" itemprop="url">线性代数_向量</a>
+          <a href="/2021/03/31/DS/%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="post-title-link" itemprop="url">数据结构--并查集</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,24 +205,15 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-16 21:02:24" itemprop="dateCreated datePublished" datetime="2021-03-16T21:02:24+08:00">2021-03-16</time>
+      <time title="创建时间：2021-03-31 20:46:26" itemprop="dateCreated datePublished" datetime="2021-03-31T20:46:26+08:00">2021-03-31</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-06-25 16:50:09" itemprop="dateModified" datetime="2022-06-25T16:50:09+08:00">2022-06-25</time>
+        <time title="修改时间：2022-11-28 10:28:34" itemprop="dateModified" datetime="2022-11-28T10:28:34+08:00">2022-11-28</time>
       </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
-        </span>
-    </span>
 
   
 </div>
@@ -234,114 +225,32 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="向量的基本运算"><a href="#向量的基本运算" class="headerlink" title="向量的基本运算"></a>向量的基本运算</h4><ul>
-<li>行向量（1$\times$n维的矩阵）和列向量（n$\times$1）</li>
-<li>向量的加法（各个元素相加）</li>
-<li>向量的数乘</li>
-<li>向量的内积（一个行向量乘一个列向量，方式同矩阵乘法，最终得到一个<strong>数</strong>）</li>
-<li>向量的长度（所有元素的平方和开根号，长度为1的为单位向量）</li>
-<li>正交矩阵A（A为n阶矩阵）<ul>
-<li>定义：$AA^T=E$</li>
-<li>正交矩阵相关的一组充要条件<ol>
-<li>$A^T=A^{-1}$</li>
-<li>A的列向量组为单位正交的向量组（长度为1且内积为0）</li>
-</ol>
-</li>
-<li>正交矩阵的性质<ol>
-<li>$|A|=\pm1$</li>
-<li>A和B正交，则$-A,AB,A^T,A^{-1},A^*$均为正交矩阵</li>
-</ol>
-</li>
+          <h3 id="并查集（2022年新加的考点）"><a href="#并查集（2022年新加的考点）" class="headerlink" title="并查集（2022年新加的考点）"></a>并查集（2022年新加的考点）</h3><ul>
+<li>逻辑关系—-集合<ul>
+<li>会将各个元素划分到互不相交的子集</li>
+<li>元素之间的关系——-是否属于同一个集合</li>
+<li>为了表示这种关系，在物理上可以用森林存储这些元素</li>
 </ul>
 </li>
-<li><em>Schmidt正交化</em></li>
-</ul>
-<h4 id="线性表示"><a href="#线性表示" class="headerlink" title="线性表示"></a>线性表示</h4><ul>
-<li>线性组合（定义）</li>
-<li>线性表示（定义，存在一组数，使得这些数与向量组相乘的总和结果为一个向量$\beta$,则$\beta$可由该向量组表示）</li>
-<li>向量组等价（两个向量组，可以互相线性表示）</li>
-<li><strong>线性表示的一组充要条件</strong><ol>
-<li>对应的非齐次方程有解</li>
-<li>$r(\alpha_1,…\alpha_s)=r(\alpha_1,…\alpha_s|\beta)$</li>
-</ol>
-</li>
-<li>向量组等价的充要条件：这两个向量组各自对应矩阵A和B，排列到一起得到矩阵C，r(A)=r(B)=r(C)</li>
-<li>线性表示的充分条件</li>
-<li><strong>线性表示的求法</strong>：初等行变换将与$\alpha$相关的部分到<strong>行最简形矩阵</strong>（每行第一个非0数为1，正下方和正上方为0）</li>
-<li>补充内容：<ul>
-<li>与线性相关的题目中，有具体向量且带参数往往会用到<strong>与秩相关的性质，行列式，初等行变换</strong>，</li>
+<li>查操作<ul>
+<li>找到一个指定元素属于哪个集合（找到根结点）</li>
 </ul>
 </li>
-</ul>
-<h4 id="线性相关和线性无关"><a href="#线性相关和线性无关" class="headerlink" title="线性相关和线性无关"></a>线性相关和线性无关</h4><ul>
-<li><p>定义相关：线性表示的系数不全为0则该向量组线性相关，全为0则线性无关</p>
-</li>
-<li><p>线性相关的一组充要条件</p>
-<ol>
-<li>至少有一个向量可由其余向量线性表示</li>
-<li>对应的齐次方程组有非0解</li>
-<li>r($\alpha$)&lt;s（s为向量组向量的个数）</li>
-</ol>
-<ul>
-<li>补充线性相关的一个推论：n个n维向量线性相关$\Leftrightarrow$其对应的行列式为0（感觉对于具体的向量比较好用）</li>
+<li>并操作<ul>
+<li>合并两个集合（让其中的一棵树称为另一棵树的子树即可）</li>
 </ul>
 </li>
-<li><p>线性相关的充分条件</p>
-<ol>
-<li>含有0向量的向量组线性相关</li>
-<li>部分相关，整体相关</li>
-<li>高维相关，低维相关（指向量的元素数量）</li>
-<li>以少表多，多必相关（两个向量组，一个向量数多，一个少，多的可以由少的线性表示）</li>
-<li>4的逆否命题，无关被表示，则数量较少</li>
-</ol>
-<ul>
-<li>补充推论：n+1个n维向量线性相关</li>
+<li>并查集的存储（双亲表示法比较好——可以很方便实现并和查）</li>
+<li>并查集的具体操作<ul>
+<li>初始化（一开始各个元素均独立，将这个数组的parent值均设置为-1即可）</li>
+<li>合并</li>
+<li>查找</li>
 </ul>
 </li>
-<li><p>线性无关的一组充要条件</p>
-<ol>
-<li><p>任意向量均不能由其余向量表示</p>
-</li>
-<li><p>对应的齐次方程只有0解</p>
-</li>
-<li><p>$r(\alpha)=s$</p>
-</li>
-</ol>
-<ul>
-<li>补充推论：n个n维向量线性无关$\Leftrightarrow$其对应的行列式不为0</li>
+<li>并查集的优化<ul>
+<li>并的优化（让小的树合并到大的树，此时根结点的parent值要发生一些变化，值为树的结点总数的相反数）</li>
+<li>查的进一步优化（压缩路径，查找某个结点之后，记录下经过的结点，并将这些结点连到根结点）</li>
 </ul>
-</li>
-<li><p>线性无关的充分条件</p>
-<ul>
-<li>整体无关，则部分无关</li>
-<li>低维无关，则高维无关</li>
-<li>不含0向量的正交向量组（向量组内积为0）线性无关———看看其证明</li>
-<li>不同特征值的特征向量线性无关（综合之后章节）</li>
-</ul>
-</li>
-<li><p>判定相关和无关的优先策略</p>
-<ul>
-<li>考虑定义</li>
-<li>秩</li>
-<li>行列式</li>
-</ul>
-</li>
-</ul>
-<h4 id="极大无关组"><a href="#极大无关组" class="headerlink" title="极大无关组"></a>极大无关组</h4><ul>
-<li>极大无关组的定义，对于向量组中的一部分向量，在加入向量组的一个向量则相关，则这一部分为极大无关组</li>
-<li>向量组的秩：极大无关组向量个数</li>
-<li>补充说明：<ul>
-<li>矩阵的秩等于其对应列向量的秩，也等于其行向量组的秩<strong>（新的一种求矩阵的秩的方法）</strong></li>
-<li>极大无关组往往不唯一，向量的秩确定为s，则在向量组中任意s个无关向量即为极大无关组</li>
-</ul>
-</li>
-<li><strong>求极大无关组</strong>：初等行变换化简为行阶梯形矩阵，每行第一个非0元素对应的列向量构成极大无关组</li>
-</ul>
-<p>补充内容</p>
-<ul>
-<li><p>可以利用分块矩阵的思路转换一个复杂的向量组（按列分块的那种）</p>
-</li>
-<li><p>单位化的技巧（不受系数影响，只管向量即可，可以把不必要的系数提出来并且去掉）</p>
 </li>
 </ul>
 
@@ -363,7 +272,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/24/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/24/">24</a><span class="page-number current">25</span><a class="page-number" href="/archives/page/26/">26</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/28/">28</a><a class="extend next" rel="next" href="/archives/page/26/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/24/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/24/">24</a><span class="page-number current">25</span><a class="page-number" href="/archives/page/26/">26</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/42/">42</a><a class="extend next" rel="next" href="/archives/page/26/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

@@ -135,7 +135,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/05/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84/" class="post-title-link" itemprop="url">线性代数_线性方程组</a>
+          <a href="/2021/05/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" class="post-title-link" itemprop="url">计算机网络---数据链路层</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,24 +205,15 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-03-16 21:02:24" itemprop="dateCreated datePublished" datetime="2022-03-16T21:02:24+08:00">2022-03-16</time>
+      <time title="创建时间：2021-05-11 22:09:34" itemprop="dateCreated datePublished" datetime="2021-05-11T22:09:34+08:00">2021-05-11</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-07-19 19:24:16" itemprop="dateModified" datetime="2022-07-19T19:24:16+08:00">2022-07-19</time>
+        <time title="修改时间：2022-11-28 10:27:26" itemprop="dateModified" datetime="2022-11-28T10:27:26+08:00">2022-11-28</time>
       </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
-        </span>
-    </span>
 
   
 </div>
@@ -234,94 +225,266 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="线性方程组的解"><a href="#线性方程组的解" class="headerlink" title="线性方程组的解"></a>线性方程组的解</h4><ul>
-<li>齐次线性方程组<ul>
-<li>方程的右侧均为0</li>
-<li>系数矩阵记为A</li>
-</ul>
-</li>
-<li>非齐次线性方程组<ul>
-<li>方程右侧为常数，不全为0</li>
-<li>增广矩阵（系数矩阵与右侧的数组成的向量结合，记作$\overline A$）</li>
-</ul>
-</li>
-<li>解的定义：n维未知数x的列向量</li>
-<li>主变量和自由变量<ul>
-<li>A化为行阶梯形矩阵，每行第一个非0元素对应的变量即为主变量，其余的未知数为自由变量</li>
-</ul>
-</li>
-<li>解的性质<ul>
-<li>齐次线性方程组的线性组合仍然为该方程组的解</li>
-<li>非齐次线性方程组的解之差为齐次方程组的解</li>
-<li>齐次的解+非齐次的解为非齐次的解</li>
-</ul>
-</li>
-<li>解的性质推广（s个解）<ul>
-<li>对于非齐次的s个解，则当这s个解的线性组合的系数和为0，为齐次的解，和为1，为非齐次的解</li>
-<li>对于非齐次的s个<strong>线性无关</strong>的解，它们与第一个解的差为齐次的s-1个线性无关的解</li>
-</ul>
-</li>
-<li>齐次线性方程组解的判定（结合线性相关和线性无关来综合应用）<ul>
-<li>只有零解等价于r(A)=n</li>
-<li>有非零解等价于r(A)&lt;n</li>
-<li>上两个为充要条件</li>
-<li>补充一个推论，齐次方程有非0解的充分条件为m&lt;n（行数小于列数）</li>
-</ul>
-</li>
-<li>非齐次线性方程组解的判定（结合线性相关和线性无关）<ul>
-<li>无解等价于$r(A)&lt;r(\overline A) \text{等价于}r(A)=r(\overline A)-1$</li>
-<li>有唯一解等价于$r(A)=r(\overline A)=n $</li>
-<li>有无穷多解等价于$r(A)=r(\overline A)&lt;n $</li>
-<li>补充推论<ul>
-<li>非齐次方程组有解等价于$r(A)=r(\overline A) $</li>
-<li>有解的充分条件是$r(A)=m$</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="求解齐次线性方程组"><a href="#求解齐次线性方程组" class="headerlink" title="求解齐次线性方程组"></a>求解齐次线性方程组</h4><ul>
-<li><p>基础解系</p>
+          <h3 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><ul>
+<li><p>基本概念</p>
 <ul>
-<li>定义：方程组的s个解线性无关，且方程组的任意解可以由这s个解表示，这s个解即为基础解系</li>
-<li><strong>基础解系即为解的极大无关组</strong>，不唯一，个数唯一（s=$n-r(A)$），故找到s个线性无关的解即可得到基础解系<ul>
-<li>注：结合上面的这个性质，可以适当变换形式得到不等式确定系数矩阵的秩的范围</li>
+<li>两种类型的网络链路<ul>
+<li>点对点链路    一对一</li>
+<li>广播链路    链路被多个设备共享</li>
 </ul>
 </li>
-<li><strong>跟基础解系可证明秩的性质9</strong></li>
+<li>结点：指主机和路由器等设备</li>
+<li>链路：连接相邻节点之间的<strong>物理</strong>信道</li>
+<li>数据链路：连接相邻节点之间的<strong>逻辑</strong>信道</li>
+<li>帧：链路层的协议数据单元，封装网络层的数据报得到</li>
 </ul>
 </li>
-<li><p>求基础解系</p>
+<li><p>数据链路层的工作就是通过<strong>一条数据链路</strong>，从一个节点向另一个<strong>与其直接相连的节点</strong>传送数据报（传输之前将数据表封装成帧）</p>
+</li>
+<li><p>透明传输：保证传输数据的比特组合能被识别出来，不会接收方误认为是控制信息</p>
 <ul>
-<li>对于数字矩阵：初等行变换化为行最简，设特殊的自由变量（一个为1时，其余均为0），解得主变量</li>
-<li>对于抽象矩阵：求得r(A)，再利用定义+性质凑出n-r(A)个线性无关的解</li>
-<li>齐次方程的通解（所以解）：基础解析的线性组合</li>
+<li>实现透明传输靠4种不同的组帧方法</li>
+</ul>
+</li>
+<li><p>数据链路层的功能</p>
+<ul>
+<li><p>成帧（组帧）：即将数据报封入数据帧（添加了头和尾）</p>
+<ul>
+<li>帧同步：接收方从收到的二进制比特流中区分处帧的起始和终止（头和尾）</li>
+<li>组帧的4种方法</li>
+</ul>
+<ol>
+<li>字符计数法：帧头部有一个字节的字段，记录帧内的字符数</li>
+<li>字符填充法</li>
+<li>零比特填充法：先在帧的头部和尾部都放一个字节（即01111110），在发送端，会扫描整个信息字段，如果扫描到连续的5个1，则在这之后立即填入一个0，在接收端，先找到边界，再扫描比特流，如果出现连续的5个1，则删除这之后的0</li>
+<li>违规编码法：举个栗子，对于曼彻斯特编码，用“高-高”和“低低”这样的信号来界定帧的起始和终止</li>
+</ol>
+<ul>
+<li>注：前两种方法存在比较明显的问题，实际上并不常用，3和4都实现了透明传输，不会误判帧的边界</li>
+</ul>
+</li>
+<li><p>链路管理，即连接的建立、维持和释放</p>
+</li>
+<li><p>为网络层提供服务（包括无确认无连接服务/有确认无连接服务/有确认面向连接服务）</p>
+</li>
+<li><p>流量控制</p>
+</li>
+<li><p>差错检测和纠正（差错包括帧错和位错误）</p>
+</li>
 </ul>
 </li>
 </ul>
-<h4 id="求解非齐次线性方程组（解不唯一的情况下）"><a href="#求解非齐次线性方程组（解不唯一的情况下）" class="headerlink" title="求解非齐次线性方程组（解不唯一的情况下）"></a>求解非齐次线性方程组（解不唯一的情况下）</h4><ul>
-<li><strong>非齐次线性方程组的通解=齐次的通解+非齐次的特解</strong>（记得要求出两个部分）</li>
-<li>求特解（对于增广矩阵$\overline A$）<ul>
-<li>数字矩阵：化为行最简，令自由变量全为0，根据新的系数的方程解出主变量</li>
-<li>抽象矩阵：用定义+性质凑</li>
+<h4 id="差错检测和纠正"><a href="#差错检测和纠正" class="headerlink" title="差错检测和纠正"></a>差错检测和纠正</h4><ul>
+<li><p>差错产生的原因：有噪声引起</p>
+</li>
+<li><p>两类差错</p>
+<ol>
+<li>位错误：比特流的某一位错误，1变成0或者0变成1</li>
+<li>帧错误：帧丢失/帧重复/帧失序（一般解决方法就是丢弃+重传）</li>
+</ol>
+</li>
+<li><p>检错编码1——奇偶校验码</p>
+<ul>
+<li>奇校验码：在附加一个校验元（即在信息编码的尾部加一个比特），保证1的个数为奇数</li>
+<li>偶校验码：在附加一个校验元，保证1的个数为偶数</li>
+</ul>
+</li>
+<li><p>检错编码2——循环冗余码</p>
+<ul>
+<li>生成多项式：双方约定好的一串序列（一般题目中有），用于辅助计算是否出错，这个多项式有<strong>r位</strong></li>
+<li>对于发送端：求出要传输的数据（数据有d位，还会在<strong>尾部补r个0</strong>，这个最终结果用于计算）和生成多项式作商的结果和余数，将最后的r位换成余数，发给接收端</li>
+<li>对于接收端：接收到的数据与生成多项式作商，余数为0，则判断为未发生错误</li>
+<li>这个过程中，如果判断某个帧有错误，则将这一帧丢弃</li>
+</ul>
+</li>
+<li><p>纠错编码——海明码（可以发现错误，找到其位置，并纠正—-0换为1，1换为0）</p>
+<ul>
+<li>海明距离（码距）：两个合法编码的对应位比特取值不同的比特数<ul>
+<li>举个栗子：000,100他们俩的海明距离为1（只有第1位不同）</li>
+</ul>
+</li>
+<li>流程如下</li>
+</ul>
+<ol>
+<li>确定校验码位数r<ul>
+<li>满足不等式$2^r\ge m+r+1$，m表示数据的位数，根据不等式找r的最小值</li>
+</ul>
+</li>
+<li><p>确认校验码和数据的位置</p>
+<ul>
+<li>校验码放在$2^n$的位置（n为位数，最右边为1）</li>
+<li>数据依次放入空位即可</li>
+</ul>
+</li>
+<li><p>求出校验码的值</p>
+<ul>
+<li>根据序号的二进制形式判断每一位校验码对应的检验位置</li>
+</ul>
+</li>
+<li><p>检错并纠错</p>
+<ul>
+<li>根据每一位校验码对负责的比特位得到一个序列，根据偶校验的方式判断这个序列是否有误</li>
+<li>满足偶校验则记为1，不满足则记为0，有高位向低位排列每一位校验码对应的结果，序列表明了第几位有错</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="可靠传输机制-流量控制"><a href="#可靠传输机制-流量控制" class="headerlink" title="可靠传输机制+流量控制"></a>可靠传输机制+流量控制</h4><ul>
+<li>可靠传输：保证发送方发出的内容与接收方收到的内容一致</li>
+<li>流量控制：在接收方的缓存空间有限，通过控制发送的速率保证接收方有足够的空间接收传来的帧（传输层和数据链路层都有这个机制）</li>
+<li>3种流量控制的协议（也同时保证了可靠传输）</li>
+</ul>
+<ol>
+<li><p>停止等待协议</p>
+<ul>
+<li><p>目的是解决丢包（由多种原因导致数据包丢失）问题</p>
+</li>
+<li><p>为了讨论方便，仅考虑一方发生一方接收，并且更多关注传输的机制不用考虑数据在哪一个层次上传输</p>
+</li>
+<li><p>停止等待：发送方发送完一个分组之后就停止发送，直到收到接收方的确认信息再发送下一个分组</p>
+</li>
+<li><p>在这个协议中的几种传输情况</p>
+<ul>
+<li><p>无差错：发送一个分组，等接收方传回一个ACK（确认帧）之后开始传下一个分组</p>
+</li>
+<li><p>有差错情况A：分组丢失或者检测到分组出错：会设置定时器，发生一个分组就启动一个定时器，如果分组丢失则等到超时就再次发送该数据分组</p>
+<p>注1：发送完一个数据分组，会保留其副本</p>
+<p>注2：数据分组和ACK都有编号</p>
+</li>
+<li><p>有差错情况B：ACK丢失</p>
+</li>
+<li><p>有差错情况C：ACK迟到</p>
+</li>
+</ul>
+</li>
+<li><p>性能分析：信道利用率太低</p>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>注1：对于这3种协议，重点在具体控制的模式，属于哪一层的不必在意</li>
+</ul>
+<ol>
+<li>后退N帧协议（GBN）：在停止等待协议之上就行改进<ul>
+<li>通过流水线技术改进（连续发送多个数据分组）</li>
+<li>发送窗口：规定了<strong>发送方</strong>一组<strong>连续</strong>发送的数据分组的序号范围（比如从第0个数据分组到第5个数据分组）</li>
+<li>接收窗口：规定了接收方一组<strong>连续</strong>接收的数据分组的序号范围</li>
+<li>接收ACK：收到ACK之后，会将该ACK对应的数据分组标记为已接收，并且会将发送窗口移动到这个分组之后</li>
+<li>累计确认：如果发送方收到n号的ACK分组，则表明n号之前的分组已经全部被接收</li>
+<li>超时处理：发送方重传丢失分组以及之后的已发送但是未被确认的分组（某一个分组出错也类似于这个过程）</li>
+<li>发送窗口最大为$2^n-1$，接收窗口大小为1</li>
+<li>存在的问题，累计确认的模式可能会丢失大量的分组，导致传输效率降低</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>注2：这个过程结合图理解</li>
+</ul>
+<ol>
+<li>选择重传协议<ul>
+<li>在GBN协议上进行改进，设置单个确认+增大接收窗口+设置接收缓存（缓存乱序到达的帧）</li>
+<li>收到ACK：开始同GBN，但是发送窗口移动到此时<strong>最小序号</strong>的未确认的分组处</li>
+<li>超时事件：对应发送方，超时发生的时候只会重传一个数据分组</li>
+<li>对于接收方，接受窗口的范围内的分组“来者不拒”（失序的帧会被缓存），窗口会移到最小序号的未收到的分组处</li>
+<li>对应接收方，发送来的分组序号在窗口左边或者右边，则直接丢弃，左边的则还会发送一个ACK给发送方</li>
+<li>两边窗口最大为$2^{n-1}$</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>注3：这个过程同样结合图理解</li>
+</ul>
+<h4 id="信道划分介质控制"><a href="#信道划分介质控制" class="headerlink" title="信道划分介质控制"></a>信道划分介质控制</h4><h5 id="3-1-概述"><a href="#3-1-概述" class="headerlink" title="3.1 概述"></a>3.1 概述</h5><ul>
+<li>两种链路：<ol>
+<li>点对点链路</li>
+<li>广播式链路</li>
+</ol>
+</li>
+<li>存在的问题：在共享信道上，两个结点之间的通信可能受到其他节点的干扰，导致冲突（冲突指结点同时收到两个或者多个来自其他结点的信号，无法从信号中得到有效的信息）</li>
+<li><p>解决方法：（介质访问控制）解决了哪个设备使用共享链路的问题，尽可能的避免干扰（如何协调多个发送和接收节点对一个共享信道的访问）</p>
+</li>
+<li><p>信道划分方式包括动态的和静态的方式（详细内容在下一点）</p>
+</li>
+<li><p>节点通过多路访问协议规范它们在共享信道上的传输</p>
+</li>
+<li>基于原本的信道进行协调</li>
+<li>多路复用技术：多个计算机或者终端设备<strong>共享信道</strong>资源</li>
+</ul>
+<h4 id="介质访问控制"><a href="#介质访问控制" class="headerlink" title="介质访问控制"></a>介质访问控制</h4><ul>
+<li><p>信道划分介质访问控制（多路复用）——-静态分配信道的方式，提前给用户分好的信道</p>
+<ul>
+<li><p>TDM（时分多路复用）：用户交替使用信道（类似操作系统的并发过程）</p>
+<ul>
+<li>STDM（时分多路复用改进）：提高信道利用率，通过集中器收集多个用户通信的信息，动态分配时隙，在一条线路上将信息发出</li>
+</ul>
+</li>
+<li><p>FDM（频分多路复用）：划分出多个不同频率给不同用户（用户占用不同带宽）</p>
+</li>
+<li><p>CDMA（码分多路复用）：不同序列相互正交</p>
+<ul>
+<li>过程：到公共信道上线性相加，之后再分类</li>
+</ul>
+</li>
+<li><p>WDM（波分多路复用）：按照光的波长划分</p>
+</li>
 </ul>
 </li>
 </ul>
-<h4 id="公共解"><a href="#公共解" class="headerlink" title="公共解"></a>公共解</h4><ul>
-<li>既是方程组1的解又是方程组2的解</li>
-<li>求法<ul>
-<li>联立两个方程组（在已知两个线性方程组的具体形式的前提下）</li>
+<ul>
+<li>随机接入协议（一种动态分配信道的方式）——-用户可以随机发信息，发送信息时占用全部带宽<ul>
+<li>时隙ALOHA（最简单的）<ul>
+<li>所有帧大小相同</li>
+<li>时间被划分成等长的时隙（一个时隙传一个帧）</li>
+<li>只能在时隙开始发送帧</li>
+<li>结点之间时钟同步</li>
+</ul>
+</li>
+<li>过程<ol>
+<li>结点有一个新的帧就在下一个时隙发送</li>
+<li>无冲突就继续发</li>
+<li>有冲突就在下一个时隙按概率p发送没发送成功的帧，直到成功发送</li>
+</ol>
+</li>
+<li>ALOHA（想发就发）<ul>
+<li>不监听信道，不划分时隙，不需要同步，有帧生成就立刻发送</li>
+<li>效率更低</li>
+</ul>
+</li>
+<li>CSMA（载波侦听多路访问协议）<ul>
+<li>特征<ul>
+<li>要监听信道</li>
+<li>当监测到信道空闲时发送帧，信道忙就等待（推迟发送也存在多种方式）</li>
+<li>冲突仍然可能发生</li>
+</ul>
+</li>
+<li>分类：<ul>
+<li>坚持CSMA</li>
+<li>非坚持CSMA</li>
+<li>p坚持CSMA</li>
 </ul>
 </li>
 </ul>
-<h4 id="同解"><a href="#同解" class="headerlink" title="同解"></a>同解</h4><ul>
-<li>方程组1的解均为方程组2的解，反之亦然</li>
-<li>同解的充要条件（系数矩阵分别为A，m$\times$n阶；B，l$\times$n阶）<ul>
-<li>AB的行向量组等价</li>
-<li>r(A)=r(B)</li>
+</li>
+<li>CSMA/CD（具有碰撞检测的载波侦听多路访问协议）<ul>
+<li>对CSMA改进，会检测是否发生冲突，有冲突则通过截断二进制数退避算法等待一段时间再重发</li>
+<li>最小帧长：<ul>
+<li>原理：保证帧传输时延不低于信号在总线传播时延的2倍</li>
+<li>最小帧长=总线传播时延$\times$数据传输速率$\times$2</li>
 </ul>
 </li>
-<li>通过同解的相关内容和性质证明秩的两个性质</li>
+<li>主要应用于有线局域网</li>
+<li>以太网的最短帧长为64B</li>
+</ul>
+</li>
+<li>CSMA/CA（）<ul>
+<li>主要应用于无线局域网</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>轮流协议（了解即可）</li>
 </ul>
 
       
@@ -342,7 +505,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/16/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/archives/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/28/">28</a><a class="extend next" rel="next" href="/archives/page/18/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/16/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/archives/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/42/">42</a><a class="extend next" rel="next" href="/archives/page/18/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

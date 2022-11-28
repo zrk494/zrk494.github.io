@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;zrk494.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Pisces&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
+<meta name="description" content="指令系统指令的格式基本格式 操作码+地址码 详细包括：操作码（op）+寻址特征（如何寻址）+形式地址A 操作码决定指令的条数 后两个部分决定了可寻址范围    4种分类方式 按地址码数目分类 就是一条指令中有几个地址码部分   按指令长度分类 定长指令字结构与变长指令字结构（指令系统中的所有指令长度是否相等）   按地址码长度分类 定长操作码与可变长操作码   按操作类型分类 数据传送类 运算类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="指令系统">
+<meta property="og:url" content="http://zrk494.github.io/2021/03/07/jizu/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="post">
+<meta property="og:description" content="指令系统指令的格式基本格式 操作码+地址码 详细包括：操作码（op）+寻址特征（如何寻址）+形式地址A 操作码决定指令的条数 后两个部分决定了可寻址范围    4种分类方式 按地址码数目分类 就是一条指令中有几个地址码部分   按指令长度分类 定长指令字结构与变长指令字结构（指令系统中的所有指令长度是否相等）   按地址码长度分类 定长操作码与可变长操作码   按操作类型分类 数据传送类 运算类">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-07T08:00:48.000Z">
+<meta property="article:modified_time" content="2022-11-28T02:42:11.148Z">
+<meta property="article:author" content="zrk">
+<meta property="article:tag" content="计组">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://zrk494.github.io/2021/03/07/jizu/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;http:&#x2F;&#x2F;zrk494.github.io&#x2F;2021&#x2F;03&#x2F;07&#x2F;jizu&#x2F;%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F&#x2F;&quot;,&quot;path&quot;:&quot;2021&#x2F;03&#x2F;07&#x2F;jizu&#x2F;指令系统&#x2F;&quot;,&quot;title&quot;:&quot;指令系统&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>指令系统 | post</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">post</h1>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="/uploads/233.jpg" alt="post">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">指令的格式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">基本格式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4%E7%A7%8D%E5%88%86%E7%B1%BB%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">4种分类方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E6%93%8D%E4%BD%9C%E7%A0%81%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.3.</span> <span class="nav-text">扩展操作码指令格式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BB%E5%9D%80"><span class="nav-number">1.2.</span> <span class="nav-text">寻址</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%AF%BB%E5%9D%80"><span class="nav-number">1.2.1.</span> <span class="nav-text">指令寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%AF%BB%E5%9D%80"><span class="nav-number">1.2.2.</span> <span class="nav-text">数据寻址</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zrk</p>
+  <div class="site-description" itemprop="description">包括专业课学习的相关笔记，以及其他</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/yourname" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/07/jizu/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zrk">
+      <meta itemprop="description" content="包括专业课学习的相关笔记，以及其他">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="post">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          指令系统
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-07 16:00:48" itemprop="dateCreated datePublished" datetime="2021-03-07T16:00:48+08:00">2021-03-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-11-28 10:42:11" itemprop="dateModified" datetime="2022-11-28T10:42:11+08:00">2022-11-28</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="指令系统"><a href="#指令系统" class="headerlink" title="指令系统"></a>指令系统</h3><h4 id="指令的格式"><a href="#指令的格式" class="headerlink" title="指令的格式"></a>指令的格式</h4><h5 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h5><ul>
+<li>操作码+地址码</li>
+<li>详细包括：操作码（op）+寻址特征（如何寻址）+形式地址A<ul>
+<li>操作码决定指令的条数</li>
+<li>后两个部分决定了可寻址范围</li>
+</ul>
+</li>
+</ul>
+<h5 id="4种分类方式"><a href="#4种分类方式" class="headerlink" title="4种分类方式"></a>4种分类方式</h5><ul>
+<li>按地址码数目分类<ul>
+<li>就是一条指令中有几个地址码部分</li>
+</ul>
+</li>
+<li>按指令长度分类<ul>
+<li>定长指令字结构与变长指令字结构（指令系统中的所有指令长度是否相等）</li>
+</ul>
+</li>
+<li>按地址码长度分类<ul>
+<li>定长操作码与可变长操作码</li>
+</ul>
+</li>
+<li>按操作类型分类<ul>
+<li>数据传送类</li>
+<li>运算类</li>
+<li>程序控制类</li>
+<li>输入输出类</li>
+</ul>
+</li>
+</ul>
+<p>补充：</p>
+<ul>
+<li>3组概念<ul>
+<li>指令字长</li>
+<li>机器字长</li>
+<li>存储字长</li>
+</ul>
+</li>
+</ul>
+<h5 id="扩展操作码指令格式"><a href="#扩展操作码指令格式" class="headerlink" title="扩展操作码指令格式"></a>扩展操作码指令格式</h5><ul>
+<li>这种指令指令字结构固定，操作码长度可变</li>
+<li>通过指令的某种格式，表示不同数量地址码的指令</li>
+<li><p>设计方式参照课本+ppt</p>
+</li>
+<li><p>设计扩展的注意事项</p>
+<ul>
+<li>短码不能是长码的前缀</li>
+</ul>
+</li>
+</ul>
+<h4 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h4><h5 id="指令寻址"><a href="#指令寻址" class="headerlink" title="指令寻址"></a>指令寻址</h5><ul>
+<li>即寻找待执行的下一条指令的地址</li>
+<li>顺序寻址<ul>
+<li>定长指令</li>
+<li>变长指令</li>
+</ul>
+</li>
+<li>跳跃寻址：由转移指令指出下一条指令地址</li>
+<li>注1：PC永远指向下一条指令的地址，在顺序寻址时，PC加多少具体分析</li>
+</ul>
+<h5 id="数据寻址"><a href="#数据寻址" class="headerlink" title="数据寻址"></a>数据寻址</h5><ul>
+<li>确定本条指令的地址码指明的真实地址（即计算机通过对地址码的不同解读方式找到一个对应的地址）</li>
+<li>将地址码分成两部分：寻址特征（即表示用哪一种寻址方式，这里共10种，即4位二进制数）+形式地址</li>
+<li>10种寻址方式（假设指令字长=机器字长=存储字长，假设操作数为3）</li>
+</ul>
+<ol>
+<li>直接寻址：形式地址即真实地址<ul>
+<li>2次访存（取指令$\times$1+执行指令$\times$1）</li>
+<li>寻址范围有限</li>
+</ul>
+</li>
+<li>间接寻址：形式地址执行某一个主存单元，这个单元中的内容是操作数的真正的地址<ul>
+<li>3次访存（取指令$\times$1+执行指令$\times$2）</li>
+<li>可以扩大寻址范围，但需要多次访存</li>
+</ul>
+</li>
+<li>寄存器寻址：形式地址是一个寄存器的编号，操作数在这个寄存器中<ul>
+<li>只用一次访存（取指令$\times$1）</li>
+</ul>
+</li>
+<li>寄存器间接寻址：形式地址是一个寄存器的编号，操作数在<strong>内存的地址</strong>在这个寄存器中<ul>
+<li>2次访存（取指令$\times$1+执行指令$\times$1）</li>
+</ul>
+</li>
+<li>隐含寻址：按照某种规定隐含操作数</li>
+<li>立即寻址：</li>
+<li>基址寻址：在专门的基址寄存器中存储“起点“（结合操作系统中重定位寄存器），此寄存器面向操作系统</li>
+<li>变址寻址：在变址寄存器中存储“起点”，此寄存器面向用户</li>
+</ol>
+<ul>
+<li>补充：基址+变址复合寻址</li>
+</ul>
+<ol>
+<li>相对寻址：程序计数器给出“起点”，此处的形式地址A用补码表示，可正可负</li>
+</ol>
+<ul>
+<li>注：6，7，8都是偏移寻址（指令给出的是形式地址，即偏移量），区别是偏移的起点不一样</li>
+</ul>
+<ol>
+<li>堆栈寻址：操作数放在堆栈中，堆栈指针SP为操作数地址（隐含使用）</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%BB%84/" rel="tag"># 计组</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/07/jizu/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" rel="prev" title="计算机系统概述">
+                  <i class="fa fa-chevron-left"></i> 计算机系统概述
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/03/07/jizu/%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%BF%90%E7%AE%97/" rel="next" title="数据的表示和运算">
+                  数据的表示和运算 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zrk</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;per_page&quot;:true,&quot;cdn&quot;:&quot;&#x2F;&#x2F;cdn.bootcss.com&#x2F;mathjax&#x2F;2.7.1&#x2F;latest.js?config&#x3D;TeX-AMS-MML_HTMLorMML&quot;,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.2&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

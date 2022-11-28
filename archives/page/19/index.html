@@ -135,7 +135,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/" class="post-title-link" itemprop="url">操作系统---进程调度</a>
+          <a href="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/" class="post-title-link" itemprop="url">计算机网络--传输层</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,14 +205,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-05-27 21:46:28" itemprop="dateCreated datePublished" datetime="2021-05-27T21:46:28+08:00">2021-05-27</time>
+      <time title="创建时间：2021-04-11 16:22:00" itemprop="dateCreated datePublished" datetime="2021-04-11T16:22:00+08:00">2021-04-11</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-09-30 16:03:22" itemprop="dateModified" datetime="2022-09-30T16:03:22+08:00">2022-09-30</time>
+        <time title="修改时间：2022-09-24 09:48:01" itemprop="dateModified" datetime="2022-09-24T09:48:01+08:00">2022-09-24</time>
       </span>
 
   
@@ -225,258 +225,232 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="https://docs.qq.com/doc/DRlpCblNaYVlVeGtL">https://docs.qq.com/doc/DRlpCblNaYVlVeGtL</a></p>
-<h3 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h3><h4 id="调度概述"><a href="#调度概述" class="headerlink" title="调度概述"></a>调度概述</h4><ul>
-<li>调度：按照某种方式（算法）选择一个进程，将处理器分配给它</li>
-<li>三个层次<ol>
-<li>高级调度（<strong>作业调度</strong>）<ul>
-<li>将作业从<strong>外存</strong>调度到<strong>内存</strong>，并且给该作业创建了一个进程</li>
+          <h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><h4 id="传输层概述"><a href="#传输层概述" class="headerlink" title="传输层概述"></a>传输层概述</h4><ul>
+<li>传输层协议为运行在不同主机之上的进程提供了一种逻辑通信机制（端到端），只有在主机上才有这一层</li>
+</ul>
+<ul>
+<li>传输层的功能：<ul>
+<li>传输层提供<strong>不同主机的不同应用进程</strong>间的逻辑通信</li>
+<li>传输层会对收到的报文进行差错检测</li>
+<li>主要包括2种协议TCP+UDP</li>
 </ul>
 </li>
-<li>中级调度（<strong>内存调度</strong>）<ul>
-<li>按照规则，将挂起状态的进程从外存调回内存</li>
+<li>与网络的区别<ul>
+<li>网络层提供<strong>不同主机</strong>间的逻辑通信</li>
+<li>网络层只会对<strong>IP数据报的头部</strong>进行差错检测</li>
 </ul>
 </li>
-<li>低级调度（<strong>进程调度</strong>）<ul>
-<li>从就绪队列选择一个进程为其分配处理器（CPU）</li>
-<li>它是操作系统中<strong>最基本</strong>的调度，发生频率<strong>很高</strong></li>
-<li>进程从内存到了CPU</li>
+</ul>
+<ul>
+<li>传输层的复用和分用<ul>
+<li>复用：应用层的所有进程都通过传输层传送到网络层</li>
+<li>分用：传输层从网络层收到数据后选择交付给哪一个应用</li>
+</ul>
+</li>
+<li>传输层寻址（如何找到某个进程）<ul>
+<li>通过端口号来标识主机之中的某一个进程</li>
+<li>不同主机之间的相同端口号没有联系，端口号的作用只是标识主机本地的某个进程</li>
+<li>端口号长度为16bit，总共能表示65536个端口，其中可以按范围分成：<ul>
+<li>熟知端口号：留给一些重要的应用程序，让所有的用户都知道（0~1023，服务端使用）</li>
+<li>登记端口号：给其他服务端的应用程序用（102~49151，服务端使用）</li>
+<li>客户端使用的端口号：仅仅在用户进程运行的时才会动态选择（49152~65535）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>套接字：用于唯一标识网络中的某个主机的某个进程，形式一般为一个二元组：(主机IP，端口号)</li>
+</ul>
+<h4 id="UDP（用户数据报协议-User-Datagram-Protocol）"><a href="#UDP（用户数据报协议-User-Datagram-Protocol）" class="headerlink" title="UDP（用户数据报协议,User Datagram Protocol）"></a>UDP（用户数据报协议,User Datagram Protocol）</h4><h5 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h5><ul>
+<li><strong>不需要建立连接</strong>，收到报文之后也不需要确认（延时很小</li>
+<li>基于IP协议，增加了复用/分用，以及简单的错误校验这些内容，实现简单</li>
+<li><p>UDP使用最大努力交付，不保证交付数据可靠性，UDP段可能丢失或者非按序到达</p>
+<ul>
+<li>通过应用层的可靠性机制可实现UDP上的可靠数据传输</li>
+</ul>
+</li>
+<li><p>无拥塞控制，适合更多实时性应用</p>
+</li>
+<li>面向报文（UDP对于应用层传来的报文，既不合并，也不拆分，一次发送一个完整的报文）</li>
+<li>首部开销小（8字节）</li>
+</ul>
+<h5 id="报文格式"><a href="#报文格式" class="headerlink" title="报文格式"></a>报文格式</h5><ul>
+<li>首部字段（源端口+目的端口+UDP长度+UDP检验和）+数据字段</li>
+<li><p><img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/image-20210509232638326.png" alt="image-20210509232638326" style="zoom:50%;"></p>
+<ul>
+<li>首部字段每一个部分都是16bit</li>
+<li>在分用是，如果找不到某一个端口，则丢弃报文，并向发送方发出一个“端口不可达”的ICMP差错报告报文</li>
+</ul>
+</li>
+<li><p>UDP校验和（若有错则直接丢弃报文）</p>
+<ul>
+<li><p>发送方：将该段的内容视为16位整数，计算所有整数的和，得到的和按位取反，就是校验和，放在校验和字段之中    </p>
+</li>
+<li><p>接收方：计算收到的字段的校验和，与校验和字段对比</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="TCP（面向连接的传输控制协议-Transmission-Control-Protocol）"><a href="#TCP（面向连接的传输控制协议-Transmission-Control-Protocol）" class="headerlink" title="TCP（面向连接的传输控制协议,Transmission Control Protocol）"></a>TCP（面向连接的传输控制协议,Transmission Control Protocol）</h4><h5 id="TCP特性"><a href="#TCP特性" class="headerlink" title="TCP特性"></a>TCP特性</h5><ul>
+<li>基本的特性<ul>
+<li>面向连接的传输层协议（要先建立连接才能通信）</li>
+<li>点对点的虚连接（一个发送方对应一个接收方，只有这两个端点）</li>
+<li>TCP传输的是可靠的，有序的</li>
+<li><strong>流水线机制</strong></li>
+<li>全双工（同一个连接之中的数据是双向的）</li>
+<li>包括两个缓存：<ul>
+<li>发送缓存 </li>
+<li>接收缓存 </li>
+</ul>
+</li>
+<li>TCP是面向字节流的（将应用程序传来的数据看成一串无结构的字节流，之后好分片）</li>
+<li>存在流量控制机制和拥塞控制机制（后面细说）</li>
+</ul>
+</li>
+<li>与可靠数据传输相关的特性<ul>
+<li>累计确认机制</li>
+<li>单一重传计时器</li>
+<li>当超时或者收到重复ACK时会重传）</li>
+</ul>
+</li>
+</ul>
+<h5 id="TCP报文结构（补充英文版本在实践过程中容易理解）"><a href="#TCP报文结构（补充英文版本在实践过程中容易理解）" class="headerlink" title="TCP报文结构（补充英文版本在实践过程中容易理解）"></a>TCP报文结构（补充英文版本在实践过程中容易理解）</h5><p><img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/image-20210509232349814.png" alt="image-20210509232349814" style="zoom:50%;"></p>
+<ul>
+<li>序号（32bit，seq），指报文段发送的<strong>数据部分</strong>的<strong>第一个字节</strong>的编号</li>
+<li>确认号（32bit），希望接受到的下一个报文段的序号</li>
+<li>首部长度（数据偏移），以4B为单位</li>
+<li><p>6个控制位（每个都是1bit）</p>
+<ul>
+<li>URG，为1则表明此报文段有紧急数据（最高优先级），要尽快发送，不用在发送缓存中排队</li>
+<li>ACK，为1表示确认号是有效的（建立连接是必须设置为1）</li>
+<li>PSH（不重要），为1时接收方要尽快将此报文交给对应进程，不用等待接收缓存填满再交付</li>
+<li>RST（不重要）</li>
+<li>SYN，为1时表明这个报文是<strong>连接请求</strong>报文</li>
+<li>FIN，为1时表明此报文段发送方数据已经发完，要求<strong>释放连接</strong></li>
+</ul>
+</li>
+<li><p>接收窗口（16bit）：表示发送报文段的那一方的接收窗口，表明了允许对方发送的数据量</p>
+</li>
+<li>检查和：基本同UDP，只是第4个字段为6</li>
+<li>紧急指针：URG为1时才有意义，此字段表明了紧急数据的字节数</li>
+<li>选项，如果不为4B的整数倍，则要用0填充到整数倍</li>
+</ul>
+<h5 id="流量控制（本质就是控制发送方的发送速率）"><a href="#流量控制（本质就是控制发送方的发送速率）" class="headerlink" title="流量控制（本质就是控制发送方的发送速率）"></a>流量控制（本质就是控制发送方的发送速率）</h5><ul>
+<li>流量控制就是让发送方发慢点，防止接收方缓存溢出（接收方上层应用的处理速度可能比较慢，导致数据堆积在缓存之中）</li>
+<li>如何实现<ul>
+<li>接收方将<strong>空余的缓存大小</strong>（rwnd）封装在确认报文头部字段返回发送方（即放在接收窗口字段）</li>
+<li>发送方收到确认报文后，根据接收窗口字段<strong>控制自己发送的数据大小</strong>（动态调整）</li>
+<li>当rwnd=0时，发送方暂时不会发数据，等待接收方的新的确认报文（这个过程会启动计时器，超时（接收方发的新的确认报文丢失）则发送方会发送探测报文段—-1B数据—-让接收方再发一次）</li>
+</ul>
+</li>
+</ul>
+<h5 id="TCP的连接管理（建立和拆除）"><a href="#TCP的连接管理（建立和拆除）" class="headerlink" title="TCP的连接管理（建立和拆除）"></a>TCP的连接管理（建立和拆除）</h5><ul>
+<li><p>TCP连接的建立使用<strong>客户服务器方式</strong>，主动发起连接的主机进程是客户，另一端是服务器</p>
+</li>
+<li><p>TCP传输过程1：建立连接（三次握手机制）</p>
+<ul>
+<li><p>初始化</p>
+</li>
+<li><p>三次握手的过程</p>
+<ol>
+<li>客户端向服务器发送一个特殊的TCP报文段（SYN报文段，SYN为1，不携带任何数据，报文段的序号为一个随机的数x）</li>
+<li>服务器端收到SYN之后会向客户发送SYNACK报文段（无数据），表明允许连接（服务器此时会为TCP连接分配好缓存）<ul>
+<li>这个报文的SYN=1，ACK=1，序号为一个随机值y，确认号为x+1</li>
+</ul>
+</li>
+<li>客户端收到SYNACK，再向服务器发送一个报文段（可以携带数据），表明收到允许连接的报文（此时客户端会为TCP分配好缓存）<ul>
+<li>这个报文段SYN=0，ACK=1，序号为x+1，确认号为y+1</li>
 </ul>
 </li>
 </ol>
 </li>
-<li>补充内容<ul>
-<li>作业：指一个具体的任务（一个用户向系统提交的作业可以理解为用户让操作系统启动一个程序）</li>
-<li>内存是有限，当内存不充足的时候，为了提高资源利用率，暂时不执行的进程会被掉到外存，之后该进程变为<strong>挂起态</strong></li>
-<li>结合进程挂起态得到的七状态模型</li>
+<li>注：SYN洪泛攻击</li>
 </ul>
 </li>
 </ul>
-<h4 id="进程调度的时机"><a href="#进程调度的时机" class="headerlink" title="进程调度的时机"></a>进程调度的时机</h4><ul>
-<li>就是在什么情况下要发生进程调度</li>
-<li>进程主动放弃使用的CPU<ul>
-<li>进程终止（正常或者异常终止）</li>
-<li>请求阻塞（如等I/O）</li>
+<ul>
+<li><p>TCP传输过程2：数据传送</p>
+</li>
+<li><p>TCP传输过程3：拆除连接（客户端和服务器都可以终止连接，下面以客户端终止连接为例说明这个过程）</p>
+<ol>
+<li>客户端发送FIN报文段（此时报文的FIN=1，设此时的序号为u）</li>
+<li>服务器收到FIN报文段后发送一个回复报文，客户到服务器这个方向的连接被释放（半关闭状态，服务器仍然可以给客户端发数据）<ul>
+<li>这个报文ACK=1，确认号为u+1</li>
 </ul>
 </li>
-<li>进程被动离开CPU</li>
-<li>进程调度的两种方式<ol>
-<li>抢占式（操作系统可以剥夺进程的CPU使用权）</li>
-<li>非抢占式（操作系统只能等进程主动放弃CPU使用权）</li>
+<li>服务器不再发送数据时，就会发送一个连接释放报文段，主动关闭TCP连接<ul>
+<li>这个报文FIN=1，ACK=1，确认号为u+1，设此时序号为w</li>
+</ul>
+</li>
+<li>客户端发送一个确认报文段，再等待一段时间后才彻底关闭连接（等待的时间为2MSL，防止此确认报文丢失）<ul>
+<li>此报文ACK=1，确认号为w+1，序号为u+1</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>注：MSL指最长报文段寿命</li>
+</ul>
+</li>
+</ul>
+<h5 id="TCP的可靠数据传输"><a href="#TCP的可靠数据传输" class="headerlink" title="TCP的可靠数据传输"></a>TCP的可靠数据传输</h5><ul>
+<li>可靠：指发送方发送的字节流和接收方从缓存中读出的字节流<strong>完全一致</strong></li>
+<li>4种保证可靠传输的机制<ol>
+<li>校验（即靠报文段的检查和部分实现）</li>
+<li>序号</li>
+<li>确认（类似SR协议，见链路层）</li>
+<li>重传<ul>
+<li>如何设置重传时间，同时避免不必要的重传：采用自适应算法，动态改变重传时间为RTTs（加权的平均往返时间）</li>
+<li>上一条的模式可能会等待比较长的时间，引入冗余ACK和快速重传机制改进</li>
+<li>快速重传机制<ul>
+<li>通过检测重复ACK知道分组已经丢失</li>
+<li>如果发送方收到同一数据的3个ACK时，会认为该数据之后的段丢失，此时进行快速重传（在定时器超时之前重传）</li>
+</ul>
+</li>
+</ul>
+</li>
 </ol>
 </li>
-<li>进程切换<ul>
-<li>（狭义上的）进程调度</li>
-<li>广义上的进程调度</li>
-<li>切换的过程<ul>
-<li>保存</li>
-<li>恢复</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="调度程序（调度器，scheduler）"><a href="#调度程序（调度器，scheduler）" class="headerlink" title="调度程序（调度器，scheduler）"></a>调度程序（调度器，scheduler）</h4><ul>
-<li><p>决定操作系统怎样去调度，包括使用怎样的调度算法，划分多大的时间片等</p>
-</li>
-<li><p>额外内容（与之前的综合）</p>
+<h5 id="TCP的拥塞控制"><a href="#TCP的拥塞控制" class="headerlink" title="TCP的拥塞控制"></a>TCP的拥塞控制</h5><ul>
+<li><p>拥塞</p>
 <ul>
-<li>调度时机==什么事件会触发“调度程序”</li>
-<li>抢占式调度：每个时钟中断会触发调度程序</li>
-<li>抢占式调度：只有进程阻塞和终止才触发调度程序</li>
-</ul>
+<li><p>拥塞就是数据太多网络来不及处理，导致网络性能下降（会产生分组丢失等问题）</p>
 </li>
-</ul>
-<ul>
-<li>闲逛进程</li>
-</ul>
-<h4 id="调度算法评价指标"><a href="#调度算法评价指标" class="headerlink" title="调度算法评价指标"></a>调度算法评价指标</h4><ul>
-<li>CPU使用率 （忙碌时间/总时间）</li>
-<li>系统吞吐量：单位时间内完成的作业数量（完成总作业数/完成总时间）</li>
-<li>周转时间：从作业提交到作业完成的这段时间（完成时间-到达时间）<ul>
-<li>平均周转时间（时间和/作业数）</li>
-<li>带权周转时间（作业周转时间/作业时间运行时间）：越小越好</li>
-</ul>
+<li><p>当需求资源总和&gt;实际可用资源时会出现拥塞</p>
 </li>
-<li>等待时间：在就绪队列中等待的时间（不算等待I/O完成的时间）</li>
-<li><p>响应时间：从提交请求到第一次产生响应的时间</p>
-<ul>
-<li>作业等待时间和进程等待时间的区别</li>
-</ul>
+<li><p>拥塞控制的目的就是防止过多数据注入网络</p>
 </li>
-<li><p>等待时间和响应时间是描述调度算法最重要的两个指标</p>
-</li>
-</ul>
-<h4 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h4><p>注：</p>
-<ul>
-<li>实际的调度过程非常复杂，下面讨论的算法中每个CPU仅被一个进程占用，大部分情况下的比较指标是平均等待时间</li>
-<li>大部分调度算法默认既可以是进程，也可以是作业（之后的描述可能会将二者混合在一起），<strong>如果不是会标注</strong></li>
-<li>引入甘特图直观展示调度算法，数字指时间</li>
-</ul>
-<h5 id="先到先服务调度（FCFS或者FIFO）"><a href="#先到先服务调度（FCFS或者FIFO）" class="headerlink" title="先到先服务调度（FCFS或者FIFO）"></a>先到先服务调度（FCFS或者FIFO）</h5><ul>
-<li>先向CPU发送请求的进程先使用CPU，<strong>不会发生抢占</strong> </li>
-<li>优点：简单+公平</li>
-<li>存在问题：当一个会长时间占用CPU的进程先发送了请求，会大幅度提高平均等待时间，排在其之后的短进程等待时间很长</li>
-<li>不会导致饥饿</li>
-</ul>
-<h5 id="最短作业优先调度"><a href="#最短作业优先调度" class="headerlink" title="最短作业优先调度"></a>最短作业优先调度</h5><ul>
-<li><p>选择占用CPU时间最短的进程（已经到达的，先到达的就先运行），当两个进程占用CPU的时间相同时按先到先服务的原则</p>
-</li>
-<li><p>优点：平均等待时间和平均周转时间“最短”</p>
-</li>
-<li><p>存在的问题：不公平，对长作业不利，可能产生饥饿（某个长进程之后到达的进程都是短进程）</p>
-</li>
-<li><p>实例    <img src="/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/image-20210605162753957.png" alt="image-20210605162753957" style="zoom:33%;"></p>
-<p>甘特图描述的情况：<img src="/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/image-20210605162841616.png" alt="image-20210605162841616" style="zoom:33%;"></p>
-</li>
-<li><p>实例的甘特图描述补充，p1最先到达，此时无其他的进程，之间占用CPU即可（从0到7的这段时间会一直占用，不会被抢占），后面3个到达时间都在7之前，故选择占用CPU时间最短的，剩下的两个占用时间相同，先到的先上</p>
-</li>
-<li><p>两种情况：抢占式和<strong>非抢占式</strong></p>
-</li>
-<li><p>注：对于抢占式，计算时标注好其剩余时间</p>
-</li>
-</ul>
-<h5 id="高响应比优先调度"><a href="#高响应比优先调度" class="headerlink" title="高响应比优先调度"></a>高响应比优先调度</h5><ul>
-<li>综合考虑进程等待时间和要求服务的时间，响应比高的先占CPU</li>
-<li>响应比=（等待时间+要求服务时间）/要求服务时间</li>
-<li>是一种非抢占式的算法，只有进程主动放弃CPU（正常完成或者主动阻塞）才会调度</li>
-<li>可以避免长作业的饥饿</li>
-</ul>
-<h5 id="优先级调度"><a href="#优先级调度" class="headerlink" title="优先级调度"></a>优先级调度</h5><ul>
-<li>将进程设置一个优先级数字，数字小的优先级高，在就绪队列之中比较进程的优先级（这个具体看题目描述），选择优先级高的调度</li>
-<li><p>两种类型</p>
-<ul>
-<li><p>抢占式优先级调度</p>
-</li>
-<li><p>非抢占式优先级调度</p>
-</li>
-</ul>
-</li>
-<li><p>ex：</p>
-<ul>
-<li><p>就绪41队列可能不止一个</p>
-</li>
-<li><p>高优先级的排在更靠近队头的位置</p>
-</li>
-<li><p>有静态优先级和动态优先级</p>
-</li>
-<li><p>初始优先级的设置原则：</p>
-<ul>
-<li><p>系统进程高于用户进程</p>
-</li>
-<li><p>前台高于后台</p>
-</li>
-<li><p>操作系统更偏好I/O繁忙的进程</p>
-</li>
-</ul>
-</li>
-<li><p>何时调整优先级：</p>
-<ul>
-<li><p>在较长的一段时间中，如果优先级较低的进程未被调用，则提高该进程优先级</p>
-</li>
-<li><p>在较长的一段时间中，一个进程一直占用处理器，则适当的降低其优先级</p>
-</li>
-<li><p>频繁进行I/O操作的进程可以适当提升其优先级</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h5 id="时间片轮转调度"><a href="#时间片轮转调度" class="headerlink" title="时间片轮转调度"></a>时间片轮转调度</h5><ul>
-<li><p>是FCFS的变种，给进程增加了<strong>时间片</strong>（一般为10ms到100ms），每个进程在一个时间片内占用CPU，如果在这个时间片只能未完成，则将该进程丢到就绪队列重新排队（此时就发生了<strong>抢占</strong>）</p>
-</li>
-<li><p>如果进程在在时间片内结束，则<strong>立即调用</strong>下一个进程</p>
-</li>
-<li><p><strong>只能用于进程调度</strong></p>
-</li>
-<li><p>实例：  <img src="/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/image-20210605165936751.png" alt="image-20210605165936751" style="zoom:40%;"></p>
-<p>甘特图：<img src="/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/image-20210605170035246.png" alt="image-20210605170035246" style="zoom:50%;"></p>
-</li>
-<li><p>存在的问题</p>
-<ul>
-<li><strong>时间片太长</strong>，就相当于是FCFS（FIFO），所以要控制时间片的大小</li>
-<li><strong>时间片太短</strong>，上下文切换太频繁，会在切换的过程上花费太高的代价，导致效率降低</li>
-<li>不区分任务的紧急程度</li>
-</ul>
-</li>
-<li><p>优点：公平+响应快（适合分时操作系统），不会导致饥饿</p>
-</li>
-</ul>
-<h5 id="多级反馈队列调度算法"><a href="#多级反馈队列调度算法" class="headerlink" title="多级反馈队列调度算法"></a>多级反馈队列调度算法</h5><ul>
-<li>设置多个就绪队列，各队列的优先级从高到低，时间片从小到大</li>
-<li>新的进程先进入第1级队列（高优先级），等待分配的时间片，若在这个时间片内未结束，则进入低一级的就绪队列的队尾<ul>
-<li>如果上述的进程已经在最低级队列，则其返回最低级队列的队尾即可</li>
-<li>注：在不同优先级的队列之间都有进程时，优先给优先级高的分配时间片</li>
-<li>注2：会出现更高优先级的进程抢占CPU的情况，被抢占的进程放回其原来的就绪队列</li>
-</ul>
-</li>
-<li>可能产生饥饿</li>
-</ul>
-<p>大概了解一下的概念，大部分王道书上没有，黑皮书的内容，可能和之前的某些概念有重合：</p>
-<ul>
-<li><p>多级反馈队列调度</p>
-<ul>
-<li>此种情况下，一个进程可以被分配到其他的就绪队列之中，通过这样的方式可以防止产生永远不会被调度的进程的产生</li>
-</ul>
-</li>
-<li><p>多线程调度</p>
-<ul>
-<li><p>概述：指如何调度线程，而在实际情况中，内核并不能直接调度用户线程（是由线程库管理的），用户线程要先映射到内核线程（建立联系，参照上一章的那几个模型），再通过调度内核线程来完成用户线程的间接调度</p>
-</li>
-<li><p>两种调度方式（用户级和内核级）</p>
-<ul>
-<li><p>Process-Contention Scope（PCS）——-用户进程间的调度（只存在多对一，多对多模型之中）</p>
-<ul>
-<li>指线程库调度用户线程到LWP之中</li>
-<li>此过程根据优先级完成，优先级是人为设置的</li>
-</ul>
-</li>
-<li><p>System-Contention Scope（SCS）</p>
-<ul>
-<li>系统将内核线程调度到CPU上，这些内核线程都存在竞争关系</li>
-</ul>
-</li>
-</ul>
+<li><p>拥塞控制（全局性的控制）和流量控制（点到点的控制）的区别</p>
 </li>
 </ul>
 </li>
 </ul>
 <ul>
-<li><p>多处理器调度</p>
+<li><p>拥塞控制的4种方法</p>
 <ul>
-<li><p>系统中有多个处理器，多处理器调度规定多个CPU如何共同工作完成进程调度</p>
-</li>
-<li><p>两种可行的调度方法</p>
-<ul>
-<li><p>非对称处理：选择一个CPU作为主处理器，处理调度相关的事务，其余的处理器听从其指挥，只执行用户的代码</p>
-</li>
-<li><p>对称处理：每个处理器使用自己的调度算法，从一个公共的就绪队列之中选择进程，调度过程之中必须确保处理器不会选择同一个进程</p>
-</li>
+<li>一些前提条件：<ul>
+<li>数据单向传</li>
+<li>拥塞窗口，即发送窗口</li>
+<li>窗口值经过一轮传输（发送了一批报文段并收到确认）之后发生一次变化</li>
 </ul>
 </li>
-<li><p>处理器的亲和性</p>
-<ul>
-<li><p>允许进程在处理器之间移动</p>
-</li>
-<li><p>不允许进程在处理器之间移动</p>
-</li>
+<li>慢启动（慢开始）<ul>
+<li>开始只有一个报文段</li>
+<li>后续要快速增长（指数型增长）</li>
+<li>到达发送窗口上限值（ssthresh）会变成拥塞避免的方式</li>
 </ul>
 </li>
-<li><p>负载平衡</p>
-<ul>
-<li>设法将工作（运行进程）平均的分配到所有的处理器上（在对称处理器的系统中发挥作用）</li>
+<li>拥塞避免<ul>
+<li>在慢开始方式达到上限后，增长方式发生变化，随着轮次变化依次+1</li>
+<li>遇到拥塞ssthresh直接减半，发送窗口再次回到1，按慢开始的方式重新开始（注意此时慢开始的上限有变化）</li>
 </ul>
 </li>
+<li>快恢复<ul>
+<li>最初过程仍然是一轮慢启动+拥塞避免，发送拥塞时，<strong>发送窗口</strong>减半之后接着开始传输</li>
 </ul>
 </li>
+<li>快重传<ul>
+<li>快恢复之后，发送窗口按轮次线性增长</li>
 </ul>
-<ul>
-<li><p>实时CPU调度</p>
-<ul>
-<li><p>硬实时系统：必须严格遵守时间</p>
-</li>
-<li><p>软实时系统：可以在适当范围内超时</p>
 </li>
 </ul>
 </li>
@@ -500,7 +474,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/18/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/archives/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/28/">28</a><a class="extend next" rel="next" href="/archives/page/20/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/18/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/archives/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/42/">42</a><a class="extend next" rel="next" href="/archives/page/20/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

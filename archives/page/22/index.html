@@ -135,7 +135,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/31/DS/%E4%B8%B2%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/" class="post-title-link" itemprop="url">计算机网络--传输层</a>
+          <a href="/2021/03/31/DS/%E4%B8%B2%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/" class="post-title-link" itemprop="url">数据结构--串</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,14 +205,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-04-11 16:22:00" itemprop="dateCreated datePublished" datetime="2021-04-11T16:22:00+08:00">2021-04-11</time>
+      <time title="创建时间：2021-03-31 20:46:26" itemprop="dateCreated datePublished" datetime="2021-03-31T20:46:26+08:00">2021-03-31</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-09-24 09:48:01" itemprop="dateModified" datetime="2022-09-24T09:48:01+08:00">2022-09-24</time>
+        <time title="修改时间：2022-11-28 10:29:27" itemprop="dateModified" datetime="2022-11-28T10:29:27+08:00">2022-11-28</time>
       </span>
 
   
@@ -225,233 +225,42 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><h4 id="传输层概述"><a href="#传输层概述" class="headerlink" title="传输层概述"></a>传输层概述</h4><ul>
-<li>传输层协议为运行在不同主机之上的进程提供了一种逻辑通信机制（端到端），只有在主机上才有这一层</li>
-</ul>
-<ul>
-<li>传输层的功能：<ul>
-<li>传输层提供<strong>不同主机的不同应用进程</strong>间的逻辑通信</li>
-<li>传输层会对收到的报文进行差错检测</li>
-<li>主要包括2种协议TCP+UDP</li>
-</ul>
+          <h4 id="朴素模式匹配算法"><a href="#朴素模式匹配算法" class="headerlink" title="朴素模式匹配算法"></a>朴素模式匹配算法</h4><ul>
+<li><p>即暴力解法，将主串中所有的长度为m的子串和模式串对比</p>
 </li>
-<li>与网络的区别<ul>
-<li>网络层提供<strong>不同主机</strong>间的逻辑通信</li>
-<li>网络层只会对<strong>IP数据报的头部</strong>进行差错检测</li>
-</ul>
+<li><p>代码描述：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Index</span><span class="params">(String S,String T)</span><span class="comment">//S是主串，T是模式串，返回值是该子串在串之中的位置</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=S.Length&amp;&amp;j&lt;T.Length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(S[i]==T[j])&#123;</span><br><span class="line">            i++;j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            i=i-j+<span class="number">2</span>;</span><br><span class="line">            j=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j&gt;T.length)</span><br><span class="line">        <span class="keyword">return</span> i-T.length;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<ul>
-<li>传输层的复用和分用<ul>
-<li>复用：应用层的所有进程都通过传输层传送到网络层</li>
-<li>分用：传输层从网络层收到数据后选择交付给哪一个应用</li>
-</ul>
+<h4 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h4><ul>
+<li>朴素算法的优化（主串指针不会前移，模式串指针回溯到指定位置）</li>
+<li><p>next数组（用于存储第几个元素匹配失败是指针j回溯的位置）</p>
 </li>
-<li>传输层寻址（如何找到某个进程）<ul>
-<li>通过端口号来标识主机之中的某一个进程</li>
-<li>不同主机之间的相同端口号没有联系，端口号的作用只是标识主机本地的某个进程</li>
-<li>端口号长度为16bit，总共能表示65536个端口，其中可以按范围分成：<ul>
-<li>熟知端口号：留给一些重要的应用程序，让所有的用户都知道（0~1023，服务端使用）</li>
-<li>登记端口号：给其他服务端的应用程序用（102~49151，服务端使用）</li>
-<li>客户端使用的端口号：仅仅在用户进程运行的时才会动态选择（49152~65535）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>套接字：用于唯一标识网络中的某个主机的某个进程，形式一般为一个二元组：(主机IP，端口号)</li>
-</ul>
-<h4 id="UDP（用户数据报协议-User-Datagram-Protocol）"><a href="#UDP（用户数据报协议-User-Datagram-Protocol）" class="headerlink" title="UDP（用户数据报协议,User Datagram Protocol）"></a>UDP（用户数据报协议,User Datagram Protocol）</h4><h5 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h5><ul>
-<li><strong>不需要建立连接</strong>，收到报文之后也不需要确认（延时很小</li>
-<li>基于IP协议，增加了复用/分用，以及简单的错误校验这些内容，实现简单</li>
-<li><p>UDP使用最大努力交付，不保证交付数据可靠性，UDP段可能丢失或者非按序到达</p>
-<ul>
-<li>通过应用层的可靠性机制可实现UDP上的可靠数据传输</li>
-</ul>
-</li>
-<li><p>无拥塞控制，适合更多实时性应用</p>
-</li>
-<li>面向报文（UDP对于应用层传来的报文，既不合并，也不拆分，一次发送一个完整的报文）</li>
-<li>首部开销小（8字节）</li>
-</ul>
-<h5 id="报文格式"><a href="#报文格式" class="headerlink" title="报文格式"></a>报文格式</h5><ul>
-<li>首部字段（源端口+目的端口+UDP长度+UDP检验和）+数据字段</li>
-<li><p><img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/image-20210509232638326.png" alt="image-20210509232638326" style="zoom:50%;"></p>
-<ul>
-<li>首部字段每一个部分都是16bit</li>
-<li>在分用是，如果找不到某一个端口，则丢弃报文，并向发送方发出一个“端口不可达”的ICMP差错报告报文</li>
-</ul>
-</li>
-<li><p>UDP校验和（若有错则直接丢弃报文）</p>
-<ul>
-<li><p>发送方：将该段的内容视为16位整数，计算所有整数的和，得到的和按位取反，就是校验和，放在校验和字段之中    </p>
-</li>
-<li><p>接收方：计算收到的字段的校验和，与校验和字段对比</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="TCP（面向连接的传输控制协议-Transmission-Control-Protocol）"><a href="#TCP（面向连接的传输控制协议-Transmission-Control-Protocol）" class="headerlink" title="TCP（面向连接的传输控制协议,Transmission Control Protocol）"></a>TCP（面向连接的传输控制协议,Transmission Control Protocol）</h4><h5 id="TCP特性"><a href="#TCP特性" class="headerlink" title="TCP特性"></a>TCP特性</h5><ul>
-<li>基本的特性<ul>
-<li>面向连接的传输层协议（要先建立连接才能通信）</li>
-<li>点对点的虚连接（一个发送方对应一个接收方，只有这两个端点）</li>
-<li>TCP传输的是可靠的，有序的</li>
-<li><strong>流水线机制</strong></li>
-<li>全双工（同一个连接之中的数据是双向的）</li>
-<li>包括两个缓存：<ul>
-<li>发送缓存 </li>
-<li>接收缓存 </li>
-</ul>
-</li>
-<li>TCP是面向字节流的（将应用程序传来的数据看成一串无结构的字节流，之后好分片）</li>
-<li>存在流量控制机制和拥塞控制机制（后面细说）</li>
-</ul>
-</li>
-<li>与可靠数据传输相关的特性<ul>
-<li>累计确认机制</li>
-<li>单一重传计时器</li>
-<li>当超时或者收到重复ACK时会重传）</li>
-</ul>
-</li>
-</ul>
-<h5 id="TCP报文结构（补充英文版本在实践过程中容易理解）"><a href="#TCP报文结构（补充英文版本在实践过程中容易理解）" class="headerlink" title="TCP报文结构（补充英文版本在实践过程中容易理解）"></a>TCP报文结构（补充英文版本在实践过程中容易理解）</h5><p><img src="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/image-20210509232349814.png" alt="image-20210509232349814" style="zoom:50%;"></p>
-<ul>
-<li>序号（32bit，seq），指报文段发送的<strong>数据部分</strong>的<strong>第一个字节</strong>的编号</li>
-<li>确认号（32bit），希望接受到的下一个报文段的序号</li>
-<li>首部长度（数据偏移），以4B为单位</li>
-<li><p>6个控制位（每个都是1bit）</p>
-<ul>
-<li>URG，为1则表明此报文段有紧急数据（最高优先级），要尽快发送，不用在发送缓存中排队</li>
-<li>ACK，为1表示确认号是有效的（建立连接是必须设置为1）</li>
-<li>PSH（不重要），为1时接收方要尽快将此报文交给对应进程，不用等待接收缓存填满再交付</li>
-<li>RST（不重要）</li>
-<li>SYN，为1时表明这个报文是<strong>连接请求</strong>报文</li>
-<li>FIN，为1时表明此报文段发送方数据已经发完，要求<strong>释放连接</strong></li>
-</ul>
-</li>
-<li><p>接收窗口（16bit）：表示发送报文段的那一方的接收窗口，表明了允许对方发送的数据量</p>
-</li>
-<li>检查和：基本同UDP，只是第4个字段为6</li>
-<li>紧急指针：URG为1时才有意义，此字段表明了紧急数据的字节数</li>
-<li>选项，如果不为4B的整数倍，则要用0填充到整数倍</li>
-</ul>
-<h5 id="流量控制（本质就是控制发送方的发送速率）"><a href="#流量控制（本质就是控制发送方的发送速率）" class="headerlink" title="流量控制（本质就是控制发送方的发送速率）"></a>流量控制（本质就是控制发送方的发送速率）</h5><ul>
-<li>流量控制就是让发送方发慢点，防止接收方缓存溢出（接收方上层应用的处理速度可能比较慢，导致数据堆积在缓存之中）</li>
-<li>如何实现<ul>
-<li>接收方将<strong>空余的缓存大小</strong>（rwnd）封装在确认报文头部字段返回发送方（即放在接收窗口字段）</li>
-<li>发送方收到确认报文后，根据接收窗口字段<strong>控制自己发送的数据大小</strong>（动态调整）</li>
-<li>当rwnd=0时，发送方暂时不会发数据，等待接收方的新的确认报文（这个过程会启动计时器，超时（接收方发的新的确认报文丢失）则发送方会发送探测报文段—-1B数据—-让接收方再发一次）</li>
-</ul>
-</li>
-</ul>
-<h5 id="TCP的连接管理（建立和拆除）"><a href="#TCP的连接管理（建立和拆除）" class="headerlink" title="TCP的连接管理（建立和拆除）"></a>TCP的连接管理（建立和拆除）</h5><ul>
-<li><p>TCP连接的建立使用<strong>客户服务器方式</strong>，主动发起连接的主机进程是客户，另一端是服务器</p>
-</li>
-<li><p>TCP传输过程1：建立连接（三次握手机制）</p>
-<ul>
-<li><p>初始化</p>
-</li>
-<li><p>三次握手的过程</p>
+<li><p>整体思路：</p>
 <ol>
-<li>客户端向服务器发送一个特殊的TCP报文段（SYN报文段，SYN为1，不携带任何数据，报文段的序号为一个随机的数x）</li>
-<li>服务器端收到SYN之后会向客户发送SYNACK报文段（无数据），表明允许连接（服务器此时会为TCP连接分配好缓存）<ul>
-<li>这个报文的SYN=1，ACK=1，序号为一个随机值y，确认号为x+1</li>
-</ul>
-</li>
-<li>客户端收到SYNACK，再向服务器发送一个报文段（可以携带数据），表明收到允许连接的报文（此时客户端会为TCP分配好缓存）<ul>
-<li>这个报文段SYN=0，ACK=1，序号为x+1，确认号为y+1</li>
-</ul>
-</li>
+<li>根据模式串求出next数组</li>
+<li>利用next优化朴素模式匹配（此时的主串指针不回溯）</li>
 </ol>
 </li>
-<li>注：SYN洪泛攻击</li>
-</ul>
+<li><p>代码描述</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Index_KMP</span><span class="params">(String S,String T,<span class="keyword">int</span> next[])</span><span class="comment">//S是主串，T是模式串，返回值是该子串在串之中的位置</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;S.Length&amp;&amp;j&lt;T.Length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(j==<span class="number">0</span>||S[i]==T[j])&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">            j=next[j];</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="keyword">if</span>(j&gt;T.Length)</span><br><span class="line">        <span class="keyword">return</span> i-T.Length;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<ul>
-<li><p>TCP传输过程2：数据传送</p>
-</li>
-<li><p>TCP传输过程3：拆除连接（客户端和服务器都可以终止连接，下面以客户端终止连接为例说明这个过程）</p>
+<li><p>如何求next数组（和模式串下标一一对应）</p>
 <ol>
-<li>客户端发送FIN报文段（此时报文的FIN=1，设此时的序号为u）</li>
-<li>服务器收到FIN报文段后发送一个回复报文，客户到服务器这个方向的连接被释放（半关闭状态，服务器仍然可以给客户端发数据）<ul>
-<li>这个报文ACK=1，确认号为u+1</li>
-</ul>
-</li>
-<li>服务器不再发送数据时，就会发送一个连接释放报文段，主动关闭TCP连接<ul>
-<li>这个报文FIN=1，ACK=1，确认号为u+1，设此时序号为w</li>
-</ul>
-</li>
-<li>客户端发送一个确认报文段，再等待一段时间后才彻底关闭连接（等待的时间为2MSL，防止此确认报文丢失）<ul>
-<li>此报文ACK=1，确认号为w+1，序号为u+1</li>
-</ul>
-</li>
+<li><code>next[1]</code>必为0，<code>next[2]</code>必为1</li>
+<li>画一条分界线（在第一次到不匹配的位置处），模式串指针前移，检查分界线之前的部分是否匹配，如果不匹配，则继续前移，如果匹配则j的值为next数组在该位置的值</li>
 </ol>
 <ul>
-<li>注：MSL指最长报文段寿命</li>
+<li>注：j指向分界线右边，初始时候j指向的元素与主串i指向的元素不一样</li>
 </ul>
 </li>
-</ul>
-<h5 id="TCP的可靠数据传输"><a href="#TCP的可靠数据传输" class="headerlink" title="TCP的可靠数据传输"></a>TCP的可靠数据传输</h5><ul>
-<li>可靠：指发送方发送的字节流和接收方从缓存中读出的字节流<strong>完全一致</strong></li>
-<li>4种保证可靠传输的机制<ol>
-<li>校验（即靠报文段的检查和部分实现）</li>
-<li>序号</li>
-<li>确认（类似SR协议，见链路层）</li>
-<li>重传<ul>
-<li>如何设置重传时间，同时避免不必要的重传：采用自适应算法，动态改变重传时间为RTTs（加权的平均往返时间）</li>
-<li>上一条的模式可能会等待比较长的时间，引入冗余ACK和快速重传机制改进</li>
-<li>快速重传机制<ul>
-<li>通过检测重复ACK知道分组已经丢失</li>
-<li>如果发送方收到同一数据的3个ACK时，会认为该数据之后的段丢失，此时进行快速重传（在定时器超时之前重传）</li>
-</ul>
-</li>
-</ul>
-</li>
+<li><p>求next数组的进一步优化（求<code>nextval</code>）</p>
+<ol>
+<li><code>nextval[1]</code>必为0</li>
+<li>j指向的元素，与next[j]位置处的元素比较，相等则j处的<code>nextval</code>的值赋为<code>next[i]</code>位置处next的值</li>
 </ol>
-</li>
-</ul>
-<h5 id="TCP的拥塞控制"><a href="#TCP的拥塞控制" class="headerlink" title="TCP的拥塞控制"></a>TCP的拥塞控制</h5><ul>
-<li><p>拥塞</p>
 <ul>
-<li><p>拥塞就是数据太多网络来不及处理，导致网络性能下降（会产生分组丢失等问题）</p>
-</li>
-<li><p>当需求资源总和&gt;实际可用资源时会出现拥塞</p>
-</li>
-<li><p>拥塞控制的目的就是防止过多数据注入网络</p>
-</li>
-<li><p>拥塞控制（全局性的控制）和流量控制（点到点的控制）的区别</p>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>拥塞控制的4种方法</p>
-<ul>
-<li>一些前提条件：<ul>
-<li>数据单向传</li>
-<li>拥塞窗口，即发送窗口</li>
-<li>窗口值经过一轮传输（发送了一批报文段并收到确认）之后发生一次变化</li>
-</ul>
-</li>
-<li>慢启动（慢开始）<ul>
-<li>开始只有一个报文段</li>
-<li>后续要快速增长（指数型增长）</li>
-<li>到达发送窗口上限值（ssthresh）会变成拥塞避免的方式</li>
-</ul>
-</li>
-<li>拥塞避免<ul>
-<li>在慢开始方式达到上限后，增长方式发生变化，随着轮次变化依次+1</li>
-<li>遇到拥塞ssthresh直接减半，发送窗口再次回到1，按慢开始的方式重新开始（注意此时慢开始的上限有变化）</li>
-</ul>
-</li>
-<li>快恢复<ul>
-<li>最初过程仍然是一轮慢启动+拥塞避免，发送拥塞时，<strong>发送窗口</strong>减半之后接着开始传输</li>
-</ul>
-</li>
-<li>快重传<ul>
-<li>快恢复之后，发送窗口按轮次线性增长</li>
-</ul>
-</li>
+<li>注：画个表格更直观</li>
 </ul>
 </li>
 </ul>
@@ -474,7 +283,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/21/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/archives/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/28/">28</a><a class="extend next" rel="next" href="/archives/page/23/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/21/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/archives/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/42/">42</a><a class="extend next" rel="next" href="/archives/page/23/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

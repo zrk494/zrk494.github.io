@@ -135,7 +135,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2022/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E4%BA%8C%E6%AC%A1%E5%9E%8B/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/16/linear%20algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E4%BA%8C%E6%AC%A1%E5%9E%8B/" class="post-title-link" itemprop="url">线性代数_二次型</a>
+          <a href="/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/" class="post-title-link" itemprop="url">操作系统---进程调度</a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,24 +205,15 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-03-16 21:02:24" itemprop="dateCreated datePublished" datetime="2022-03-16T21:02:24+08:00">2022-03-16</time>
+      <time title="创建时间：2021-05-27 21:46:28" itemprop="dateCreated datePublished" datetime="2021-05-27T21:46:28+08:00">2021-05-27</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-07-24 16:25:59" itemprop="dateModified" datetime="2022-07-24T16:25:59+08:00">2022-07-24</time>
+        <time title="修改时间：2022-09-30 16:03:22" itemprop="dateModified" datetime="2022-09-30T16:03:22+08:00">2022-09-30</time>
       </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
-        </span>
-    </span>
 
   
 </div>
@@ -234,43 +225,259 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="二次型"><a href="#二次型" class="headerlink" title="二次型"></a>二次型</h4><ul>
-<li>二次型（即含n个变量的二次齐次函数）<ul>
-<li>可以记作$f=x^TAx$（x为n个变量的列向量，A—-二次型矩阵—-为实对称矩阵，也是对应二次型的系数）</li>
-<li>A的秩即二次型的秩</li>
-<li>矩阵A中$a_{ij}=a_{ji}$，对角线元素为平方项系数，其余元素为$x_{ij}$的系数的一半</li>
+          <p><a target="_blank" rel="noopener" href="https://docs.qq.com/doc/DRlpCblNaYVlVeGtL">https://docs.qq.com/doc/DRlpCblNaYVlVeGtL</a></p>
+<h3 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h3><h4 id="调度概述"><a href="#调度概述" class="headerlink" title="调度概述"></a>调度概述</h4><ul>
+<li>调度：按照某种方式（算法）选择一个进程，将处理器分配给它</li>
+<li>三个层次<ol>
+<li>高级调度（<strong>作业调度</strong>）<ul>
+<li>将作业从<strong>外存</strong>调度到<strong>内存</strong>，并且给该作业创建了一个进程</li>
 </ul>
 </li>
-<li>标准形：只含有二次项的二次型</li>
-<li>可逆线性变换</li>
-<li>正负惯性指数：标准型中系数为正的个数</li>
-<li>规范形：标准型的系数为0或1或-1</li>
-<li>标准形的求法<ul>
-<li>拉格朗日配方法（计算量大，不太好用）</li>
-<li><strong>正交变换法</strong><ol>
-<li>求矩阵A的n个特征值</li>
-<li>求矩阵A的n个线性无关的特征向量</li>
-<li>将上一步的特征向量分别正交化（Schmidt或者其他方法），再单位化，得到正交矩阵Q，再经过正交变换x=Qy得到标准形的二次型矩阵（这个二次型的系数即为A的n个特征值，可以作为结论）</li>
+<li>中级调度（<strong>内存调度</strong>）<ul>
+<li>按照规则，将挂起状态的进程从外存调回内存</li>
+</ul>
+</li>
+<li>低级调度（<strong>进程调度</strong>）<ul>
+<li>从就绪队列选择一个进程为其分配处理器（CPU）</li>
+<li>它是操作系统中<strong>最基本</strong>的调度，发生频率<strong>很高</strong></li>
+<li>进程从内存到了CPU</li>
+</ul>
+</li>
 </ol>
 </li>
+<li>补充内容<ul>
+<li>作业：指一个具体的任务（一个用户向系统提交的作业可以理解为用户让操作系统启动一个程序）</li>
+<li>内存是有限，当内存不充足的时候，为了提高资源利用率，暂时不执行的进程会被掉到外存，之后该进程变为<strong>挂起态</strong></li>
+<li>结合进程挂起态得到的七状态模型</li>
 </ul>
 </li>
 </ul>
-<h4 id="合同矩阵"><a href="#合同矩阵" class="headerlink" title="合同矩阵"></a>合同矩阵</h4><ul>
-<li>定义：存在可逆矩阵C，使得$B=C^TAC$，则A和B合同</li>
-<li>合同的一组充要条件<ol>
-<li>A对应的二次型和B对应的二次型有相同的正负惯性指数</li>
-<li><strong>A，B有相同个数的正负特征值</strong>（更常用）</li>
+<h4 id="进程调度的时机"><a href="#进程调度的时机" class="headerlink" title="进程调度的时机"></a>进程调度的时机</h4><ul>
+<li>就是在什么情况下要发生进程调度</li>
+<li>进程主动放弃使用的CPU<ul>
+<li>进程终止（正常或者异常终止）</li>
+<li>请求阻塞（如等I/O）</li>
+</ul>
+</li>
+<li>进程被动离开CPU</li>
+<li>进程调度的两种方式<ol>
+<li>抢占式（操作系统可以剥夺进程的CPU使用权）</li>
+<li>非抢占式（操作系统只能等进程主动放弃CPU使用权）</li>
 </ol>
 </li>
+<li>进程切换<ul>
+<li>（狭义上的）进程调度</li>
+<li>广义上的进程调度</li>
+<li>切换的过程<ul>
+<li>保存</li>
+<li>恢复</li>
 </ul>
-<h4 id="正定二次型"><a href="#正定二次型" class="headerlink" title="正定二次型"></a>正定二次型</h4><ul>
-<li>正定：对任意的$x\neq0$，二次型的值&gt;0，此时对应的矩阵A为正定矩阵</li>
-<li>正定的一组充要条件<ul>
-<li>f的正惯性指数为n</li>
-<li>A与E合同（即存在可逆矩阵C，是$C^TAC=E$）</li>
-<li>A的特征值都大于0</li>
-<li>A的顺序主子式均大于0</li>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="调度程序（调度器，scheduler）"><a href="#调度程序（调度器，scheduler）" class="headerlink" title="调度程序（调度器，scheduler）"></a>调度程序（调度器，scheduler）</h4><ul>
+<li><p>决定操作系统怎样去调度，包括使用怎样的调度算法，划分多大的时间片等</p>
+</li>
+<li><p>额外内容（与之前的综合）</p>
+<ul>
+<li>调度时机==什么事件会触发“调度程序”</li>
+<li>抢占式调度：每个时钟中断会触发调度程序</li>
+<li>抢占式调度：只有进程阻塞和终止才触发调度程序</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>闲逛进程</li>
+</ul>
+<h4 id="调度算法评价指标"><a href="#调度算法评价指标" class="headerlink" title="调度算法评价指标"></a>调度算法评价指标</h4><ul>
+<li>CPU使用率 （忙碌时间/总时间）</li>
+<li>系统吞吐量：单位时间内完成的作业数量（完成总作业数/完成总时间）</li>
+<li>周转时间：从作业提交到作业完成的这段时间（完成时间-到达时间）<ul>
+<li>平均周转时间（时间和/作业数）</li>
+<li>带权周转时间（作业周转时间/作业时间运行时间）：越小越好</li>
+</ul>
+</li>
+<li>等待时间：在就绪队列中等待的时间（不算等待I/O完成的时间）</li>
+<li><p>响应时间：从提交请求到第一次产生响应的时间</p>
+<ul>
+<li>作业等待时间和进程等待时间的区别</li>
+</ul>
+</li>
+<li><p>等待时间和响应时间是描述调度算法最重要的两个指标</p>
+</li>
+</ul>
+<h4 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h4><p>注：</p>
+<ul>
+<li>实际的调度过程非常复杂，下面讨论的算法中每个CPU仅被一个进程占用，大部分情况下的比较指标是平均等待时间</li>
+<li>大部分调度算法默认既可以是进程，也可以是作业（之后的描述可能会将二者混合在一起），<strong>如果不是会标注</strong></li>
+<li>引入甘特图直观展示调度算法，数字指时间</li>
+</ul>
+<h5 id="先到先服务调度（FCFS或者FIFO）"><a href="#先到先服务调度（FCFS或者FIFO）" class="headerlink" title="先到先服务调度（FCFS或者FIFO）"></a>先到先服务调度（FCFS或者FIFO）</h5><ul>
+<li>先向CPU发送请求的进程先使用CPU，<strong>不会发生抢占</strong> </li>
+<li>优点：简单+公平</li>
+<li>存在问题：当一个会长时间占用CPU的进程先发送了请求，会大幅度提高平均等待时间，排在其之后的短进程等待时间很长</li>
+<li>不会导致饥饿</li>
+</ul>
+<h5 id="最短作业优先调度"><a href="#最短作业优先调度" class="headerlink" title="最短作业优先调度"></a>最短作业优先调度</h5><ul>
+<li><p>选择占用CPU时间最短的进程（已经到达的，先到达的就先运行），当两个进程占用CPU的时间相同时按先到先服务的原则</p>
+</li>
+<li><p>优点：平均等待时间和平均周转时间“最短”</p>
+</li>
+<li><p>存在的问题：不公平，对长作业不利，可能产生饥饿（某个长进程之后到达的进程都是短进程）</p>
+</li>
+<li><p>实例    <img src="/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/image-20210605162753957.png" alt="image-20210605162753957" style="zoom:33%;"></p>
+<p>甘特图描述的情况：<img src="/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/image-20210605162841616.png" alt="image-20210605162841616" style="zoom:33%;"></p>
+</li>
+<li><p>实例的甘特图描述补充，p1最先到达，此时无其他的进程，之间占用CPU即可（从0到7的这段时间会一直占用，不会被抢占），后面3个到达时间都在7之前，故选择占用CPU时间最短的，剩下的两个占用时间相同，先到的先上</p>
+</li>
+<li><p>两种情况：抢占式和<strong>非抢占式</strong></p>
+</li>
+<li><p>注：对于抢占式，计算时标注好其剩余时间</p>
+</li>
+</ul>
+<h5 id="高响应比优先调度"><a href="#高响应比优先调度" class="headerlink" title="高响应比优先调度"></a>高响应比优先调度</h5><ul>
+<li>综合考虑进程等待时间和要求服务的时间，响应比高的先占CPU</li>
+<li>响应比=（等待时间+要求服务时间）/要求服务时间</li>
+<li>是一种非抢占式的算法，只有进程主动放弃CPU（正常完成或者主动阻塞）才会调度</li>
+<li>可以避免长作业的饥饿</li>
+</ul>
+<h5 id="优先级调度"><a href="#优先级调度" class="headerlink" title="优先级调度"></a>优先级调度</h5><ul>
+<li>将进程设置一个优先级数字，数字小的优先级高，在就绪队列之中比较进程的优先级（这个具体看题目描述），选择优先级高的调度</li>
+<li><p>两种类型</p>
+<ul>
+<li><p>抢占式优先级调度</p>
+</li>
+<li><p>非抢占式优先级调度</p>
+</li>
+</ul>
+</li>
+<li><p>ex：</p>
+<ul>
+<li><p>就绪41队列可能不止一个</p>
+</li>
+<li><p>高优先级的排在更靠近队头的位置</p>
+</li>
+<li><p>有静态优先级和动态优先级</p>
+</li>
+<li><p>初始优先级的设置原则：</p>
+<ul>
+<li><p>系统进程高于用户进程</p>
+</li>
+<li><p>前台高于后台</p>
+</li>
+<li><p>操作系统更偏好I/O繁忙的进程</p>
+</li>
+</ul>
+</li>
+<li><p>何时调整优先级：</p>
+<ul>
+<li><p>在较长的一段时间中，如果优先级较低的进程未被调用，则提高该进程优先级</p>
+</li>
+<li><p>在较长的一段时间中，一个进程一直占用处理器，则适当的降低其优先级</p>
+</li>
+<li><p>频繁进行I/O操作的进程可以适当提升其优先级</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="时间片轮转调度"><a href="#时间片轮转调度" class="headerlink" title="时间片轮转调度"></a>时间片轮转调度</h5><ul>
+<li><p>是FCFS的变种，给进程增加了<strong>时间片</strong>（一般为10ms到100ms），每个进程在一个时间片内占用CPU，如果在这个时间片只能未完成，则将该进程丢到就绪队列重新排队（此时就发生了<strong>抢占</strong>）</p>
+</li>
+<li><p>如果进程在在时间片内结束，则<strong>立即调用</strong>下一个进程</p>
+</li>
+<li><p><strong>只能用于进程调度</strong></p>
+</li>
+<li><p>实例：  <img src="/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/image-20210605165936751.png" alt="image-20210605165936751" style="zoom:40%;"></p>
+<p>甘特图：<img src="/2021/05/27/operating%20system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/image-20210605170035246.png" alt="image-20210605170035246" style="zoom:50%;"></p>
+</li>
+<li><p>存在的问题</p>
+<ul>
+<li><strong>时间片太长</strong>，就相当于是FCFS（FIFO），所以要控制时间片的大小</li>
+<li><strong>时间片太短</strong>，上下文切换太频繁，会在切换的过程上花费太高的代价，导致效率降低</li>
+<li>不区分任务的紧急程度</li>
+</ul>
+</li>
+<li><p>优点：公平+响应快（适合分时操作系统），不会导致饥饿</p>
+</li>
+</ul>
+<h5 id="多级反馈队列调度算法"><a href="#多级反馈队列调度算法" class="headerlink" title="多级反馈队列调度算法"></a>多级反馈队列调度算法</h5><ul>
+<li>设置多个就绪队列，各队列的优先级从高到低，时间片从小到大</li>
+<li>新的进程先进入第1级队列（高优先级），等待分配的时间片，若在这个时间片内未结束，则进入低一级的就绪队列的队尾<ul>
+<li>如果上述的进程已经在最低级队列，则其返回最低级队列的队尾即可</li>
+<li>注：在不同优先级的队列之间都有进程时，优先给优先级高的分配时间片</li>
+<li>注2：会出现更高优先级的进程抢占CPU的情况，被抢占的进程放回其原来的就绪队列</li>
+</ul>
+</li>
+<li>可能产生饥饿</li>
+</ul>
+<p>大概了解一下的概念，大部分王道书上没有，黑皮书的内容，可能和之前的某些概念有重合：</p>
+<ul>
+<li><p>多级反馈队列调度</p>
+<ul>
+<li>此种情况下，一个进程可以被分配到其他的就绪队列之中，通过这样的方式可以防止产生永远不会被调度的进程的产生</li>
+</ul>
+</li>
+<li><p>多线程调度</p>
+<ul>
+<li><p>概述：指如何调度线程，而在实际情况中，内核并不能直接调度用户线程（是由线程库管理的），用户线程要先映射到内核线程（建立联系，参照上一章的那几个模型），再通过调度内核线程来完成用户线程的间接调度</p>
+</li>
+<li><p>两种调度方式（用户级和内核级）</p>
+<ul>
+<li><p>Process-Contention Scope（PCS）——-用户进程间的调度（只存在多对一，多对多模型之中）</p>
+<ul>
+<li>指线程库调度用户线程到LWP之中</li>
+<li>此过程根据优先级完成，优先级是人为设置的</li>
+</ul>
+</li>
+<li><p>System-Contention Scope（SCS）</p>
+<ul>
+<li>系统将内核线程调度到CPU上，这些内核线程都存在竞争关系</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>多处理器调度</p>
+<ul>
+<li><p>系统中有多个处理器，多处理器调度规定多个CPU如何共同工作完成进程调度</p>
+</li>
+<li><p>两种可行的调度方法</p>
+<ul>
+<li><p>非对称处理：选择一个CPU作为主处理器，处理调度相关的事务，其余的处理器听从其指挥，只执行用户的代码</p>
+</li>
+<li><p>对称处理：每个处理器使用自己的调度算法，从一个公共的就绪队列之中选择进程，调度过程之中必须确保处理器不会选择同一个进程</p>
+</li>
+</ul>
+</li>
+<li><p>处理器的亲和性</p>
+<ul>
+<li><p>允许进程在处理器之间移动</p>
+</li>
+<li><p>不允许进程在处理器之间移动</p>
+</li>
+</ul>
+</li>
+<li><p>负载平衡</p>
+<ul>
+<li>设法将工作（运行进程）平均的分配到所有的处理器上（在对称处理器的系统中发挥作用）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>实时CPU调度</p>
+<ul>
+<li><p>硬实时系统：必须严格遵守时间</p>
+</li>
+<li><p>软实时系统：可以在适当范围内超时</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -293,7 +500,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/archives/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/28/">28</a><a class="extend next" rel="next" href="/archives/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/archives/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/archives/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/42/">42</a><a class="extend next" rel="next" href="/archives/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 <script src="/js/comments.js"></script>
 </div>

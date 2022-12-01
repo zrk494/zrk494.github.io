@@ -20,21 +20,18 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;zrk494.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Pisces&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
-<meta name="description" content="计算机存储系统概述层次结构 第一层：CPU寄存器 第二层：Cache（高速缓存） 第三层：主存储器 第四层：辅存（外存，如磁盘）  分类（多种分类的方式） 按层次结构 按存储介质 按存取方式 按信息是否可以更改 断电后信息是否消失 信息读出后，原信息是否被破坏（如DRAM就是一种破坏性读出的芯片）  存储器的性能指标 存储容量&#x3D;存储字数*字长 单位成本 数据传输率（即主存带宽）&#x3D;数据的宽度&#x2F;存储周">
+<meta name="description" content="计算机存储系统概述层次结构 第一层：CPU寄存器 第二层：Cache（高速缓存） 第三层：主存储器 第四层：辅存（外存，如磁盘）  分类（多种分类的方式） 按层次结构 按存储介质 按存取方式 按信息是否可以更改 断电后信息是否消失 信息读出后，原信息是否被破坏（如DRAM就是一种破坏性读出的芯片）  存储器的性能指标 存储容量&#x3D;存储字数*字长 单位成本 数据传输率（即主存带宽）&#x3D;数据的宽度&#x2F;存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机存储系统">
 <meta property="og:url" content="http://zrk494.github.io/2021/03/07/jizu/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="post">
-<meta property="og:description" content="计算机存储系统概述层次结构 第一层：CPU寄存器 第二层：Cache（高速缓存） 第三层：主存储器 第四层：辅存（外存，如磁盘）  分类（多种分类的方式） 按层次结构 按存储介质 按存取方式 按信息是否可以更改 断电后信息是否消失 信息读出后，原信息是否被破坏（如DRAM就是一种破坏性读出的芯片）  存储器的性能指标 存储容量&#x3D;存储字数*字长 单位成本 数据传输率（即主存带宽）&#x3D;数据的宽度&#x2F;存储周">
+<meta property="og:description" content="计算机存储系统概述层次结构 第一层：CPU寄存器 第二层：Cache（高速缓存） 第三层：主存储器 第四层：辅存（外存，如磁盘）  分类（多种分类的方式） 按层次结构 按存储介质 按存取方式 按信息是否可以更改 断电后信息是否消失 信息读出后，原信息是否被破坏（如DRAM就是一种破坏性读出的芯片）  存储器的性能指标 存储容量&#x3D;存储字数*字长 单位成本 数据传输率（即主存带宽）&#x3D;数据的宽度&#x2F;存">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://zrk494.github.io/2021/03/07/jizu/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/image-20221116210924654.png">
-<meta property="og:image" content="http://zrk494.github.io/2021/03/07/jizu/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/image-20221028163104674.png">
 <meta property="article:published_time" content="2021-03-07T08:00:48.000Z">
-<meta property="article:modified_time" content="2022-11-28T02:41:06.654Z">
+<meta property="article:modified_time" content="2022-12-01T07:43:30.553Z">
 <meta property="article:author" content="zrk">
 <meta property="article:tag" content="计组">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://zrk494.github.io/2021/03/07/jizu/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/image-20221116210924654.png">
 
 
 <link rel="canonical" href="http://zrk494.github.io/2021/03/07/jizu/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/">
@@ -123,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">计算机存储系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.1.</span> <span class="nav-text">层次结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%EF%BC%88%E5%A4%9A%E7%A7%8D%E5%88%86%E7%B1%BB%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%89"><span class="nav-number">1.1.2.</span> <span class="nav-text">分类（多种分类的方式）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E5%99%A8%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="nav-number">1.1.3.</span> <span class="nav-text">存储器的性能指标</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-number">1.2.</span> <span class="nav-text">主存储器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BB%E5%AD%98%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%9E%84%E6%88%90"><span class="nav-number">1.2.1.</span> <span class="nav-text">主存的基本构成</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SRAM%E5%92%8CDRAM"><span class="nav-number">1.2.2.</span> <span class="nav-text">SRAM和DRAM</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ROM%EF%BC%88%E9%9D%9E%E9%87%8D%E7%82%B9%EF%BC%89"><span class="nav-number">1.2.3.</span> <span class="nav-text">ROM（非重点）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BB%E5%AD%98%E7%9A%84%E4%BC%98%E5%8C%96"><span class="nav-number">1.2.4.</span> <span class="nav-text">主存的优化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8%E4%B8%8ECPU%E7%9A%84%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.3.</span> <span class="nav-text">主存储器与CPU的连接</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8D%95%E5%9D%97%E5%AD%98%E5%82%A8%E8%8A%AF%E7%89%87%E8%BF%9E%E6%8E%A5CPU"><span class="nav-number">1.3.1.</span> <span class="nav-text">单块存储芯片连接CPU</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%9A%E5%9D%97%E5%AD%98%E5%82%A8%E8%8A%AF%E7%89%87%E8%BF%9E%E6%8E%A5CPU"><span class="nav-number">1.3.2.</span> <span class="nav-text">多块存储芯片连接CPU</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cache"><span class="nav-number">1.4.</span> <span class="nav-text">Cache</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0-1"><span class="nav-number">1.4.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Cache%E5%92%8C%E4%B8%BB%E5%AD%98%E7%9A%84%E6%98%A0%E5%B0%84%E6%96%B9%E5%BC%8F"><span class="nav-number">1.4.2.</span> <span class="nav-text">Cache和主存的映射方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Cache%E6%9B%BF%E6%8D%A2%E7%AD%96%E7%95%A5"><span class="nav-number">1.4.3.</span> <span class="nav-text">Cache替换策略</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Cache%E7%9A%84%E5%86%99%E7%AD%96%E7%95%A5"><span class="nav-number">1.4.4.</span> <span class="nav-text">Cache的写策略</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">计算机存储系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.1.</span> <span class="nav-text">层次结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%EF%BC%88%E5%A4%9A%E7%A7%8D%E5%88%86%E7%B1%BB%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%89"><span class="nav-number">1.1.2.</span> <span class="nav-text">分类（多种分类的方式）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E5%99%A8%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="nav-number">1.1.3.</span> <span class="nav-text">存储器的性能指标</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-number">1.2.</span> <span class="nav-text">主存储器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BB%E5%AD%98%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%9E%84%E6%88%90"><span class="nav-number">1.2.1.</span> <span class="nav-text">主存的基本构成</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SRAM%E5%92%8CDRAM"><span class="nav-number">1.2.2.</span> <span class="nav-text">SRAM和DRAM</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -136,7 +133,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -220,8 +217,17 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-11-28 10:41:06" itemprop="dateModified" datetime="2022-11-28T10:41:06+08:00">2022-11-28</time>
+        <time title="修改时间：2022-12-01 15:43:30" itemprop="dateModified" datetime="2022-12-01T15:43:30+08:00">2022-12-01</time>
       </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">计算机组成原理</span></a>
+        </span>
+    </span>
 
   
 </div>
@@ -233,7 +239,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="计算机存储系统"><a href="#计算机存储系统" class="headerlink" title="计算机存储系统"></a>计算机存储系统</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><h5 id="层次结构"><a href="#层次结构" class="headerlink" title="层次结构"></a>层次结构</h5><ol>
+        <ul>
+<li><ul>
+<li><h3 id="计算机存储系统"><a href="#计算机存储系统" class="headerlink" title="计算机存储系统"></a>计算机存储系统</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><h5 id="层次结构"><a href="#层次结构" class="headerlink" title="层次结构"></a>层次结构</h5><ol>
 <li>第一层：CPU寄存器</li>
 <li>第二层：Cache（高速缓存）</li>
 <li>第三层：主存储器</li>
@@ -308,133 +316,120 @@
 </ul>
 </li>
 </ul>
-<h5 id="ROM（非重点）"><a href="#ROM（非重点）" class="headerlink" title="ROM（非重点）"></a>ROM（非重点）</h5><ul>
-<li><p>非易失性存储，可用于主存，来存BIOS</p>
-</li>
-<li><p>MROM</p>
-</li>
-<li>PROM</li>
-<li>EPROM</li>
-<li>Flash Memory，支持随机存取</li>
-<li>SSD（Solid State Drives）</li>
-</ul>
-<h5 id="主存的优化"><a href="#主存的优化" class="headerlink" title="主存的优化"></a>主存的优化</h5><ul>
-<li>低位交叉存储器<ul>
-<li>每个存储体组合起来时，每个体读或写完之后需要一定的恢复时间</li>
-<li>地址包括两部分：高位是体内地址，低位是体号，这样两个相邻的地址号就对应不同的存储体</li>
-<li><img src="/2021/03/07/jizu/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/image-20221116210924654.png" alt="image-20221116210924654"></li>
-<li>一些特点<ul>
-<li>每个模块有相同的容量和存取速度</li>
-<li>各个模块有独立的读写控制电路，地址寄存器以及数据寄存器（对于一个地址，先分析其体号，在去对应体的地址寄存器找对应的内容）</li>
-<li>可以采用流水线的模式访问存储体提高效率</li>
-<li>如果模块存取一个字的周期为T，总线传送周期为r，为了保证流水线不间断，要保证存储体交叉模块数（存储体数量）$m\ge T/r$</li>
-<li>地址对总块数取余可得到所在的块号</li>
-</ul>
 </li>
 </ul>
 </li>
 </ul>
-<h4 id="主存储器与CPU的连接"><a href="#主存储器与CPU的连接" class="headerlink" title="主存储器与CPU的连接"></a>主存储器与CPU的连接</h4><ul>
-<li>位扩展：数据总线宽带&gt;存储芯片字长</li>
-<li>字扩展：扩展主存字数</li>
-<li>数据总线传数据，几根线对应几位数（地址总线类似）</li>
-<li>内存容量的表述方式，如8k$\times$1位：表示8k个存储单元，每个单元1位数，地址线13根，数据线1根，二者相乘即为芯片容量</li>
-</ul>
-<h5 id="单块存储芯片连接CPU"><a href="#单块存储芯片连接CPU" class="headerlink" title="单块存储芯片连接CPU"></a>单块存储芯片连接CPU</h5><ul>
-<li>CPU的地址线和数据线与内存芯片相同即可</li>
-</ul>
-<h5 id="多块存储芯片连接CPU"><a href="#多块存储芯片连接CPU" class="headerlink" title="多块存储芯片连接CPU"></a>多块存储芯片连接CPU</h5><ul>
-<li>位扩展法：增加主存的存储字长，是其数据位数与CPU的数据线数相同（扩展存储单元的容量）<ul>
-<li>这种情况下，主存的数据线&lt;CPU的数据线（数据位数）</li>
-<li>例：<img src="/2021/03/07/jizu/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/image-20221028163104674.png" alt="image-20221028163104674"></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>字扩展法：增加主存中字的数量（存储单元的数量），位数不变<ul>
-<li>这种情况下CPU和主存芯片的数据线相同，CPU地址线&gt;主存地址线.</li>
-<li>线选法：用多余的地址线<strong>直接</strong>连接多块相同的存储芯片，<strong>高位</strong>就可以表示是哪一片芯片（直接连接的灵活性差，且存在被浪费的位）</li>
-<li>译码片选法：用多余的的地址线<strong>连接译码器</strong>，再连接对应地址芯片（保证高位充分利用）</li>
-</ul>
-</li>
-<li><p>字位同时扩展（综合前两种）：具体问题具体分析</p>
-</li>
-<li><p>芯片数=容量/单片芯片容量</p>
-</li>
-</ul>
-<h4 id="Cache"><a href="#Cache" class="headerlink" title="Cache"></a>Cache</h4><h5 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h5><ul>
-<li>工作原理：将主存中的部分内容复制到Cache中，缓和CPU和主存之间的矛盾</li>
-<li>局部性原理<ul>
-<li>空间局部性：现在访问的地址，其附近的地址也很可能积极被访问</li>
-<li>时间局部性：现在访问的地址，不久之后很可能再次被访问</li>
-</ul>
-</li>
-<li>主要性能指标：命中率<ul>
-<li>注：根据命中率计算分析性能（时间）</li>
-<li>计算平均访问时间</li>
-</ul>
-</li>
-<li>Cache的两种方式<ul>
-<li>先访问Cache，再访问主存</li>
-<li>同时访问主存和Cache</li>
-<li>注意二者平均访问时间的计算</li>
-</ul>
-</li>
-<li>主存和Cache以块为单位进行数据交换（主存和Cache使用同一种分块方式，即他们的分块大小都相等）<ul>
-<li>分块之后，将主存地址划分成两部分：块号+块内地址</li>
-<li>注：块号从0开始</li>
-</ul>
-</li>
-</ul>
-<h5 id="Cache和主存的映射方式"><a href="#Cache和主存的映射方式" class="headerlink" title="Cache和主存的映射方式"></a>Cache和主存的映射方式</h5><ul>
-<li>Cache中存的内容<ul>
-<li>有效位：0无效，1有效，用于初始化</li>
-<li>标记：此块数据在内存中的地址</li>
-<li>整块数据</li>
-</ul>
-</li>
-<li>全相联映射<ul>
-<li>主存块在Cache中随便放</li>
-</ul>
-</li>
-<li><strong>直接映射</strong><ul>
-<li>主存块放到特定的某个Cache行，行号=主存块号%Cache总行数</li>
-<li>标记优化（提高查找的效率）</li>
-<li>地址结构：主存字块标记（区分是哪一个存储块，）+Cache字块地址（即数据存在哪一个Cache块中，根据Cache的总块数决定）+字块内地址</li>
-</ul>
-</li>
-<li><strong>组相联映射</strong><ul>
-<li>将Cache中的块分组，通过$主存块号\%组数$得到主存中某一块放到哪一组</li>
-<li>地址结构：主存字块标记+组地址（数据在哪一组）+字块内地址</li>
-<li>注：2路组相联，表示每组两块</li>
-</ul>
-</li>
-</ul>
-<h5 id="Cache替换策略"><a href="#Cache替换策略" class="headerlink" title="Cache替换策略"></a>Cache替换策略</h5><ul>
-<li>就是Cache满了之后，要将哪些数据替换出去</li>
-<li>随机法（RAND）</li>
-<li>先进先出法（FIFO）</li>
-<li><strong>近期最少使用法</strong>（LRU）<ul>
-<li>每个Cache块会设置一个“计算器”，用于记录Cache多久没被访问过，</li>
-<li>注意标志位，有效位和LRU算法标志位</li>
-</ul>
-</li>
-<li>最不常使用法（LFU）</li>
-</ul>
-<h5 id="Cache的写策略"><a href="#Cache的写策略" class="headerlink" title="Cache的写策略"></a>Cache的写策略</h5><ul>
-<li>全写法（write-through）</li>
-<li><p>写回法（write-back）</p>
-<ul>
-<li>这个方法要在Cache块中添加一个脏位，用来表示此Cache块是否被修改过</li>
-</ul>
-</li>
-<li><p>注：综合Cache相关的3个方面来计算Cache的每一块应该占多少位</p>
-<ul>
-<li>不要忘记有效位，脏位等情况</li>
-</ul>
-</li>
-</ul>
+<pre><code>##### ROM（非重点）
 
+- 非易失性存储，可用于主存，来存BIOS
+
+- MROM
+- PROM
+- EPROM
+- Flash Memory，支持随机存取
+- SSD（Solid State Drives）
+
+##### 主存的优化
+
+- 低位交叉存储器
+  - 每个存储体组合起来时，每个体读或写完之后需要一定的恢复时间
+  - 地址包括两部分：高位是体内地址，低位是体号，这样两个相邻的地址号就对应不同的存储体
+  - ![image-20221116210924654](存储系统/image-20221116210924654-16698592444851.png)
+  - 一些特点
+    - 每个模块有相同的容量和存取速度
+    - 各个模块有独立的读写控制电路，地址寄存器以及数据寄存器（对于一个地址，先分析其体号，在去对应体的地址寄存器找对应的内容）
+    - 可以采用流水线的模式访问存储体提高效率
+    - 如果模块存取一个字的周期为T，总线传送周期为r，为了保证流水线不间断，要保证存储体交叉模块数（存储体数量）$m\ge T/r$
+    - 地址对总块数取余可得到所在的块号
+
+
+#### 主存储器与CPU的连接
+
+- 位扩展：数据总线宽带&gt;存储芯片字长
+- 字扩展：扩展主存字数
+- 数据总线传数据，几根线对应几位数（地址总线类似）
+- 内存容量的表述方式，如8k$\times$1位：表示8k个存储单元，每个单元1位数，地址线13根，数据线1根，二者相乘即为芯片容量
+
+##### 单块存储芯片连接CPU
+
+- CPU的地址线和数据线与内存芯片相同即可
+
+##### 多块存储芯片连接CPU
+
+- 位扩展法：增加主存的存储字长，是其数据位数与CPU的数据线数相同（扩展存储单元的容量）
+  - 这种情况下，主存的数据线&lt;CPU的数据线（数据位数）
+  - 例：![image-20221028163104674](存储系统/image-20221028163104674-16698592444862.png)
+
+
+- 字扩展法：增加主存中字的数量（存储单元的数量），位数不变
+  - 这种情况下CPU和主存芯片的数据线相同，CPU地址线&gt;主存地址线.
+  - 线选法：用多余的地址线**直接**连接多块相同的存储芯片，**高位**就可以表示是哪一片芯片（直接连接的灵活性差，且存在被浪费的位）
+  - 译码片选法：用多余的的地址线**连接译码器**，再连接对应地址芯片（保证高位充分利用）
+- 字位同时扩展（综合前两种）：具体问题具体分析
+
+- 芯片数=容量/单片芯片容量
+
+#### Cache
+
+##### 概述
+
+- 工作原理：将主存中的部分内容复制到Cache中，缓和CPU和主存之间的矛盾
+- 局部性原理
+  - 空间局部性：现在访问的地址，其附近的地址也很可能积极被访问
+  - 时间局部性：现在访问的地址，不久之后很可能再次被访问
+- 主要性能指标：命中率
+  - 注：根据命中率计算分析性能（时间）
+  - 计算平均访问时间
+- Cache的两种方式
+  - 先访问Cache，再访问主存
+  - 同时访问主存和Cache
+  - 注意二者平均访问时间的计算
+- 主存和Cache以块为单位进行数据交换（主存和Cache使用同一种分块方式，即他们的分块大小都相等）
+  - 分块之后，将主存地址划分成两部分：块号+块内地址
+  - 注：块号从0开始
+
+##### Cache和主存的映射方式
+
+- Cache中存的内容
+  - 有效位：0无效，1有效，用于初始化
+  - 脏位
+  - 替换控制位
+  - 标记：此块数据在内存中的实际地址（两部分：主存块号+快内地址）
+    - 注：在组相联映射下的还有组号部分
+  - 整块数据
+- 全相联映射
+  - 主存块在Cache中随便放
+- **直接映射**
+  - 主存块放到特定的某个Cache行，行号=主存块号%Cache总行数
+  - 标记优化（提高查找的效率）
+  - 地址结构：主存字块标记（区分是哪一个存储块，）+Cache字块地址（即数据存在哪一个Cache块中，根据Cache的总块数决定）+字块内地址
+- **组相联映射**
+  - 将Cache中的块分组，通过$主存块号\%组数$得到主存中某一块放到哪一组
+  - 地址结构：主存字块标记+组地址（数据在哪一组）+字块内地址
+  - 注：2路组相联，表示每组两块
+
+##### Cache替换策略
+
+- 就是Cache满了之后，要将哪些数据替换出去
+- 随机法（RAND）
+- 先进先出法（FIFO）
+- **近期最少使用法**（LRU）
+  - 每个Cache块会设置一个“计算器”，用于记录Cache多久没被访问过，
+  - 注意标志位，有效位和LRU算法标志位
+- 最不常使用法（LFU）
+
+##### Cache的写策略
+
+- 全写法（write-through）
+- 写回法（write-back）
+  - 这个方法要在Cache块中添加一个脏位，用来表示此Cache块是否被修改过
+
+
+
+- 注：综合Cache相关的3个方面来计算Cache的每一块应该占多少位
+  - 不要忘记有效位，脏位等情况
+</code></pre>
     </div>
 
     
@@ -450,8 +445,8 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/03/07/jizu/%E6%80%BB%E7%BA%BF/" rel="prev" title="总线">
-                  <i class="fa fa-chevron-left"></i> 总线
+                <a href="/2021/03/07/jizu/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" rel="prev" title="指令系统">
+                  <i class="fa fa-chevron-left"></i> 指令系统
                 </a>
             </div>
             <div class="post-nav-item">

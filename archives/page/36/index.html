@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/07/jizu/CPU/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/07/jizu/IO/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/07/jizu/CPU/" class="post-title-link" itemprop="url">CPU</a>
+          <a href="/2021/03/07/jizu/IO/" class="post-title-link" itemprop="url">I/O</a>
         </h2>
 
         <div class="post-meta-container">
@@ -212,7 +212,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-12-01 15:43:25" itemprop="dateModified" datetime="2022-12-01T15:43:25+08:00">2022-12-01</time>
+        <time title="修改时间：2022-12-01 15:43:54" itemprop="dateModified" datetime="2022-12-01T15:43:54+08:00">2022-12-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -234,137 +234,100 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><h4 id="CPU功能和基本结构"><a href="#CPU功能和基本结构" class="headerlink" title="CPU功能和基本结构"></a>CPU功能和基本结构</h4><h5 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h5><ul>
-<li>运算器<ul>
-<li>ALU（算数逻辑单元）</li>
-<li>ACC（累加寄存器）</li>
-<li><strong>PSW（程序状态字寄存器）</strong>：在使用条件转移指令会用到</li>
-<li>移位器+计数器</li>
-<li>暂存寄存器（Y）</li>
-<li>通用寄存器 </li>
+          <h3 id="I-O"><a href="#I-O" class="headerlink" title="I/O"></a>I/O</h3><h4 id="外部设备"><a href="#外部设备" class="headerlink" title="外部设备"></a>外部设备</h4><h5 id="显示器"><a href="#显示器" class="headerlink" title="显示器"></a>显示器</h5><ul>
+<li>分辨率</li>
+<li>灰度级（颜色深度）</li>
+<li>刷新频率</li>
+<li>显示存储器</li>
+</ul>
+<h4 id="I-O接口"><a href="#I-O接口" class="headerlink" title="I/O接口"></a>I/O接口</h4><ul>
+<li>即主机和外设之间的交接界面</li>
+</ul>
+<h5 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h5><h5 id="与连接主机的连接（I-O总线）"><a href="#与连接主机的连接（I-O总线）" class="headerlink" title="与连接主机的连接（I/O总线）"></a>与连接主机的连接（I/O总线）</h5><ul>
+<li>数据线，双向数据交换</li>
+<li>地址线（设备选择线），单向CPU向外设发出</li>
+<li>控制线</li>
+</ul>
+<h5 id="I-O端口"><a href="#I-O端口" class="headerlink" title="I/O端口"></a>I/O端口</h5><ul>
+<li>即I/O接口内部的寄存器</li>
+<li>分类：<ul>
+<li>数据端口</li>
+<li>控制端口（控制寄存器）</li>
+<li>状态端口（状态寄存器）</li>
 </ul>
 </li>
-<li>控制器（控制单元CU）<ul>
-<li>PC（程序计数器）</li>
-<li>IR（指令寄存器）</li>
-<li>MAR（存储器地址寄存器）</li>
-<li>MDR（存储器数据寄存器）</li>
-<li>指令译码器+时序系统+微操作信号发生器</li>
+<li>编址：<ul>
+<li>统一编址：和内存一起连续分配一片地址<ul>
+<li>优点：不需要专门的I/O指令/有较大的编址空间</li>
+<li>确定：执行速度慢/占用存储器地址，使得内存容量变小</li>
 </ul>
 </li>
-<li>数据通路：专用通路+内部总线</li>
-<li>补充：<ul>
-<li>汇编程序员可见：通用寄存器+PSW+PC+ACC</li>
-<li>不可见：IR+DR（暂存寄存器）+MAR+MDR</li>
+<li>独立编址：<ul>
+<li>优点</li>
+<li>缺点：需要I/O指令</li>
 </ul>
 </li>
 </ul>
-<h5 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h5><ul>
-<li>运算器：加工数据</li>
-<li>控制器：取指令，分析指令，执行指令</li>
-<li>总体来看CPU的功能：指令控制+操作控制+时间控制+数据加工+中断处理</li>
-</ul>
-<h4 id="CPU中指令的执行过程"><a href="#CPU中指令的执行过程" class="headerlink" title="CPU中指令的执行过程"></a>CPU中指令的执行过程</h4><h5 id="指令周期相关基本概念"><a href="#指令周期相关基本概念" class="headerlink" title="指令周期相关基本概念"></a>指令周期相关基本概念</h5><ul>
-<li>重点区分：指令周期/机器周期/时钟周期</li>
-<li><p>指令周期：即CPU从主存中取出一条指令的全部时间</p>
-<ul>
-<li>包括若干个机器周期（CPU周期）</li>
-<li>机器周期包括多个<strong>时钟周期（节拍，T周期）</strong></li>
-</ul>
-</li>
-<li><p>时钟周期是CPU操作的基本单位</p>
-</li>
-<li><p>每个指令周期内的机器周期<strong>可不等</strong>，每个机器周期内的节拍数也可以<strong>不等</strong></p>
-</li>
-<li><p>指令周期的一般流程：</p>
-<p><img src="/2021/03/07/jizu/CPU/image-20221114162120031.png" alt="image-20221114162120031" style="zoom: 67%;"></p>
-</li>
-<li><p>标志触发器</p>
 </li>
 </ul>
-<h5 id="指令周期之中的数据流向"><a href="#指令周期之中的数据流向" class="headerlink" title="指令周期之中的数据流向"></a>指令周期之中的数据流向</h5><ul>
-<li><p>取址周期（完成取指令，标志位为FE）：</p>
-<ol>
-<li>(PC)—&gt;MAR：将当前地址送至存储器地址寄存器</li>
-<li>1—&gt;R：CU发出控制信号，经过控制总线传到主存</li>
-<li>M(MAR)—&gt;MDR：取出MAR中的地址所指内容，通过数据总线传送给MDR</li>
-<li>(MDR)—&gt;IR：将MDR中的内容（一条指令）送入IR</li>
-<li>(PC)+“1”—&gt;PC：CU发出控制信号，形成下一条指令地址</li>
+<h4 id="I-O方式"><a href="#I-O方式" class="headerlink" title="I/O方式"></a>I/O方式</h4><ul>
+<li>CPU和I/O设备交互的过程（包括什么时候启动I/O，什么时候交换数据，怎样工作以提高效率）</li>
+</ul>
+<h5 id="程序查询方式"><a href="#程序查询方式" class="headerlink" title="程序查询方式"></a>程序查询方式</h5><ul>
+<li>也是定时查询方式</li>
+<li>CPU一旦启动I/O，就必须停止程序运行，并且CPU发出测试指令检查外设状态，直到外设做好准备，CPU再执行I/O指令完成数据传送</li>
+<li>这种方式之下CPU和I/O串行工作</li>
+<li>这个过程中CPU在某一个时间片之内可以为其他进程服务</li>
+</ul>
+<h5 id="程序中断方式（高频）"><a href="#程序中断方式（高频）" class="headerlink" title="程序中断方式（高频）"></a>程序中断方式（高频）</h5><ul>
+<li>中断：计算机执行程序时出现异常或者特殊请求，CPU会中断执行这个程序，然后去处理这些异常（或者特殊请求），处理完之后要保证<strong>自动返回之前的断点</strong>继续执行</li>
+<li>中断请求分类<ul>
+<li>外中断（中断）</li>
+<li>内中断（异常）</li>
+<li>注：二者区分主要看：是否有当前正在执行的指令导致，或者信号是否来源于CPU</li>
+</ul>
+</li>
+<li>中断的大致工作流程：中断请求+中断响应+中断处理</li>
+<li>中断处理的具体过程：中断隐指令部分+中断服务程序部分<ul>
+<li>中断隐指令：不是一条指令实际上是自动完成的一系列动作，不会被打断</li>
+<li>中断隐指令完成的任务：<ul>
+<li>关中断：保证中断期间不会被打断</li>
+<li>保存断点：保存原来的程序执行到的指令的位置</li>
+<li>引出中断服务程序：让PC指向中断服务程序的第一条指令的地址</li>
+</ul>
+</li>
+<li>中断服务程序完成的任务<ul>
+<li>保护现场</li>
+<li>执行中断服务程序</li>
+<li>恢复现场</li>
+<li>开中断+中断返回</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>开中断之前保存PSW</li>
+<li>中断向量法：<ul>
+<li>中断向量（中断服务程序的地址）和中断向量地址（中断向量的地址）</li>
+<li>中断向量地址形成部件</li>
+</ul>
+</li>
+<li>多重中断<ul>
+<li>中断屏蔽技术<ul>
+<li>硬件排队器实现</li>
+<li>动态调整多重中断的优先级</li>
+</ul>
+</li>
+<li>中断判优：对于多个中断信号，先处理哪一个</li>
+<li>与单重中断的区别（主要在中断服务程序的部分）<ol>
+<li>保护现场同时保护中断屏蔽字</li>
+<li>之后要开中断，再执行中断服务程序</li>
+<li>执行完程序再关中断</li>
 </ol>
 </li>
-<li><p>间址周期（完成有效地址转换，标志位为IND）</p>
-</li>
-<li>执行周期（完成取操作数，标志位为EX）：具体问题具体分析，无统一的情况</li>
-<li>中断周期（保存程序中断点，标志位为INT）</li>
-</ul>
-<p>注：通过这个过程中各个寄存器，部件以及三条线完整描述数据的流向</p>
-<h5 id="指令执行的方案"><a href="#指令执行的方案" class="headerlink" title="指令执行的方案"></a>指令执行的方案</h5><ul>
-<li>单指令周期：所有指令选用相同的执行时间</li>
-<li>多指令周期：</li>
-<li>流水线方案：</li>
-</ul>
-<h4 id="数据通路"><a href="#数据通路" class="headerlink" title="数据通路"></a>数据通路</h4><h5 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h5><ul>
-<li>数据在功能部件之间传送的路径</li>
-<li>主要研究信息从哪里开始+中间经过哪里+最后传到哪里</li>
-<li>在一个指令的过程中关注哪些控制信号（控制数据输入+控制数据输出）是有效的</li>
-</ul>
-<h5 id="单总线结构"><a href="#单总线结构" class="headerlink" title="单总线结构"></a>单总线结构</h5><ul>
-<li><p>只通过CPU内部总线进行数据交换，两个部件独占</p>
-</li>
-<li><p>寄存器之间的数据传送</p>
-<ol>
-<li>(PC)—&gt;Bus（Bus表示总线）</li>
-<li>Bus—&gt;MAR</li>
-</ol>
-</li>
-<li><p>主存与CPU之间的数据传送</p>
-</li>
-<li><p>执行算数或者逻辑运算</p>
-<ul>
-<li>注：这种结构下必须先将其中一个操作数先放到暂存寄存器中</li>
-</ul>
-</li>
-<li><p>注：对于指令<code>ADD (R0),R1</code>:</p>
-<ul>
-<li>不带括号表示数直接放在R1对应的寄存器中，带括号要进行一次寄存器间接寻址</li>
-<li>R0是目的操作数，对于加法指令，它会存放最终结果地址（即指向结果所在的内存位置）</li>
 </ul>
 </li>
 </ul>
-<h4 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h4><h5 id="硬布线控制器"><a href="#硬布线控制器" class="headerlink" title="硬布线控制器"></a>硬布线控制器</h5><ul>
-<li>微操作控制信号通过组合逻辑电路根据当前的状态（PSW），指令码和时序产生</li>
-<li>特点<ul>
-<li>逻辑线路固定，难以扩充和修改</li>
-<li>电路结构复杂</li>
-<li>通过电路硬件实现功能，速度快                                 </li>
-</ul>
-</li>
-</ul>
-<h5 id="微程序控制器"><a href="#微程序控制器" class="headerlink" title="微程序控制器"></a>微程序控制器</h5><ul>
-<li>采用存储程序的原理，将微操作控制信号以程序的形式存放在存储器之中</li>
-<li>一条指令对应一个微程序，执行指令时将其从内存中读出即可</li>
-<li>特点：<ul>
-<li>本质上是对指令的封装</li>
-</ul>
-</li>
-<li>微指令编码方式</li>
-</ul>
-<h4 id="指令流水线"><a href="#指令流水线" class="headerlink" title="指令流水线"></a>指令流水线</h4><h5 id="划分"><a href="#划分" class="headerlink" title="划分"></a>划分</h5><ul>
-<li>一般情况下，一条指令的执行过程按照功能划分成4个阶段：取指令+译码+执行+存结果</li>
-<li>时钟周期主要依据耗时最长的过程</li>
-</ul>
-<h5 id="指令流水线的阻塞因素"><a href="#指令流水线的阻塞因素" class="headerlink" title="指令流水线的阻塞因素"></a>指令流水线的阻塞因素</h5><ol>
-<li>因为结构相关的原因发生冲突：比如两条指令在同一时刻访问内存<ul>
-<li>解决方法：后续的指令等一个周期再去访存/单独设置指令存储器和数据存储器</li>
-</ul>
-</li>
-<li>后续的指令需要的数据依赖之前的指令<ul>
-<li>解决方法：后面的指令等一段时间/数据旁路技术（转发机制），即把前一条指令在ALU的输出结果作为之后指令在ALU之中的输入数据</li>
-</ul>
-</li>
-<li>与控制相关，即流水线遇上转移指令之类的让PC发生改变的指令，造成断流</li>
-</ol>
-<h4 id="多处理器"><a href="#多处理器" class="headerlink" title="多处理器"></a>多处理器</h4>
+<h5 id="DMA方式"><a href="#DMA方式" class="headerlink" title="DMA方式"></a>DMA方式</h5>
       
     </div>
 

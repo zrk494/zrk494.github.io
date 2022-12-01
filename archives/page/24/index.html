@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/31/DS/%E6%8E%92%E5%BA%8F/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/31/DS/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/31/DS/%E6%8E%92%E5%BA%8F/" class="post-title-link" itemprop="url">数据结构--排序</a>
+          <a href="/2021/03/31/DS/%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="post-title-link" itemprop="url">数据结构--并查集</a>
         </h2>
 
         <div class="post-meta-container">
@@ -212,7 +212,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-12-01 15:41:26" itemprop="dateModified" datetime="2022-12-01T15:41:26+08:00">2022-12-01</time>
+        <time title="修改时间：2022-12-01 15:41:08" itemprop="dateModified" datetime="2022-12-01T15:41:08+08:00">2022-12-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -234,123 +234,33 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><h4 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h4><ul>
-<li><p>排序的稳定性：对于序列之中的大小相同的数，排序前后其顺序没变</p>
-</li>
-<li><p>内部排序：数据都在内存中，对这些数据排序</p>
-</li>
-<li>外部排序：数据量很大，很大一部分放在磁盘中，对这些数据排序</li>
-</ul>
-<h4 id="内部排序的实现方法"><a href="#内部排序的实现方法" class="headerlink" title="内部排序的实现方法"></a>内部排序的实现方法</h4><h5 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h5><ul>
-<li><p>主要思路：扫描整个序列，从第二个关键字开始，每次将待排序的关键字插入到之前已经排好序的子序列中。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//默认按升序排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertSort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp,i,j;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;n;i++)&#123;<span class="comment">//i从1开始，即从第二个元素开始</span></span><br><span class="line">        <span class="keyword">if</span>(temp&lt;A[i<span class="number">-1</span>])<span class="comment">//满足待排序关键字&lt;其前一个关键字这个条件，才进行插入操作</span></span><br><span class="line">        &#123;</span><br><span class="line">            temp=A[i];</span><br><span class="line">            <span class="keyword">for</span>(j=i<span class="number">-1</span>;j&gt;=<span class="number">0</span>&amp;&amp;A[j]&gt;temp;j--)<span class="comment">//j一定要&gt;=0，保证在待排序关键字最小的情况下，将从第0位之后的所有元素都后羿一位</span></span><br><span class="line">                A[j+<span class="number">1</span>]=A[j];</span><br><span class="line">        	A[j+<span class="number">1</span>]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//带有哨兵的排序算法</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertSort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=n;i++)&#123;<span class="comment">//i从1开始，即从第二个元素开始</span></span><br><span class="line">        <span class="keyword">if</span>(A[i]&lt;A[i<span class="number">-1</span>])<span class="comment">//满足待排序关键字&lt;其前一个关键字这个条件，才进行插入操作</span></span><br><span class="line">        &#123;</span><br><span class="line">            A[<span class="number">0</span>]=A[i];</span><br><span class="line">            <span class="keyword">for</span>(j=i<span class="number">-1</span>;A[<span class="number">0</span>]&lt;A[j];j--)<span class="comment">//j一定要&gt;=0，保证在待排序关键字最小的情况下，将从第0位之后的所有元素都后羿一位</span></span><br><span class="line">                A[j+<span class="number">1</span>]=A[j];</span><br><span class="line">        	A[j+<span class="number">1</span>]=A[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//插入排序的初步优化（对查找进行优化），后续补充</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>效率分析</p>
-<ul>
-<li>最好时间复杂度为O(n)</li>
-<li>平均时间复杂度和最坏时间复杂度均为$O(n^2)$</li>
+          <h3 id="并查集（2022年新加的考点）"><a href="#并查集（2022年新加的考点）" class="headerlink" title="并查集（2022年新加的考点）"></a>并查集（2022年新加的考点）</h3><ul>
+<li>逻辑关系—-集合<ul>
+<li>会将各个元素划分到互不相交的子集</li>
+<li>元素之间的关系——-是否属于同一个集合</li>
+<li>为了表示这种关系，在物理上可以用森林存储这些元素</li>
 </ul>
 </li>
-</ul>
-<h5 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h5><ul>
-<li>思路：希尔排序是对插入排序的改进，通过增量d划分子表，再对各个子表按插入排序的方式完成排序，之后不断缩小d，直到d为1（通过d划分子表表示这个子表各个关键字在数组中的间隔为d-1）</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShellSort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> d,i,j;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> d=n/<span class="number">2</span>;d!=<span class="number">1</span>;d=d/<span class="number">2</span>)&#123;<span class="comment">//d的具体缩小方式可以自定义，只要最终为1即可</span></span><br><span class="line">        <span class="keyword">for</span>(i=d+<span class="number">1</span>;i&lt;=n;i+=d)&#123;</span><br><span class="line">            <span class="keyword">if</span>(A[i]&lt;A[i-d])</span><br><span class="line">            &#123;</span><br><span class="line">                A[<span class="number">0</span>]=A[i]<span class="comment">//数组的第0位暂存待排序关键字</span></span><br><span class="line">                <span class="keyword">for</span>(j=i-d;j&gt;<span class="number">0</span>;j-=d)&#123;</span><br><span class="line">                    A[j+d]=A[j];</span><br><span class="line">                &#125;</span><br><span class="line">                A[j+d]=A[<span class="number">0</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;<span class="comment">//d=1就是直接插入排序</span></span><br></pre></td></tr></table></figure>
-<h5 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h5><ul>
-<li>主要思想：从后往前开始，比较相邻的两个关键字的值，如果前面的比后面的大，则交换顺序，直到比较完最前面的两个元素，此时最小的关键字以及在最前面了，之后重复比较的过程，比较到最小关键字之后的两个元素即可（如果一次比较的过程中没有关键字交换，则直接结束循环）</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">(<span class="keyword">int</span> num[],n)</span></span></span><br><span class="line"><span class="function">    <span class="title">for</span><span class="params">(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)</span></span>&#123;</span><br><span class="line">        <span class="keyword">bool</span> flag=<span class="literal">false</span>;<span class="comment">//用于标记是否发生过交换</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=n;j&gt;i+<span class="number">1</span>;j--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(num[j]&lt;num[j<span class="number">-1</span>])</span><br><span class="line">            &#123; </span><br><span class="line">                <span class="built_in">swap</span>(num[j],num[j<span class="number">-1</span>]);</span><br><span class="line">            	flag=<span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!flag)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h5><ul>
-<li>主要思想，从序列中选一个关键字，将小于这个关键字的元素放到这个关键字之前，大于这个关键字的元素放到这个关键字之后，这样划分出了两个子表，之后在各子表中重复之前过程即可（如何划分见代码）</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//主要分成两个部分，划分和主体递归</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Partition</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pivot=A[low];<span class="comment">//存储划分基准的关键字</span></span><br><span class="line">    <span class="keyword">while</span>(low&lt;high)&#123;</span><br><span class="line">        <span class="keyword">while</span>(low&lt;high&amp;&amp;A[high]&gt;=pivot) high--;</span><br><span class="line">    	A[low]=A[high];</span><br><span class="line">        <span class="keyword">while</span>(low&lt;high&amp;&amp;A[low]&lt;=pivot) low++;</span><br><span class="line">        A[high]=A[low];</span><br><span class="line">    &#125;</span><br><span class="line">    A[low]=pivot</span><br><span class="line">    <span class="keyword">return</span> low;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pivotpos;</span><br><span class="line">    <span class="keyword">if</span>(low&lt;high)</span><br><span class="line">    &#123;</span><br><span class="line">        pivotpos=<span class="built_in">Partition</span>(A,low,high);</span><br><span class="line">        <span class="built_in">QuickSort</span>(A,low,pivotpos<span class="number">-1</span>)<span class="comment">//在左子表中进行划分</span></span><br><span class="line">        <span class="built_in">QuickSort</span>(A,pivopos+<span class="number">1</span>,high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
-<h5 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a>简单选择排序</h5><ul>
-<li>主要思路：扫描序列，每一趟在待排序的元素之中选出最小关键字加入子序列</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SelectSort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">   	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> min=i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;n;j++)</span><br><span class="line">            <span class="keyword">if</span>(A[j]&lt;A[min])</span><br><span class="line">                min=j;</span><br><span class="line">		<span class="keyword">if</span>(i!=min)</span><br><span class="line">        	<span class="built_in">swap</span>(A[i],A[min]); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="堆排序（难）"><a href="#堆排序（难）" class="headerlink" title="堆排序（难）"></a>堆排序（难）</h5><ul>
-<li>大根堆：用树来理解，即在一棵完全二叉树中，根结点关键字大于其子树的所有结点（小根堆与其相反）</li>
-<li>从逻辑上来看，堆用一棵完全二叉树存储，物理上是一种顺序结构，参考树的顺序存储方式</li>
-<li>堆排序的主要思路：<ol>
-<li>建堆</li>
-<li>选择最大（小）值，加入有序子序列</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//建立大根堆</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BuildMaxHeap</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=len/<span class="number">2</span>;i&gt;<span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="built_in">HeadAdjust</span>(A,i,len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//将以k为根的子树调整为大根堆</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HeadAdjust</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> k,<span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">    A[<span class="number">0</span>]=A[k];<span class="comment">//暂存子树k的根结点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>*k;i&lt;len;i*=<span class="number">2</span>)&#123;<span class="comment">//i初始设为k的左孩子，下次循环往下一层比较，故是*2</span></span><br><span class="line">        <span class="keyword">if</span>(i&lt;len&amp;&amp;A[i]&lt;A[i+<span class="number">1</span>])<span class="comment">//找到更大的孩子</span></span><br><span class="line">            i++;</span><br><span class="line">        <span class="keyword">if</span>(A[<span class="number">0</span>]&gt;A[i]) <span class="keyword">break</span>;<span class="comment">//根最大则直接结束循环</span></span><br><span class="line">        <span class="keyword">else</span>&#123;<span class="comment">//否则根的值设为最大的子结点，同时继续检查其子树，故i=i*2</span></span><br><span class="line">            A[k]=A[i];</span><br><span class="line">            k=i;    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    A[k]=A[<span class="number">0</span>];<span class="comment">//更新新的根结点的值</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//完整的堆排序操作</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HeapSort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> len)</span></span>;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">BuildMaxHeap</span>(A,len);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=len<span class="number">-1</span>;i&gt;<span class="number">1</span>;i--)&#123;</span><br><span class="line">        <span class="built_in">swap</span>(A[i],A[<span class="number">1</span>]);<span class="comment">//交换表尾和最大元素，得到最大选择出最大的关键字</span></span><br><span class="line">        <span class="built_in">HeadAdjust</span>(A,<span class="number">1</span>,i<span class="number">-1</span>);<span class="comment">//将**剩余的**元素调整为大根堆，故参数为i-1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>堆的插入（以大根堆为例）<ul>
-<li>先把插入表尾，之后与父结点比较，若新的元素较大，则二者进行交换，之后不断比较这个元素与其父结点关系，直到不能再上升（比父结点小）</li>
+<li>查操作<ul>
+<li>找到一个指定元素属于哪个集合（找到根结点）</li>
 </ul>
 </li>
-<li><p>堆的删除（以大根堆为例）</p>
-<ul>
-<li>删除某个元素之后，用表尾的元素替换此元素，之后进行调整（分别比较左孩子和右孩子大小—先左后右—，在两次比较过程中如果这个元素更小，则立刻和其孩子结点交换，“完成下坠”，之后重复，直到不能再下坠）</li>
+<li>并操作<ul>
+<li>合并两个集合（让其中的一棵树称为另一棵树的子树即可）</li>
 </ul>
 </li>
-<li><p>注：模拟算法中，注意如何计算对比关键字的次数</p>
-</li>
-</ul>
-<h5 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h5><ul>
-<li><p>归并：就是将两（或多个）个已经有序的序列合并成一个，方式如下（描述二路归并）</p>
-<ul>
-<li>开一个新的序列，容量为各序列之和</li>
-<li>比较两个表的开始元素，将跟小的放入新的序列</li>
+<li>并查集的存储（双亲表示法比较好——可以很方便实现并和查）</li>
+<li>并查集的具体操作<ul>
+<li>初始化（一开始各个元素均独立，将这个数组的parent值均设置为-1即可）</li>
+<li>合并</li>
+<li>查找</li>
 </ul>
 </li>
-<li><p>代码实现</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//归并过程，使用二路归并，并且归并过程中，只有一个序列，通过指针mid来进行划分,且开辟的辅助数组用来存的是最初的值</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Merge</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> low,<span class="keyword">int</span> mid,<span class="keyword">int</span> high)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,k;</span><br><span class="line">    <span class="keyword">int</span> *B=<span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">    <span class="keyword">for</span>(k=low;k&lt;=high;k++)</span><br><span class="line">        B[k]=A[k];</span><br><span class="line">    <span class="keyword">for</span>(i=low,j=mid+<span class="number">1</span>,k=i;i&lt;=mid&amp;&amp;j&lt;=high;k++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(B[i]&lt;=B[j])</span><br><span class="line">            A[k]=B[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            A[k]=B[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=mid) A[k++]=B[i++];</span><br><span class="line">    <span class="keyword">while</span>(j&lt;=high) A[k++]=B[j++];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//递归过程，先左子表进行mergesort，再对右子表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MergeSort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(low&lt;high)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid=(low+high)/<span class="number">2</span>;<span class="comment">//不断对左子表进行划分</span></span><br><span class="line">        <span class="built_in">MergeSort</span>(A,low,mid);</span><br><span class="line">        <span class="built_in">MergeSort</span>(A,mid+<span class="number">1</span>,high);</span><br><span class="line">        <span class="built_in">Merge</span>(A,low,mid,high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h5><ul>
-<li>主要思路：（以三位数的序列升序排列为例）<ul>
-<li>先按照个位进行进行分配，个位相同的放在同一链表中（原本位置靠前的在链表的前面）</li>
-<li>按个位从小到大的顺序，将这些元素再串起来</li>
-<li>之后按十位分配，串到一起，最后按百位分配，串到一起</li>
+<li>并查集的优化<ul>
+<li>并的优化（让小的树合并到大的树，此时根结点的parent值要发生一些变化，值为树的结点总数的相反数）</li>
+<li>查的进一步优化（压缩路径，查找某个结点之后，记录下经过的结点，并将这些结点连到根结点）</li>
 </ul>
 </li>
-</ul>
-<h5 id="内部排序比较"><a href="#内部排序比较" class="headerlink" title="内部排序比较"></a>内部排序比较</h5><ul>
-<li>在排序过程之中，每一趟都可以确定元素最终位置的有：冒泡/简单选择/堆排序/快速排序<ul>
-<li>直接插入排序在过程中一般得到的是一个有序的子序列</li>
-</ul>
-</li>
-<li>时间复杂度对比：<ul>
-<li>O($n^2$)：直接插入排序/冒泡排序/简单选择排序复杂度</li>
-<li>O($nlog_2n$)：快速排序/堆排序/归并排序（重点研究快排）</li>
-</ul>
-</li>
-<li>空间复杂度对比：<ul>
-<li>O($n$)：归并排序</li>
-<li>O($log_2n$)：快排</li>
-<li>O(1)：其他</li>
-</ul>
-</li>
-<li>稳定性：<ul>
-<li></li>
-</ul>
-</li>
-</ul>
-<h4 id="外部排序"><a href="#外部排序" class="headerlink" title="外部排序"></a>外部排序</h4><ul>
-<li><p>外存和内存的数据交换</p>
-<ul>
-<li>磁盘以块为单位管理数据，这些数据要读到内存之中才能被修改，修改完之后还要再写回磁盘</li>
-</ul>
-</li>
-<li><p>原理</p>
-<ul>
-<li>数据很多，一次只能从磁盘读入几块数据到内存，故在内存中设置2个输入缓冲区，一个输出缓冲区，先处理一部分</li>
-</ul>
-</li>
-<li><p>过程（详细的过程看王道PPT，并自己画一画来理解）</p>
-<ul>
-<li>构造归并段</li>
-<li>完成首次归并，并根据结果得到新的归并段</li>
-<li>注：在归并的过程中，读到输入缓冲区的数据不必完全覆盖归并段的所有数据，归并段剩余的数据在排序中再一点点读入即可</li>
-<li>注2：采用归并的方式排序，故需要在磁盘中开新的空间</li>
-</ul>
-</li>
-<li>优化：考虑使用多路归并，但路数太多就要开更多缓冲区，导致内存开销变大</li>
 </ul>
 
       

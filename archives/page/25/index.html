@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/31/DS/%E6%8E%92%E5%BA%8F/">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/31/DS/%E5%9B%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/31/DS/%E6%8E%92%E5%BA%8F/" class="post-title-link" itemprop="url">数据结构--排序</a>
+          <a href="/2021/03/31/DS/%E5%9B%BE/" class="post-title-link" itemprop="url">数据结构--图</a>
         </h2>
 
         <div class="post-meta-container">
@@ -212,7 +212,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-12-01 15:41:26" itemprop="dateModified" datetime="2022-12-01T15:41:26+08:00">2022-12-01</time>
+        <time title="修改时间：2022-12-01 15:42:04" itemprop="dateModified" datetime="2022-12-01T15:42:04+08:00">2022-12-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -234,123 +234,207 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><h4 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h4><ul>
-<li><p>排序的稳定性：对于序列之中的大小相同的数，排序前后其顺序没变</p>
-</li>
-<li><p>内部排序：数据都在内存中，对这些数据排序</p>
-</li>
-<li>外部排序：数据量很大，很大一部分放在磁盘中，对这些数据排序</li>
+          <h3 id="图"><a href="#图" class="headerlink" title="图"></a>图</h3><h4 id="基本概念相关"><a href="#基本概念相关" class="headerlink" title="基本概念相关"></a>基本概念相关</h4><ul>
+<li>图，点的集合（V）+边的集合（E）组成，顶点个数叫图的阶数，图的顶点集合不能为空，边的集合可以为空，可以用二元组表示图</li>
+<li>无向图和有向图</li>
+<li>简单图（不存在重复的边）</li>
+<li>顶点的度<ul>
+<li>对于无向图，指有多少条边与这个顶点相连</li>
+<li>对于有向图，分为入度和初度，两者之和为有向图的度</li>
 </ul>
-<h4 id="内部排序的实现方法"><a href="#内部排序的实现方法" class="headerlink" title="内部排序的实现方法"></a>内部排序的实现方法</h4><h5 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h5><ul>
-<li><p>主要思路：扫描整个序列，从第二个关键字开始，每次将待排序的关键字插入到之前已经排好序的子序列中。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//默认按升序排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertSort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp,i,j;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;n;i++)&#123;<span class="comment">//i从1开始，即从第二个元素开始</span></span><br><span class="line">        <span class="keyword">if</span>(temp&lt;A[i<span class="number">-1</span>])<span class="comment">//满足待排序关键字&lt;其前一个关键字这个条件，才进行插入操作</span></span><br><span class="line">        &#123;</span><br><span class="line">            temp=A[i];</span><br><span class="line">            <span class="keyword">for</span>(j=i<span class="number">-1</span>;j&gt;=<span class="number">0</span>&amp;&amp;A[j]&gt;temp;j--)<span class="comment">//j一定要&gt;=0，保证在待排序关键字最小的情况下，将从第0位之后的所有元素都后羿一位</span></span><br><span class="line">                A[j+<span class="number">1</span>]=A[j];</span><br><span class="line">        	A[j+<span class="number">1</span>]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//带有哨兵的排序算法</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertSort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=n;i++)&#123;<span class="comment">//i从1开始，即从第二个元素开始</span></span><br><span class="line">        <span class="keyword">if</span>(A[i]&lt;A[i<span class="number">-1</span>])<span class="comment">//满足待排序关键字&lt;其前一个关键字这个条件，才进行插入操作</span></span><br><span class="line">        &#123;</span><br><span class="line">            A[<span class="number">0</span>]=A[i];</span><br><span class="line">            <span class="keyword">for</span>(j=i<span class="number">-1</span>;A[<span class="number">0</span>]&lt;A[j];j--)<span class="comment">//j一定要&gt;=0，保证在待排序关键字最小的情况下，将从第0位之后的所有元素都后羿一位</span></span><br><span class="line">                A[j+<span class="number">1</span>]=A[j];</span><br><span class="line">        	A[j+<span class="number">1</span>]=A[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//插入排序的初步优化（对查找进行优化），后续补充</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>效率分析</p>
+<li>无向完全图（任何两个顶点之间都有一条边）</li>
+<li>有向完全图（有两条方向相反的弧）</li>
+<li>稀疏图，稠密图，注意其阈值的划分即可</li>
+<li>路径：顶点序列（注意在有向图中的方向性）</li>
+<li>回路（环）：起点和终点都相同的路径</li>
+<li>简单路径：不重复的顶点序列</li>
+<li>简单回路：除了起点和终点外其他的均不重复</li>
+<li>路径长度：路径上边的数目</li>
+<li>点到点的距离：两个顶点之间的最短的路径的长度，<strong>若这两点之间不存在路径，则距离记为无穷</strong></li>
+<li>强连通：对于有向图，只有当两个顶点正向路径和逆向路径都存在，这两个顶点为强连通（距离不为无穷）</li>
+<li>连通：对于无向图，两个顶点之间有一条路径</li>
+<li>连通图：任何两个顶都是连通的（指无向图）<ul>
+<li>连通图最少有n-1条边（顶点数为n）</li>
+<li>非连通图最多有$C_{n-1}^2$条边 </li>
+</ul>
+</li>
+<li>强连通图：任何两个顶都是强连通的（指有向图）<ul>
+<li>强连通图最少有n条边（即形成一条回路）</li>
+</ul>
+</li>
+<li>子图</li>
+<li>生成子图：子图包括原图的所有顶点</li>
+<li>连通分量：无向图中的<strong>极大</strong>连通子图（包括尽可能多的顶点和边）</li>
+<li>强连通分量：有向图中的<strong>极大</strong>强连通子图</li>
+<li>生成树：包含图中所有顶点的一个<strong>极小连通</strong>子图（n-1条边）</li>
+<li>生成森林：连通分量的生成树构成了非连通图的生成森林</li>
+<li>边的权，带权图，带权路径长度（所有边权之和）</li>
+<li>n个顶点的图，如果边数大于n-1则必有回路</li>
+<li><strong>注：度和顶点和边之间的数量关系</strong></li>
+</ul>
+<p>补充：常见考点（主要围绕求度数，边数展开）</p>
+<h4 id="图的存储结构"><a href="#图的存储结构" class="headerlink" title="图的存储结构"></a>图的存储结构</h4><ul>
+<li><p>邻接矩阵</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//主要的思路就是用一个一维数组存储顶点集合，再用一个二维数组存储边及其连接的顶点信息</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Mgraph</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> Vex[MAX];<span class="comment">//顶点集合</span></span><br><span class="line">    <span class="keyword">int</span> Edge[MAX][MAX];<span class="comment">//边表，有边填1，没变填0（如果是带权图，则填权值，没边则为无穷）</span></span><br><span class="line">    <span class="keyword">int</span> vexnum;<span class="comment">//顶点数</span></span><br><span class="line">    <span class="keyword">int</span> arcnum;<span class="comment">//边数</span></span><br><span class="line">&#125;MGraph;<span class="comment">//适合存储稠密的图，无向图对应的一定是个对称矩阵，可以通过之前章节的方法压缩</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>最好时间复杂度为O(n)</li>
-<li>平均时间复杂度和最坏时间复杂度均为$O(n^2)$</li>
+<li><strong>如何求顶点i到顶点j之间的长度为n的路径有几条</strong>（第i行*第j列，乘n次）</li>
+</ul>
+</li>
+<li><p>邻接表</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数组+链表</span></span><br><span class="line"><span class="keyword">typedef</span> VertexType <span class="keyword">char</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span>&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span>* <span class="title">next</span>;</span></span><br><span class="line">    <span class="keyword">int</span> adjvex;<span class="comment">//指此结点上的边所指向的结点的位置（数组下标，有向图只存出边）</span></span><br><span class="line">&#125;ArcNode;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">VNode</span>&#123;</span></span><br><span class="line">	VertexType data;</span><br><span class="line">    ArcNode *first<span class="comment">//第一条边</span></span><br><span class="line">&#125;VNode,AdjList[MAX];<span class="comment">//第一个定义表示一个顶点，第二个定义表示顶点集合</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ALGraph</span>&#123;</span></span><br><span class="line">    AdjList vertices;</span><br><span class="line">    <span class="keyword">int</span> vexnum;<span class="comment">//顶点数</span></span><br><span class="line">    <span class="keyword">int</span> arcnum;<span class="comment">//边数</span></span><br><span class="line">&#125;ALGraph;</span><br><span class="line"><span class="comment">//对于无向图空间有冗余，通过邻接多重表优化</span></span><br><span class="line"><span class="comment">//对于有向图，找入边不方便，通过十字链表优化</span></span><br><span class="line"><span class="comment">//邻接表表示并不唯一，链表部分的顺序可变</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>十字链表（只用于存储有向图）</p>
+<ul>
+<li>注：可以理解为在邻接表上做出改进，结点有两个指针，一个指向出边的链表，一个指向入边的链表</li>
+<li>后续补充</li>
+</ul>
+</li>
+<li><p>邻接多重表（存储无向图）</p>
+<ul>
+<li>注：可以理解为在邻接表上做出改进</li>
+<li>后续补充</li>
+</ul>
+</li>
+<li><p>图的基本操作（根据实际情况来考虑，这里只大概列举了一些较为常用的，主要是在邻接表，邻接矩阵这两种存储结构下的实现）———考研可以直接调用接口</p>
+<ul>
+<li>找到一个顶点的第一个邻接点</li>
+<li>找到x结点除了y结点之外的其他邻接点</li>
+<li>遍历（重点）</li>
 </ul>
 </li>
 </ul>
-<h5 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h5><ul>
-<li>思路：希尔排序是对插入排序的改进，通过增量d划分子表，再对各个子表按插入排序的方式完成排序，之后不断缩小d，直到d为1（通过d划分子表表示这个子表各个关键字在数组中的间隔为d-1）</li>
+<h4 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h4><ul>
+<li><p>BFS（广度优先遍历，可以参考树的层序遍历来理解，不要太纠结于代码，通过核心的几个操作分析时间复杂度）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> visited[MAX];<span class="comment">//这个数组用来标记一个结点是否已经访问过</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFSTraverse</span><span class="params">(Graph G)</span></span>&#123;</span><br><span class="line">    <span class="built_in">InitVisit</span>(visited);<span class="comment">//初始化为false</span></span><br><span class="line">    <span class="built_in">InitQueue</span>(Q);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G.vexnum;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!visit[i])&#123;</span><br><span class="line">            <span class="built_in">BFS</span>(G,i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="comment">//通过这个函数完善遍历算法，保证非连通图也可以完成广度优先遍历</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">(Graph G,<span class="keyword">int</span> v)</span></span>&#123;<span class="comment">//v表示出发顶点</span></span><br><span class="line"> 	<span class="built_in">visit</span>(v);<span class="comment">//访问结点v</span></span><br><span class="line">    visit[v]=<span class="literal">true</span>;</span><br><span class="line">    Q.<span class="built_in">EnQueue</span>(v);<span class="comment">//将结点v入队</span></span><br><span class="line">    <span class="keyword">while</span>(!Q.<span class="built_in">isEmpty</span>())&#123;</span><br><span class="line">		v=Q.<span class="built_in">DeQueue</span>();<span class="comment">//出队，并保存这个结点</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> w=<span class="built_in">FirstNeighbor</span>(G,v);w&gt;=<span class="number">0</span>;w=<span class="built_in">NextNeighbor</span>(G,v,w))&#123;<span class="comment">//访问与temp结点之间相邻有路径的每一个结点</span></span><br><span class="line">			<span class="keyword">if</span>(!visit[v])<span class="comment">//访问未曾访问过的结点</span></span><br><span class="line">            &#123;  </span><br><span class="line">                visit[v];</span><br><span class="line">                vivisted[v]=<span class="literal">true</span>;</span><br><span class="line">            	Q.<span class="built_in">EnQueue</span>(v);            </span><br><span class="line">            &#125;    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<ul>
+<li><p>对于广度优先遍历的序列，通过邻接矩阵存储得到的结果唯一，为升序排列，通过邻接表存储得到的结果不唯一</p>
+</li>
+<li><p>广度优先生成树，保留广度优先遍历访问的n-1条边，得到这棵树</p>
+</li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShellSort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> d,i,j;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> d=n/<span class="number">2</span>;d!=<span class="number">1</span>;d=d/<span class="number">2</span>)&#123;<span class="comment">//d的具体缩小方式可以自定义，只要最终为1即可</span></span><br><span class="line">        <span class="keyword">for</span>(i=d+<span class="number">1</span>;i&lt;=n;i+=d)&#123;</span><br><span class="line">            <span class="keyword">if</span>(A[i]&lt;A[i-d])</span><br><span class="line">            &#123;</span><br><span class="line">                A[<span class="number">0</span>]=A[i]<span class="comment">//数组的第0位暂存待排序关键字</span></span><br><span class="line">                <span class="keyword">for</span>(j=i-d;j&gt;<span class="number">0</span>;j-=d)&#123;</span><br><span class="line">                    A[j+d]=A[j];</span><br><span class="line">                &#125;</span><br><span class="line">                A[j+d]=A[<span class="number">0</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;<span class="comment">//d=1就是直接插入排序</span></span><br></pre></td></tr></table></figure>
-<h5 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h5><ul>
-<li>主要思想：从后往前开始，比较相邻的两个关键字的值，如果前面的比后面的大，则交换顺序，直到比较完最前面的两个元素，此时最小的关键字以及在最前面了，之后重复比较的过程，比较到最小关键字之后的两个元素即可（如果一次比较的过程中没有关键字交换，则直接结束循环）</li>
+</li>
+<li><p>DFS（深度优先遍历）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> visited[MAX];<span class="comment">//这个数组用来标记一个结点是否已经访问过</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFSTraverse</span><span class="params">(Graph G)</span></span>&#123;</span><br><span class="line">    <span class="built_in">InitVisit</span>(visited);<span class="comment">//初始化为false</span></span><br><span class="line">    <span class="built_in">InitQueue</span>(Q);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G.vexnum;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!visit[i])&#123;</span><br><span class="line">            <span class="built_in">DFS</span>(G,i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="comment">//通过这个函数完善遍历算法，保证非连通图也可以完成深度优先遍历</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(Graph G,<span class="keyword">int</span> v)</span></span>&#123;<span class="comment">//v表示出发顶点</span></span><br><span class="line">    <span class="built_in">visit</span>(v);<span class="comment">//访问结点v</span></span><br><span class="line">    visited[v]=<span class="literal">true</span>;</span><br><span class="line">   	<span class="keyword">for</span>(<span class="keyword">int</span> w=<span class="built_in">FirstNeighbor</span>(G,v);w&gt;=<span class="number">0</span>;w=<span class="built_in">NextNeighbor</span>(G,v,w))&#123;<span class="comment">//访问与temp结点之间相邻</span></span><br><span class="line">    	<span class="keyword">if</span>(!visited[v])</span><br><span class="line">    		<span class="built_in">DFS</span>(G,w);  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">(<span class="keyword">int</span> num[],n)</span></span></span><br><span class="line"><span class="function">    <span class="title">for</span><span class="params">(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)</span></span>&#123;</span><br><span class="line">        <span class="keyword">bool</span> flag=<span class="literal">false</span>;<span class="comment">//用于标记是否发生过交换</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=n;j&gt;i+<span class="number">1</span>;j--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(num[j]&lt;num[j<span class="number">-1</span>])</span><br><span class="line">            &#123; </span><br><span class="line">                <span class="built_in">swap</span>(num[j],num[j<span class="number">-1</span>]);</span><br><span class="line">            	flag=<span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!flag)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h5><ul>
-<li>主要思想，从序列中选一个关键字，将小于这个关键字的元素放到这个关键字之前，大于这个关键字的元素放到这个关键字之后，这样划分出了两个子表，之后在各子表中重复之前过程即可（如何划分见代码）</li>
+<h4 id="图的应用"><a href="#图的应用" class="headerlink" title="图的应用"></a>图的应用</h4><h5 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h5><ul>
+<li>概念：边权值最小的生成树</li>
+<li>prim算法（选顶点）<ul>
+<li>思路：从某一个顶点开始，每次将代价最小的<strong>新顶点</strong>加入到生成树之中，直到生成树包括了图的所有顶点</li>
+<li>简单的代码逻辑：</li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//主要分成两个部分，划分和主体递归</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Partition</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pivot=A[low];<span class="comment">//存储划分基准的关键字</span></span><br><span class="line">    <span class="keyword">while</span>(low&lt;high)&#123;</span><br><span class="line">        <span class="keyword">while</span>(low&lt;high&amp;&amp;A[high]&gt;=pivot) high--;</span><br><span class="line">    	A[low]=A[high];</span><br><span class="line">        <span class="keyword">while</span>(low&lt;high&amp;&amp;A[low]&lt;=pivot) low++;</span><br><span class="line">        A[high]=A[low];</span><br><span class="line">    &#125;</span><br><span class="line">    A[low]=pivot</span><br><span class="line">    <span class="keyword">return</span> low;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pivotpos;</span><br><span class="line">    <span class="keyword">if</span>(low&lt;high)</span><br><span class="line">    &#123;</span><br><span class="line">        pivotpos=<span class="built_in">Partition</span>(A,low,high);</span><br><span class="line">        <span class="built_in">QuickSort</span>(A,low,pivotpos<span class="number">-1</span>)<span class="comment">//在左子表中进行划分</span></span><br><span class="line">        <span class="built_in">QuickSort</span>(A,pivopos+<span class="number">1</span>,high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
-<h5 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a>简单选择排序</h5><ul>
-<li>主要思路：扫描序列，每一趟在待排序的元素之中选出最小关键字加入子序列</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SelectSort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">   	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> min=i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;n;j++)</span><br><span class="line">            <span class="keyword">if</span>(A[j]&lt;A[min])</span><br><span class="line">                min=j;</span><br><span class="line">		<span class="keyword">if</span>(i!=min)</span><br><span class="line">        	<span class="built_in">swap</span>(A[i],A[min]); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="堆排序（难）"><a href="#堆排序（难）" class="headerlink" title="堆排序（难）"></a>堆排序（难）</h5><ul>
-<li>大根堆：用树来理解，即在一棵完全二叉树中，根结点关键字大于其子树的所有结点（小根堆与其相反）</li>
-<li>从逻辑上来看，堆用一棵完全二叉树存储，物理上是一种顺序结构，参考树的顺序存储方式</li>
-<li>堆排序的主要思路：<ol>
-<li>建堆</li>
-<li>选择最大（小）值，加入有序子序列</li>
+</li>
+<li>Kruskal算法（选边）<ul>
+<li>思路：每次挑选一条权值最小的边，使这条边连着的两部分连通（若已经连通则不选），直到所有的点都连通</li>
+<li>代码实现的逻辑<ol>
+<li>预处理，即将个条边按权值先排序</li>
+<li>扫描排序得到的结果，判断两个结点是否连通（判断会用到并查集）</li>
 </ol>
 </li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//建立大根堆</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BuildMaxHeap</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=len/<span class="number">2</span>;i&gt;<span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="built_in">HeadAdjust</span>(A,i,len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//将以k为根的子树调整为大根堆</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HeadAdjust</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> k,<span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">    A[<span class="number">0</span>]=A[k];<span class="comment">//暂存子树k的根结点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>*k;i&lt;len;i*=<span class="number">2</span>)&#123;<span class="comment">//i初始设为k的左孩子，下次循环往下一层比较，故是*2</span></span><br><span class="line">        <span class="keyword">if</span>(i&lt;len&amp;&amp;A[i]&lt;A[i+<span class="number">1</span>])<span class="comment">//找到更大的孩子</span></span><br><span class="line">            i++;</span><br><span class="line">        <span class="keyword">if</span>(A[<span class="number">0</span>]&gt;A[i]) <span class="keyword">break</span>;<span class="comment">//根最大则直接结束循环</span></span><br><span class="line">        <span class="keyword">else</span>&#123;<span class="comment">//否则根的值设为最大的子结点，同时继续检查其子树，故i=i*2</span></span><br><span class="line">            A[k]=A[i];</span><br><span class="line">            k=i;    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    A[k]=A[<span class="number">0</span>];<span class="comment">//更新新的根结点的值</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//完整的堆排序操作</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HeapSort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> len)</span></span>;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">BuildMaxHeap</span>(A,len);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=len<span class="number">-1</span>;i&gt;<span class="number">1</span>;i--)&#123;</span><br><span class="line">        <span class="built_in">swap</span>(A[i],A[<span class="number">1</span>]);<span class="comment">//交换表尾和最大元素，得到最大选择出最大的关键字</span></span><br><span class="line">        <span class="built_in">HeadAdjust</span>(A,<span class="number">1</span>,i<span class="number">-1</span>);<span class="comment">//将**剩余的**元素调整为大根堆，故参数为i-1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="求最短路径"><a href="#求最短路径" class="headerlink" title="求最短路径"></a>求最短路径</h5><ul>
+<li><p>单源最短路径（某个结点到其他顶点之间最短的路径）</p>
+<ol>
+<li><p>BFS算法（求无权图———将边权值认为1即可）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在原本的BFS算法上进行修改即可</span></span><br><span class="line"><span class="keyword">bool</span> visited[MAX];</span><br><span class="line"><span class="keyword">int</span> d[];<span class="comment">//存储路径长度，初始化为无穷</span></span><br><span class="line"><span class="keyword">int</span> path[];<span class="comment">//存储最短路径中，节点的上一个连接的结点，初始化为-1</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">void BFS(Graph G,int v)&#123;</span></span><br><span class="line"><span class="comment"> 	visit(v);</span></span><br><span class="line"><span class="comment">    visit[v]=true;</span></span><br><span class="line"><span class="comment">    Q.EnQueue(v);</span></span><br><span class="line"><span class="comment">    while(!Q.isEmpty())&#123;</span></span><br><span class="line"><span class="comment">		v=Q.DeQueue();</span></span><br><span class="line"><span class="comment">        for(int w=FirstNeighbor(G,v);w&gt;=0;w=NextNeighbor(G,v,w))&#123;</span></span><br><span class="line"><span class="comment">			if(!visit[v])</span></span><br><span class="line"><span class="comment">            &#123;  </span></span><br><span class="line"><span class="comment">                visit[v];</span></span><br><span class="line"><span class="comment">                vivisted[v]=true;</span></span><br><span class="line"><span class="comment">            	Q.EnQueue(v);            </span></span><br><span class="line"><span class="comment">            &#125;    </span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br><span class="line"><span class="comment">//核心部分未完成</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Dijkstra算法（求带权图，权值不能为负）</p>
 <ul>
-<li>堆的插入（以大根堆为例）<ul>
-<li>先把插入表尾，之后与父结点比较，若新的元素较大，则二者进行交换，之后不断比较这个元素与其父结点关系，直到不能再上升（比父结点小）</li>
-</ul>
+<li>思路<ol>
+<li>设置三个数组，详细见代码实现</li>
+<li>初始化，将起点的dist设置为0，final设置为true，path设置为自己，如果起点到其他顶点只有一条出边，则将这条路径的值作为该顶点对应的dist值，如果到其他顶点的不止一条出边，则对应的dist设置为无穷</li>
+<li>遍历dist数组，将对应dist值最小的顶点的final设置为true，之后根据这个顶点的出边所连接的顶点更新dist数组的值（用更小的距离替换）以及path数组，此后不断重复这个过程</li>
+</ol>
 </li>
-<li><p>堆的删除（以大根堆为例）</p>
+<li>代码实现：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> <span class="keyword">final</span>[MAX_VEX];<span class="comment">//标记各个顶点是否已经找到最短路径</span></span><br><span class="line"><span class="keyword">int</span> dist[MAX_VEX];<span class="comment">//到其他顶点的最短路径长度，下标表示目标顶点</span></span><br><span class="line"><span class="keyword">int</span> path[MAX_VEX];<span class="comment">//路径上的直接前驱</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>有向图各个顶点之间的最短路径/求出每个顶点对之间的最短路径（Floyd算法）//重点理解一下</p>
 <ul>
-<li>删除某个元素之后，用表尾的元素替换此元素，之后进行调整（分别比较左孩子和右孩子大小—先左后右—，在两次比较过程中如果这个元素更小，则立刻和其孩子结点交换，“完成下坠”，之后重复，直到不能再下坠）</li>
+<li>动态规划的思想</li>
+<li>思路<ol>
+<li>设置两个矩阵（n<em>n），路径矩阵（初始时各个顶点之间的最短路径长度，<em>*初始不允许在其他顶点中转</em></em>）以及path矩阵（两个顶点之间的中转点）</li>
+<li>之后不断增加中转点，遍历上面两个矩阵，修改更新之后的信息（更新时要根据上一个状态的两个矩阵来判断）</li>
+</ol>
+</li>
 </ul>
 </li>
-<li><p>注：模拟算法中，注意如何计算对比关键字的次数</p>
-</li>
 </ul>
-<h5 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h5><ul>
-<li><p>归并：就是将两（或多个）个已经有序的序列合并成一个，方式如下（描述二路归并）</p>
+<h5 id="有向无环图（DAG）"><a href="#有向无环图（DAG）" class="headerlink" title="有向无环图（DAG）"></a>有向无环图（DAG）</h5><ul>
+<li><p>定义：不存在环路的有向图</p>
+</li>
+<li><p>应用1：描述表达式</p>
+</li>
+<li><p>应用2：拓扑排序</p>
 <ul>
-<li>开一个新的序列，容量为各序列之和</li>
-<li>比较两个表的开始元素，将跟小的放入新的序列</li>
-</ul>
+<li><p>AOV网：（顶点表示活动的网），具体用DAG图表示一个工程，有向边表明了活动的先后顺序，对于AOV网不能有环路</p>
 </li>
-<li><p>代码实现</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//归并过程，使用二路归并，并且归并过程中，只有一个序列，通过指针mid来进行划分,且开辟的辅助数组用来存的是最初的值</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Merge</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> low,<span class="keyword">int</span> mid,<span class="keyword">int</span> high)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,k;</span><br><span class="line">    <span class="keyword">int</span> *B=<span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">    <span class="keyword">for</span>(k=low;k&lt;=high;k++)</span><br><span class="line">        B[k]=A[k];</span><br><span class="line">    <span class="keyword">for</span>(i=low,j=mid+<span class="number">1</span>,k=i;i&lt;=mid&amp;&amp;j&lt;=high;k++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(B[i]&lt;=B[j])</span><br><span class="line">            A[k]=B[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            A[k]=B[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=mid) A[k++]=B[i++];</span><br><span class="line">    <span class="keyword">while</span>(j&lt;=high) A[k++]=B[j++];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//递归过程，先左子表进行mergesort，再对右子表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MergeSort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(low&lt;high)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid=(low+high)/<span class="number">2</span>;<span class="comment">//不断对左子表进行划分</span></span><br><span class="line">        <span class="built_in">MergeSort</span>(A,low,mid);</span><br><span class="line">        <span class="built_in">MergeSort</span>(A,mid+<span class="number">1</span>,high);</span><br><span class="line">        <span class="built_in">Merge</span>(A,low,mid,high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>拓扑排序定义：顶点出现一次，A在序列中在B之前，则不存在从B到A的路径</p>
 </li>
-</ul>
-<h5 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h5><ul>
-<li>主要思路：（以三位数的序列升序排列为例）<ul>
-<li>先按照个位进行进行分配，个位相同的放在同一链表中（原本位置靠前的在链表的前面）</li>
-<li>按个位从小到大的顺序，将这些元素再串起来</li>
-<li>之后按十位分配，串到一起，最后按百位分配，串到一起</li>
-</ul>
+<li><p>求拓扑序列的算法描述</p>
+<ol>
+<li>在AOV网中找到没有前驱的顶点并输出</li>
+<li>在网中“删除“这些没有前驱的顶点，以及其对应的出边</li>
+<li>重复前两步直到当前的网为空（成功得到拓扑序列）或者中不存在无前驱的顶点（有回路，无法找到拓扑排序）</li>
+</ol>
 </li>
-</ul>
-<h5 id="内部排序比较"><a href="#内部排序比较" class="headerlink" title="内部排序比较"></a>内部排序比较</h5><ul>
-<li>在排序过程之中，每一趟都可以确定元素最终位置的有：冒泡/简单选择/堆排序/快速排序<ul>
-<li>直接插入排序在过程中一般得到的是一个有序的子序列</li>
-</ul>
+<li><p>求拓扑排序的代码描述（这里描述基于邻接表存储的图）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> indegree[];<span class="comment">//存储所有顶点的入度</span></span><br><span class="line"><span class="keyword">int</span> print[];<span class="comment">//记录拓扑序列</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">TopologicalSort</span><span class="params">(Graph G)</span></span>&#123;</span><br><span class="line">	<span class="built_in">InitIndegree</span>(indegree);</span><br><span class="line">    <span class="built_in">InitStack</span>(S);<span class="comment">//存储入度为0的顶点的编号，实现在逻辑上的“删除”</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G.vexnum;i++)</span><br><span class="line">        <span class="keyword">if</span>(indegree[i]==<span class="number">0</span>)</span><br><span class="line">            S.<span class="built_in">push</span>(i);</span><br><span class="line">    <span class="keyword">int</span> count=<span class="number">0</span>;<span class="comment">//计数，通过这个计数判断是否有环路</span></span><br><span class="line">    <span class="keyword">while</span>(!S.<span class="built_in">isEmpty</span>())&#123;</span><br><span class="line">        <span class="keyword">int</span> temp=S.<span class="built_in">top</span>();</span><br><span class="line">        cout&lt;&lt;temp;</span><br><span class="line">        S.<span class="built_in">pop</span>();</span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">for</span>(ArcNode* v=G.vertices[temp].first;v!=<span class="literal">NULL</span>;v=v-&gt;nextarc)&#123;</span><br><span class="line">            <span class="keyword">int</span> p=v.adjvex;</span><br><span class="line">            indegree[p]--;</span><br><span class="line">            <span class="keyword">if</span>(indegree[p]!=<span class="number">0</span>)</span><br><span class="line">                S.<span class="built_in">push</span>(p);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(count&lt;G.vexnum)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        returm <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li>时间复杂度对比：<ul>
-<li>O($n^2$)：直接插入排序/冒泡排序/简单选择排序复杂度</li>
-<li>O($nlog_2n$)：快速排序/堆排序/归并排序（重点研究快排）</li>
-</ul>
+<li><p>注：之后为额外扩充内容，尽量掌握</p>
 </li>
-<li>空间复杂度对比：<ul>
-<li>O($n$)：归并排序</li>
-<li>O($log_2n$)：快排</li>
-<li>O(1)：其他</li>
-</ul>
+<li><p>逆拓扑排序</p>
 </li>
-<li>稳定性：<ul>
-<li></li>
-</ul>
+<li><p>通过DFS求逆拓扑排序</p>
+</li>
+<li><p>通过DFS求拓扑排序</p>
 </li>
 </ul>
-<h4 id="外部排序"><a href="#外部排序" class="headerlink" title="外部排序"></a>外部排序</h4><ul>
-<li><p>外存和内存的数据交换</p>
+<h5 id="关键路径"><a href="#关键路径" class="headerlink" title="关键路径"></a>关键路径</h5><ul>
+<li><p>基本概念性质解释</p>
 <ul>
-<li>磁盘以块为单位管理数据，这些数据要读到内存之中才能被修改，修改完之后还要再写回磁盘</li>
+<li>AOE网（顶点表示事件，有向边表示活动，边权值表示活动的时间开销）</li>
+<li>只有当顶点事件发生，出边代表的活动才开始</li>
+<li>只有入边的活动全部结束，顶点事件才能发生</li>
+<li>仅有一个入度为0（源点）和一个初度为0的顶点（汇点）</li>
+<li>源点到汇点的所有路径中，具有<strong>最大</strong>路径长度的路径为关键路径</li>
+<li><strong>事件v的最早发生时间</strong>：所有从v开始的活动的最早开始时间———V1</li>
+<li><strong>活动a的最早开始时间</strong>：该活动弧的起点所表示的事件的最早发生时间——-A1</li>
+<li><strong>事件v的最迟发生时间</strong>：在不推迟整个工期的前提之下，某个事件最迟必须发生的时间——-V2</li>
+<li><strong>活动a的最迟开始时间</strong>：该活动弧的终点所表示事件的最迟发生时间与<strong>该活动a所需时间</strong>之差———A2</li>
+<li>当活动a的最早开始时间和最迟开始时间相等，连接的两个顶点为关键活动，经过所有这些活动的路径即为关键路径</li>
 </ul>
 </li>
-<li><p>原理</p>
-<ul>
-<li>数据很多，一次只能从磁盘读入几块数据到内存，故在内存中设置2个输入缓冲区，一个输出缓冲区，先处理一部分</li>
+<li><p>如何求关键路径</p>
+<ol>
+<li><p>求所有事件的V1</p>
+<p>1.1先求出拓扑排序</p>
+<p>1.2按这个序列求出每一个事件的V1（前驱顶点+入边）</p>
+<p>注：对于1.2，如果有多个前驱顶点，找所有结果的最大值</p>
+</li>
+<li><p>求所有事件的V2</p>
+<p>2.1求逆拓扑序列</p>
+<p>2.2按这个序列求每个事件的v2（后继顶点-出边）</p>
+<p>注：对于2.2，如果有多个后继顶点，找所有结果的最小值</p>
+</li>
+<li><p>求所有活动的A1</p>
+</li>
+<li><p>求所有活动的A2</p>
+<p>注：对应3和4按定义来即可</p>
+</li>
+<li><p>求所有A1-A2的结果，为0的即为关键路径的一部分</p>
+</li>
+</ol>
+</li>
 </ul>
 </li>
-<li><p>过程（详细的过程看王道PPT，并自己画一画来理解）</p>
-<ul>
-<li>构造归并段</li>
-<li>完成首次归并，并根据结果得到新的归并段</li>
-<li>注：在归并的过程中，读到输入缓冲区的数据不必完全覆盖归并段的所有数据，归并段剩余的数据在排序中再一点点读入即可</li>
-<li>注2：采用归并的方式排序，故需要在磁盘中开新的空间</li>
-</ul>
-</li>
-<li>优化：考虑使用多路归并，但路数太多就要开更多缓冲区，导致内存开销变大</li>
 </ul>
 
       

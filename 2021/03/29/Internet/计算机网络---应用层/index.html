@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;zrk494.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Pisces&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
+<meta name="description" content="应用层应用层协议原理概述 为应用程序的通信提供服务 应用层协议定义内容概述  交换的报文类型（请求还是响应） 报文类型的语法（即报文格式） 字段的语义（某个字段中信息表示什么） 进程什么时侯发送报文，怎么发送报文 进程对报文进行响应的规划   网络应用模型  C&#x2F;S (客户机&#x2F;服务器)  服务器对外提供服务（不间断，一般有大量的服务器），客户机使用服务器提供的服务，不会和其他客户机直接的通信 服务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络---应用层">
+<meta property="og:url" content="http://zrk494.github.io/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/index.html">
+<meta property="og:site_name" content="post">
+<meta property="og:description" content="应用层应用层协议原理概述 为应用程序的通信提供服务 应用层协议定义内容概述  交换的报文类型（请求还是响应） 报文类型的语法（即报文格式） 字段的语义（某个字段中信息表示什么） 进程什么时侯发送报文，怎么发送报文 进程对报文进行响应的规划   网络应用模型  C&#x2F;S (客户机&#x2F;服务器)  服务器对外提供服务（不间断，一般有大量的服务器），客户机使用服务器提供的服务，不会和其他客户机直接的通信 服务">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zrk494.github.io/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/image-20210506215416439.png">
+<meta property="og:image" content="http://zrk494.github.io/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/image-20220924105453483.png">
+<meta property="article:published_time" content="2021-03-29T12:56:34.000Z">
+<meta property="article:modified_time" content="2022-12-01T07:43:02.437Z">
+<meta property="article:author" content="zrk">
+<meta property="article:tag" content="网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zrk494.github.io/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/image-20210506215416439.png">
+
+
+<link rel="canonical" href="http://zrk494.github.io/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;http:&#x2F;&#x2F;zrk494.github.io&#x2F;2021&#x2F;03&#x2F;29&#x2F;Internet&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82&#x2F;&quot;,&quot;path&quot;:&quot;2021&#x2F;03&#x2F;29&#x2F;Internet&#x2F;计算机网络---应用层&#x2F;&quot;,&quot;title&quot;:&quot;计算机网络---应用层&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>计算机网络---应用层 | post</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">post</h1>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="/uploads/233.jpg" alt="post">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-number">1.</span> <span class="nav-text">应用层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">应用层协议原理概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP%EF%BC%88%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">HTTP（超文本传输协议）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.2.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP%E7%9A%84%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="nav-number">1.2.2.</span> <span class="nav-text">HTTP的工作过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP%E7%9A%84%E8%BF%9E%E7%BB%93%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.3.</span> <span class="nav-text">HTTP的连结方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP%E7%9A%84%E4%B8%80%E4%BA%9B%E7%89%B9%E5%BE%81"><span class="nav-number">1.2.4.</span> <span class="nav-text">HTTP的一些特征</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.2.5.</span> <span class="nav-text">报文格式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">电子邮件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SMPT%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.3.2.</span> <span class="nav-text">SMPT协议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#POP3%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.3.3.</span> <span class="nav-text">POP3协议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E4%B8%87%E7%BB%B4%E7%BD%91%E7%9A%84%E9%82%AE%E4%BB%B6"><span class="nav-number">1.3.4.</span> <span class="nav-text">基于万维网的邮件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS%EF%BC%88Domain-Name-System%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">DNS（Domain Name System）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DNS%E6%8F%90%E4%BE%9B%E7%9A%84%E6%9C%8D%E5%8A%A1-%E8%A7%A3%E5%86%B3Internet%E4%B8%8A%E4%B8%BB%E6%9C%BA%E6%88%96%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84%E8%AF%86%E5%88%AB%E9%97%AE%E9%A2%98"><span class="nav-number">1.4.1.</span> <span class="nav-text">DNS提供的服务(解决Internet上主机或路由器的识别问题)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%9B%B8%E5%85%B3"><span class="nav-number">1.4.2.</span> <span class="nav-text">工作原理相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DNS%E7%9A%84%E5%85%B7%E4%BD%93%E8%BF%87%E7%A8%8B"><span class="nav-number">1.4.3.</span> <span class="nav-text">DNS的具体过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%EF%BC%88FTP%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">文件传输协议（FTP）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0-2"><span class="nav-number">1.5.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.5.2.</span> <span class="nav-text">工作原理</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zrk</p>
+  <div class="site-description" itemprop="description">包括专业课学习的相关笔记，以及其他</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/yourname" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zrk494.github.io/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zrk">
+      <meta itemprop="description" content="包括专业课学习的相关笔记，以及其他">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="post">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机网络---应用层
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-29 20:56:34" itemprop="dateCreated datePublished" datetime="2021-03-29T20:56:34+08:00">2021-03-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-12-01 15:43:02" itemprop="dateModified" datetime="2022-12-01T15:43:02+08:00">2022-12-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><h4 id="应用层协议原理概述"><a href="#应用层协议原理概述" class="headerlink" title="应用层协议原理概述"></a>应用层协议原理概述</h4><ul>
+<li>为应用程序的通信提供服务</li>
+<li><p>应用层协议定义内容概述</p>
+<ul>
+<li>交换的报文类型（请求还是响应）</li>
+<li>报文类型的语法（即报文格式）</li>
+<li>字段的语义（某个字段中信息表示什么）</li>
+<li>进程什么时侯发送报文，怎么发送报文</li>
+<li>进程对报文进行响应的规划</li>
+</ul>
+</li>
+<li><p>网络应用模型</p>
+</li>
+<li><p>C/S (客户机/服务器)</p>
+<ul>
+<li>服务器对外提供服务（<strong>不间断</strong>，一般有大量的服务器），客户机使用服务器提供的服务，<strong>不会和其他客户机直接的通信</strong></li>
+<li>服务器IP是<strong>固定不变</strong>的，而客户机是<strong>可变</strong>的，间歇性接入网络</li>
+</ul>
+</li>
+<li><p>P2P (点对点)</p>
+<ul>
+<li>端系统或者节点之间直接通信</li>
+<li>没用永久在线的主机，它们可以<strong>提供服务</strong>，也可以<strong>请求服务</strong></li>
+</ul>
+</li>
+<li><p>C/S+P2P（混合）</p>
+</li>
+</ul>
+<h4 id="HTTP（超文本传输协议）"><a href="#HTTP（超文本传输协议）" class="headerlink" title="HTTP（超文本传输协议）"></a>HTTP（超文本传输协议）</h4><h5 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h5><ul>
+<li><p>万维网（World Wide Web）</p>
+</li>
+<li><p>URL：统一资源定位符，给资源（音频视频图片之类的）的唯一编号，组成包括两部分，主机名+路径名</p>
+</li>
+<li>用户通过点击超链接获取资源（这些资源通过HTTP传输）</li>
+<li>万维网基于C/S架构工作</li>
+<li>万维网使用HTML，可以很方便的通过连接从一个界面跳转到另一个界面</li>
+<li>HTTP定义了客户如何<strong>请求</strong>万维网文档，以及服务器如何将文档<strong>发给用户</strong></li>
+</ul>
+<h5 id="HTTP的工作过程"><a href="#HTTP的工作过程" class="headerlink" title="HTTP的工作过程"></a>HTTP的工作过程</h5><ol>
+<li>用户输入URL/点击超链接</li>
+<li>浏览器分析链接（或者URL）</li>
+<li>浏览器向DNS请求IP解析</li>
+<li>DNS解析得到IP</li>
+<li>浏览器（客户）与服务器建立TCP连接</li>
+<li>用户发送HTTP请求</li>
+<li>服务器返回HTTP响应</li>
+<li>浏览器显示返回结果</li>
+<li>释放连接</li>
+</ol>
+<h5 id="HTTP的连结方式"><a href="#HTTP的连结方式" class="headerlink" title="HTTP的连结方式"></a>HTTP的连结方式</h5><ul>
+<li>持久连接：建立连接之后，可以在此次连接中发送多次HTTP请求获取资源<ul>
+<li>流水式：连续发送，依次响应</li>
+<li>非流水式：停等</li>
+</ul>
+</li>
+<li>非持久连接：建立一次TCP连接，客户只发送一次HTTP请求，只接收一次HTTP响应报文就关闭TCP连接</li>
+</ul>
+<h5 id="HTTP的一些特征"><a href="#HTTP的一些特征" class="headerlink" title="HTTP的一些特征"></a>HTTP的一些特征</h5><ul>
+<li><p>服务器不存储任何关于该客户的状态信息（无状态协议）</p>
+</li>
+<li><p>在实际工作中，一些站点希望能识别用户，故引入cookie技术存储用户的访问记录，同时标记出用户</p>
+</li>
+<li>HTTP本身是无连接的</li>
+</ul>
+<h5 id="报文格式"><a href="#报文格式" class="headerlink" title="报文格式"></a>报文格式</h5><ul>
+<li><p>HTTP请求报文（ASCII书写）</p>
+<ul>
+<li>请求行（方法字段+URL字段+HTTP版本）+首部行（<strong>可扩展</strong>）+消息体（Entity Body） </li>
+</ul>
+</li>
+<li><p>HTTP响应报文</p>
+<ul>
+<li>状态行（版本+状态码+短语）+首部行（<strong>可扩展</strong>）+实体<ul>
+<li><strong>状态码</strong>，与<strong>短语</strong>相对应，指示出了请求的结果<ul>
+<li>例：404 Not Found</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h4><h5 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h5><ul>
+<li>电子邮件的格式：信封+内容（首部+主体）</li>
+<li><p>组成结构</p>
+<ul>
+<li>用户代理（电子邮件的客户端软件）</li>
+<li>邮件服务器：核心部分，主要完成收发邮件功能，同时告知用户发送情况</li>
+<li>协议：包括接收协议（如POP3）和发送协议（如SMTP）</li>
+</ul>
+</li>
+<li><p>工作原理概述：</p>
+<ul>
+<li>用户通过用户代理基于SMTP协议将邮件发到邮件服务器（有一个邮件缓存）</li>
+<li>服务器通过SMTP协议将邮件发到接收方的邮件服务器</li>
+<li>接收方的邮件服务器通过POP3协议将邮件传给接收端的用户代理</li>
+</ul>
+</li>
+</ul>
+<h5 id="SMPT协议"><a href="#SMPT协议" class="headerlink" title="SMPT协议"></a>SMPT协议</h5><ul>
+<li>规定了两个相互通信的SMPT协议进程如何交换数据</li>
+<li><p><strong>基于TCP连接，端口25，使用C/S架构</strong></p>
+</li>
+<li><p>通信的3个阶段</p>
+<ol>
+<li>连接建立</li>
+<li>邮件发送</li>
+<li>连接释放</li>
+</ol>
+</li>
+<li>缺点：传输的内容受限</li>
+<li>改进协议：MIME（使传输内容更加丰富）</li>
+</ul>
+<h5 id="POP3协议"><a href="#POP3协议" class="headerlink" title="POP3协议"></a>POP3协议</h5><ul>
+<li><strong>基于TCP连接，端口110，使用C/S架构</strong></li>
+<li>两种工作方式：<ol>
+<li>下载并保留在服务器</li>
+<li>下载并删除</li>
+</ol>
+</li>
+<li>改进协议：IMAP协议（让用户先看到邮件首部，打开后再看到完整内容）</li>
+</ul>
+<h5 id="基于万维网的邮件"><a href="#基于万维网的邮件" class="headerlink" title="基于万维网的邮件"></a>基于万维网的邮件</h5><ul>
+<li>用户代理和服务器之间传输通过HTTP完成，服务器之间仍然用SMTP</li>
+</ul>
+<h4 id="DNS（Domain-Name-System）"><a href="#DNS（Domain-Name-System）" class="headerlink" title="DNS（Domain Name System）"></a>DNS（Domain Name System）</h4><h5 id="DNS提供的服务-解决Internet上主机或路由器的识别问题"><a href="#DNS提供的服务-解决Internet上主机或路由器的识别问题" class="headerlink" title="DNS提供的服务(解决Internet上主机或路由器的识别问题)"></a>DNS提供的服务(解决Internet上主机或路由器的识别问题)</h5><ul>
+<li><p>标识主机的两种方式</p>
+<ul>
+<li><p>主机名（域名）   如www.google.com之类的便于人记忆的名称</p>
+</li>
+<li><p>IP地址    一串数字，便于路由器处理，如192.165.153.11</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>DNS（域名系统）的地址转换服务</p>
+<ul>
+<li>功能是实现主机名到IP地址转换的系统（即翻译）</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>简单过程描述<ul>
+<li>用户输入域名，DNS服务器解析域名，用户得到目的主机IP，与目的主机通信</li>
+</ul>
+</li>
+</ul>
+<h5 id="工作原理相关"><a href="#工作原理相关" class="headerlink" title="工作原理相关"></a>工作原理相关</h5><ul>
+<li><p>集中式设计的问题（不重要，了解即可）</p>
+<ul>
+<li><p>单点失败（一旦应该服务器坏了，互联网就崩了）</p>
+</li>
+<li><p>流量问题</p>
+</li>
+<li><p>距离问题</p>
+</li>
+<li><p>维护性问题</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>分布式，层次服务器</p>
+<ul>
+<li><p>三种类型的DNS服务器（总体结构是树）                   </p>
+<ul>
+<li>根域名服务器（最上层）     它知道所有的顶级域名服务器的位置（ip）</li>
+<li>顶级域名服务器（第二层）      负责com, org, net, edu等顶级域名和国家级顶级域名（cn，uk等）</li>
+<li>权威域名服务器（最底层）      组织内部的域名解析服务器</li>
+</ul>
+</li>
+<li>按这个层次划分的域名系统（即树形结构）—与服务器的结构对应<ul>
+<li>根</li>
+<li>顶级域名</li>
+<li>二级域名</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>客户要查询IP时的过程（例，www.amazon.com）</p>
+<ul>
+<li>查询根服务器，找com域名（客户端第一次查询</li>
+<li>到第二层的com域名解析服务器，找amazon.com（客户端第二次查询</li>
+<li><p>到第三层amazon.com域名解析器，获取IP地址（客户端第三次查询</p>
+</li>
+<li><p>上层包括了下层的地址，用来告诉客户端下一次查询去那里</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>本地DNS服务器</p>
+<ul>
+<li>一个主机会首先向其发出DNS查询请求，</li>
+<li>如果找不到则本地DNS服务器<strong>代替主机</strong>从根域名服务器开始，逐层向下找（树结构的查找）</li>
+<li>代理作用</li>
+</ul>
+</li>
+</ul>
+<h5 id="DNS的具体过程"><a href="#DNS的具体过程" class="headerlink" title="DNS的具体过程"></a>DNS的具体过程</h5><ul>
+<li>迭代查询（靠自己）</li>
+</ul>
+<p><img src="/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/image-20210506215416439.png" alt="image-20210506215416439"></p>
+<ul>
+<li><p>递归查询（靠别人）</p>
+<p><img src="/2021/03/29/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C---%E5%BA%94%E7%94%A8%E5%B1%82/image-20220924105453483.png" alt="image-20220924105453483" style="zoom:80%;"></p>
+</li>
+</ul>
+<h4 id="文件传输协议（FTP）"><a href="#文件传输协议（FTP）" class="headerlink" title="文件传输协议（FTP）"></a>文件传输协议（FTP）</h4><h5 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h5><ul>
+<li>不同主机系统之间传输文件</li>
+<li>FPT基于C/S架构</li>
+<li>提供服务的是FTP服务器，客户连接该服务器按协议传输文件</li>
+</ul>
+<h5 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h5><ul>
+<li>登录：一般来说需要用户名和密码，实际中很大一部分FTP服务器是匿名登录的</li>
+<li>FTP协议基于TCP实现可靠传输</li>
+<li>服务器中的主进程（1个，负责接收新的请求）和从属进程（n个）</li>
+<li><p>具体工作过程（传输的过程）</p>
+<ul>
+<li>会有两个从属进程为用户提供服务，即建立了<strong>两条TCP连接</strong></li>
+<li>控制连接：传输控制信息，整个过程一直打开</li>
+<li>数据连接：进行文件传输</li>
+</ul>
+</li>
+<li><p>FTP的传输模式</p>
+<ul>
+<li>文本传输模式</li>
+<li>二进制模式</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/07/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="prev" title="计算机网络概述">
+                  <i class="fa fa-chevron-left"></i> 计算机网络概述
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/11/Internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E4%BC%A0%E8%BE%93%E5%B1%82/" rel="next" title="计算机网络--传输层">
+                  计算机网络--传输层 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zrk</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;per_page&quot;:true,&quot;cdn&quot;:&quot;&#x2F;&#x2F;cdn.bootcss.com&#x2F;mathjax&#x2F;2.7.1&#x2F;latest.js?config&#x3D;TeX-AMS-MML_HTMLorMML&quot;,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.2&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
